@@ -63,6 +63,15 @@ class Gamerli extends Migration
             $table->timestamps();
         });
 
+        Schema::create('scores', function (Blueprint $table) {
+            $table->id();
+            $table->integer('totalscore', 11);
+            $table->integer('nimbervotes', 11);
+            $table->integer('score', 11);
+            $table->foreignId('comment_id')->constrained();
+            $table->timestamps();
+        });
+
         Schema::create('directors', function (Blueprint $table) {
             $table->id();
             $table->string('name',30);
