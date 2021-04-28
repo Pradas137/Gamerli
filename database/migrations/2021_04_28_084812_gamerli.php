@@ -51,7 +51,7 @@ class Gamerli extends Migration
 
         Schema::create('roles', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 20);
+            $table->enum('name', ['admin', 'client','gestor']);
             $table->timestamps();
         });
 
