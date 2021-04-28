@@ -48,11 +48,6 @@ class Gamerli extends Migration
             $table->integer("state");
             $table->timestamps();
         });
-        
-        Schema::table('users', function (Blueprint $table) {
-            $table->foreignId('role_id')->constrained();
-            $table->foreignId('list_id')->constrained();
-		});
 
         Schema::create('roles', function (Blueprint $table) {
             $table->id();
@@ -63,16 +58,15 @@ class Gamerli extends Migration
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
             $table->string('comment', 20);
-            $table->integer('ratingscore', 11)->unsigned();;
-            $table->foreignId('user_id')->constrained();
+            $table->integer('ratingscore')->unsigned();
             $table->timestamps();
         });
 
         Schema::create('scores', function (Blueprint $table) {
             $table->id();
-            $table->integer('totalscore', 11);
-            $table->integer('nimbervotes', 11);
-            $table->integer('score', 11);
+            $table->integer('totalscore');
+            $table->integer('nimbervotes');
+            $table->integer('score');
             $table->foreignId('comment_id')->constrained();
             $table->timestamps();
         });
@@ -105,10 +99,9 @@ class Gamerli extends Migration
             $table->foreignId('gconsoles_id')->constrained();
             $table->date('date');
             $table->foreignId('score_id')->constrained();
-            $table->enum('pegi');
+            $table->enum('pegi', ['3', '7','12','16','18']);
             $table->foreignId('platform_id')->constrained();
             $table->string('summary',255);
-            $table->foreignId('saga_id')->constrained();
             $table->string('page_reference',255);
             $table->string('image');
             $table->foreignId('comment_id')->constrained();
@@ -135,7 +128,19 @@ class Gamerli extends Migration
             $table->foreignId('gamelist_id')->constrained();
             $table->timestamps();
         });
+
+        Schema::table('users', function (Blueprint $table) {
+            $table->foreignId('role_id')->constrained();
+            $table->foreignId('list_id')->constrained();
+		});
         
+        Schema::table('comments', function (Blueprint $table) {
+            $table->foreignId('user_id')->constrained();
+		});
+
+        Schema::table('games', function (Blueprint $table) {
+            $table->foreignId('saga_id')->constrained();
+        });
     }
 
     /**
