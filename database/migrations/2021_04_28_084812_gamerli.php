@@ -49,11 +49,6 @@ class Gamerli extends Migration
             $table->timestamps();
         });
 
-        Schema::table('users', function (Blueprint $table) {
-            $table->foreignId('role_id')->constrained();
-            $table->foreignId('list_id')->constrained();
-		});
-        
         Schema::create('roles', function (Blueprint $table) {
             $table->id();
             $table->string('name', 20);
@@ -135,6 +130,12 @@ class Gamerli extends Migration
             $table->foreignId('gamelist_id')->constrained();
             $table->timestamps();
         });
+
+        Schema::table('users', function (Blueprint $table) {
+            $table->foreignId('role_id')->constrained();
+            $table->foreignId('list_id')->constrained();
+		});
+        
 
     }
 
