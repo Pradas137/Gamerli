@@ -14,23 +14,23 @@ class Gamerli extends Migration
     public function up()
     {
         //
-        Schema::create('genre', function (Blueprint $table) {
+        Schema::create('genres', function (Blueprint $table) {
             $table->id();
             $table->string('name', 30);
             $table->string('description', 255);
             $table->timestamps();
         });
 
-        Schema::create('platform', function (Blueprint $table) {
+        Schema::create('platforms', function (Blueprint $table) {
             $table->id();
             $table->string('name', 30);
             $table->timestamps();
         });
 
-        Schema::create('gconsole', function (Blueprint $table) {
+        Schema::create('gconsoles', function (Blueprint $table) {
             $table->id();
             $table->string('name', 30);
-            $table->foreignId('platform_id')->constrained();
+            $table->foreign('platform_id')->references('id')->on('platforms');
             $table->timestamps();
         });
 
@@ -43,8 +43,8 @@ class Gamerli extends Migration
         Schema::create('friends', function (Blueprint $table) {
             $table->id();
             $table->string('message', 255);
-            $table->foreignId('user_id')->constrained();
-            $table->foreignId('messages_id')->constrained();
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('message_id')->references('id')->on('messages');
             $table->integer("state");
             $table->timestamps();
         });
@@ -59,7 +59,7 @@ class Gamerli extends Migration
             $table->id();
             $table->string('comment', 20);
             $table->integer('ratingscore', 11);
-            $table->foreignId('user_id')->constrained();
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
 
@@ -68,7 +68,7 @@ class Gamerli extends Migration
             $table->integer('totalscore', 11);
             $table->integer('nimbervotes', 11);
             $table->integer('score', 11);
-            $table->foreignId('comment_id')->constrained();
+            $table->foreign('comment_id')->references('id')->on('comments');
             $table->timestamps();
         });
 
@@ -78,10 +78,10 @@ class Gamerli extends Migration
             $table->timestamps();
         });
 
-        Schema::create('developer', function (Blueprint $table) {
+        Schema::create('developers', function (Blueprint $table) {
             $table->id();
             $table->string('name',30);
-            $table->foreignId('director_id')->constrained();
+            $table->foreign('director_id')->references('id')->on('directors');
             $table->timestamps();
         });
 
@@ -91,36 +91,36 @@ class Gamerli extends Migration
             $table->timestamps();
         });
 
-        Schema::create('game', function (Blueprint $table) {
+        Schema::create('games', function (Blueprint $table) {
             $table->id();
             $table->string('name',50);
-            $table->foreignId('genres_id')->constrained();
-            $table->foreignId('developer_id')->constrained();
-            $table->foreignId('director_id')->constrained();
-            $table->foreignId('gconsole_id')->constrained();
+            $table->foreign('genres_id')->references('id')->on('genres');
+            $table->foreign('developer_id')->references('id')->on('developers');
+            $table->foreign('director_id')->references('id')->on('directors');
+            $table->foreign('gconsole_id')->references('id')->on('gconsoles');
             $table->date('date');
-            $table->foreignId('score_id')->constrained();
+            $table->foreign('score_id')->references('id')->on('scores');
             $table->enum('pegi');
-            $table->foreignId('publisher_id')->constrained();
+            $table->foreign('platform_id')->references('id')->on('platforms');
             $table->string('summary',255);
-            $table->foreignId('saga_id')->constrained();
+            $table->foreign('saga_id')->references('id')->on('sagas');
             $table->string('page_reference',255);
-            $table->foreignId('score_id')->constrained();
+            $table->foreign('score_id')->references('id')->on('scores');
             $table->string('image');
-            $table->foreignId('comment_id')->constrained();
+            $table->foreign('comment_id')->references('id')->on('comments');
             $table->timestamps();
         });
 
         Schema::create('sagas', function (Blueprint $table) {
             $table->id();
             $table->string('name',50);
-            $table->foreignId('game_id')->constrained();
+            $table->foreign('game_id')->references('id')->on('games');
             $table->timestamps();
         });
 
-        Schema::create('gamelist', function (Blueprint $table) {
+        Schema::create('gamelists', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('game_id')->constrained();
+            $table->foreign('game_id')->references('id')->on('games');
             $table->timestamps();
         });
 
@@ -128,7 +128,7 @@ class Gamerli extends Migration
             $table->id();
             $table->integer('visibility');
             $table->string('name',30);
-            $table->foreignId('glist_id')->constrained();
+            $table->foreign('glist_id')->references('id')->on('gamelists');
             $table->timestamps();
         });
 
