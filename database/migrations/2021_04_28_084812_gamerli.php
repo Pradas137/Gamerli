@@ -105,7 +105,6 @@ class Gamerli extends Migration
             $table->string('summary',255);
             $table->foreign('saga_id')->references('id')->on('sagas');
             $table->string('page_reference',255);
-            $table->foreign('score_id')->references('id')->on('scores');
             $table->string('image');
             $table->foreign('comment_id')->references('id')->on('comments');
             $table->timestamps();

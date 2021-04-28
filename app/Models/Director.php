@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Developer extends Model
+class Director extends Model
 {
     use HasFactory;
 
-    public function directors(){
-    	return $this->belongsTo(Directors::class,'director_id');
+    public function developer(){
+    	return $this->hasMany(Developers::class,'developer_id');
     }
 }

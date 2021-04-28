@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Comment extends Model
 {
     use HasFactory;
+
+    public function users(){
+        return $this->hasMany(Users::class, 'user_id');
+    }
 }
