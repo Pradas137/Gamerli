@@ -16,3 +16,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/LandingPage', function () {
+    return view('landinPage');
+});
+
+// route redirection dashboard Student
+Route::get('/home', function () {
+    $user = auth::id();
+    Log::channel('mysql_logging')->info("User in home", ['user_Id' => $user]);
+    return view('dashboard');
+    
+})->middleware(['auth'])->name('dashboard');
