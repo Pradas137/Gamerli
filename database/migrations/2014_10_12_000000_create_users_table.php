@@ -20,8 +20,6 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->foreign('role_id')->references('id')->on('roles');
-            $table->foreign('list_id')->references('id')->on('lists');
             $table->integer('order_prefered');
             $table->rememberToken();
             $table->timestamps();
