@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\User;
+use App\Score;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 

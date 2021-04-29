@@ -2,6 +2,10 @@
 
 namespace App\Models;
 
+use App\Friend;
+use App\Role;
+use App\Liste;
+use App\Comment;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
