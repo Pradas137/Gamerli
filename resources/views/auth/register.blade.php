@@ -23,7 +23,7 @@
             <div class="mt-4">
                 <x-label for="surname" :value="__('Surname')" />
 
-                <x-input id="surnanem" class="block mt-1 w-full" type="text" name="surname" :value="old('surname')" required />
+                <x-input id="surname" class="block mt-1 w-full" type="text" name="surname" :value="old('surname')" required />
             </div>
 
             <!-- Email Address -->
