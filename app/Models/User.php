@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\Friend;
-use App\Role;
 use App\Liste;
 use App\Comment;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -25,6 +24,8 @@ class User extends Authenticatable
         'surname',
         'email',
         'password',
+        'role',
+        'list_id',
     ];
 
     /**
@@ -55,10 +56,6 @@ class User extends Authenticatable
     }
     public function friends1(){
         return $this->hasMany(Friend::class,'user_id');
-    }
-
-    public function roles(){
-    	return $this->belongsTo(Role::class,'role_id');
     }
 
     public function liste(){

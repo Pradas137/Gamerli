@@ -50,12 +50,6 @@ class Gamerli extends Migration
             $table->timestamps();
         });
 
-        Schema::create('roles', function (Blueprint $table) {
-            $table->id();
-            $table->enum('name', ['user', 'staff','admin'])->default('user');
-            $table->timestamps();
-        });
-
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
             $table->string('comment', 255)->nullable();
@@ -131,8 +125,8 @@ class Gamerli extends Migration
         });
 
         Schema::table('users', function (Blueprint $table) {
-            $table->foreignId('role_id')->constrained()->default(user);
-            $table->foreignId('list_id')->constrained()->default(0);
+            $table->enum('role', ['user', 'staff','admin'])->default('user');
+            $table->foreignId('list_id')->nullable();
 		});
         
         Schema::table('comments', function (Blueprint $table) {
@@ -157,7 +151,6 @@ class Gamerli extends Migration
         Schema::dropIfExists('gconsoles');
         Schema::dropIfExists('messages');
         Schema::dropIfExists('friends');
-        Schema::dropIfExists('roles');
         Schema::dropIfExists('comments');
         Schema::dropIfExists('directors');
         Schema::dropIfExists('developer');
