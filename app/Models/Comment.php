@@ -10,6 +10,10 @@ class Comment extends Model
     use HasFactory;
 
     public function users(){
-        return $this->hasMany(Users::class, 'user_id');
+        return $this->belongsTo(Users::class, 'user_id');
+    }
+
+    public function scores(){
+    	return $this->hasMany(Score::class,'score_id');
     }
 }

@@ -12,4 +12,9 @@ class Developer extends Model
     public function directors(){
     	return $this->belongsTo(Directors::class,'director_id');
     }
+
+    public function game(){
+        return $this->hasMany(Game::class, 'game_id');
+    }
+
 }

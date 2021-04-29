@@ -42,6 +42,18 @@ class User extends Authenticatable
     ];
 
     public function comments(){
-    	return $this->belongsTo(Comments::class,'comment_id');
+    	return $this->hasMany(Comment::class,'comment_id');
+    }
+
+    public function friends(){
+    	return $this->hasMany(Friend::class,'friend_id');
+    }
+
+    public function roles(){
+    	return $this->belongsTo(Role::class,'role_id');
+    }
+
+    public function liste(){
+    	return $this->belongsTo(Liste::class,'list_id');
     }
 }
