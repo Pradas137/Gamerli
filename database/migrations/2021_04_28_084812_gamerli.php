@@ -131,7 +131,7 @@ class Gamerli extends Migration
         });
 
         Schema::table('users', function (Blueprint $table) {
-            $table->foreignId('role_id')->constrained()->default(0);
+            $table->foreignId('role_id')->constrained()->default(user);
             $table->foreignId('list_id')->constrained()->default(0);
 		});
         
