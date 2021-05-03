@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Friend;
 use App\Liste;
 use App\Comment;
+use App\Request;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -63,8 +64,8 @@ class User extends Authenticatable
     }
 
     public function requests(){
-        return $this->belongsTo(Request::class,'request_id');}
-
+        return $this->hasMany(Request::class,'request_id');
+ }
     public function role($role) {     
         $role = (array)$role;     
         return in_array($this->role, $role); 
