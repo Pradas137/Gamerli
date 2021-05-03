@@ -23,13 +23,16 @@
             }
         </style>
     </head>
-    <body class="font-sans antialiased">
+    <body class="bg-blue-700 font-sans antialiased">
         <div class="min-h-screen bg-base dark:bg-blue-800 dark:text-white min-w-max">
 
             <!-- Page Heading -->
             <x-header />
             <!-- Page Content -->
-            <main>
+            <main class="flex flex-col h-screen">
+            <div class="flex flex-1 overflow-hidden">
+            <x-nav-vertical />
+            <div class="flex flex-1 flex-col">
                 {{ $slot ?? '' }}
             </main>
 
