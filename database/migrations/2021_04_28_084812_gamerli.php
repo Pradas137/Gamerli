@@ -149,7 +149,6 @@ class Gamerli extends Migration
 
         Schema::table('games', function (Blueprint $table) {
             $table->foreignId('saga_id')->constrained()->nullable();
-            $table->foreignId('request_id')->constrained()->nullable();
         });
 
         Schema::create('requests', function (Blueprint $table) {
@@ -158,6 +157,7 @@ class Gamerli extends Migration
             $table->string('req_comment',255)->nullable();
             $table->foreignId('game_id')->constrained();
             $table->enum('state',['pending','accepted','canceled'])->default('pending');
+            $table->foreignId('user_id_validator')->constrained()->nullable();
             $table->string('staff_comment')->constrained()->nullable();            
             $table->timestamps();
         });

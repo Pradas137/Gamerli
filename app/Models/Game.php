@@ -2,17 +2,6 @@
 
 namespace App\Models;
 
-use App\User;
-use App\Genre;
-use App\Developer;
-use App\Director;
-use App\Gconsole;
-use App\Score;
-use App\Publisher;
-use App\Saga;
-use App\Comment;
-use App\Gamelist;
-use App\Request;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -60,9 +49,6 @@ class Game extends Model
     	return $this->hasMany(Gamelist::class,'gamelist_id');
     }
 
-    public function requests(){
-        return $this->belongsTo(Request::class,'request_id');
-    }
 
 
 
