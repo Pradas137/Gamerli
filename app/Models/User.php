@@ -61,4 +61,9 @@ class User extends Authenticatable
     public function liste(){
     	return $this->belongsTo(Liste::class,'list_id');
     }
+
+    public function role($role) {     
+        $role = (array)$role;     
+        return in_array($this->role, $role); 
+    }
 }

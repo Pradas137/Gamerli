@@ -23,6 +23,17 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('/adminPanel', function () {
-    return view('adminPanel');
-});
+// route redirection dashboard Student
+Route::get('/home', function () {
+    $user = auth::id();
+    Log::channel('mysql_logging')->info("User in home", ['user_Id' => $user]);
+    return view('dashboard');
+    
+})->middleware(['auth'])->name('dashboard');
+
+// route dashboard Student
+Route::get('/dashboard', function () {
+    $user = auth::id();
+    Log::channel('mysql_logging')->info("User in dashboard", ['user_Id' => $user]);
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
