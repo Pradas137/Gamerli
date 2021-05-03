@@ -4,7 +4,6 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/breadcrumbs.css') }}">
 
         <title>Matriculació IETI</title>
 
@@ -18,7 +17,6 @@
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
-        <script src="{{ asset('js/breadcrumb.js') }}"></script>
         <style>
             input{
                 color: black;
@@ -26,7 +24,7 @@
         </style>
     </head>
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-base dark:bg-gray-800 dark:text-white min-w-max">
+        <div class="min-h-screen bg-base dark:bg-blue-800 dark:text-white min-w-max">
 
             <!-- Page Heading -->
             <x-header />
