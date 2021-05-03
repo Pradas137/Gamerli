@@ -35,14 +35,12 @@ class Game extends Model
 
     public function sagas(){
     	return $this->belongsTo(Saga::class,'saga_id');
+
+        return $this->hasMany(Saga::class,'saga_id');
     }
 
     public function comments(){
     	return $this->belongsTo(Comments::class,'comment_id');
-    }
-
-    public function sagas(){
-    	return $this->hasMany(Saga::class,'saga_id');
     }
 
     public function gamelists(){
