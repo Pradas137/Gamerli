@@ -59,6 +59,9 @@ class Game extends Model
     	return $this->hasMany(Gamelist::class,'gamelist_id');
     }
 
+    public function requests(){
+        return $this->belongsTo(Request::class,'request_id');
+    }
 
 
 
