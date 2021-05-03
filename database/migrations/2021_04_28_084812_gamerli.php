@@ -147,7 +147,6 @@ class Gamerli extends Migration
             $table->string('req_comment',255)->nullable();
             $table->foreignId('game_id')->constrained();
             $table->enum('state',['pending','accepted','canceled'])->default('pending');
-            $table->foreignId('validator_id')->constrained()->nullable();
             $table->string('staff_comment')->constrained()->nullable();            
             $table->timestamps();
         });
