@@ -44,7 +44,7 @@ Route::get('/dashboard', function () {
         if(Auth::user()->role == "admin"){
             return redirect('/admin/dashboard');
         }
-        if (Auth::user()->role == "student") {
+        if (Auth::user()->role == "user") {
             $user = auth::id();
             Log::channel('mysql_logging')->info("User in dashboard", ['user_Id' => $user]);
             return view('dashboard');
