@@ -2,6 +2,9 @@
 
 namespace App\Models;
 
+
+use App\User
+use App\Game;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,8 +16,8 @@ class Request extends Model
     	return $this->belongsTo(User::class,'user_id');
     }
 
-    public function users(){
-    	return $this->hasMany(User::class,'user_id');
+    public function users_validator(){
+    	return $this->belongsTo(User::class,'user_id_validator');
     }
     
     public function games(){

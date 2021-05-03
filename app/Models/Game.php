@@ -12,6 +12,7 @@ use App\Publisher;
 use App\Saga;
 use App\Comment;
 use App\Gamelist;
+use App\Request;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 

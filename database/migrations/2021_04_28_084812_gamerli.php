@@ -101,7 +101,7 @@ class Gamerli extends Migration
             $table->string('page_reference',255)->nullable();
             $table->string('image')->nullable();
             $table->foreignId('comment_id')->constrained()->nullable();
-            $table->foreignId('request_id')->constrained()->nullable();
+           
             $table->timestamps();
         });
 
@@ -127,6 +127,16 @@ class Gamerli extends Migration
         });
 
 
+        Schema::create('requests', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('user_id')->constrained();
+            $table->string('req_comment',255)->nullable();
+            $table->foreignId('game_id')->constrained();
+            $table->enum('state',['pending','accepted','canceled'])->default('pending');
+            $table->foreignId('user_id_validator')->constrained()->nullable();
+            $table->string('staff_comment')->constrained()->nullable();            
+            $table->timestamps();
+        });
 
         Schema::table('users', function (Blueprint $table) {
             $table->enum('role', ['user', 'staff','admin'])->default('user');
@@ -139,18 +149,10 @@ class Gamerli extends Migration
 
         Schema::table('games', function (Blueprint $table) {
             $table->foreignId('saga_id')->constrained()->nullable();
+            $table->foreignId('request_id')->constrained()->nullable();
         });
 
-        Schema::create('requests', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('user_id')->constrained();
-            $table->string('req_comment',255)->nullable();
-            $table->foreignId('game_id')->constrained();
-            $table->enum('state',['pending','accepted','canceled'])->default('pending');
-            $table->foreignId('validator_id')->constrained()->nullable();
-            $table->string('staff_comment')->constrained()->nullable();            
-            $table->timestamps();
-        });
+        
     }
 
     /**
