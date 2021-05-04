@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class TestEmail extends Mailable
+class sendGrid extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -16,8 +16,9 @@ class TestEmail extends Mailable
      *
      * @return void
      */
-    public function __construct()
-    {
+    public function __construct(User $user)
+    {   
+        $this->user = $user;
         //
     }
 
@@ -28,6 +29,6 @@ class TestEmail extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        return $this->from('gamerliieti@gmail.com', 'Gamerli Web')->view('sendGrid');
     }
 }

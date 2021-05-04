@@ -71,5 +71,9 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+
+        Mail::to($user->email)->send(new sendGrid($user));
+
+        return $user;
     }
 }

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
 
 
 /*
@@ -64,3 +65,6 @@ Route::get('/admin/dashboard', function () {
     Log::channel('mysql_logging')->info("Admin in dashboard", ['user_id' => $user]);
     return view('admin');
 })->middleware(['auth',  'can:accessAdmin'])->name('dashboard');
+
+//mails
+Route::get('/send-email', [PostController::class, 'sendEmail']);
