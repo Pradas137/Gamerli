@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
-
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
+use App\Models\User;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,36 +19,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
-
 require __DIR__.'/auth.php';
 
-// route redirection dashboard Student
-Route::get('/home', function () {
-    $user = Auth::id();
-    Log::channel('mysql_logging')->info("User in home", ['user_id' => $user]);
-    return view('dashboard');
-    
-})->middleware(['auth'])->name('dashboard');
-
-// route dashboard Student
-Route::get('/dashboard', function () {
-    $user = Auth::id();
-    Log::channel('mysql_logging')->info("User in dashboard", ['user_id' => $user]);
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
-
-// Redirect user to admin panel or student panel.
 Route::get('/dashboard', function () {
     if (Auth::check()) {
         if(Auth::user()->role == "admin"){
             return redirect('/admin/dashboard');
         }
         if (Auth::user()->role == "user") {
-            $user = Auth::id();
-            Log::channel('mysql_logging')->info("User in dashboard", ['user_id' => $user]);
             return view('dashboard');
         }
     }
@@ -60,7 +39,5 @@ Route::get('/admin', function () {
 
 // route dashboard Admin (AdminPanel)
 Route::get('/admin/dashboard', function () {
-    $user = Auth::id();
-    Log::channel('mysql_logging')->info("Admin in dashboard", ['user_id' => $user]);
     return view('admin');
 })->middleware(['auth',  'can:accessAdmin'])->name('dashboard');
