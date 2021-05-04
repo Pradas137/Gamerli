@@ -25,7 +25,7 @@ require __DIR__.'/auth.php';
 
 // route redirection dashboard Student
 Route::get('/home', function () {
-    $user = auth::id();
+    $user = Auth::id();
     Log::channel('mysql_logging')->info("User in home", ['user_id' => $user]);
     return view('dashboard');
     
@@ -33,7 +33,7 @@ Route::get('/home', function () {
 
 // route dashboard Student
 Route::get('/dashboard', function () {
-    $user = auth::id();
+    $user = Auth::id();
     Log::channel('mysql_logging')->info("User in dashboard", ['user_id' => $user]);
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
@@ -45,7 +45,7 @@ Route::get('/dashboard', function () {
             return redirect('/admin/dashboard');
         }
         if (Auth::user()->role == "user") {
-            $user = auth::id();
+            $user = Auth::id();
             Log::channel('mysql_logging')->info("User in dashboard", ['user_id' => $user]);
             return view('dashboard');
         }
@@ -59,7 +59,7 @@ Route::get('/admin', function () {
 
 // route dashboard Admin (AdminPanel)
 Route::get('/admin/dashboard', function () {
-    $user = auth::id();
+    $user = Auth::id();
     Log::channel('mysql_logging')->info("Admin in dashboard", ['user_id' => $user]);
     return view('admin');
 })->middleware(['auth',  'can:accessAdmin'])->name('dashboard');
