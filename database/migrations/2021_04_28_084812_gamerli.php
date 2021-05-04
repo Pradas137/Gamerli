@@ -132,7 +132,7 @@ class Gamerli extends Migration
 
         Schema::table('users', function (Blueprint $table) {
             $table->enum('role', ['user', 'staff','admin'])->default('user');
-            $table->foreignId('list_id')->constrained()->nullable();
+            $table->foreignId('list_id')->nullable();
 		});
         
         Schema::table('comments', function (Blueprint $table) {
