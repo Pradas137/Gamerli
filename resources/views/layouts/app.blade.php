@@ -23,20 +23,17 @@
             }
         </style>
     </head>
-    <body class="bg-blue-700 font-sans antialiased">
-        <div class="min-h-screen bg-base dark:bg-blue-800 dark:text-white min-w-max">
+    <body class="font-sans antialiased dark:bg-gray-800 dark:text-white bg-base">
+        <div class="min-h-screen min-w-max">
 
             <!-- Page Heading -->
-            <x-header />
+            <x-header-admin />
+            
             <!-- Page Content -->
-            <main class="flex flex-col h-screen">
-            <div class="flex flex-1 overflow-hidden">
-            <x-nav-vertical />
-            <div class="flex flex-1 flex-col">
+            <main>
                 {{ $slot ?? '' }}
             </main>
-
-            <x-footer />
+            <x-footer-admin />
         </div>
     </body>
 </html>
