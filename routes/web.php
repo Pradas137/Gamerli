@@ -55,7 +55,7 @@ Route::get('/admin/dashboard/requests', function () {
 Route::get('/admin/dashboard/friends', function () {
     $user = auth::id();
     return view('friendAdmin', ['friends' => $user]);
-})->middleware(['auth',  'can:accessAdmin'])->name('friends');
+})->middleware(['auth',  'can:accessAdmin'])->name('friend');
 
 Route::get('/admin/dashboard/rankings', function () {
     $user = auth::id();
@@ -65,9 +65,9 @@ Route::get('/admin/dashboard/rankings', function () {
 Route::get('/admin/dashboard/lists', function () {
     $user = auth::id();
     return view('listsAdmin', ['lists' => $user]);
-})->middleware(['auth',  'can:accessAdmin'])->name('lists');
+})->middleware(['auth',  'can:accessAdmin'])->name('list');
 
 Route::get('/admin/dashboard/profiles', function () {
     $user = auth::id();
     return view('profileAdmin', ['profiles' => $user]);
-})->middleware(['auth',  'can:accessAdmin'])->name('profiles');
+})->middleware(['auth',  'can:accessAdmin'])->name('profile');

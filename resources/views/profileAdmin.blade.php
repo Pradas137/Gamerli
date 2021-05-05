@@ -1,4 +1,8 @@
+@section('breadcrumbs')
+  {{ Breadcrumbs::render('profile') }}
+@endsection
 <x-app-layout>
+<script src="{{asset('js/breadcrumb.js')}}"></script>
     <div class="py-12">
         <div class="grid grid-rows-2 grid-flow-col gap-8">
             <a href="/admin/dashboard/requests" class="bg-red-500 text-center font-extrabold rounded-sm text-base rounded-lg m-10 h-12"> Requests</a>

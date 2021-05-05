@@ -1,4 +1,8 @@
+@section('breadcrumbs')
+  {{ Breadcrumbs::render('ranking') }}
+@endsection
 <x-app-layout>
+<script src="{{asset('js/breadcrumb.js')}}"></script>
   <div class="text-center">
     <button type="button" id="importStudent" class="m-3 bg-mtr-dark p-1 w-4/12 text-center font-extrabold rounded-sm text-base">Añadir Juegos</button>
   </div>
