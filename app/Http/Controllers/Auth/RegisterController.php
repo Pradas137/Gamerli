@@ -8,6 +8,9 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\sendGrid;
 
 class RegisterController extends Controller
 {
@@ -65,7 +68,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'surname' => $data['surname'],
             'email' => $data['email'],
@@ -73,6 +76,14 @@ class RegisterController extends Controller
         ]);
 
         Mail::to($user->email)->send(new sendGrid($user));
+
+        if(Mail::failures() != 0) {
+            return "<p> Success! Your E-mail has been sent.</p>";
+        }
+
+        else {
+            return "<p> Failed! Your E-mail has not sent.</p>";
+        }
 
         return $user;
     }

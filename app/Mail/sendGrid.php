@@ -2,6 +2,8 @@
 
 namespace App\Mail;
 
+
+
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -16,9 +18,12 @@ class sendGrid extends Mailable
      *
      * @return void
      */
-    public function __construct(User $user)
+
+    public $user;
+
+    public function __construct(/*$user*/)
     {   
-        $this->user = $user;
+        //$this->user = $user;
         //
     }
 
@@ -29,6 +34,6 @@ class sendGrid extends Mailable
      */
     public function build()
     {
-        return $this->from('gamerliieti@gmail.com', 'Gamerli Web')->view('sendGrid');
+        return $this->view('sendGrid')->from('gamerliieti@gmail.com', 'Gamerli Web')->subject('¡Bienvenido!');
     }
 }

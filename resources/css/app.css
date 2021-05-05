@@ -1,3 +1,19 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+
+:root {
+	/*(first)Super, Soft, Medium, Hard(last)*/
+	/*https://coolors.co/ffffff-f6f6f6-c0c0c0-ce4138-ce2927-b52626-a72b2b-808080-404040-000000*/
+    --SWhite: #FFFFFF;
+    --SSoftGrey: #F6F6F6;
+    --SGrey:#C0C0C0;
+    --SSRed:#CE4138;
+    --SRed:#CE2927;
+    --MRed:#B52626;
+    --MGrey:#808080;
+    --HGrey:#404040;
+    --HRed:#A72B2B;
+    --HBlack:#000000;
+}
