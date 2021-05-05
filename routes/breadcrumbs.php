@@ -28,3 +28,9 @@ Breadcrumbs::for('request', function ($trail) {
     $trail->parent('dashboard');
     $trail->push('Request', route('request'));
 });
+
+// Inicio > CreateGame
+Breadcrumbs::for('Create', function ($trail) {
+    $trail->parent('dashboard');
+    $trail->push('Create', route('create'));
+});
