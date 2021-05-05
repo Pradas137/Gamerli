@@ -3,7 +3,7 @@
 namespace App\Models;
 
 
-use App\User
+use App\User;
 use App\Game;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;

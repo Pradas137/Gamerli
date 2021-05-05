@@ -1,4 +1,4 @@
-<header class="w-full bg-user text-white py-4 flex justify-between">
+<header class=" bg-red-700 w-full bg-user text-white py-4 flex justify-between">
      <a href="/dashboard" class="mx-3 bg-mtr-dark p-2 w-1/12 text-center font-mono rounded-sm min-w-max">HOME</a>
      <div class="flex justify-center items-center space-x-2">
           <span class="text-sm text-blue-500 dark:text-gray-400">Light</span>
