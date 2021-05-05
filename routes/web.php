@@ -1,12 +1,19 @@
 <?php
-
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Models\Gamer;
+use App\Models\Depeloper;
+use App\Models\Director;
+use App\Models\Gconsole;
+use App\Models\Genre;
+use App\Models\Platform;
+use App\Models\Publisher;
+use App\Models\Saga;
 use App\Models\User;
-use App\Models\Friend;
-use App\Models\Ranking;
-use App\Models\Liste;
+use App\Models\Score;
+use App\Http\Controllers\GameImportController;
 
 
 /*
