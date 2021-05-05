@@ -39,6 +39,11 @@
                     <div class="p-6">
                         <h1 class="text-6xl md:text-6xl font-bold md:font-semibold text-user">Gamerli</h1>
                         <p class="my-8 text-base">Nuestro proyexto es una web para gestionar los videojuegos en listas, incluye rankings y un sistema de amigos Carlos, Adrian.</p>
+                        <div class="flex my-5 justify-center">
+				                <i style="background-color: #3B5998;" class="flex items-center justify-center h-12 w-12 mx-1 rounded-full fab fill-current text-white text-xl fa-facebook-f"></i>
+				                <i style="background-color:#125688;" class="flex items-center justify-center h-12 w-12 mx-1 rounded-full fab fill-current text-white text-xl fa-instagram"></i>
+                                <i style="background-color:#55ACEE;" class="flex items-center justify-center h-12 w-12 mx-1 rounded-full fab fill-current text-white text-xl fa-twitter"></i>
+                        </div>
                     </div>
                 </div>
             </div>
