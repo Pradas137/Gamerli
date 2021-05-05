@@ -52,6 +52,7 @@ Route::get('/admin', function () {
 // route dashboard Admin (AdminPanel)
 Route::get('/admin/dashboard', function () {
     return view('admin');
+
 })->middleware(['auth',  'can:accessAdmin'])->name('dashboard');
 
 Route::get('/admin/dashboard/requests', function () {
@@ -78,3 +79,5 @@ Route::get('/admin/dashboard/profile', function () {
     $user = auth::id();
     return view('profileAdmin', ['profile' => $user]);
 })->middleware(['auth',  'can:accessAdmin'])->name('profile');
+
+Route::resource('admin/dashboard/Import', GameImportController::class);
