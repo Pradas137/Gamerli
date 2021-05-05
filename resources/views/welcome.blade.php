@@ -21,11 +21,25 @@
     <body class="bg-red-400">
         <main>
             <div class="flex justify-center items-center min-h-screen bg-base">
-                <div class=" bg-red-600 container bg-admin text-center w-3/4 rounded-xl p-8 shadow-xl">
-                    <h1 class="text-6xl md:text-6xl font-bold md:font-semibold text-user">Gamerli</h1>
-                    <p class="my-8 text-base">Nuestro proyexto es una web para gestionar los videojuegos en listas, incluye rankings y un sistema de amigos Carlos, Adrian.</p>
-                    <a href="{{ route('login') }}" class=" object-none object-left-top py-2 px-4 bg-red-900 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">Log in</a>
-                    <a href="{{ route('register') }}" class="py-2 px-4 bg-red-900 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">Registered</a>
+                <div class="flex h-50 bg-red-600 container bg-admin text-center w-2/4 rounded-xl p-5 shadow-xl">
+                    <div class="bg-red-600 h-48 content-start p-7 w-34 boder-r border-gray-100">
+                        <ul>
+                            <li class="flex mb-8">
+                                <a href="{{ route('login') }} " class="py-2 px-4 bg-red-900 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">Login</a>
+                            </li>
+                            <li class="flex mb-8">
+                                <a href="{{ route('register') }} " class=" py-2 px-4 bg-red-900 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">Register</a>
+                            </li>
+
+                            <li class="flex mb-8">
+                                <a href=" " class="py-2 px-4 bg-red-900 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">Visitet</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="p-6">
+                        <h1 class="text-6xl md:text-6xl font-bold md:font-semibold text-user">Gamerli</h1>
+                        <p class="my-8 text-base">Nuestro proyexto es una web para gestionar los videojuegos en listas, incluye rankings y un sistema de amigos Carlos, Adrian.</p>
+                    </div>
                 </div>
             </div>
         </main>
