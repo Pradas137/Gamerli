@@ -32,4 +32,5 @@ $u = new \App\Models\Saga;$u->name = "Assassins Cread";$u->game_id=1;$u->save();
 
 $u = new \App\Models\Liste;$u->visibility=0;$u->name="lista";$u->gamelist_id=1;$u->save();
 
+$ php artisan make:controller GameController --resource --model=Game
 

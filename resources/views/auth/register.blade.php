@@ -62,6 +62,9 @@
                 <x-button class="ml-4">
                     {{ __('Register') }}
                 </x-button>
+                <x-button class="ml-4">
+                    <a href="/">Atras</a>
+                </x-button>
             </div>
         </form>
     </x-auth-card>
