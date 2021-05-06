@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
     @section('breadcrumbs')
-        {{ Breadcrumbs::render('profileUser') }}
+        {{ Breadcrumbs::render('profile') }}
     @endsection
     <div class="container-form-user p-10">
         <div class="card-body">
@@ -30,16 +30,20 @@
                 </div>
                 <div class="form-group grid sm:grid-cols-2">
                     <label for="state.email">AVATAR</label>
-                    <p>{{ Auth::user()->avatar }}</p>
+                    <img src="data:image/png;base64,{{ Auth::user()->avatar }}">
+                </div>
+                <div class="form-group grid sm:grid-cols-2">
+                    <label for="state.email">Role</label>
+                    <p>{{ Auth::user()->role }}</p>
                 </div>
             </form>
-            <div class="form-group pt-5">
-                <label for="state.cambio">Solicitar cambios:</label>
-                <textarea class="form-textarea border-black border-opacity-50 mt-1 block w-full " rows="3"></textarea>
-            </div>
-            <div class="label-group-admin grid justify-end pt-5">
-                <a href="" class="btn primary-btn">Solicitar Cambios</a>
-            </div>
+            <form id="formulario" method="POST" action="/dashboard/profileUser" enctype="multipart/form-data">
+                {{ csrf_field() }}
+                <br>
+                <label>SUBIR AVATAR</label>
+                <input type="file" name="images">
+                <input type="submit" value="save">
+            </form>
         </div>
     </div>
 </x-app-layout>
