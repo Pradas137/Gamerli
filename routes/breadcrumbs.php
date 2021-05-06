@@ -4,22 +4,33 @@ use DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs;
 Breadcrumbs::for('dashboard', function ($trail) {
     $trail->push('ControlPanel', route('dashboard'));
 });
+
+Breadcrumbs::for('adminDashboard', function ($trail) {
+    $trail->push('ControlPanel', route('adminDashboard'));
+});
+
 // Inicio > Ranking
-Breadcrumbs::for('ranking', function ($trail) {
+Breadcrumbs::for('Ranking', function ($trail) {
     $trail->parent('dashboard');
     $trail->push('Ranking', route('ranking'));
 });
 
 // Inicio > Profile
-Breadcrumbs::for('profile', function ($trail) {
+Breadcrumbs::for('Profile', function ($trail) {
     $trail->parent('dashboard');
-    $trail->push('Profile', route('profile'));
+    $trail->push('Profile', route('Profile'));
 });
 
 // Inicio > List
-Breadcrumbs::for('list', function ($trail) {
+Breadcrumbs::for('List', function ($trail) {
     $trail->parent('dashboard');
-    $trail->push('List', route('list'));
+    $trail->push('List', route('List'));
+});
+
+// Inicio > Friend
+Breadcrumbs::for('Friend', function ($trail) {
+    $trail->parent('dashboard');
+    $trail->push('Friend', route('Friend'));
 });
 
 

@@ -55,11 +55,11 @@
                         <x-button class="inline-block align-middle">
                             {{ __('Log in') }}
                         </x-button>
-                        <x-button class="inline-block align-middle">
-                            <a href="/">Atras</a>
-                        </x-button>
+                    </form>
+                    <x-button class="inline-block align-middle">
+                        <a href="/">Atras</a>
+                    </x-button>
                     </div>
-                </form>
             </x-auth-card>
         </div>
     </body>

@@ -3,7 +3,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use App\Models\Gamer;
+use App\Models\Game;
 use App\Models\Depeloper;
 use App\Models\Director;
 use App\Models\Gconsole;
@@ -14,6 +14,8 @@ use App\Models\Saga;
 use App\Models\User;
 use App\Models\Score;
 use App\Http\Controllers\GameImportController;
+use App\Http\Controllers\GameController;
+use App\Http\Controllers\ProfileController;
 
 
 /*
@@ -44,40 +46,74 @@ Route::get('/dashboard', function () {
     }
 })->middleware(['auth'])->name('dashboard');
 
-// route redirection dashboard Admin (AdminPanel)
-Route::get('/admin', function () {
-    return redirect('/admin/dashboard');
-})->middleware(['auth',  'can:accessAdmin'])->name('dashboard');
+/*-------------Usuarios-------------------*/
+
+Route::get('/dashboard/profile', function () {
+	$user_id = auth::id();
+	return view('profile', ['user' => $user_id]);
+})->middleware(['auth',  'can:accessUser'])->name('Profile');
+
+Route::resource('/dashboard/profile/avatar', ProfileController::class);
+Route::resource('/admin/dashboard/rankingGame', GameController::class);
+
+Route::get('/dashboard/ranking', function () {
+    $data = Game::all();
+    $user = auth::id();
+    return view('ranking', ['ranking' => $data]);
+})->middleware(['auth',  'can:accessUser'])->name('ranking');
+
+Route::get('/dashboard/list', function () {
+    $data = Game::all();
+    $user = auth::id();
+    return view('list', ['list' => $data]);
+})->middleware(['auth',  'can:accessUser'])->name('list');
+
+Route::get('/dashboard/request', function () {
+    $data = Game::all();
+    $user = auth::id();
+    return view('request', ['request' => $data]);
+})->middleware(['auth',  'can:accessUser'])->name('request');
+
+Route::get('/dashboard/friend', function () {
+    $data = Game::all();
+    $user = auth::id();
+    return view('friend', ['friend' => $data]);
+})->middleware(['auth',  'can:accessUser'])->name('friend');
+
+/*-------------ADIMINISTRADOR-------------------*/
 
 // route dashboard Admin (AdminPanel)
 Route::get('/admin/dashboard', function () {
-    return view('admin');
-
-})->middleware(['auth',  'can:accessAdmin'])->name('dashboard');
+    return view('dashboard');
+})->middleware(['auth',  'can:accessAdmin'])->name('adminDashboard');
 
 Route::get('/admin/dashboard/requests', function () {
     $user = auth::id();
     return view('request', ['request' => $user]);
 })->middleware(['auth',  'can:accessAdmin'])->name('request');
 
-Route::get('/admin/dashboard/friends', function () {
+Route::get('/admin/dashboard/friend', function () {
     $user = auth::id();
-    return view('friendAdmin', ['friend' => $user]);
+    return view('friend', ['friend' => $user]);
 })->middleware(['auth',  'can:accessAdmin'])->name('friend');
 
-Route::get('/admin/dashboard/rankings', function () {
+Route::get('/admin/dashboard/ranking', function () {
+    $data = Game::all();
     $user = auth::id();
-    return view('rankingAdmin', ['ranking' => $user]);
+    return view('ranking', ['ranking' => $data]);
 })->middleware(['auth',  'can:accessAdmin'])->name('ranking');
 
-Route::get('/admin/dashboard/lists', function () {
+Route::get('/admin/dashboard/list', function () {
     $user = auth::id();
-    return view('listsAdmin', ['list' => $user]);
+    return view('list', ['list' => $user]);
 })->middleware(['auth',  'can:accessAdmin'])->name('list');
 
 Route::get('/admin/dashboard/profile', function () {
     $user = auth::id();
-    return view('profileAdmin', ['profile' => $user]);
-})->middleware(['auth',  'can:accessAdmin'])->name('profile');
+    return view('profile', ['profile' => $user]);
+})->middleware(['auth',  'can:accessAdmin'])->name('Profile');
 
-Route::resource('admin/dashboard/Import', GameImportController::class);
+/*Route::resource('admin/dashboard/Import', GameImportController::class);
+
+Route::resource('admin/dashboard/RankingAdmin.index', GameController::class);
+*/
