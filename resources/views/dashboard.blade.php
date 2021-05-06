@@ -1,5 +1,5 @@
 @section('breadcrumbs')
-    {{ Breadcrumbs::render('dashboardUser') }}
+    {{ Breadcrumbs::render('dashboard') }}
 @endsection
 <x-app-layout page="">
     <x-slot name="header">
