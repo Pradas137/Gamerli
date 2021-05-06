@@ -7,6 +7,7 @@ namespace App\Mail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
+use App\Models\User;
 use Illuminate\Queue\SerializesModels;
 
 class sendGrid extends Mailable
@@ -21,9 +22,9 @@ class sendGrid extends Mailable
 
     public $user;
 
-    public function __construct(/*$user*/)
+    public function __construct(User $user)
     {   
-        //$this->user = $user;
+        $this->user = $user;
         //
     }
 

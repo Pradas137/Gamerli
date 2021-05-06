@@ -75,15 +75,15 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password'])
         ]);
 
-        Mail::to($user->email)->send(new sendGrid($user));
-
-        if(Mail::failures() != 0) {
+        
+        
+        /*if(Mail::failures() != 0) {
             return "<p> Success! Your E-mail has been sent.</p>";
         }
 
         else {
             return "<p> Failed! Your E-mail has not sent.</p>";
-        }
+        }*/
 
         return $user;
     }
