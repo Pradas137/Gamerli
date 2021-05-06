@@ -90,4 +90,4 @@
 </div>
     @endif
 </x-app-layout>
-
+<script src="{{asset('js/laracrud.js')}}"></script>
