@@ -12,9 +12,9 @@
         <div class="h-8 md:h-full border-r w-64 text-center border-gray-200">
             <h6 class="font-bold mb-4 text-2xl">PAGE</h6>
             <ul>
-                <li class="font-bolt mb-4"><a href="/admin/dashboard/ranking">Ranking</a></li>
-                <li class="font-bolt mb-4"><a href="/admin/dashboard/request">Request</a></li>
-                <li class="font-bolt mb-4"><a href="/admin/dashboard/comment">Comment</a></li>
+                <li class="font-bolt mb-4"><a href="/dashboard/ranking">Ranking</a></li>
+                <li class="font-bolt mb-4"><a href="/dashboard/request">Request</a></li>
+                <li class="font-bolt mb-4"><a href="/dashboard/comment">Comment</a></li>
             <ul>
             <h6 class="font-bold mb-4 text-2xl">ADMIN</h6>
             <ul>
