@@ -1,16 +1,7 @@
 <header class=" bg-red-700 w-full bg-user text-white py-4 flex justify-between">
      <a href="/dashboard" class="mx-3 bg-mtr-dark p-2 w-1/12 text-center font-mono rounded-sm min-w-max">HOME</a>
-     <div class="flex justify-center items-center space-x-2">
-          <span class="text-sm text-blue-500 dark:text-gray-400">Light</span>
-          <div>
-               <input type="checkbox" name="" id="toogle" class="hidden" />
-               <label for="toogle">
-                    <div class="w-9 h-5 flex items-center bg-gray-300 rounded-full p-1">
-                         <div class="toogle-dot w-4 h-4 bg-white rounded-full shadow-md transform duration-300 ease-in-out"></div>
-                    </div>
-               </label>
-          </div>
-          <span class="text-sm text-gray-400 dark:text-blue-500">Dark</span>
+     <div class="flex justify-center items-center space-x-2">         
+		<button class="js-change-theme focus:outline-none">🌙</button>
      </div>
      <div class="p-2 w-1/12 text-center text-black">
           <a href="{{ url('/logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
@@ -21,3 +12,36 @@
 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
      {{ csrf_field() }}
 </form>
+<script src="https://unpkg.com/popper.js@1/dist/umd/popper.min.js"></script>
+<script src="https://unpkg.com/tippy.js@4"></script>
+<script>
+	//Init tooltips
+     tippy('.link',{
+        placement: 'bottom'
+      })
+
+      //Toggle mode
+      const toggle = document.querySelector('.js-change-theme');
+      const body = document.querySelector('body');
+      
+      
+      toggle.addEventListener('click', () => {
+
+        if(body.classList.contains('text-gray-900')) {
+          toggle.innerHTML = "☀️";
+          body.classList.remove('text-gray-900');
+          body.classList.add('text-gray-100');
+          body.classList.remove('bg-white');
+          body.classList.add('bg-gray-900');
+        } else
+        {
+          toggle.innerHTML = "🌙";
+          body.classList.remove('text-gray-100');
+          body.classList.add('text-gray-900');
+          body.classList.remove('bg-gray-900');			
+          body.classList.add('bg-white');
+          
+        }
+      });
+      
+</script>
