@@ -24,13 +24,13 @@ Breadcrumbs::for('Profile', function ($trail) {
 // Inicio > List
 Breadcrumbs::for('List', function ($trail) {
     $trail->parent('dashboard');
-    $trail->push('List', route('List'));
+    $trail->push('List', route('list'));
 });
 
 // Inicio > Friend
 Breadcrumbs::for('Friend', function ($trail) {
     $trail->parent('dashboard');
-    $trail->push('Friend', route('Friend'));
+    $trail->push('Friend', route('friend'));
 });
 
 
@@ -39,6 +39,13 @@ Breadcrumbs::for('request', function ($trail) {
     $trail->parent('dashboard');
     $trail->push('Request', route('request'));
 });
+
+// Inicio > Petition
+Breadcrumbs::for('Petition', function ($trail) {
+    $trail->parent('dashboard');
+    $trail->push('Petition', route('petition'));
+});
+
 
 // Inicio > CreateGame
 Breadcrumbs::for('Create', function ($trail) {

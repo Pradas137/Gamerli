@@ -44,7 +44,7 @@
             <h6 class="font-bold mb-4 text-2xl">ADMIN</h6>
             <ul>
                 <li class="font-bolt mb-4"><a href="/admin/dashboard/profile">Profile</a></li>
-                <li class="font-bolt mb-4"><a href="/admin/dashboard/friend">Profile</a></li>
+                <li class="font-bolt mb-4"><a href="/admin/dashboard/friend">Friend</a></li>
             </ul>
         </div>
         <div class="p-6">
