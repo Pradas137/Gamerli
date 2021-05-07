@@ -25,12 +25,12 @@
 				<button id="editar" class="bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full">
 				  Edit
 				</button> 
-                <form id="formulario" method="POST" action="/admin/dashboard/profile/avatar" enctype="multipart/form-data">
+                <form id="formulario" method="POST" action="/dashboard/profile/avatar" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <br>
                     <label>SUBIR AVATAR</label>
                     <input type="file" name="image">
-                    <input type="submit" value="save">
+                    <input type="submit" value="save" >
                 </form>
 			</div>
 

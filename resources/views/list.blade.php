@@ -27,9 +27,9 @@
         <div>    
     </div>
     @else
-    <!-- @section('breadcrumbs')
-        {{ Breadcrumbs::render('dashboard') }}
-    @endsection -->
+    @section('breadcrumbs')
+        {{ Breadcrumbs::render('List') }}
+    @endsection
     <script src="{{asset('js/breadcrumb.js')}}"></script>
     <div class="flex h-screen">
         <div class="h-8 md:h-full border-r w-64 text-center border-gray-200">

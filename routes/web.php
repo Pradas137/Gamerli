@@ -51,7 +51,7 @@ Route::get('/dashboard', function () {
 Route::get('/dashboard/profile', function () {
 	$user_id = auth::id();
 	return view('profile', ['user' => $user_id]);
-})->middleware(['auth',  'can:accessUser'])->name('Profile');
+})->middleware(['auth',  'can:accessUser'])->name('profile');
 
 Route::get('/dashboard/ranking', function () {
     $data = Game::all();
@@ -62,7 +62,7 @@ Route::get('/dashboard/ranking', function () {
 Route::get('/dashboard/list', function () {
     $data = Game::all();
     $user = auth::id();
-    return view('list', ['list' => $data]);
+    return view('list', ['user' => $data]);
 })->middleware(['auth',  'can:accessUser'])->name('list');
 
 Route::get('/dashboard/request', function () {
@@ -100,6 +100,7 @@ Route::get('/admin/dashboard/ranking', function () {
     return view('ranking', ['ranking' => $data]);
 })->middleware(['auth',  'can:accessAdmin'])->name('ranking');
 
+
 Route::get('/admin/dashboard/list', function () {
     $user = auth::id();
     return view('list', ['list' => $user]);
@@ -108,7 +109,7 @@ Route::get('/admin/dashboard/list', function () {
 Route::get('/admin/dashboard/profile', function () {
     $user = auth::id();
     return view('profile', ['profile' => $user]);
-})->middleware(['auth',  'can:accessAdmin'])->name('Profile');
+})->middleware(['auth',  'can:accessAdmin'])->name('profile');
 
 /*Route::resource('admin/dashboard/Import', GameImportController::class);
 

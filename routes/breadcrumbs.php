@@ -18,7 +18,7 @@ Breadcrumbs::for('Ranking', function ($trail) {
 // Inicio > Profile
 Breadcrumbs::for('Profile', function ($trail) {
     $trail->parent('dashboard');
-    $trail->push('Profile', route('Profile'));
+    $trail->push('Profile', route('profile'));
 });
 
 // Inicio > List
