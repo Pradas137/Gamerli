@@ -53,9 +53,6 @@ Route::get('/dashboard/profile', function () {
 	return view('profile', ['user' => $user_id]);
 })->middleware(['auth',  'can:accessUser'])->name('Profile');
 
-Route::resource('/dashboard/profile/avatar', ProfileController::class);
-Route::resource('/admin/dashboard/rankingGame', GameController::class);
-
 Route::get('/dashboard/ranking', function () {
     $data = Game::all();
     $user = auth::id();
@@ -117,3 +114,7 @@ Route::get('/admin/dashboard/profile', function () {
 
 Route::resource('admin/dashboard/RankingAdmin.index', GameController::class);
 */
+
+Route::resource('/dashboard/profile/avatar', ProfileController::class);
+Route::resource('/ranking', GameController::class);
+Route::resource('/rankin2', Game2Controller::class);
