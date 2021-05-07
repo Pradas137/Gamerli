@@ -35,7 +35,7 @@ Breadcrumbs::for('Friend', function ($trail) {
 
 
 // Inicio > Request
-Breadcrumbs::for('request', function ($trail) {
+Breadcrumbs::for('Request', function ($trail) {
     $trail->parent('dashboard');
     $trail->push('Request', route('request'));
 });
