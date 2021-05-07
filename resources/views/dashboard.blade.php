@@ -8,120 +8,83 @@
     @section('breadcrumbs')
         {{ Breadcrumbs::render('dashboard') }}
     @endsection
-    <div class="options p-10">
-        <div class="option flex items-center justify-center border max-w-xs rounded overflow-hidden shadow-md my-2 bg-white">
-            <div class="px-4 py-2">
-                <img src="{{ asset('images/cursos.png') }}" alt="logo" class="logo w-24 m-4"/>
-            </div>
-            <div class="px-6 py-4">
-                <a href="/admin/dashboard/terms" class="btn primary-btn">Cursos</a>
-            </div>
-        </div>
-        <div class="option flex items-center justify-center border max-w-xs rounded overflow-hidden shadow-md my-2 bg-white">
-            <div class="px-4 py-2">
-                <img src="{{ asset('images/icono-alumno.png') }}" alt="logo" class="logo w-24 m-4"/>
-            </div>
-            <div class="px-6 py-4">
-                <a href="/admin/dashboard/students" class="btn primary-btn">Alumnes</a>
-            </div>
-        </div>
-        <div class="option flex items-center justify-center border max-w-xs rounded overflow-hidden shadow-md my-2 bg-white">
-            <div class="px-4 py-2">
-                <img src="{{ asset('images/admin.png') }}" alt="logo" class="logo w-24 m-4"/>
-            </div>
-            <div class="px-6 py-4">
-                <a href="/admin/dashboard/admins" class="btn primary-btn">Admins</a>
-            </div>
-        </div>
-		<div class="option flex items-center justify-center border max-w-xs rounded overflow-hidden shadow-md my-2 bg-white">
-			<div class="px-4 py-2">
-				<img src="{{ asset('images/profileReq.png') }}" alt="logo" class="logo w-24 m-4" />
-			</div>
-			<div class="px-6 py-4">
-				<a href="/admin/dashboard/profileReq" class="btn primary-btn">Crea perfil requeriment</a>
-			</div>
-		</div>
+    <div class="options p-10 text-center mx-2 space-y-2">
+    <h1 class="text-green-600 text-5xl font-bold"> 
+        Control Panel 
+    </h1>
+    <div class="px-6 py-4 grid grid-rows-3 grid-flow-col gap-2 gap-3 p-4"> 
+        <a href="/admin/dashboard/ranking" class="text-3xl transition duration-75 ease-in-out 
+                       bg-green-300 hover:bg-green-600 transform 
+                       hover:-translate-y-1 hover:scale-100 
+                       rounded-lg p-4 border border-green-900">
+            Ranking
+        </a>
+        <a href="/admin/dashboard/list" class="text-3xl transition duration-100 ease-in-out 
+                       bg-green-300 hover:bg-green-600 transform 
+                       hover:-translate-y-1 hover:scale-100 
+                       rounded-lg p-4 border border-green-900">
+            Listes
+        </a>
+        <a href="/admin/dashboard/request" class="text-3xl transition duration-500 ease-in-out 
+                       bg-green-300 hover:bg-green-600 transform 
+                       hover:-translate-y-1 hover:scale-100 
+                       rounded-lg p-4 border border-green-900">
+            Request
+        </a>
+        <a href="/admin/dashboard/frient"  class="text-3xl transition duration-1000 ease-in-out 
+                       bg-green-300 hover:bg-green-600 transform 
+                       hover:-translate-y-1 hover:scale-100 
+                       rounded-lg p-4 border border-green-900">
+           Friend
+        </a>
+        <a href="/admin/dashboard/profile" class="text-3xl transition duration-1000 ease-in-out 
+                       bg-green-300 hover:bg-green-600 transform 
+                       hover:-translate-y-1 hover:scale-100 
+                       rounded-lg p-4 border border-green-900">
+            Profile
+        </a>
+    </div> 
     </div>
     @else
     <!-- @section('breadcrumbs')
         {{ Breadcrumbs::render('dashboard') }}
     @endsection -->
-    <div class="flex items-center justify-around px-10">
-        <div class="flex flex-col items-center w-full">
-            <h2 class="font-bold text-xl p-6 flex items-center">ESTAT DE LA MATRICULA:
-                <button class="statuscancel ml-2"></button>
-                <button class="statusnothing ml-2"></button>
-            </h2>
-            <div class="w-1/2 text-center container-formlights mt-5 statesdiv content-start">
-                <p class="pb-2">Estat dels documents:</p>
-                <span title="Cap document pujat">
-                    <div class="flex flex-wrap justify-between border-double border-4 border-light-blue-500 mt-2 w-full text-xl p-2">
-                        <label>DNI:</label> 
-                        <div class="flex items-center">
-                            <button class="statusnothing ml-2"></button>
-                            <button class="statusnothing ml-2"></button>
-                            <button class="statusnothing ml-2"></button>
-                        </div>
-                    </div>
-                </span>
-                <span title="Document acceptat">
-                    <div class="flex flex-wrap justify-between border-double border-4 border-green-500 mt-2 w-full text-xl p-2">
-                        <label>CatSalut:</label> 
-                        <div class="flex items-center">
-                            <button class="statusnothing ml-2"></button>
-                            <button class="statusnothing ml-2"></button>
-                            <button class="statusok ml-2"></button>
-                        </div>
-                    </div>
-                </span>
-                <span title="Document pendent de verificar">
-                    <div class="flex flex-wrap justify-between border-double border-4 border-yellow-500 mt-2 w-full text-xl p-2">
-                        <label>Títol acadèmic:</label> 
-                        <div class="flex items-center">
-                            <button class="statusnothing ml-2"></button>
-                            <button class="statusprocesing ml-2" alt="Pendent de verificar"></button>
-                            <button class="statusnothing ml-2"></button>
-                        </div>
-                    </div>
-                </span>
-                <span title="Document rebutjat. Torna a pujar correctament.">
-                    <div class="flex flex-wrap justify-between border-double border-4 border-red-500 mt-2 w-full text-xl p-2">
-                        <label>Comprovant banc:</label>
-                        <div class="flex items-center">
-                            <button class="statuscancel ml-2"></button>
-                            <button class="statusnothing ml-2"></button>
-                            <button class="statusnothing ml-2"></button>
-                        </div>
-                    </div>
-                </span>
-            </div>
-        </div>
-        <div class="options flex flex-col items-center w-full">
-            <div class="option flex items-center justify-center border max-w-xs rounded overflow-hidden shadow-md my-2 bg-white">
-                <div class="px-4">
-                    <img src="{{ asset('images/usuari.png') }}" alt="logo" class="logo w-24 m-4"/>
-                </div>
-                <div class="px-6 py-4">
-                    <a href="/dashboard/profile" class="btn primary-btn">Dades personals</a>
-                </div>
-            </div>
-            <div class="option flex items-center justify-center border max-w-xs rounded overflow-hidden shadow-md bg-white">
-                <div class="px-4">
-                    <img src="{{ asset('images/matricula.png') }}" alt="logo" class="logo w-24 m-4"/>
-                </div>
-                <div class="px-6 py-4">
-                    <a href="/dashboard/requirements" class="btn primary-btn">Recalcula matricula</a>
-                </div>
-            </div>
-            <div class="option flex items-center justify-center border max-w-xs rounded overflow-hidden shadow-md my-2 bg-white">
-                <div class="px-4">
-                    <img src="{{ asset('images/docs.png') }}" alt="logo" class="logo w-24 m-4"/>
-                </div>
-                <div class="px-6 py-4">
-                    <a href="/dashboard/documents" class="btn primary-btn">Documents</a>
-                </div>
-            </div>
-        </div>
+    <div class="options p-10 text-center mx-2 space-y-2">
+    <h1 class="text-green-600 text-5xl font-bold"> 
+        Control Panel 
+    </h1>
+    <div class="px-6 py-4 grid grid-rows-3 grid-flow-col gap-2 gap-3 p-4"> 
+        <a href="/admin/dashboard/ranking" class="text-3xl transition duration-75 ease-in-out 
+                       bg-green-300 hover:bg-green-600 transform 
+                       hover:-translate-y-1 hover:scale-100 
+                       rounded-lg p-4 border border-green-900">
+            Ranking
+        </a>
+        <a href="/admin/dashboard/list" class="text-3xl transition duration-100 ease-in-out 
+                       bg-green-300 hover:bg-green-600 transform 
+                       hover:-translate-y-1 hover:scale-100 
+                       rounded-lg p-4 border border-green-900">
+            Listes
+        </a>
+        <a href="/admin/dashboard/petition" class="text-3xl transition duration-500 ease-in-out 
+                       bg-green-300 hover:bg-green-600 transform 
+                       hover:-translate-y-1 hover:scale-100 
+                       rounded-lg p-4 border border-green-900">
+            Petition
+        </a>
+        <a href="/admin/dashboard/frient"  class=" text-3xltransition duration-1000 ease-in-out 
+                       bg-green-300 hover:bg-green-600 transform 
+                       hover:-translate-y-1 hover:scale-100 
+                       rounded-lg p-4 border border-green-900">
+           Friend
+        </a>
+        <a href="/admin/dashboard/profile" class="text-3xl transition duration-1000 ease-in-out 
+                       bg-green-300 hover:bg-green-600 transform 
+                       hover:-translate-y-1 hover:scale-100 
+                       rounded-lg p-4 border border-green-900">
+            Profile
+        </a>
+    </div> 
     </div>
     @endif
 
