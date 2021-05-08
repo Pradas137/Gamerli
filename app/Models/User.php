@@ -3,9 +3,9 @@
 namespace App\Models;
 
 use App\Friend;
-use App\Liste;
 use App\Comment;
-use App\Request;
+use App\Gamelist;
+use App\Genre;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -64,6 +64,6 @@ class User extends Authenticatable
     }
 
      public function genres(){
-        return $this->belongsToMany(Genres::class);
+        return $this->belongsToMany(Genre::class);
     }
 }
