@@ -2,15 +2,15 @@
 
 namespace App\Models;
 
-use App\Game;
+use App\Gconsole;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Saga extends Model
+class Company extends Model
 {
     use HasFactory;
 
-    public function game(){
-    	return $this->belongsTo(Game::class,'game_id');
+    public function platforms(){
+    	return $this->hasMany(Platform::class);
     }
 }

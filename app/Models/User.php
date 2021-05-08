@@ -48,25 +48,22 @@ class User extends Authenticatable
     ];
 
     public function comments(){
-    	return $this->hasMany(Comment::class,'comment_id');
+    	return $this->hasMany(Comment::class);
     }
 
     public function friends(){
-    	return $this->hasMany(Friend::class,'friend_id');
-    }
-    public function friends1(){
-        return $this->hasMany(Friend::class,'user_id');
+    	return $this->hasMany(Friend::class, 'user_id');
     }
 
-    public function requests(){
-        return $this->belongsTo(Request::class,'request_id');
-
-        return $this->hasMany(Request::class,'request_id');
+    public function friendOf(){
+        return $this->hasMany(Friend::class, 'friend_id');
     }
-    
-    public function role($role) {     
-        $role = (array)$role;    
-      
-        return in_array($this->role, $role); 
-     }
+
+    public function gamelists(){
+        return $this->hasMany(Gamelist::class);
+    }
+
+     public function genres(){
+        return $this->belongsToMany(Genres::class);
+    }
 }

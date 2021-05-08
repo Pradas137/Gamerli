@@ -2,20 +2,20 @@
 
 namespace App\Models;
 
-use App\Platform;
+use App\Company;
 use App\Game;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Gconsole extends Model
+class Platform extends Model
 {
     use HasFactory;
 
-    public function platform(){
-    	return $this->belongsTo(Platform::class,'platform_id');
+    public function company(){
+    	return $this->belongsTo(Company::class);
     }
 
-    public function game(){
-    	return $this->hasMany(Game::class,'game_id');
+    public function games(){
+    	return $this->hasMany(Game::class);
     }
 }

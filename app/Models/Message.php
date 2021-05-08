@@ -11,6 +11,6 @@ class Message extends Model
     use HasFactory;
 
     public function friends(){
-    	return $this->hasMany(Friend::class,'friend_id');
+    	return $this->belongTo(Friend::class);
     }
 }
