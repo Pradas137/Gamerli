@@ -20,9 +20,9 @@
     </head>
     <body class="bg-red-400">
         <main>
-            <div class="flex justify-center items-center min-h-screen bg-base">
-                <div class="flex h-50 bg-red-600 container bg-admin text-center w-2/4 rounded-xl p-5 shadow-xl">
-                    <div class="bg-red-600 h-40 content-start p-7 w-30 boder-r border-gray-100"> 
+            <div class="sm:flex md:flex lg:flex xl:flex justify-center items-center min-h-screen bg-base">
+                <div class="sm:flex md:flex lg:flex xl:flex h-50 bg-red-600 container bg-admin text-center w-2/4 rounded-xl p-5 shadow-xl">
+                    <div class="bg-red-600 h-48 content-start p-7 w-34 boder-r border-gray-100">
                         <ul>
                             <!--<img src="{{asset('/images/logo2.png')}}"  id="Chocolate" class="w-36">--> 
                             <li class="flex mb-4">

@@ -8,6 +8,9 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\sendGrid;
 
 class RegisterController extends Controller
 {
@@ -64,21 +67,23 @@ class RegisterController extends Controller
      * @return \App\Models\User
      */
     protected function create(array $data)
-    {   
-        /*$request = app('request');
-        if($request->hasfile('avatar')){
-            $avatar = $request->file('avatar');
-            $filename = time() . '.' . $avatar->getClientOriginalExtension();
-            User::make($avatar)->resize(1000, 1000)->save( public_path('/uploads/avatars/' . $filename) );
-        }*/
-
-        return User::create([
+    {
+        $user = User::create([
             'name' => $data['name'],
             'surname' => $data['surname'],
             'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-            'avatar' => $filename,
-
+            'password' => Hash::make($data['password'])
         ]);
+
+        
+        
+        /*if(Mail::failures() != 0) {
+            return "<p> Success! Your E-mail has been sent.</p>";
+        }
+        else {
+            return "<p> Failed! Your E-mail has not sent.</p>";
+        }*/
+
+        return $user;
     }
 }

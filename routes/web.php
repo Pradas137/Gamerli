@@ -1,6 +1,7 @@
 <?php
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Game;
@@ -16,6 +17,7 @@ use App\Models\Score;
 use App\Http\Controllers\GameImportController;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\ProfileController;
+
 
 
 /*
@@ -83,6 +85,7 @@ Route::get('/dashboard/friend', function () {
 Route::get('/admin/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth',  'can:accessAdmin'])->name('adminDashboard');
+
 
 Route::get('/admin/dashboard/requests', function () {
     $user = auth::id();

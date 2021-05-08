@@ -9,6 +9,9 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\sendGrid;
+use Illuminate\Support\Facades\Log;
 
 class RegisteredUserController extends Controller
 {
@@ -48,8 +51,18 @@ class RegisteredUserController extends Controller
         ]);
 
         event(new Registered($user));
-
+       
         Auth::login($user);
+
+        Mail::to($user->email)->send(new sendGrid($user));
+         if(Mail::failures() != 0) {
+            Log::debug("email enviat");;
+        }
+
+        else {
+            Log::debug("email no enviat");;
+        }
+        
 
         return redirect(RouteServiceProvider::HOME);
     }
