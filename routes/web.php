@@ -1,4 +1,5 @@
 <?php
+use App\Role;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
@@ -15,8 +16,9 @@ use App\Models\Saga;
 use App\Models\User;
 use App\Models\Score;
 use App\Http\Controllers\GameImportController;
-use App\Http\Controllers\GameController;
+use App\Http\Controllers\GamerliController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Gamerli2Controller;
 
 
 
@@ -35,6 +37,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/prueva2', function () {
+    return view('prueva2');
+});
+
+Route::resource('/live_search/action', Gamerli2Controller::class);
 require __DIR__.'/auth.php';
 
 Route::get('/dashboard', function () {
@@ -120,5 +127,4 @@ Route::resource('admin/dashboard/RankingAdmin.index', GameController::class);
 */
 
 Route::resource('/dashboard/profile/avatar', ProfileController::class);
-Route::resource('/ranking', GameController::class);
-Route::resource('/rankin2', Game2Controller::class);
+/*Route::resource('/ranking', GameController::class);*/
