@@ -58,7 +58,7 @@ class GamerliNice extends Migration
             $table->string('developer')->nullable();
             $table->string('director')->nullable();
             $table->string('publisher')->nullable();
-            $table->foreignId('gconsoles_id')->constrained();
+            $table->foreignId('platform_id')->constrained();
             $table->date('date');
             $table->enum('pegi', ['3', '7','12','16','18'])->default('3');
             $table->string('summary',255)->nullable();
@@ -84,24 +84,26 @@ class GamerliNice extends Migration
             $table->foreignId('genre_id')->constrained();
         });
 
-        Schema::create('game_list', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('game_id')->constrained();
-            $table->foreignId('list_id')->constrained();
-            $table->timestamps();
-        });
+        
 
-        Schema::create('lists', function (Blueprint $table) {
+        Schema::create('gamelists', function (Blueprint $table) {
             $table->id();
             $table->integer('visibility')->default(0);
             $table->string('name',70);
+            //$table->foreignId('gamelist_id')->constrained();
+            $table->timestamps();
+        });
+
+        Schema::create('game_gamelist', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('game_id')->constrained();
             $table->foreignId('gamelist_id')->constrained();
             $table->timestamps();
         });
 
         Schema::table('users', function (Blueprint $table) {
             $table->enum('role', ['user', 'staff','admin'])->default('user');
-            $table->foreignId('list_id')->nullable();
+            $table->foreignId('gamelist_id')->nullable();
         });
         
         Schema::table('comments', function (Blueprint $table) {
@@ -111,11 +113,7 @@ class GamerliNice extends Migration
         Schema::table('friends', function (Blueprint $table) {
             $table->unique(['user_id','friend_id']);
         });
-
-        Schema::table('games', function (Blueprint $table) {
-            $table->foreignId('gamegenre_id')->constrained();
-        });
-    }
+}
 
 
     /**
@@ -128,14 +126,14 @@ class GamerliNice extends Migration
         //
         Schema::dropIfExists('genres');
         Schema::dropIfExists('platforms');
-        Schema::dropIfExists('gconsoles');
+        Schema::dropIfExists('companies');
         Schema::dropIfExists('messages');
         Schema::dropIfExists('friends');
         Schema::dropIfExists('comments');
         Schema::dropIfExists('games');
         Schema::dropIfExists('gamelists');
-        Schema::dropIfExists('lists');
-        Schema::dropIfExists('gamegenres');
+        Schema::dropIfExists('game_list');
+        Schema::dropIfExists('game_genre');
         
 
     }

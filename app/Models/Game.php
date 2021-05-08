@@ -3,7 +3,7 @@
 namespace App\Models;
 
 
-use App\Gconsole;
+use App\Platform;
 use App\Comments;
 use App\Gamelist;
 use Illuminate\Database\Eloquent\Factories\HasFactory;

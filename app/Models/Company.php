@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Gconsole;
+use App\Platform;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
