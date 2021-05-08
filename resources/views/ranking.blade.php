@@ -48,16 +48,8 @@
 
             </ul>
         </div>
-        <div>
-            <div class="col-md-h">
-            <form action="/ranking" method="get">
-                <div class="input-group">
-                    <input type="search" name="search" class="form-control">
-                <span class="form-group-btn">
-                    <button type="submit" class="btn btn-primary bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Search</button>
-                </span>
-            </form>
-        </div>
-    </div>
+        <div class="p-6">
+            <h1 class="text-4xl font-bold mb-10">Ranking</h1>
+        <div>   
     @endif
 </x-app-layout>
