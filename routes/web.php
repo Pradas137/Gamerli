@@ -111,10 +111,15 @@ Route::get('/admin/dashboard/ranking', function () {
 })->middleware(['auth',  'can:accessAdmin'])->name('ranking');
 
 
-Route::get('/admin/dashboard/list', function () {
+Route::get('/admin/dashboard/myList', function () {
     $user = auth::id();
-    return view('list', ['list' => $user]);
-})->middleware(['auth',  'can:accessAdmin'])->name('list');
+    return view('myList', ['mylist' => $user]);
+})->middleware(['auth',  'can:accessAdmin'])->name('mylist');
+
+Route::get('/admin/dashboard/publicList', function () {
+    $user = auth::id();
+    return view('publicList', ['publiclist' => $user]);
+})->middleware(['auth',  'can:accessAdmin'])->name('publiclist');
 
 Route::get('/admin/dashboard/profile', function () {
     $user = auth::id();

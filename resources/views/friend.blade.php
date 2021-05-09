@@ -9,17 +9,17 @@
         {{ Breadcrumbs::render('Friend') }}
     @endsection
     <div class="flex h-screen">
-    <div class="h-8 md:h-full border-r w-64 text-center border-gray-200">
+    <div class=" bg-gray-600 h-8 md:h-full border-r w-64 text-center border-gray-200">
             <h6 class="font-bold mb-4 text-2xl">PAGE</h6>
             <ul>
                 <li class="font-bolt mb-4"><a href="/admin/dashboard">Home</a></li>
-                <li class="font-bolt mb-4"><a href="/admin/dashboard/list">Global List</a></li>
+                <li class="font-bolt mb-4"><a href="/admin/dashboard/publicList">Public List</a></li>
                 <li class="font-bolt mb-4"><a href="/admin/dashboard/ranking">Ranking Game</a></li>
             <ul>
             <h6 class="font-bold mb-4 text-2xl">ADMIN</h6>
             <ul>
-                <li class="font-bolt mb-4"><a href="/admin/dashboard/request">My Request</a></li>
-                <li class="font-bolt mb-4"><a href="/admin/dashboard/mylist">My Lists</a></li>
+                <li class="font-bolt mb-4"><a href="/admin/dashboard/requests">My Request</a></li>
+                <li class="font-bolt mb-4"><a href="/admin/dashboard/myList">My Lists</a></li>
                 <li class="font-bolt mb-4"><a href="/admin/dashboard/profile">Profile</a></li>
                 <li class="font-bolt mb-4"><a href="/admin/dashboard/friend">Friend</a></li>
             </ul>
@@ -38,13 +38,13 @@
             <h6 class="font-bold mb-4 text-2xl">PAGE</h6>
             <ul>
                 <li class="font-bolt mb-4"><a href="/dashboard">Home</a></li>
-                <li class="font-bolt mb-4"><a href="/dashboard/list">Global list</a></li>
+                <li class="font-bolt mb-4"><a href="/dashboard/publicList">Global list</a></li>
                 <li class="font-bolt mb-4"><a href="/dashboard/ranking">Ranking Games</a></li>
             <ul>
             <h6 class="font-bold mb-4 text-2xl">ADMIN</h6>
             <ul>
                 <li class="font-bolt mb-4"><a href="/dashboard/request">My Request</a></li>
-                <li class="font-bolt mb-4"><a href="/dashboard/mylist">My Lists</a></li>
+                <li class="font-bolt mb-4"><a href="/dashboard/myList">My Lists</a></li>
                 <li class="font-bolt mb-4"><a href="/dashboard/profile">Profile</a></li>
                 <li class="font-bolt mb-4"><a href="/dashboard/friend">Friend</a></li>
 

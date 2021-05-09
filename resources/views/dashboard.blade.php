@@ -17,31 +17,37 @@
                        bg-green-300 hover:bg-green-600 transform 
                        hover:-translate-y-1 hover:scale-100 
                        rounded-lg p-4 border border-green-900">
-            Ranking
+            Global Rankings
         </a>
-        <a href="/admin/dashboard/list" class="text-3xl transition duration-100 ease-in-out 
+        <a href="/admin/dashboard/publicList" class="text-3xl transition duration-100 ease-in-out 
                        bg-green-300 hover:bg-green-600 transform 
                        hover:-translate-y-1 hover:scale-100 
                        rounded-lg p-4 border border-green-900">
-            Listes
+            Public Lists
         </a>
-        <a href="/admin/dashboard/request" class="text-3xl transition duration-500 ease-in-out 
+        <a href="/admin/dashboard/myList" class="text-3xl transition duration-100 ease-in-out 
                        bg-green-300 hover:bg-green-600 transform 
                        hover:-translate-y-1 hover:scale-100 
                        rounded-lg p-4 border border-green-900">
-            Request
+            My Lists
+        </a>
+        <a href="/admin/dashboard/requests" class="text-3xl transition duration-500 ease-in-out 
+                       bg-green-300 hover:bg-green-600 transform 
+                       hover:-translate-y-1 hover:scale-100 
+                       rounded-lg p-4 border border-green-900">
+            Requests
         </a>
         <a href="/admin/dashboard/frient"  class="text-3xl transition duration-1000 ease-in-out 
                        bg-green-300 hover:bg-green-600 transform 
                        hover:-translate-y-1 hover:scale-100 
                        rounded-lg p-4 border border-green-900">
-           Friend
+           Friends
         </a>
         <a href="/admin/dashboard/profile" class="text-3xl transition duration-1000 ease-in-out 
                        bg-green-300 hover:bg-green-600 transform 
                        hover:-translate-y-1 hover:scale-100 
                        rounded-lg p-4 border border-green-900">
-            Profile
+            Profiles
         </a>
     </div> 
     </div>
@@ -58,31 +64,37 @@
                        bg-green-300 hover:bg-green-600 transform 
                        hover:-translate-y-1 hover:scale-100 
                        rounded-lg p-4 border border-green-900">
-            Ranking
+            Global Rankings
         </a>
-        <a href="/dashboard/list" class="text-3xl transition duration-100 ease-in-out 
+        <a href="/dashboard/publiList" class="text-3xl transition duration-100 ease-in-out 
                        bg-green-300 hover:bg-green-600 transform 
                        hover:-translate-y-1 hover:scale-100 
                        rounded-lg p-4 border border-green-900">
-            Listes
+            Public Lists
+        </a>
+        <a href="/dashboard/myList" class="text-3xl transition duration-100 ease-in-out 
+                       bg-green-300 hover:bg-green-600 transform 
+                       hover:-translate-y-1 hover:scale-100 
+                       rounded-lg p-4 border border-green-900">
+            My Lists
         </a>
         <a href="/dashboard/petition" class="text-3xl transition duration-500 ease-in-out 
                        bg-green-300 hover:bg-green-600 transform 
                        hover:-translate-y-1 hover:scale-100 
                        rounded-lg p-4 border border-green-900">
-            Petition
+            Petitions
         </a>
         <a href="/dashboard/frient"  class=" text-3xl transition duration-1000 ease-in-out 
                        bg-green-300 hover:bg-green-600 transform 
                        hover:-translate-y-1 hover:scale-100 
                        rounded-lg p-4 border border-green-900">
-           Friend
+           Friends
         </a>
         <a href="/dashboard/profile" class="text-3xl transition duration-1000 ease-in-out 
                        bg-green-300 hover:bg-green-600 transform 
                        hover:-translate-y-1 hover:scale-100 
                        rounded-lg p-4 border border-green-900">
-            Profile
+            Profiles
         </a>
     </div> 
     </div>

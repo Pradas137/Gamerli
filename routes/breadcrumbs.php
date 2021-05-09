@@ -22,9 +22,15 @@ Breadcrumbs::for('Profile', function ($trail) {
 });
 
 // Inicio > List
-Breadcrumbs::for('List', function ($trail) {
+Breadcrumbs::for('myList', function ($trail) {
     $trail->parent('dashboard');
-    $trail->push('List', route('list'));
+    $trail->push('myList', route('mylist'));
+});
+
+// Inicio > PublicList
+Breadcrumbs::for('publicList', function ($trail) {
+    $trail->parent('dashboard');
+    $trail->push('publicList', route('publiclist'));
 });
 
 // Inicio > Friend
