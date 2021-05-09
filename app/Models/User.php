@@ -66,4 +66,9 @@ class User extends Authenticatable
      public function genres(){
         return $this->belongsToMany(Genre::class);
     }
+
+    public function role($role) {     
+        $role = (array)$role;    
+        return in_array($this->role, $role); 
+     }
 }

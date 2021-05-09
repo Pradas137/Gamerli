@@ -29,12 +29,12 @@ class AuthServiceProvider extends ServiceProvider
       return $user->role(['admin']);
    });
    // Gate checks if the user is registered
-   Gate::define('accessUserStaff', function($user) {
+   Gate::define('accessStaff', function($user) {
       return $user->role('staff');
    });
    // Gate checks if the user is registered
    Gate::define('accessUser', function($user) {
-      return $user->role('user');
+      return $user->role('auth');
    });
 }
 }

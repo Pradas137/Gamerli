@@ -41,7 +41,7 @@ Route::get('/prueva2', function () {
     return view('prueva2');
 });
 
-Route::resource('/live_search/action', Gamerli2Controller::class);
+Route::resource('/prueva2', Gamerli2Controller::class);
 require __DIR__.'/auth.php';
 
 Route::get('/dashboard', function () {

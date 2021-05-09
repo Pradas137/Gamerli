@@ -4,88 +4,75 @@
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
-    @if(Auth::user()->role == 'admin')
-    @section('breadcrumbs')
-        {{ Breadcrumbs::render('Ranking') }}
-    @endsection
-    <script src="{{asset('js/breadcrumb.js')}}"></script>
-    <div class="flex h-screen">
-        <div class="h-8 md:h-full border-r w-64 text-center border-gray-200">
-            <h6 class="font-bold mb-4 text-2xl">PAGE</h6>
-            <ul>
-                <li class="font-bolt mb-4"><a href="/admin/dashboard">Home</a></li>
-                <li class="font-bolt mb-4"><a href="/admin/dashboard/list">Global List</a></li>
-            <ul>
-            <h6 class="font-bold mb-4 text-2xl">ADMIN</h6>
-            <ul>
-                <li class="font-bolt mb-4"><a href="/admin/dashboard/request">My Request</a></li>
-                <li class="font-bolt mb-4"><a href="/admin/dashboard/mylist">My Lists</a></li>
-                <li class="font-bolt mb-4"><a href="/admin/dashboard/profile">Profile</a></li>
-                <li class="font-bolt mb-4"><a href="/admin/dashboard/friend">Friend</a></li>
-            </ul>
-        </div>
-        <div class="p-6">
-            
+    <x-app-layout page="">
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Dashboard') }}
+        </h2>
+    </x-slot>
+    <div class="terms">
+        <p class="text">
+            <span class="red">*</span>
+            Per veure els cicles del curs selecciona el nom del curs
+            <span class="red">*</span>
+        </p>
+        <table>
+            <caption>Llistat de cursos</caption>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nom</th>
+                    <th>Descripció</th>
+                    <th>Data d'inici</th>
+                    <th>Data de fi</th>
+                    <th>Creació</th>
+                    <th>Darrera modificació</th>
+                    <th>Edita</th>
+                    <th>Elimina</th>
+                    <th>Clonar</th>
+                </tr>
+            </thead>
+            <tbody style="display: none">
+                <tr>
+                    <td colspan="10" class="loading inverted"></td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>ID</th>
+                    <th>Nom</th>
+                    <th>Descripció</th>
+                    <th>Data d'inici</th>
+                    <th>Data de fi</th>
+                    <th>Creació</th>
+                    <th>Darrera modificació</th>
+                    <th>Edita</th>
+                    <th>Elimina</th>
+                    <th>Clonar</th>
+                </tr>
+            </tfoot>
+        </table>
+        <div class="bg-dialog"></div>
+        <div class="modal-term dis-none" title="Nou Curs">
+            <div class="label-group">
+                <label for="name">Nom: <span class="red">*</span></label>
+                <input type="text" id="name" class="input">
+            </div>
+            <div class="label-group">
+                <label for="description">Descripció: <span class="red">*</span></label>
+                <input type="text" id="description" class="input">
+            </div>
+            <div class="row">
+                <div class="label-group">
+                    <label for="start">Data d'inici: <span class="red">*</span></label>
+                    <input type="text" id="start" class="input">
+                </div>
+                <div class="label-group">
+                    <label for="end">Data de fi: <span class="red">*</span></label>
+                    <input type="text" id="end" class="input">
+                </div>
+            </div>
         </div>
     </div>
-    @else
-    @section('breadcrumbs')
-        {{ Breadcrumbs::render('Ranking') }}
-    @endsection
-    <script src="{{asset('js/breadcrumb.js')}}"></script>
-    <div class="flex h-screen">
-        <div class="h-8 md:h-full border-r w-64 text-center border-gray-200">
-            <h6 class="font-bold mb-4 text-2xl">PAGE</h6>
-            <ul>
-                <li class="font-bolt mb-4"><a href="/dashboard">Home</a></li>
-                <li class="font-bolt mb-4"><a href="/dashboard/list">My Listes Globales</a></li>
-            <ul>
-            <h6 class="font-bold mb-4 text-2xl">ADMIN</h6>
-            <ul>
-                <li class="font-bolt mb-4"><a href="/dashboard/request">My Request</a></li>
-                <li class="font-bolt mb-4"><a href="/dashboard/profile">My Lists</a></li>
-                <li class="font-bolt mb-4"><a href="/dashboard/profile">My Profile</a></li>
-
-            </ul>
-        </div>
-        <div class="p-6">
-            <h1 class="text-4xl font-bold mb-10">Ranking</h1>
-            <table class="w-full border-2 border-mtr-dark table-auto">
-        <caption class="mb-4 text-4xl">GamerliController</caption>
-      <form action="/prueva2/search" method="get">
-        <div class="input-group">
-            <input type="search" class="form-control">
-            <span class="input-group-btn">
-              <button type="submit" class="btn btn-primary">Search</button>
-            </span>
-        </div>
-      </form>
-      <div class="text-center">
-        <button type="button" id="addNewTerm" onClick="addTermForm();" class="m-3 bg-blue-500 bg-mtr-dark p-1 w-4/12 text-center font-extrabold rounded-sm text-base">ADD Terms</button>
-      </div>
-        <thead>
-          <tr>
-            <th class="border-2 border-mtr-dark">NAME</th>
-            <th class="border-2 border-mtr-dark">EMAIl</th>
-            <th class="border-2 border-mtr-dark">Action</th>
-
-          </tr>
-        </thead>
-        <tbody> 
-        @foreach ($user as $student)
-          <tr class="text-center">
-              <td class="border-2 border-mtr-dark">{{ $student->name }}</td>
-              <td class="border-2 border-mtr-dark">{{ $student->email }}</td>
-              <td class="p-2 flex flex-col justify-center md:flex-row space-y-2 md:space-y-0 md:space-x-6">
-                <button id="edit" onClick="editRow({{ $student->id }})" class="bg-mtr-dark py-2 px-4 text-white rounded text">Edit</button>
-                <button id="save" onClick="saveChange({{ $student->id }})" class="hidden bg-mtr-dark py-2 px-4 text-white rounded input">Save</button>
-                <button id="cancel" onClick="cancelChange({{ $student->id }})" class="hidden bg-red-500 py-2 px-4 text-white rounded input">Cancel</button>                
-                <a href="/admin/terms/delete/{{$student->id}}" class="bg-red-500 py-2 px-4 text-white rounded text">Delete</a>
-              </td>
-          </tr>
-          @endforeach
-        </tbody>
-      </table>
-        <div>   
     @endif
 </x-app-layout>

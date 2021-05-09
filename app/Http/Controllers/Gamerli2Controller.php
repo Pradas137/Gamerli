@@ -14,7 +14,7 @@ class Gamerli2Controller extends Controller
     public function index()
     {
         $user = User::all();
-        return view('prueva', compact('user',$user));
+        return view('prueva2', compact('user',$user));
     }
 
     /**
@@ -79,7 +79,9 @@ class Gamerli2Controller extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        //
-    }
+  {
+    $user = User::find($id);
+    $user->delete();
+    return response()->json(['message' => 'Data deleted successfully!']);
+  }
 }
