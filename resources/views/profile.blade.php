@@ -25,7 +25,7 @@
 				<button id="editar" class="bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full">
 				  Edit
 				</button> 
-                <form id="formulario" method="POST" action="/dashboard/profile/avatar" enctype="multipart/form-data">
+				<form name="photo" id="imageUploadForm" enctype="multipart/form-data" action="<?php echo $_SERVER["PHP_SELF"];?>" method="post">
                     {{ csrf_field() }}
                     <br>
                     <label>SUBIR AVATAR</label>
@@ -44,6 +44,34 @@
 	<div class="w-full lg:w-2/5">
 		<img class="rounded-none lg:rounded-lg shadow-2xl hidden lg:block" src="data:image/png;base64,{{ Auth::user()->avatar }}">		
 	</div>
+	<script>
+	$(document).ready(function (e) {
+    	$('#imageUploadForm').on('submit',(function(e) {
+        	e.preventDefault();
+        	var formData = new FormData(this);
+        $.ajax({
+            type:'POST',
+            url: $(this).attr('action'),
+            data:formData,
+            cache:false,
+            contentType: false,
+            processData: false,
+            success:function(data){
+                console.log("success");
+                console.log(data);
+            },
+            error: function(data){
+                console.log("error");
+                console.log(data);
+            }
+        });
+    }));
+
+    $("#ImageBrowse").on("change", function() {
+        $("#imageUploadForm").submit();
+    });
+});
+	</script>
 </div>
     @else
     @section('breadcrumbs')
