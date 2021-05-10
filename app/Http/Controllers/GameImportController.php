@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Gamer;
+use App\Models\Game;
 use App\Models\Depeloper;
 use App\Models\Director;
 use App\Models\Gconsole;
@@ -27,20 +27,15 @@ class GameImportController extends Controller
 	public function store(Request $request)
 	{
 		$data = ['status' => 'Unauthorized, error 503'];
-		$token = $request->header('token');
 
 		// Check if the file contains csv extensión.
-		if (!str_contains($request->file, 'data:text/csv;')) {
-			$res = ["status" => "error", "text" => "El archiu no te una extensió correcte. Archius admesos: .csv"];
-			return response()->json($res);
-		}
+		$fileContent = file_get_contents($request->file('file'));
 
-		if ($token) {
-			$game = Game::select("token")->where('token', $token)->where("role", "admin")->get()[0];
-			if ($game['token']) {
-				if (isset($request->import_file)) {
-					$tmp = base64_decode(explode(",", $request->file)[1]);
-					$array = array_map("str_getcsv", explode("\n", $tmp));
+			$user = User::select("role")->where("role", "admin")->get()[0];
+			if ($user['role']) {
+				if (isset($request->file)) {
+					$tmp =explode(",", $fileContent);
+					$array = array_map("str_getcsv", $tmp);
 					$array = array_slice($array, 0, -1);
 					$q = 0;
 					$status_controller = ["success" => 0, "warnings" => [], "errors" => [], 'system_errors' => []];
@@ -60,7 +55,8 @@ class GameImportController extends Controller
                             $interesting_index["page_reference"] = array_search("Wikipedia Profile", $element);
 							$interesting_index["summary"] = array_search("Sumary", $element);
 							$interesting_index["image"] = array_search("Image", $element);
-                        } else {
+							print_r($interesting_index);
+						} else {
 							$line_status = ['id' => "$key", 'error' => [], "warning" => []];
 							if (empty($element[$interesting_index["name"]])) {
 								$line_status['warning'][] = "name";
@@ -106,11 +102,44 @@ class GameImportController extends Controller
 								continue;
 							}
 
-							// Search game by mail or create it.
+							if ($user) {
+								/*
+								Tabla Platform
+								1-comprovar si la plataforma existe con(select)
+								2-si existe se coge el (id)
+								3- si no existe(insert) y se coje el id del ultimo campo añadido
 
-							if ($game) {
-								$response = $response[0];
+								Tabla Gconsole
+								1-comprovar si la plataforma existe con(select)
+								2-si existe se coge el (id)
+								3- si no existe(insert con el id de platform) y se coje el id del ultimo campo añadido
 								
+								Tabla Genere
+								1-comprovar si el genero existe con(select)
+								2-si existe se coge el(id)
+								3- si no existe(insert) y se coje el id del ultimo campo añadido
+
+								Tabla Saga
+								1-comprovar si la plataforma existe con(select)
+								2-si existe se coge el (id)
+								3- si no existe(insert) y se coje el id del ultimo campo añadido
+
+								Tabla Publisher
+								1-comprovar si la plataforma existe con(select)
+								2-si existe se coge el (id)
+								3- si no existe(insert) y se coje el id del ultimo campo añadido
+
+								Tabla Director
+								1-comprovar si la plataforma existe con(select)
+								2-si existe se coge el (id)
+								3- si no existe(insert) y se coje el id del ultimo campo añadido
+
+								Tabla Developer
+								1-comprovar si la plataforma existe con(select)
+								2-si existe se coge el (id)
+								3- si no existe(insert con el id de director) y se coje el id del ultimo campo añadido
+								
+								*/
 							} else {
 								$status_controller['system_errors'][] = "Hi ha agut un error durant la busqueda/creació del usuari de la linea $key.";
 								// TODO: Error de importación de inscripción.
@@ -125,19 +154,19 @@ class GameImportController extends Controller
 					 * Todo bien con errores
 					 * Todo bien con warnings/errores
 					 */
-					if (count($status_controller["errors"]) > 0 || count($status_controller["system_errors"]) > 0) {
+					/*if (count($status_controller["errors"]) > 0 || count($status_controller["system_errors"]) > 0) {
 						$data = ["status" => "error", "text" => "Importació Gamer fallida.", "errors" => $status_controller["errors"], 'system_errors' => $status_controller["system_errors"]];
 						return response()->json($data);
 					} else if (count($status_controller["warnings"]) > 0) {
 						$data = ["status" => "warning", "text" => "Importació Gamer completada correctament.<br>{$status_controller["okey"]} afegits<br>{$status_controller["failed"]} no s'han afegit."];
 						return response()->json($data);
-					} else if ($status_controller["okei"] > 0) {
+					} else if ($status_controller["ok"] > 0) {
 						$data = ["status" => "success", "text" => "Importació Gamer completada correctament.<br>{$status_controller["okey"]} afegits."];
 						return response()->json($data);
 					} else {
 						$data = ["status" => "error", "text" => "Importació Gamer fallida, no s'han trobat alumnes al CSV."];
 						return response()->json($data);
-					}
+					}*/
 				} else {
 					$data = ["status" => "error", "text" => "No s'ha trobat l'arxiu csv."];
 					return response()->json($data);
@@ -146,8 +175,5 @@ class GameImportController extends Controller
 				$data = ['status' => 'game token not found.'];
 				return response()->json($data);
 			}
-		} else {
-			return response()->json($data);
-		}
 	}
 }

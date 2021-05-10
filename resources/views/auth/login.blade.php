@@ -51,12 +51,15 @@
                                         required autocomplete="current-password" />
                     </div>
 
-                    <div class="mt-4">
-                        <x-button class="w-full text-white bg-mtr-dark font-bold">
+                    <div class="mt-4 flex items-center justify-between">
+                        <x-button class="inline-block align-middle">
                             {{ __('Log in') }}
                         </x-button>
+                    </form>
+                    <x-button class="inline-block align-middle">
+                        <a href="/">Atras</a>
+                    </x-button>
                     </div>
-                </form>
             </x-auth-card>
         </div>
     </body>

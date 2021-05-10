@@ -80,7 +80,6 @@ class RegisterController extends Controller
         /*if(Mail::failures() != 0) {
             return "<p> Success! Your E-mail has been sent.</p>";
         }
-
         else {
             return "<p> Failed! Your E-mail has not sent.</p>";
         }*/

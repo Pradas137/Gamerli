@@ -24,14 +24,15 @@
                 <div class="sm:flex md:flex lg:flex xl:flex h-50 bg-red-600 container bg-admin text-center w-2/4 rounded-xl p-5 shadow-xl">
                     <div class="bg-red-600 h-48 content-start p-7 w-34 boder-r border-gray-100">
                         <ul>
-                            <li class="flex mb-8">
+                            <!--<img src="{{asset('/images/logo2.png')}}"  id="Chocolate" class="w-36">--> 
+                            <li class="flex mb-4">
                                 <a href="{{ route('login') }} " class="py-2 px-4 bg-red-900 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">Login</a>
                             </li>
-                            <li class="flex mb-8">
+                            <li class="flex mb-4">
                                 <a href="{{ route('register') }} " class=" py-2 px-4 bg-red-900 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">Register</a>
                             </li>
 
-                            <li class="flex mb-8">
+                            <li class="flex mb-4">
                                 <a href=" " class="py-2 px-4 bg-red-900 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">Visitet</a>
                             </li>
                         </ul>
