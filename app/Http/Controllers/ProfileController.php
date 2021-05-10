@@ -23,10 +23,17 @@ class ProfileController extends Controller
         $user->save();
     }
 
-    public function edit($id)
+    public function userUpdate( Request $request)
     {
-        $user = User::find($id);
-        return response()->json($user);
+        $userUpdate = [
+            'id'            =>  $request->idUpdate,
+            'name'          =>  $request->name,
+            'surname'       =>  $request->surname,
+            'email'         =>  $request->email
+        ];
+        // return dd($userUpdate);
+        DB::table('users')->where('id',$request->idUpdate)->update($userUpdate);
+        return redirect()->back()->with('userUpdate','.');
     }
   
 }

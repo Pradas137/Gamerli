@@ -22,7 +22,7 @@
 			<p class="pt-2 text-gray-600 text-xs lg:text-sm flex items-center justify-center lg:justify-start">{{ Auth::user()->email }}</p>
 			<p class="pt-8 text-sm">{{ Auth::user()->description }}</p>
 			<div class="pt-4 pb-8">
-				<button id="editar" class="bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full">
+				<button id="editar" data-toggle="modal" data-idUpdate="'.$row->id.'" data-target="#userUpdate" class=" userEdits bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full">
 				  Edit
 				</button> 
 				<form name="photo" id="imageUploadForm" enctype="multipart/form-data" action="<?php echo $_SERVER["PHP_SELF"];?>" method="post">
@@ -41,9 +41,49 @@
 			</div>
 		</div>
 	</div>
-	<div class="w-full lg:w-2/5">
+    <div class="w-full lg:w-2/5">
 		<img class="rounded-none lg:rounded-lg shadow-2xl hidden lg:block" src="data:image/png;base64,{{ Auth::user()->avatar }}">		
 	</div>
+	<div class="modal fade" id="userUpdate" tabindex="-1" role="dialog" style="z-index: 1050; display: none;" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-write">
+                    <h4 class="modal-title">Update</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true"><i class="ti-close"></i></span>
+                        </button>
+                </div>
+                <form action="/userUpdate" method="post">
+                    {{ csrf_field() }}
+                    <input type = "text" hidden class="col-sm-9 form-control"id ="idUpdate" name ="idUpdate" value="" />
+                     <div class="modal-body">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Name</label>
+                                <div class="col-sm-9">
+                                    <input type="text" id="e_name"name="name" class="form-control" value="" />
+                                </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Surname</label>
+                                <div class="col-sm-9">
+                                    <input type="text" id="e_surname"name="surname" class="form-control" value="" />
+                                </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Email</label>
+                            <div class="col-sm-9">
+                                <input type="text" id="e_email"name="email" class="form-control" value="" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class=" bg-green-700 hover:bg-green-900 text-white btn btn-danger" data-dismiss="modal">Close</button>
+                        <button type="submit" id=""name="" class="bg-green-700 hover:bg-green-900 text-white btn btn-success  waves-light">Update</button>
+                    </div>
+                </form><!-- form delete end -->
+            </div>
+        </div>
+    </div>
 	<script>
 	$(document).ready(function (e) {
     	$('#imageUploadForm').on('submit',(function(e) {
@@ -70,6 +110,16 @@
     $("#ImageBrowse").on("change", function() {
         $("#imageUploadForm").submit();
     });
+
+	// select edit user
+    $(document).on('click', '#editar', function()
+    {
+        var _this = $(this).parents('tr');
+        $('#idUpdate').val(_this.find('.idUpdate').text());
+        $('#e_name').val(_this.find('.names').text());
+        $('#e_surname').val(_this.find('.surname').text());
+        $('#e_email').val(_this.find('.email').text());
+    });
 });
 	</script>
 </div>
@@ -91,7 +141,7 @@
 			<p class="pt-2 text-gray-600 text-xs lg:text-sm flex items-center justify-center lg:justify-start">{{ Auth::user()->email }}</p>
 			<p class="pt-8 text-sm">{{ Auth::user()->description }}</p>
 			<div class="pt-5 pb-8">
-				<button id="editar" class="bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full">
+				<button id="editar" class=" userEdits bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full">
 				  Edit
 				</button>
                 <form id="formulario" method="POST" action="/dashboard/profile/avatar" enctype="multipart/form-data">

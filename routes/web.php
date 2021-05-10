@@ -16,7 +16,7 @@ use App\Models\Saga;
 use App\Models\User;
 use App\Models\Score;
 use App\Http\Controllers\GameImportController;
-use App\Http\Controllers\GamerliController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Gamerli2Controller;
 
@@ -125,6 +125,8 @@ Route::get('/admin/dashboard/profile', function () {
     $user = auth::id();
     return view('profile', ['profile' => $user]);
 })->middleware(['auth',  'can:accessAdmin'])->name('profile');
+
+Route::resource('userUpdate', ProfileController::class);
 
 /*Route::resource('admin/dashboard/Import', GameImportController::class);
 
