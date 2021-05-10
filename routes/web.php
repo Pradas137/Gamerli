@@ -91,5 +91,3 @@ Route::resource('admin/dashboard/Import', GameImportController::class);
 //mails
 Route::get('/send-email', [PostController::class, 'sendEmail']);
 
-});
-

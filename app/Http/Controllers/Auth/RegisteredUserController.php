@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Gamelist;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
@@ -42,12 +43,14 @@ class RegisteredUserController extends Controller
             'email_verified_at' => 'string|email|max:255|unique:users',
             'password' => 'required|string|confirmed|min:8',
         ]);
+       $gamelist= Gamelist::create(['name'=>'favoritos']);
 
         $user = User::create([
             'name' => $request->name,
             'surname' => $request->surname,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'gamelist_id'=>$gamelist->id,
         ]);
 
         event(new Registered($user));

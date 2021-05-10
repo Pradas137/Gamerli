@@ -52,6 +52,13 @@ class GamerliNice extends Migration
             $table->timestamps();
         });
 
+   Schema::create('gamelists', function (Blueprint $table) {
+            $table->id();
+            $table->integer('visibility')->default(0);
+            $table->string('name',70);
+            //$table->foreignId('gamelist_id')->constrained();
+            $table->timestamps();
+        });
         Schema::create('games', function (Blueprint $table) {
             $table->id();
             $table->string('name');
@@ -66,6 +73,7 @@ class GamerliNice extends Migration
             $table->string('image')->nullable();
             $table->enum('validate', ['validated', 'pending','rejected'])->default('pending');
             $table->string('saga')->nullable();
+            //$table->foreignId('gamelist_id')->constrained();
             $table->timestamps();
         });
 
@@ -85,14 +93,6 @@ class GamerliNice extends Migration
         });
 
         
-
-        Schema::create('gamelists', function (Blueprint $table) {
-            $table->id();
-            $table->integer('visibility')->default(0);
-            $table->string('name',70);
-            //$table->foreignId('gamelist_id')->constrained();
-            $table->timestamps();
-        });
 
         Schema::create('game_gamelist', function (Blueprint $table) {
             $table->id();
