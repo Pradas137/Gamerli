@@ -31,6 +31,7 @@ use App\Http\Controllers\GameImportController;
 
 Route::get('/', function () {
     return view('welcome');
+
 });
 
 require __DIR__.'/auth.php';
@@ -89,3 +90,6 @@ Route::get('/admin/dashboard/profile', function () {
 Route::resource('admin/dashboard/Import', GameImportController::class);
 //mails
 Route::get('/send-email', [PostController::class, 'sendEmail']);
+
+});
+
