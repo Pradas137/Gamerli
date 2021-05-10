@@ -13,8 +13,8 @@ class Gamerli2Controller extends Controller
      */
     public function index()
     {
-        $user = User::all();
-        return view('prueva2', compact('user',$user));
+        $user = User::latest()->paginate(5);
+        return view('ranking', compact('user',$user))->with('i', (request()->input('ranking', 1) - 1) * 5);
     }
 
     /**

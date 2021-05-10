@@ -32,6 +32,8 @@
         </style>
     </head>
     <body class="font-sans antialiased dark:bg-gray-800 dark:text-white bg-base">
+    @include('message_flash')
+
         <div class="min-h-screen min-w-max">
 
             <!-- Page Heading -->

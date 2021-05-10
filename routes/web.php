@@ -133,5 +133,5 @@ Route::resource('userUpdate', ProfileController::class);
 Route::resource('admin/dashboard/RankingAdmin.index', GameController::class);
 */
 
-Route::resource('/dashboard/profile/avatar', ProfileController::class);
+//Route::resource('/dashboard/profile/avatar', ProfileController::class);
 /*Route::resource('/ranking', GameController::class);*/

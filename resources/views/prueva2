@@ -45,54 +45,72 @@
 		<img class="rounded-none lg:rounded-lg shadow-2xl hidden lg:block" src="data:image/png;base64,{{ Auth::user()->avatar }}">		
 	</div>
 	<div class="modal fade" id="userUpdate" tabindex="-1" role="dialog" style="z-index: 1050; display: none;" aria-hidden="true">
-    <div class="fixed z-10 inset-0 overflow-y-auto ease-out duration-400">
-  <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-      
-    <div class="fixed inset-0 transition-opacity">
-      <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
-    </div>
-  
-    <!-- This element is to trick the browser into centering the modal contents. -->
-    <span class="hidden sm:inline-block sm:align-middle sm:h-screen"></span>​
-  
-    <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
-    <form action="userUpdate" method="post">
-    {{ csrf_field() }}
-        <input type = "text" hidden class="col-sm-9 form-control"id ="idUpdate" name ="idUpdate" value="" />
-            <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                <div class="">
-                    <div class="mb-4">
-                        <label for="exampleFormControlInput1" class="block text-gray-700 text-sm font-bold mb-2">Name:</label>
-                        <input id="e_name'"type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="exampleFormControlInput1" placeholder="Enter Title" wire:model="title">
-                        @error('name') <span class="text-red-500">{{ $message }}</span>@enderror
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-write">
+                    <h4 class="modal-title">Update</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true"><i class="ti-close"></i></span>
+                        </button>
+                </div>
+                <form action="/userUpdate" method="post">
+                    {{ csrf_field() }}
+                    <input type = "text" hidden class="col-sm-9 form-control"id ="idUpdate" name ="idUpdate" value="" />
+                     <div class="modal-body">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Name</label>
+                                <div class="col-sm-9">
+                                    <input type="text" id="e_name"name="name" class="form-control" value="" />
+                                </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Surname</label>
+                                <div class="col-sm-9">
+                                    <input type="text" id="e_surname"name="surname" class="form-control" value="" />
+                                </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Email</label>
+                            <div class="col-sm-9">
+                                <input type="text" id="e_email"name="email" class="form-control" value="" />
+                            </div>
+                        </div>
                     </div>
-                <div class="mb-4">
-                    <label for="exampleFormControlInput2" class="block text-gray-700 text-sm font-bold mb-2">Surname:</label>
-                    <input id="e_surname" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="exampleFormControlInput2" wire:model="body" placeholder="Enter Body"></textarea>
-                    @error('surname') <span class="text-red-500">{{ $message }}</span>@enderror
-                </div>
-                <div class="mb-4">
-                    <label for="exampleFormControlInput1" class="block text-gray-700 text-sm font-bold mb-2">Email:</label>
-                    <input id="e_email" type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="exampleFormControlInput1" placeholder="Enter Title" wire:model="title">
-                    @error('email') <span class="text-red-500">{{ $message }}</span>@enderror
-                </div>
+                    <div class="modal-footer">
+                        <button type="button" class="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-green-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-green-500 focus:outline-none focus:border-green-700 focus:shadow-outline-green transition ease-in-out duration-150 sm:text-sm sm:leading-5" data-dismiss="modal">Close</button>
+                        <button type="submit" id=""name="" class="inline-flex justify-center w-full rounded-md border border-gray-300 px-4 py-2 bg-white text-base leading-6 font-medium text-gray-700 shadow-sm hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue transition ease-in-out duration-150 sm:text-sm sm:leading-5">Update</button>
+                    </div>
+                </form><!-- form delete end -->
             </div>
         </div>
-            <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                <div class="flex items-center justify-end p-4 border-t border-gray-300">
-                    <button type="button" class="inline-block font-normal text-center px-3 py-2 leading-normal text-base rounded cursor-pointer text-white bg-gray-600 mr-2" data-dismiss="modal">Close</button>
-                    <button type="button" class="inline-block font-normal text-center px-3 py-2 leading-normal text-base rounded cursor-pointer text-white bg-blue-600">Save changes</button>
-                </div>
-        </form>
-      </div>
-        
-    </div>
-  </div>
-</div>
     </div>
 	<script>
 	$(document).ready(function (e) {
-    
+    	$('#imageUploadForm').on('submit',(function(e) {
+        	e.preventDefault();
+        	var formData = new FormData(this);
+        $.ajax({
+            type:'POST',
+            url: $(this).attr('action'),
+            data:formData,
+            cache:false,
+            contentType: false,
+            processData: false,
+            success:function(data){
+                console.log("success");
+                console.log(data);
+            },
+            error: function(data){
+                console.log("error");
+                console.log(data);
+            }
+        });
+    }));
+
+    $("#ImageBrowse").on("change", function() {
+        $("#imageUploadForm").submit();
+    });
+
 	// select edit user
     $(document).on('click', '#editar', function()
     {
