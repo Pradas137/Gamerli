@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use Faker\Factory as Faker;
+use Illuminate\App\Gamelist;
+use Database\Seeder\GamelistSeeder;
 
 class UserSeeder extends Seeder
 {
@@ -18,6 +20,8 @@ class UserSeeder extends Seeder
     public function run()
     {
         //
+        $users = Gamelist::all()->pluck('id')->toArray();
+        $gamelist = randomElement($users);
 		$faker = Faker::create();
         DB::table('users')->insert([
             'name' =>  $faker->name,
@@ -25,7 +29,9 @@ class UserSeeder extends Seeder
             'role' => $faker->randomElement(['user' ,'admin', 'staff']),
             'email' => $faker->email,
             'password' => Hash::make('password'),
-            'order_prefered'=> rand(0,1)
+            'order_prefered'=> rand(0,1),
+            'gamelist_id'=> $gamelist,
+
 
         ]);    }
 }

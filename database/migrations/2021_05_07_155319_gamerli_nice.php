@@ -59,7 +59,7 @@ class GamerliNice extends Migration
             $table->string('director')->nullable();
             $table->string('publisher')->nullable();
             $table->foreignId('platform_id')->constrained();
-            $table->date('date');
+            $table->date('date')->nullable();
             $table->enum('pegi', ['3', '7','12','16','18'])->default('3');
             $table->string('summary',255)->nullable();
             $table->string('page_reference',255)->nullable();
@@ -103,7 +103,7 @@ class GamerliNice extends Migration
 
         Schema::table('users', function (Blueprint $table) {
             $table->enum('role', ['user', 'staff','admin'])->default('user');
-            $table->foreignId('gamelist_id')->nullable();
+            $table->foreignId('gamelist_id')->constrained();
         });
         
         Schema::table('comments', function (Blueprint $table) {
