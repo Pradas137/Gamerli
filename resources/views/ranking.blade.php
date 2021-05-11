@@ -26,51 +26,38 @@
         </div>
         <div class="w-2/3 mx-auto">
   <div class="bg-white shadow-md rounded my-6">
-    <table class="text-left w-full border-collapse"> <!--Border collapse doesn't work on this site yet but it's available in newer tailwind versions -->
+    <form class="form-inline my-2 my-lg-0" type="get" action="{{url('/search')}}">
+        <input class="form-control mr -sm-2" type="search" placeholder="Search">
+        <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+        <div class="text-center">
+          <a href="javascript:void(0)" class="btn btn-success mb-3" id="create-new-post" onclick="addPost()">Add Post</a>
+        </div>
+    </form>
+    <table class="text-left w-full border-collapse">
       <thead>
         <tr>
+          <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">ID</th>
           <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Name</th>
+          <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Surname</th>
           <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Actions</th>
         </tr>
       </thead>
       <tbody>
-        <tr class="hover:bg-grey-lighter">
-          <td class="py-4 px-6 border-b border-grey-light">Assassins Cred</td>
-          <td class="py-4 px-6 border-b border-grey-light">
-            <a href="#" class="text-grey-lighter font-bold py-1 px-3 rounded text-xs bg-green hover:bg-green-dark">Edit</a>
-            <a href="#" class="text-grey-lighter font-bold py-1 px-3 rounded text-xs bg-blue hover:bg-blue-dark">View</a>
-          </td>
-        </tr>
-        <tr class="hover:bg-grey-lighter">
-          <td class="py-4 px-6 border-b border-grey-light">Call of duty</td>
-          <td class="py-4 px-6 border-b border-grey-light">
-            <a href="#" class="text-grey-lighter font-bold py-1 px-3 rounded text-xs bg-green hover:bg-green-dark">Edit</a>
-            <a href="#" class="text-grey-lighter font-bold py-1 px-3 rounded text-xs bg-blue hover:bg-blue-dark">View</a>
-          </td>
-        </tr>
-        <tr class="hover:bg-grey-lighter">
-          <td class="py-4 px-6 border-b border-grey-light">God of Ward</td>
-          <td class="py-4 px-6 border-b border-grey-light">
-            <a href="#" class="text-grey-lighter font-bold py-1 px-3 rounded text-xs bg-green hover:bg-green-dark">Edit</a>
-            <a href="#" class="text-grey-lighter font-bold py-1 px-3 rounded text-xs bg-blue hover:bg-blue-dark">View</a>
-          </td>
-        </tr>
-        <tr class="hover:bg-grey-lighter">
-          <td class="py-4 px-6 border-b border-grey-light">Pokemon</td>
-          <td class="py-4 px-6 border-b border-grey-light">
-            <a href="#" class="text-grey-lighter font-bold py-1 px-3 rounded text-xs bg-green hover:bg-green-dark">Edit</a>
-            <a href="#" class="text-grey-lighter font-bold py-1 px-3 rounded text-xs bg-blue hover:bg-blue-dark">View</a>
-          </td>
-        </tr>
-        <tr class="hover:bg-grey-lighter">
-          <td class="py-4 px-6 border-b border-grey-light">Destiny 2</td>
-          <td class="py-4 px-6 border-b border-grey-light">
-            <a href="#" class="text-grey-lighter font-bold py-1 px-3 rounded text-xs bg-green hover:bg-green-dark">Edit</a>
-            <a href="#" class="text-grey-lighter font-bold py-1 px-3 rounded text-xs bg-blue hover:bg-blue-dark">View</a>
-          </td>
-        </tr>
+      @foreach($rankings as $game)
+                <tr id="row_{{$game->id}}">
+                   <td>{{ $game->id  }}</td>
+                   <td>{{ $game->name }}</td>
+                   <td>{{ $game->surname }}</td>
+                   <td><a href="javascript:void(0)" data-id="{{ $game->id }}" onclick="editPost(event.target)" class="btn btn-info">Edit</a></td>
+                   <td>
+                    <a href="javascript:void(0)" data-id="{{ $game->id }}" class="btn btn-danger" onclick="deletePost(event.target)">Delete</a></td>
+                </tr>
+                @endforeach
       </tbody>
     </table>
+    <span>
+      {{ $rankings->links() }}
+    </span>
   </div>
 </div>
     </div>
@@ -95,44 +82,127 @@
             </ul>
         </div>
     </div>
-        <div class="p-6">
-            <h1 class="text-4xl font-bold mb-10">Ranking</h1>
-            <table class="w-full border-2 border-mtr-dark table-auto">
-        <caption class="mb-4 text-4xl">GamerliController</caption>
-      <form action="/prueva2/search" method="get">
-        <div class="input-group">
-            <input type="search" class="form-control">
-            <span class="input-group-btn">
-              <button type="submit" class="btn btn-primary">Search</button>
-            </span>
+    <div class="w-2/3 mx-auto">
+  <div class="bg-white shadow-md rounded my-6">
+    <form class="form-inline my-2 my-lg-0" type="get" action="{{url('/search')}}">
+        <input class="form-control mr -sm-2" type="search" placeholder="Search">
+        <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+        <div class="text-center">
+          <a href="javascript:void(0)" class="btn btn-success mb-3" id="create-new-post" onclick="addPost()">Add Post</a>
         </div>
-      </form>
-      <div class="text-center">
-        <button type="button" id="addNewTerm" onClick="addTermForm();" class="m-3 bg-blue-500 bg-mtr-dark p-1 w-4/12 text-center font-extrabold rounded-sm text-base">ADD Terms</button>
-      </div>
-        <thead>
-          <tr>
-            <th class="border-2 border-mtr-dark">NAME</th>
-            <th class="border-2 border-mtr-dark">EMAIl</th>
-            <th class="border-2 border-mtr-dark">Action</th>
-
-          </tr>
-        </thead>
-        <tbody> 
-        @foreach ($user as $student)
-          <tr class="text-center">
-              <td class="border-2 border-mtr-dark">{{ $student->name }}</td>
-              <td class="border-2 border-mtr-dark">{{ $student->email }}</td>
-              <td class="p-2 flex flex-col justify-center md:flex-row space-y-2 md:space-y-0 md:space-x-6">
-                <button id="edit" onClick="editRow({{ $student->id }})" class="bg-mtr-dark py-2 px-4 text-white rounded text">Edit</button>
-                <button id="save" onClick="saveChange({{ $student->id }})" class="hidden bg-mtr-dark py-2 px-4 text-white rounded input">Save</button>
-                <button id="cancel" onClick="cancelChange({{ $student->id }})" class="hidden bg-red-500 py-2 px-4 text-white rounded input">Cancel</button>                
-                <a href="/admin/terms/delete/{{$student->id}}" class="bg-red-500 py-2 px-4 text-white rounded text">Delete</a>
-              </td>
-          </tr>
-          @endforeach
-        </tbody>
-      </table>
-        <div>   
+    </form>
+    <table class="text-left w-full border-collapse">
+      <thead>
+        <tr>
+          <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">ID</th>
+          <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Name</th>
+          <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Surname</th>
+          <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+      @foreach($rankings as $game)
+                <tr id="row_{{$game->id}}">
+                   <td>{{ $game->id  }}</td>
+                   <td>{{ $game->name }}</td>
+                   <td>{{ $game->surname }}</td>
+                   <td><a href="javascript:void(0)" data-id="{{ $game->id }}" onclick="editPost(event.target)" class="btn btn-info">Edit</a></td>
+                   <td>
+                    <a href="javascript:void(0)" data-id="{{ $game->id }}" class="btn btn-danger" onclick="deletePost(event.target)">Delete</a></td>
+                </tr>
+                @endforeach
+      </tbody>
+    </table>
+    <span>
+      {{ $rankings->links() }}
+    </span>
+  </div>
+</div>
+    </div>
     @endif
+
+    <script>
+  $('#laravel_crud').DataTable();
+
+  function addPost() {
+    $("#post_id").val('');
+    $('#post-modal').modal('show');
+  }
+
+  function editPost(event) {
+    var id  = $(event).data("id");
+    let _url = `/rankings/${id}`;
+    $('#titleError').text('');
+    $('#descriptionError').text('');
+    
+    $.ajax({
+      url: _url,
+      type: "GET",
+      success: function(response) {
+          if(response) {
+            $("#post_id").val(response.id);
+            $("#title").val(response.name);
+            $("#description").val(response.surnam);
+            $('#post-modal').modal('show');
+          }
+      }
+    });
+  }
+
+  function createPost() {
+    var name = $('#title').val();
+    var surname = $('#description').val();
+    var id = $('#post_id').val();
+
+    let _url     = `/rankings`;
+    let _token   = $('meta[name="csrf-token"]').attr('content');
+
+      $.ajax({
+        url: _url,
+        type: "POST",
+        data: {
+          id: id,
+          name: name,
+          surname: surname,
+          _token: _token
+        },
+        success: function(response) {
+            if(response.code == 200) {
+              if(id != ""){
+                $("#row_"+id+" td:nth-child(2)").html(response.data.name);
+                $("#row_"+id+" td:nth-child(3)").html(response.data.surname);
+              } else {
+                $('table tbody').prepend('<tr id="row_'+response.data.id+'"><td>'+response.data.id+'</td><td>'+response.data.name+'</td><td>'+response.data.surname+'</td><td><a href="javascript:void(0)" data-id="'+response.data.id+'" onclick="editPost(event.target)" class="btn btn-info">Edit</a></td><td><a href="javascript:void(0)" data-id="'+response.data.id+'" class="btn btn-danger" onclick="deletePost(event.target)">Delete</a></td></tr>');
+              }
+              $('#title').val('');
+              $('#description').val('');
+
+              $('#post-modal').modal('hide');
+            }
+        },
+        error: function(response) {
+          $('#titleError').text(response.responseJSON.errors.name);
+          $('#descriptionError').text(response.responseJSON.errors.surname);
+        }
+      });
+  }
+
+  function deletePost(event) {
+    var id  = $(event).data("id");
+    let _url = `/rankings/${id}`;
+    let _token   = $('meta[name="csrf-token"]').attr('content');
+
+      $.ajax({
+        url: _url,
+        type: 'DELETE',
+        data: {
+          _token: _token
+        },
+        success: function(response) {
+          $("#row_"+id).remove();
+        }
+      });
+  }
+
+</script>
 </x-app-layout>

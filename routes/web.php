@@ -18,7 +18,7 @@ use App\Models\Score;
 use App\Http\Controllers\GameImportController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\Gamerli2Controller;
+use App\Http\Controllers\RankingController;
 
 
 
@@ -32,16 +32,16 @@ use App\Http\Controllers\Gamerli2Controller;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::resource('products', 'App\Http\Controllers\ProfileController');
+Route::resource('rankings','App\Http\Controllers\RankingController');
+
+Route::resource('slider',SliderController::class);
+
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/prueva2', function () {
-    return view('prueva2');
-});
-
-Route::resource('/prueva2', Gamerli2Controller::class);
 require __DIR__.'/auth.php';
 
 Route::get('/dashboard', function () {
@@ -105,9 +105,8 @@ Route::get('/admin/dashboard/friend', function () {
 })->middleware(['auth',  'can:accessAdmin'])->name('friend');
 
 Route::get('/admin/dashboard/ranking', function () {
-    $data = Game::all();
-    $user = auth::id();
-    return view('ranking', ['ranking' => $data]);
+    //$rankings = User::latest()->paginate(5);
+return view('ranking'/*,['rankings' => $rankings]*/);
 })->middleware(['auth',  'can:accessAdmin'])->name('ranking');
 
 
@@ -126,7 +125,9 @@ Route::get('/admin/dashboard/profile', function () {
     return view('profile', ['profile' => $user]);
 })->middleware(['auth',  'can:accessAdmin'])->name('profile');
 
-Route::resource('userUpdate', ProfileController::class);
+//Route::resource('userUpdate', ProfileController::class);
+//Route::resource('users',Gamerli2Controller::class);
+//Route::get('/search', 'Gamerli2Controller@search');
 
 /*Route::resource('admin/dashboard/Import', GameImportController::class);
 

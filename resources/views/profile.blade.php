@@ -25,13 +25,15 @@
 				<button id="editar" data-toggle="modal" data-idUpdate="'.$row->id.'" data-target="#userUpdate" class=" userEdits bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full">
 				  Edit
 				</button> 
-				<form name="photo" id="imageUploadForm" enctype="multipart/form-data" action="<?php echo $_SERVER["PHP_SELF"];?>" method="post">
-                    {{ csrf_field() }}
-                    <br>
-                    <label>SUBIR AVATAR</label>
-                    <input type="file" name="image">
-                    <input type="submit" value="save" >
-                </form>
+        <div style="margin-left: 15px; flex-grow: 1">
+          <p>Choose a file</p>
+          <input id="photo" type="file">
+          <input type="hidden" name="id" value="{{$user->id}}">
+          <br>
+          <div class="progress">
+            <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
 			</div>
 
 			<div class="mt-6 pb-16 lg:pb-0 w-4/5 lg:w-full mx-auto flex flex-wrap items-center justify-between">
@@ -56,43 +58,92 @@
     <span class="hidden sm:inline-block sm:align-middle sm:h-screen"></span>​
   
     <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
-    <form action="userUpdate" method="post">
+    <form action="/userUpdate" method="post">
     {{ csrf_field() }}
-        <input type = "text" hidden class="col-sm-9 form-control"id ="idUpdate" name ="idUpdate" value="" />
-            <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                <div class="">
-                    <div class="mb-4">
-                        <label for="exampleFormControlInput1" class="block text-gray-700 text-sm font-bold mb-2">Name:</label>
-                        <input id="e_name'"type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="exampleFormControlInput1" placeholder="Enter Title" wire:model="title">
-                        @error('name') <span class="text-red-500">{{ $message }}</span>@enderror
-                    </div>
-                <div class="mb-4">
-                    <label for="exampleFormControlInput2" class="block text-gray-700 text-sm font-bold mb-2">Surname:</label>
-                    <input id="e_surname" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="exampleFormControlInput2" wire:model="body" placeholder="Enter Body"></textarea>
-                    @error('surname') <span class="text-red-500">{{ $message }}</span>@enderror
-                </div>
-                <div class="mb-4">
-                    <label for="exampleFormControlInput1" class="block text-gray-700 text-sm font-bold mb-2">Email:</label>
-                    <input id="e_email" type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="exampleFormControlInput1" placeholder="Enter Title" wire:model="title">
-                    @error('email') <span class="text-red-500">{{ $message }}</span>@enderror
-                </div>
-            </div>
+                    <input type = "text" hidden class="col-sm-9 form-control"id ="idUpdate" name ="idUpdate" value="" />
+      <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+        <div class="">
+              <div class="mb-4">
+                  <label for="exampleFormControlInput1" class="block text-gray-700 text-sm font-bold mb-2">Name:</label>
+                  <input id="e_name'"type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="exampleFormControlInput1" placeholder="Enter Name" wire:model="title">
+                  @error('name') <span class="text-red-500">{{ $message }}</span>@enderror
+              </div>
+              <div class="mb-4">
+                  <label for="exampleFormControlInput2" class="block text-gray-700 text-sm font-bold mb-2">Surname:</label>
+                  <input id="e_surname" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="exampleFormControlInput2" wire:model="body" placeholder="Enter Surname"></textarea>
+                  @error('surname') <span class="text-red-500">{{ $message }}</span>@enderror
+              </div>
+              <div class="mb-4">
+                  <label for="exampleFormControlInput1" class="block text-gray-700 text-sm font-bold mb-2">Email:</label>
+                  <input id="e_email" type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="exampleFormControlInput1" placeholder="Enter Email" wire:model="title">
+                  @error('email') <span class="text-red-500">{{ $message }}</span>@enderror
+              </div>
         </div>
-            <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                <div class="flex items-center justify-end p-4 border-t border-gray-300">
-                    <button type="button" class="inline-block font-normal text-center px-3 py-2 leading-normal text-base rounded cursor-pointer text-white bg-gray-600 mr-2" data-dismiss="modal">Close</button>
-                    <button type="button" class="inline-block font-normal text-center px-3 py-2 leading-normal text-base rounded cursor-pointer text-white bg-blue-600">Save changes</button>
-                </div>
-        </form>
       </div>
-        
+    </form>
+      <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+        <span class="flex w-full rounded-md shadow-sm sm:ml-3 sm:w-auto">
+            <button type="button" class="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-green-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-green-500 focus:outline-none focus:border-green-700 focus:shadow-outline-green transition ease-in-out duration-150 sm:text-sm sm:leading-5" onclick="toggleModal('modal-id')">Close</button>
+        </span>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
     </div>
   </div>
 </div>
     </div>
+    <script>
+        $(function () {
+            $.ajaxSetup({
+                headers: {'X-CSRF-Token': '{{csrf_token()}}'}
+            });
+
+            var id = $('input[name="id"]').val();
+
+
+            $('#photo').change(function () {
+                var photo = $(this)[0].files[0];
+                var formData = new FormData();
+                formData.append('id', id);
+                formData.append('photo', photo);
+
+                $.ajax({
+                    xhr: function () {
+                        var xhr = new window.XMLHttpRequest();
+                        xhr.upload.addEventListener("progress", function (evt) {
+                            if (evt.lengthComputable) {
+                                var percentComplete = evt.loaded / evt.total;
+                                percentComplete = parseInt(percentComplete * 100);
+                                console.log(percentComplete);
+                                $('.progress-bar').css('width', percentComplete + '%');
+                                if (percentComplete === 100) {
+                                    console.log('completed 100%')
+
+                                    var imageUrl = window.URL.createObjectURL(photo)
+                                    $('.imgPreview').attr('src', imageUrl);
+                                    setTimeout(function () {
+                                        $('.progress-bar').css('width', '0%');
+                                    }, 2000)
+                                }
+                            }
+                        }, false);
+                        return xhr;
+                    },
+                    url: '{{route('updateProfile')}}',
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (res) {
+                        if(!res.success){alert(res.error)}
+                    }
+                })
+            })
+        })
+    </script>
 	<script>
-	$(document).ready(function (e) {
-    
+
 	// select edit user
     $(document).on('click', '#editar', function()
     {

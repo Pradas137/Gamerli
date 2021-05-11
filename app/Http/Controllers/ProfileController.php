@@ -12,20 +12,40 @@ class ProfileController extends Controller
 {
     //
 
-    public function store( Request $request)
+    public function getProfile()
     {
-        $userUpdate = [
-            'id'            =>  $request->idUpdate,
-            'name'          =>  $request->name,
-            'surname'       =>  $request->surname,
-            'email'         =>  $request->email
-        ];
-        // return dd($userUpdate);
-        DB::table('users')->where('id',$request->idUpdate)->update($userUpdate);
-        return redirect()->back()->with('userUpdate','.')->with('success','Upadate successfully added.');
+        $user = User::find(1);
+        return view('profile', compact('user'));
     }
 
-    public function ImageUbdate(Request $request)
+    public function postProfileUpdate(Request $request)
+    {
+    	$validator = Validator::make($request->all(), [
+                		'photo' => 'required|image|mimes:png,jpg,jpeg|max:200',
+            		]);
+
+        if ($validator->fails()) {
+            return response()
+                ->json([
+                    'success' => false,
+                    'error' =>  $validation->errors()->first()
+                ]);
+        }
+
+        $user = User::find($request->input('id'));
+
+        if ($request->hasFile('image')) {
+            $photo = $request->file('image');
+
+            $fileName = $user->id . "." . $photo->getClientOriginalExtension();
+            $request->file('image')->move(public_path(). '/images/'), $fileName);
+            $user->update(['image' => $fileName]);
+        }
+
+        return ['success'=>true,'message'=>'Successfully updated'];
+    }
+}
+   /* public function ImageUbdate(Request $request)
     {
         //
 
@@ -35,6 +55,6 @@ class ProfileController extends Controller
         $base64 = base64_encode($logo);
         $user->avatar = $base64;
         $user->save();
-    }
+    }*/
   
 }
