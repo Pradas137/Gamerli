@@ -103,13 +103,13 @@
                        rounded-lg p-4 border border-green-900">
             My Lists
         </a>
-        <a href="/admin/dashboard/requests" class="text-3xl transition duration-500 ease-in-out 
+        <a href="/admin/dashboard/request" class="text-3xl transition duration-500 ease-in-out 
                        bg-green-300 hover:bg-green-600 transform 
                        hover:-translate-y-1 hover:scale-100 
                        rounded-lg p-4 border border-green-900">
             Requests
         </a>
-        <a href="/admin/dashboard/frient"  class="text-3xl transition duration-1000 ease-in-out 
+        <a href="/admin/dashboard/friend"  class="text-3xl transition duration-1000 ease-in-out 
                        bg-green-300 hover:bg-green-600 transform 
                        hover:-translate-y-1 hover:scale-100 
                        rounded-lg p-4 border border-green-900">
@@ -156,7 +156,7 @@
                        rounded-lg p-4 border border-green-900">
             Petitions
         </a>
-        <a href="/dashboard/frient"  class=" text-3xl transition duration-1000 ease-in-out 
+        <a href="/dashboard/friend"  class=" text-3xl transition duration-1000 ease-in-out 
                        bg-green-300 hover:bg-green-600 transform 
                        hover:-translate-y-1 hover:scale-100 
                        rounded-lg p-4 border border-green-900">

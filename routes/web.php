@@ -33,7 +33,10 @@ use App\Http\Controllers\RankingController;
 |
 */
 Route::resource('products', 'App\Http\Controllers\ProfileController');
-Route::resource('rankings','App\Http\Controllers\RankingController');
+Route::resource('/admin/dashboard/ranking','App\Http\Controllers\RankingController');
+Route::resource('/dashboard/ranking','App\Http\Controllers\RankingController');
+Route::resource('/admin/dashboard/profile','App\Http\Controllers\ProfileController');
+Route::resource('/dashboard/profile','App\Http\Controllers\ProfileController');
 
 Route::resource('slider',SliderController::class);
 
@@ -57,34 +60,6 @@ Route::get('/dashboard', function () {
 
 /*-------------Usuarios-------------------*/
 
-Route::get('/dashboard/profile', function () {
-	$user_id = auth::id();
-	return view('profile', ['user' => $user_id]);
-})->middleware(['auth',  'can:accessUser'])->name('profile');
-
-Route::get('/dashboard/ranking', function () {
-    $data = Game::all();
-    $user = auth::id();
-    return view('ranking', ['ranking' => $data]);
-})->middleware(['auth',  'can:accessUser'])->name('ranking');
-
-Route::get('/dashboard/list', function () {
-    $data = Game::all();
-    $user = auth::id();
-    return view('list', ['user' => $data]);
-})->middleware(['auth',  'can:accessUser'])->name('list');
-
-Route::get('/dashboard/request', function () {
-    $data = Game::all();
-    $user = auth::id();
-    return view('request', ['request' => $data]);
-})->middleware(['auth',  'can:accessUser'])->name('request');
-
-Route::get('/dashboard/friend', function () {
-    $data = Game::all();
-    $user = auth::id();
-    return view('friend', ['friend' => $data]);
-})->middleware(['auth',  'can:accessUser'])->name('friend');
 
 /*-------------ADIMINISTRADOR-------------------*/
 
@@ -93,46 +68,18 @@ Route::get('/admin/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth',  'can:accessAdmin'])->name('adminDashboard');
 
-
-Route::get('/admin/dashboard/requests', function () {
-    $user = auth::id();
-    return view('request', ['request' => $user]);
-})->middleware(['auth',  'can:accessAdmin'])->name('request');
-
-Route::get('/admin/dashboard/friend', function () {
-    $user = auth::id();
-    return view('friend', ['friend' => $user]);
-})->middleware(['auth',  'can:accessAdmin'])->name('friend');
-
-Route::get('/admin/dashboard/ranking', function () {
-    //$rankings = User::latest()->paginate(5);
-return view('ranking'/*,['rankings' => $rankings]*/);
-})->middleware(['auth',  'can:accessAdmin'])->name('ranking');
-
-
-Route::get('/admin/dashboard/myList', function () {
-    $user = auth::id();
-    return view('myList', ['mylist' => $user]);
-})->middleware(['auth',  'can:accessAdmin'])->name('mylist');
+Route::get('/admin/dashboard/request', function () {
+    return view('request');
+})->middleware(['auth',  'can:accessAdmin'])->name('adminDashboard');
 
 Route::get('/admin/dashboard/publicList', function () {
-    $user = auth::id();
-    return view('publicList', ['publiclist' => $user]);
-})->middleware(['auth',  'can:accessAdmin'])->name('publiclist');
+    return view('publicList');
+})->middleware(['auth',  'can:accessAdmin'])->name('adminDashboard');
 
-Route::get('/admin/dashboard/profile', function () {
-    $user = auth::id();
-    return view('profile', ['profile' => $user]);
-})->middleware(['auth',  'can:accessAdmin'])->name('profile');
+Route::get('/admin/dashboard/myList', function () {
+    return view('myList');
+})->middleware(['auth',  'can:accessAdmin'])->name('adminDashboard');
 
-//Route::resource('userUpdate', ProfileController::class);
-//Route::resource('users',Gamerli2Controller::class);
-//Route::get('/search', 'Gamerli2Controller@search');
-
-/*Route::resource('admin/dashboard/Import', GameImportController::class);
-
-Route::resource('admin/dashboard/RankingAdmin.index', GameController::class);
-*/
-
-//Route::resource('/dashboard/profile/avatar', ProfileController::class);
-/*Route::resource('/ranking', GameController::class);*/
+Route::get('/admin/dashboard/friend', function () {
+    return view('friend');
+})->middleware(['auth',  'can:accessAdmin'])->name('adminDashboard');

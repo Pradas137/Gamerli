@@ -16,7 +16,7 @@ class RankingController extends Controller
     {
         //
         $rankings = User::latest()->paginate(5);
-        return view('rankings', ['rankings' => $rankings]);
+        return view('ranking.index', ['rankings' => $rankings]);
     }
 
     /**
@@ -26,7 +26,7 @@ class RankingController extends Controller
      */
     public function create()
     {
-        //
+        return view('ranking.create');
     }
 
     /**
@@ -37,18 +37,15 @@ class RankingController extends Controller
      */
     public function store(Request $request)
     {
-        //
         $request->validate([
-            'name'       => 'required|max:255',
+            'name' => 'required',
             'surname' => 'required',
-          ]);
+        ]);
     
-          $ranking = User::updateOrCreate(['id' => $request->id], [
-                    'name' => $request->name,
-                    'surname' => $request->surname
-                  ]);
-    
-          return response()->json(['code'=>200, 'message'=>'Game Created successfully','data' => $ranking], 200);
+        Post::create($request->all());
+     
+        return redirect()->route('ranking.index')
+                        ->with('success','Game created successfully.');
     }
 
     /**
@@ -57,11 +54,9 @@ class RankingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $ranking)
     {
-        //
-        $ranking = User::find($id);
-        return response()->json($ranking);
+        return view('ranking.show',compact('ranking'));
     }
 
     /**
@@ -70,9 +65,9 @@ class RankingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $ranking)
     {
-        //
+        return view('ranking.edit',compact('ranking'));
     }
 
     /**
@@ -82,9 +77,17 @@ class RankingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $ranking)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+        ]);
+    
+        $ranking->update($request->all());
+    
+        return redirect()->route('ranking.index')
+                        ->with('success','Game updated successfully');
     }
 
     /**
@@ -93,10 +96,11 @@ class RankingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $ranking)
     {
-        // 
-        $ranking = User::find($id)->delete();
-        return response()->json(['success'=>'Game Deleted successfully']);
+        $ranking->delete();
+    
+        return redirect()->route('ranking.index')
+                        ->with('success','Game deleted successfully');
     }
 }

@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-lg-12 mt-1 mr-1">
                     <div class="float-right">
-                        <a class="btn btn-primary" href="{{ route('ranking') }}"> Back</a>
+                        <a class="btn btn-primary" href="{{ route('ranking.index') }}"> Back</a>
                     </div>
                 </div>
             </div>
@@ -23,17 +23,17 @@
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <strong>Title:</strong>
-                                {{ $game->name }}
+                                {{ $ranking->name }}
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <strong>Description:</strong>
-                                {{ $game->summary }}
+                                {{ $ranking->surname }}
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-</div>
+    </div>

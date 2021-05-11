@@ -4,10 +4,8 @@
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
+
     @if(Auth::user()->role == 'admin')
-    @section('breadcrumbs')
-        {{ Breadcrumbs::render('Profile') }}
-    @endsection
     <div class="max-w-4xl flex items-center h-auto lg:h-screen flex-wrap mx-auto my-32 lg:my-0">
 	<!--Main Col-->
 	<div id="profile" class="w-full lg:w-3/5 rounded-lg lg:rounded-l-lg lg:rounded-r-none shadow-2xl bg-white opacity-75 mx-6 lg:mx-0">
@@ -22,18 +20,7 @@
 			<p class="pt-2 text-gray-600 text-xs lg:text-sm flex items-center justify-center lg:justify-start">{{ Auth::user()->email }}</p>
 			<p class="pt-8 text-sm">{{ Auth::user()->description }}</p>
 			<div class="pt-4 pb-8">
-				<button id="editar" data-toggle="modal" data-idUpdate="'.$row->id.'" data-target="#userUpdate" class=" userEdits bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full">
-				  Edit
-				</button> 
-        <div style="margin-left: 15px; flex-grow: 1">
-          <p>Choose a file</p>
-          <input id="photo" type="file">
-          <input type="hidden" name="id" value="{{$user->id}}">
-          <br>
-          <div class="progress">
-            <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
-          </div>
-        </div>
+                <a data-id="${ user.id }" onclick="editTodo(${user.id})" class="btn btn-info">Edit</a>
 			</div>
 
 			<div class="mt-6 pb-16 lg:pb-0 w-4/5 lg:w-full mx-auto flex flex-wrap items-center justify-between">
@@ -58,7 +45,7 @@
     <span class="hidden sm:inline-block sm:align-middle sm:h-screen"></span>​
   
     <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
-    <form action="/userUpdate" method="post">
+    <form action="/admin/dashboard/profile" method="post">
     {{ csrf_field() }}
                     <input type = "text" hidden class="col-sm-9 form-control"id ="idUpdate" name ="idUpdate" value="" />
       <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
@@ -92,74 +79,9 @@
     </div>
   </div>
 </div>
-    </div>
-    <script>
-        $(function () {
-            $.ajaxSetup({
-                headers: {'X-CSRF-Token': '{{csrf_token()}}'}
-            });
-
-            var id = $('input[name="id"]').val();
-
-
-            $('#photo').change(function () {
-                var photo = $(this)[0].files[0];
-                var formData = new FormData();
-                formData.append('id', id);
-                formData.append('photo', photo);
-
-                $.ajax({
-                    xhr: function () {
-                        var xhr = new window.XMLHttpRequest();
-                        xhr.upload.addEventListener("progress", function (evt) {
-                            if (evt.lengthComputable) {
-                                var percentComplete = evt.loaded / evt.total;
-                                percentComplete = parseInt(percentComplete * 100);
-                                console.log(percentComplete);
-                                $('.progress-bar').css('width', percentComplete + '%');
-                                if (percentComplete === 100) {
-                                    console.log('completed 100%')
-
-                                    var imageUrl = window.URL.createObjectURL(photo)
-                                    $('.imgPreview').attr('src', imageUrl);
-                                    setTimeout(function () {
-                                        $('.progress-bar').css('width', '0%');
-                                    }, 2000)
-                                }
-                            }
-                        }, false);
-                        return xhr;
-                    },
-                    url: '{{route('updateProfile')}}',
-                    type: 'POST',
-                    data: formData,
-                    processData: false,
-                    contentType: false,
-                    success: function (res) {
-                        if(!res.success){alert(res.error)}
-                    }
-                })
-            })
-        })
-    </script>
-	<script>
-
-	// select edit user
-    $(document).on('click', '#editar', function()
-    {
-        var _this = $(this).parents('tr');
-        $('#idUpdate').val(_this.find('.idUpdate').text());
-        $('#e_name').val(_this.find('.names').text());
-        $('#e_surname').val(_this.find('.surname').text());
-        $('#e_email').val(_this.find('.email').text());
-    });
-});
-	</script>
+</div>
 </div>
     @else
-    @section('breadcrumbs')
-        {{ Breadcrumbs::render('Profile') }}
-    @endsection
     <script src="{{asset('js/breadcrumb.js')}}"></script>
     <div class="max-w-4xl flex items-center h-auto lg:h-screen flex-wrap mx-auto my-32 lg:my-0">
 	<!--Main Col-->
@@ -177,13 +99,6 @@
 				<button id="editar" class=" userEdits bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full">
 				  Edit
 				</button>
-                <form id="formulario" method="POST" action="/dashboard/profile/avatar" enctype="multipart/form-data">
-                    {{ csrf_field() }}
-                    <br>
-                    <label>SUBIR AVATAR</label>
-                    <input type="file" name="image">
-                <input type="submit" value="save">
-            </form> 
 			</div>
 			<!--Editar-->
 			
@@ -202,3 +117,4 @@
     @endif
 </x-app-layout>
 <script src="{{asset('js/laracrud.js')}}"></script>
+<script src="{{asset('js/profile.js')}}"></script>
