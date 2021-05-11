@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use App\Game;
-use App\Liste;
+use App\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -11,11 +11,16 @@ class Gamelist extends Model
 {
     use HasFactory;
 
-    public function liste(){
-    	return $this->hasMany(Liste::class,'list_id');
+protected $fillable = ['name','user_id'];
+
+    public function games(){
+    	return $this->belongsToMany(Game::class);
     }
 
-    public function game(){
-    	return $this->belongsTo(Game::class,'game_id');
+    public function users(){
+    	return $this->belongsTo(User::class);
+    }
+    public function create(){
+
     }
 }

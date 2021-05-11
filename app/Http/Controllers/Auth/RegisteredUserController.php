@@ -4,11 +4,15 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Gamelist;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\sendGrid;
+use Illuminate\Support\Facades\Log;
 
 class RegisteredUserController extends Controller
 {
@@ -40,16 +44,39 @@ class RegisteredUserController extends Controller
             'password' => 'required|string|confirmed|min:8',
         ]);
 
+  
+
+
         $user = User::create([
             'name' => $request->name,
             'surname' => $request->surname,
             'email' => $request->email,
+            'email_verified_at' => now(),
             'password' => Hash::make($request->password),
+            'gamelist_id'=> $gamelist->id,
+             
         ]);
 
-        event(new Registered($user));
-
+        Gamelist::create(['name'=>'favoritos','user_id'=>$user->id]);
+        
+        Log::debug('llega');
         Auth::login($user);
+        
+
+        Mail::to($user->email)->send(new sendGrid($user));
+
+         if(Mail::failures() != 0) {
+            Log::debug("email enviat");;
+        }
+
+        else {
+            Log::debug("email no enviat");;
+        }
+        
+
+        event(new Registered($user));
+       
+
 
         return redirect(RouteServiceProvider::HOME);
     }

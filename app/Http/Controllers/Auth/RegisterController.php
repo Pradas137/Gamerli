@@ -5,9 +5,14 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use App\Models\Gamelist;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\sendGrid;
+use Illuminate\Support\Facades\Log;
 
 class RegisterController extends Controller
 {
@@ -63,13 +68,37 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\Models\User
      */
+
+
     protected function create(array $data)
     {
-        return User::create([
+        
+        $user = User::create([
             'name' => $data['name'],
             'surname' => $data['surname'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+
+         Mail::to($user->email)->send(new sendGrid($user));
+         
+         if(Mail::failures() != 0) {
+            Log::debug("email enviat");;
+        }
+
+        else {
+            Log::debug("email no enviat");;
+        }
+     
+
+        
+        /*if(Mail::failures() != 0) {
+            return "<p> Success! Your E-mail has been sent.</p>";
+        }
+        else {
+            return "<p> Failed! Your E-mail has not sent.</p>";
+        }*/
+
+        return $user;
     }
 }

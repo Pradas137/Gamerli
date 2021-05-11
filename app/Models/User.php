@@ -3,15 +3,16 @@
 namespace App\Models;
 
 use App\Friend;
-use App\Role;
-use App\Liste;
 use App\Comment;
+use App\Gamelist;
+use App\Genre;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
+
+class User extends Authenticatable 
 {
     use HasFactory, Notifiable;
 
@@ -25,6 +26,7 @@ class User extends Authenticatable
         'surname',
         'email',
         'password',
+        'role',
     ];
 
     /**
@@ -47,21 +49,27 @@ class User extends Authenticatable
     ];
 
     public function comments(){
-    	return $this->hasMany(Comment::class,'comment_id');
+    	return $this->hasMany(Comment::class);
     }
 
     public function friends(){
-    	return $this->hasMany(Friend::class,'friend_id');
-    }
-    public function friends1(){
-        return $this->hasMany(Friend::class,'user_id');
+    	return $this->hasMany(Friend::class, 'user_id');
     }
 
-    public function roles(){
-    	return $this->belongsTo(Role::class,'role_id');
+    public function friendOf(){
+        return $this->hasMany(Friend::class, 'friend_id');
     }
 
-    public function liste(){
-    	return $this->belongsTo(Liste::class,'list_id');
+    public function gamelists(){
+        return $this->hasMany(Gamelist::class);
     }
+
+     public function genres(){
+        return $this->belongsToMany(Genre::class);
+    }
+
+    public function role($role) {     
+        $role = (array)$role;    
+        return in_array($this->role, $role); 
+     }
 }

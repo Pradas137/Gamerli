@@ -1,0 +1,57 @@
+<x-app-layout page="">
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Dashboard') }}
+        </h2>
+    </x-slot>
+    @if(Auth::user()->role == 'admin')
+    @section('breadcrumbs')
+        {{ Breadcrumbs::render('Request') }}
+    @endsection
+    <div class="flex h-screen">
+        <div class="text-white bg-gray-600 h-8 md:h-full border-r w-64 text-center border-gray-400">
+            <h6 class="font-bold mb-4 text-2xl">PAGE</h6>
+            <ul>
+                <li class="font-bolt mb-4"><a href="/admin/dashboard">Home</a></li>
+                <li class="font-bolt mb-4"><a href="/admin/dashboard/publicList">Public List</a></li>
+                <li class="font-bolt mb-4"><a href="/admin/dashboard/ranking">Ranking Game</a></li>
+            <ul>
+            <h6 class="font-bold mb-4 text-2xl">ADMIN</h6>
+            <ul>
+                <li class="font-bolt mb-4"><a href="/admin/dashboard/requests">My Request</a></li>
+                <li class="font-bolt mb-4"><a href="/admin/dashboard/myList">My Lists</a></li>
+                <li class="font-bolt mb-4"><a href="/admin/dashboard/profile">Profile</a></li>
+                <li class="font-bolt mb-4"><a href="/admin/dashboard/friend">Friend</a></li>
+            </ul>
+        </div>
+        <div class="p-6">
+            <h1 class="text-4xl font-bold mb-10">Request</h1>
+        <div>    
+    </div>
+    @else
+    @section('breadcrumbs')
+        {{ Breadcrumbs::render('Request') }}
+    @endsection
+    <script src="{{asset('js/breadcrumb.js')}}"></script>
+    <div class="flex h-screen">
+        <div class="text-white bg-gray-600 h-8 md:h-full border-r w-64 text-center border-gray-400">
+            <h6 class="font-bold mb-4 text-2xl">PAGE</h6>
+            <ul>
+                <li class="font-bolt mb-4"><a href="/admin/dashboard">Home</a></li>
+                <li class="font-bolt mb-4"><a href="/admin/dashboard/publicList">Public List</a></li>
+                <li class="font-bolt mb-4"><a href="/admin/dashboard/ranking">Ranking Game</a></li>
+            <ul>
+            <h6 class="font-bold mb-4 text-2xl">ADMIN</h6>
+            <ul>
+                <li class="font-bolt mb-4"><a href="/admin/dashboard/requests">My Request</a></li>
+                <li class="font-bolt mb-4"><a href="/admin/dashboard/myList">My Lists</a></li>
+                <li class="font-bolt mb-4"><a href="/admin/dashboard/profile">Profile</a></li>
+                <li class="font-bolt mb-4"><a href="/admin/dashboard/friend">Friend</a></li>
+            </ul>
+        </div>
+        <div class="p-6">
+            <h1 class="text-4xl font-bold mb-10">Request</h1>
+        <div>    
+    </div>
+    @endif
+</x-app-layout>

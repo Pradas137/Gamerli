@@ -13,10 +13,10 @@ class Friend extends Model
     use HasFactory;
 
     public function users(){
-    	return $this->hasMany(User::class,'user_id');
+    	return $this->belongsTo(User::class);
     }
 
     public function messages(){
-    	return $this->belongsTo(Message::class,'message_id');
+    	return $this->hasMany(Message::class);
     }
 }
