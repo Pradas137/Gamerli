@@ -134,6 +134,11 @@ Route::get('/send-email', [PostController::class, 'sendEmail']);
 
 Route::resource('userUpdate', ProfileController::class);
 
+Auth::routes(['verify'=> true]);
+
+Route::get('/home','HomeController@index')->name('home')->middleware('verified');
+
+
 /*Route::resource('admin/dashboard/Import', GameImportController::class);
 
 Route::resource('admin/dashboard/RankingAdmin.index', GameController::class);

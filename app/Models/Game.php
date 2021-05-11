@@ -21,8 +21,8 @@ class Game extends Model
     	return $this->belongsTo(Comments::class);
     }
 
-    public function lists(){
-    	return $this->belongsToMany(Liste::class);
+    public function gamelists(){
+    	return $this->belongsToMany(Gamelist::class);
     }
 
 

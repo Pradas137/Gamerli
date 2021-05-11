@@ -13,4 +13,8 @@ class Company extends Model
     public function platforms(){
     	return $this->hasMany(Platform::class);
     }
+    public static function searchId($id){
+		return $this->where('id',$id)->id;
+	}
 }
+

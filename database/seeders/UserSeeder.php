@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use Faker\Factory as Faker;
-use Illuminate\App\Gamelist;
+use App\Models\Gamelist;
 use Database\Seeder\GamelistSeeder;
 
 class UserSeeder extends Seeder

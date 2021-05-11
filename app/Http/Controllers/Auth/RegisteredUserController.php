@@ -43,14 +43,17 @@ class RegisteredUserController extends Controller
             'email_verified_at' => 'string|email|max:255|unique:users',
             'password' => 'required|string|confirmed|min:8',
         ]);
+
        $gamelist= Gamelist::create(['name'=>'favoritos']);
 
         $user = User::create([
             'name' => $request->name,
             'surname' => $request->surname,
             'email' => $request->email,
+            //'email_verified_at' => now(),
             'password' => Hash::make($request->password),
-            'gamelist_id'=>$gamelist->id,
+            'gamelist_id'=> $gamelist->id,
+             
         ]);
 
         event(new Registered($user));

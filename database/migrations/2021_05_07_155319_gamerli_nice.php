@@ -35,8 +35,6 @@ class GamerliNice extends Migration
             $table->timestamps();
         });
 
-
-
         Schema::create('friends', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();

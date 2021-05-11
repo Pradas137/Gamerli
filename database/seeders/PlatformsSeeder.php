@@ -2,8 +2,10 @@
 
 namespace Database\Seeders;
 
-use Flynsarmy\CsvSeeder\CsvSeeder;
+use JeroenZwart\CsvSeeder\CsvSeeder;
 use Illuminate\Support\Facades\DB;
+use App\Models\Company;
+
 
 
 class PlatformsSeeder extends CsvSeeder 
@@ -17,13 +19,10 @@ class PlatformsSeeder extends CsvSeeder
     public function __construct()
 	{
 		$this->table = 'platforms';
-		$this->csv_delimiter = ',';
+		$this->csv_delimiter = ';';
 		$this->filename = base_path().'/database/seeders/csvs/platforms.csv';
-		$this->mapping = [
-	    1 => 'name',
-	    2 => 'company_id',];
-	}
-
+		$this->parsers = ['company_id' => function ($value){return Company::searchId($value);}];
+}
     public function run()
     {
         //
