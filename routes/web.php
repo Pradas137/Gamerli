@@ -16,6 +16,7 @@ use App\Models\Saga;
 use App\Models\User;
 use App\Models\Score;
 use App\Http\Controllers\GameImportController;
+use App\Http\Controllers\PlatformController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Gamerli2Controller;
@@ -137,6 +138,10 @@ Route::resource('userUpdate', ProfileController::class);
 Auth::routes(['verify'=> true]);
 
 Route::get('/home','HomeController@index')->name('home')->middleware('verified');
+
+Route::get('file-import-export', [PlatformController::class, 'fileImportExport']);
+Route::post('file-import', [PlatformController::class, 'fileImport'])->name('file-import');
+
 
 
 /*Route::resource('admin/dashboard/Import', GameImportController::class);
