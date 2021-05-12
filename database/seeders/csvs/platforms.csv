@@ -1,27 +1,27 @@
-id;name;company_id
-1;PC;2
-2;PlayStation 2;4
-3;Microsoft Windows;3
-4;Xbox;3
-5;Xbox One;3
-6;Xbox 360;3
-7;PlayStation 4;4
-8;PlayStation Portable;4
-9;Nintendo 3DS;5
-10;PlayStation3;4
-11;Mac OS Classic;2
-12;MS-DOS;2
-13;Nintendo GameCube;5
-14;iOS;7
-15;Wii;5
-16;PlayStation;4
-17;Game Boy;5
-18;Nintendo 64;5
-19;Android,;7
-20;GNULinux;2
-21;AmigaOS;2
-22;DOS;2
-23;Sega Saturn;6
-24;Mega Drive;6
-25;Google Stadia;6
-26;Multi;1
+name;company_name
+PC;PC
+PlayStation 2;SONY
+Microsoft Windows;MICROSOFT
+Xbox;MICROSOFT
+Xbox One;MICROSOFT
+Xbox 360;MICROSOFT
+PlayStation 4;SONY
+PlayStation Portable;SONY
+Nintendo 3DS;NINTENDO
+PlayStation3;SONY
+Mac OS Classic;PC
+MS-DOS;PC
+Nintendo GameCube;NINTENDO
+iOS;MOVILE
+Wii;NINTENDO
+PlayStation;SONY
+Game Boy;NINTENDO
+Nintendo 64;NINTENDO
+Android,;MOVILE
+GNULinux;PC
+AmigaOS;PC
+DOS;PC
+Sega Saturn;OTROS
+Mega Drive;OTROS
+Google Stadia;OTROS
+Multi;MULTI
