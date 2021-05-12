@@ -6,18 +6,22 @@
     </x-slot>
 
     @if(Auth::user()->role == 'admin')
-    <div class="max-w-4xl flex items-center h-auto lg:h-screen flex-wrap mx-auto my-32 lg:my-0">
+    <div class=" max-w-4xl flex items-center h-auto lg:h-screen flex-wrap mx-auto my-32 lg:my-0">
 	<!--Main Col-->
 	<div id="profile" class="w-full lg:w-3/5 rounded-lg lg:rounded-l-lg lg:rounded-r-none shadow-2xl bg-white opacity-75 mx-6 lg:mx-0">
 		<div class="p-4 md:p-12 text-center lg:text-left">
+    <form action="{{ url('/admin/dashboard/profile') }}" method="post" style="display: none" id="avatarForm">
+      {{ csrf_field() }}
+      <input type="file" id="avatarInput" name="avatar">
+    </form>
             <div class="block lg:hidden rounded-full shadow-xl mx-auto -mt-16 h-48 w-48 bg-cover bg-center" style="background-image: url('data:image/png;base64,{{ Auth::user()->avatar }}')">
             </div>
 			
-			<h1 class="text-3xl font-bold pt-8 lg:pt-0">{{ Auth::user()->name }}</h1>
-			<div class="mx-auto lg:mx-0 w-4/5 pt-3 border-b-2 border-green-500 opacity-25"></div>
-			<p class="pt-4 text-base font-bold flex items-center justify-center lg:justify-start">{{ Auth::user()->surname }}</p>
-			<p class="pt-4 text-base font-bold flex items-center justify-center lg:justify-start">{{ Auth::user()->role }}</p>
-			<p class="pt-2 text-gray-600 text-xs lg:text-sm flex items-center justify-center lg:justify-start">{{ Auth::user()->email }}</p>
+			<h1 class="text-3xl font-bold pt-8 lg:pt-0 text-black">{{ Auth::user()->name }}</h1>
+			<div class="mx-auto lg:mx-0 w-4/5 pt-3 border-b-2 border-green-500 opacity-25 text-black"></div>
+			<p class="pt-4 text-base font-bold flex items-center justify-center lg:justify-start text-black">{{ Auth::user()->surname }}</p>
+			<p class="pt-4 text-base font-bold flex items-center justify-center lg:justify-start text-black">{{ Auth::user()->role }}</p>
+			<p class="pt-2 text-gray-600 text-xs lg:text-sm flex items-center justify-center lg:justify-start text-black">{{ Auth::user()->email }}</p>
 			<p class="pt-8 text-sm">{{ Auth::user()->description }}</p>
 			<div class="pt-4 pb-8">
                 <a data-id="${ user.id }" onclick="editTodo(${user.id})" class="btn btn-info">Edit</a>

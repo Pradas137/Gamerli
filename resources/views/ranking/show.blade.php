@@ -22,13 +22,13 @@
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
-                                <strong>Title:</strong>
+                                <strong>Name:</strong>
                                 {{ $ranking->name }}
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
-                                <strong>Description:</strong>
+                                <strong>Surname:</strong>
                                 {{ $ranking->surname }}
                             </div>
                         </div>

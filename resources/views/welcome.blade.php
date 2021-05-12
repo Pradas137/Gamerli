@@ -15,10 +15,13 @@
         <style>
             body {
                 font-family: 'Nunito', sans-serif;
+                background: url("/images/fondoGamer.jpg");
+
             }
+
         </style>
     </head>
-    <body class="bg-red-400">
+    <body >
         <main>
             <div class="sm:flex md:flex lg:flex xl:flex justify-center items-center min-h-screen bg-base">
                 <div class="sm:flex md:flex lg:flex xl:flex h-50 bg-red-600 container bg-admin text-center w-2/4 rounded-xl p-5 shadow-xl">

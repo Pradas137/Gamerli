@@ -1,57 +1,97 @@
-<div class="card mt-5">
-        <div class="card-header">
-            <h2>Laravel 8 CRUD Example from scratch - NiceSnippets.com</h2>
+<x-app-layout page="">
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Dashboard') }}
+        </h2>
+    </x-slot>
+    @if(Auth::user()->role == 'admin')
+    <div class="flex h-screen">
+    <div class=" bg-gray-600 h-8 md:h-full border-r w-64 text-center border-gray-200">
+            <h6 class="font-bold mb-4 text-2xl">PAGE</h6>
+            <ul>
+                <li class="font-bolt mb-4"><a href="/admin/dashboard">Home</a></li>
+                <li class="font-bolt mb-4"><a href="/admin/dashboard/publicList">Public List</a></li>
+                <li class="font-bolt mb-4"><a href="/admin/dashboard/ranking">Ranking Game</a></li>
+            <ul>
+            <h6 class="font-bold mb-4 text-2xl">ADMIN</h6>
+            <ul>
+                <li class="font-bolt mb-4"><a href="/admin/dashboard/requests">My Request</a></li>
+                <li class="font-bolt mb-4"><a href="/admin/dashboard/myList">My Lists</a></li>
+                <li class="font-bolt mb-4"><a href="/admin/dashboard/profile">Profile</a></li>
+                <li class="font-bolt mb-4"><a href="/admin/dashboard/friend">Friend</a></li>
+            </ul>
         </div>
-        <div class="card-body">
-            <div class="row">
-                <div class="col-lg-12 mt-1 mr-1">
-                    <div class="float-right">
-                        <a class="btn btn-primary" href="{{ route('ranking.index') }}"> Back</a>
-                    </div>
-                </div>
+        <div class="p-6">
+            <h1 class="text-4xl font-bold mb-10">Friend</h1>
+            <div class="p-6">
+            <h1 class="text-4xl font-bold mb-10">Friend</h1>
+            <form method="POST" action="{{ route('ranking.store') }}">
+            @csrf
+
+            <!-- Name -->
+            <div>
+                <x-label for="name" :value="__('Name')" />
+                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
             </div>
-            <div class="row mt-2">
-                <div class="col-lg-12">
-                    @if ($message = Session::get('success'))
-                        <div class="alert alert-success">
-                            <p>{{ $message }}</p>
-                        </div>
-                    @endif
-                </div>
-                <div class="col-lg-12">
-                    @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <strong>Whoops!</strong> There were some problems with your input.<br><br>
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
-                       
-                    <form action="{{ route('ranking.store') }}" method="POST">
-                        @csrf
-                      
-                         <div class="row">
-                            <div class="col-xs-12 col-sm-12 col-md-12">
-                                <div class="form-group">
-                                    <strong>Title:</strong>
-                                    <input type="text" name="title" class="form-control" placeholder="Title">
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-sm-12 col-md-12">
-                                <div class="form-group">
-                                    <strong>Description:</strong>
-                                    <textarea class="form-control" rows="6" name="description" placeholder="Description"></textarea>
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                                <button type="submit" class="btn btn-success">Submit</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+
+
+            <!-- Surname -->
+            <div class="mt-4">
+                <x-label  for="surname" :value="__('Surname')" />
+
+                <x-input id="surname" class="block mt-1 w-full" type="text" name="surname" :value="old('surname')" required />
             </div>
+
+
+            <!-- Email Address -->
+            <div class="mt-4">
+                <x-label for="email" :value="__('Email')" />
+
+                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
+            </div>
+            <div class="mt-4">
+                <x-label for="password" :value="__('Password')" />
+
+                <x-input id="password" class="block mt-1 w-full"
+                                type="password"
+                                name="password"
+                                required autocomplete="new-password" />
+            </div>
+            <div class="flex items-center justify-end mt-4">
+                <a class="text-white underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
+                    {{ __('Already registered?') }}
+                </a>
+                <button type="submit" class="btn btn-success">Create</button>
+                <x-button class="ml-4">
+                    <a href="{{ route('ranking.index') }}">Atras</a>
+                </x-button>
+            </div>
+        </form>
+
+</div>
+</div>
+    @else
+    <script src="{{asset('js/breadcrumb.js')}}"></script>
+    <div class="flex h-screen">
+        <div class="h-8 md:h-full border-r w-64 text-center border-gray-200">
+            <h6 class="font-bold mb-4 text-2xl">PAGE</h6>
+            <ul>
+                <li class="font-bolt mb-4"><a href="/dashboard">Home</a></li>
+                <li class="font-bolt mb-4"><a href="/dashboard/publicList">Global list</a></li>
+                <li class="font-bolt mb-4"><a href="/dashboard/ranking">Ranking Games</a></li>
+            <ul>
+            <h6 class="font-bold mb-4 text-2xl">ADMIN</h6>
+            <ul>
+                <li class="font-bolt mb-4"><a href="/dashboard/request">My Request</a></li>
+                <li class="font-bolt mb-4"><a href="/dashboard/myList">My Lists</a></li>
+                <li class="font-bolt mb-4"><a href="/dashboard/profile">Profile</a></li>
+                <li class="font-bolt mb-4"><a href="/dashboard/friend">Friend</a></li>
+
+            </ul>
         </div>
+        <div class="p-6">
+            <h1 class="text-4xl font-bold mb-10">Friend</h1>
+        <div>    
     </div>
+    @endif
+</x-app-layout>

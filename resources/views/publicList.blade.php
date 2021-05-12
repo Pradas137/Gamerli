@@ -46,7 +46,7 @@
             </ul>
         </div>
         <div class="p-6">
-            <h1 class="text-4xl font-bold mb-10">Public List</h1>
+            <h1 class="text-white text-4xl font-bold mb-10">Public List</h1>
         <div>    
     </div>
     @endif
