@@ -23,8 +23,6 @@
         </div>
         <div class="p-6">
             <h1 class="text-4xl font-bold mb-10">Friend</h1>
-            <div class="p-6">
-            <h1 class="text-4xl font-bold mb-10">Friend</h1>
             <form method="POST" action="{{ route('ranking.store') }}">
             @csrf
 
@@ -58,17 +56,14 @@
                                 required autocomplete="new-password" />
             </div>
             <div class="flex items-center justify-end mt-4">
-                <a class="text-white underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a>
+
                 <button type="submit" class="btn btn-success">Create</button>
                 <x-button class="ml-4">
                     <a href="{{ route('ranking.index') }}">Atras</a>
                 </x-button>
             </div>
         </form>
-
-</div>
+    </div>
 </div>
     @else
     <script src="{{asset('js/breadcrumb.js')}}"></script>

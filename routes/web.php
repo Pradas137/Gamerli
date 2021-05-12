@@ -17,7 +17,6 @@ use App\Models\User;
 use App\Models\Score;
 use App\Http\Controllers\GameImportController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RankingController;
 
 
@@ -34,11 +33,13 @@ use App\Http\Controllers\RankingController;
 */
 Route::resource('products', 'App\Http\Controllers\ProfileController');
 Route::resource('/admin/dashboard/ranking','App\Http\Controllers\RankingController');
+//Route::resource('/admin/dashboard/ranking','App\Http\Controllers\GamerliController');
 Route::resource('/dashboard/ranking','App\Http\Controllers\RankingController');
-Route::resource('/admin/dashboard/profile','App\Http\Controllers\ProfileController');
+//Route::resource('/admin/dashboard/profile','App\Http\Controllers\ProfileController');
 Route::resource('/dashboard/profile','App\Http\Controllers\ProfileController');
 
-Route::resource('slider',SliderController::class);
+//Route::post('/perfil/foto', 'ProfileController@updatePhoto');
+//Route::resource('slider',SliderController::class);
 
 
 Route::get('/', function () {
@@ -83,3 +84,19 @@ Route::get('/admin/dashboard/myList', function () {
 Route::get('/admin/dashboard/friend', function () {
     return view('friend');
 })->middleware(['auth',  'can:accessAdmin'])->name('adminDashboard');
+
+/*Route::name('GameDelete')
+  ->prefix('admin')
+  ->middleware(['auth', 'can:accessAdmin'])
+  ->group(function () {
+    Route::get('/ranking/delete/{id}', function(Request $request){
+        $game = User::select('name')
+                     ->where('id', '=', $request->route('id'))
+                     ->get();
+        $id = $request->route('id');
+        $user = auth::id();
+        Log::channel('mysql_logging')->warning("Admin about to delete the term id $id", ['user_id' => $user]);
+        return view('delRanking', ["game"=>$game]);
+    });        
+    //Route::resource('/admin/dashboard/ranking', GamerliController::class);
+});*/

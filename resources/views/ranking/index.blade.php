@@ -27,7 +27,7 @@
             <input class="form-control mr -sm-2" type="search" placeholder="Search">
             <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
             <div class="text-center">
-            <a class="btn btn-info" href="{{ route('ranking.create') }}">Add</a>
+            <a class="btn btn-info" href="/admin/dashboard/ranking/create">Add</a>
             </div>
           </form>
           <table class="text-left w-full border-collapse">

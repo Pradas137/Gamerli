@@ -23,11 +23,15 @@
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
         <script src="{{ asset('js/breadcrumb.js') }}"></script>
-        <script src="{{asset('js/laracrud.js')}}"></script>
 
         <style>
             input{
                 color: black;
+            }
+
+            body {
+                font-family: 'Nunito', sans-serif;
+                background: url("/images/fondoGamer.jpg");
             }
         </style>
     </head>

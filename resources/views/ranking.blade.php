@@ -5,9 +5,6 @@
         </h2>
     </x-slot>
     @if(Auth::user()->role == 'admin')
-    @section('breadcrumbs')
-        {{ Breadcrumbs::render('Ranking') }}
-    @endsection
     <script src="{{asset('js/breadcrumb.js')}}"></script>
     <div class="flex h-screen">
         <div class="bg-gray-600 h-8 md:h-full border-r w-64 text-center text-white border-gray-200">
@@ -30,7 +27,7 @@
         <input class="form-control mr -sm-2" type="search" placeholder="Search">
         <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
         <div class="text-center">
-          <a href="javascript:void(0)" class="btn btn-success mb-3" id="create-new-post" onclick="addPost()">Add Post</a>
+          <button type="button" id="addNewGame" onClick="addGameForm();" class="m-3 bg-mtr-dark p-1 w-4/12 text-center font-extrabold rounded-sm text-base">ADD Gamer</button>
         </div>
     </form>
     <table class="text-left w-full border-collapse">
@@ -43,16 +40,32 @@
         </tr>
       </thead>
       <tbody>
-      @foreach($rankings as $game)
-                <tr id="row_{{$game->id}}">
-                   <td>{{ $game->id  }}</td>
-                   <td>{{ $game->name }}</td>
-                   <td>{{ $game->surname }}</td>
-                   <td><a href="javascript:void(0)" data-id="{{ $game->id }}" onclick="editPost(event.target)" class="btn btn-info">Edit</a></td>
-                   <td>
-                    <a href="javascript:void(0)" data-id="{{ $game->id }}" class="btn btn-danger" onclick="deletePost(event.target)">Delete</a></td>
-                </tr>
-                @endforeach
+      @foreach ($rankings as $game)
+        @if($game->deleted_at == null)
+            <tr class="text-center" data-id="{{ $game->id }}">
+              <td class="border-2 border-mtr-dark text text-blue-500">
+                <a href="/admin/ranking/{{ $game->id }}">{{ $game->name }}</a>
+              </td>
+              <td class="hidden border-2 border-mtr-dark input">
+                <input value="{{ $game->name }}" type="text" name="nameEdit" class="nameEdit">
+              </td>
+              <td class="border-2 border-mtr-dark text">{{ $game->surname }}</td>
+              <td class="hidden border-2 border-mtr-dark input">
+                <input value="{{ $game->surname }}" type="text" name="descEdit" class="descEdit">
+              </td>
+              <td class="p-2 flex flex-col justify-center md:flex-row space-y-2 md:space-y-0 md:space-x-6">
+                <button id="edit" onClick="editRow({{ $game->id }})" class="bg-green-500 bg-mtr-dark py-2 px-4 text-white rounded text">Edit</button>
+                <form action="/admin/dashboard/ranking/{{ $game->id }}" method="post">
+                  <input type="hidden" name="_method" value="PUT">
+                  <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                  <button onClick="(e) => saveChange(e)" type="button"id="save"  class="hidden bg-green-500 bg-mtr-dark py-2 px-4 text-white rounded input">Save</button>
+                </form>
+                  <button id="cancel" onClick="cancelChange({{ $game->id }})" class="hidden bg-red-500 py-2 px-4 text-white rounded input">Cancel</button>                
+                <a href="/admin/ranking/delete/{{$game->id}}" class="bg-red-500 py-2 px-4 text-white rounded text">Delete</a>
+              </td>
+            </tr>
+        @endif
+      @endforeach
       </tbody>
     </table>
     <span>
@@ -119,90 +132,6 @@
   </div>
 </div>
     </div>
-    @endif
-
-    <script>
-  $('#laravel_crud').DataTable();
-
-  function addPost() {
-    $("#post_id").val('');
-    $('#post-modal').modal('show');
-  }
-
-  function editPost(event) {
-    var id  = $(event).data("id");
-    let _url = `/rankings/${id}`;
-    $('#titleError').text('');
-    $('#descriptionError').text('');
-    
-    $.ajax({
-      url: _url,
-      type: "GET",
-      success: function(response) {
-          if(response) {
-            $("#post_id").val(response.id);
-            $("#title").val(response.name);
-            $("#description").val(response.surnam);
-            $('#post-modal').modal('show');
-          }
-      }
-    });
-  }
-
-  function createPost() {
-    var name = $('#title').val();
-    var surname = $('#description').val();
-    var id = $('#post_id').val();
-
-    let _url     = `/rankings`;
-    let _token   = $('meta[name="csrf-token"]').attr('content');
-
-      $.ajax({
-        url: _url,
-        type: "POST",
-        data: {
-          id: id,
-          name: name,
-          surname: surname,
-          _token: _token
-        },
-        success: function(response) {
-            if(response.code == 200) {
-              if(id != ""){
-                $("#row_"+id+" td:nth-child(2)").html(response.data.name);
-                $("#row_"+id+" td:nth-child(3)").html(response.data.surname);
-              } else {
-                $('table tbody').prepend('<tr id="row_'+response.data.id+'"><td>'+response.data.id+'</td><td>'+response.data.name+'</td><td>'+response.data.surname+'</td><td><a href="javascript:void(0)" data-id="'+response.data.id+'" onclick="editPost(event.target)" class="btn btn-info">Edit</a></td><td><a href="javascript:void(0)" data-id="'+response.data.id+'" class="btn btn-danger" onclick="deletePost(event.target)">Delete</a></td></tr>');
-              }
-              $('#title').val('');
-              $('#description').val('');
-
-              $('#post-modal').modal('hide');
-            }
-        },
-        error: function(response) {
-          $('#titleError').text(response.responseJSON.errors.name);
-          $('#descriptionError').text(response.responseJSON.errors.surname);
-        }
-      });
-  }
-
-  function deletePost(event) {
-    var id  = $(event).data("id");
-    let _url = `/rankings/${id}`;
-    let _token   = $('meta[name="csrf-token"]').attr('content');
-
-      $.ajax({
-        url: _url,
-        type: 'DELETE',
-        data: {
-          _token: _token
-        },
-        success: function(response) {
-          $("#row_"+id).remove();
-        }
-      });
-  }
-
-</script>
+ @endif
+ <script src="{{asset('js/ranking.js')}}"></script>
 </x-app-layout>

@@ -71,4 +71,11 @@ class User extends Authenticatable
         $role = (array)$role;    
         return in_array($this->role, $role); 
      }
+
+     public function getAvatarUrl()
+     {
+         if ($this->avatar)
+            return asset('images/users/'.$this->id.'.'.$this->avatar);
+            return asset('images/users/default.jpg');
+}
 }

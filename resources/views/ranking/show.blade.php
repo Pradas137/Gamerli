@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-lg-12 mt-1 mr-1">
                     <div class="float-right">
-                        <a class="btn btn-primary" href="{{ route('ranking.index') }}"> Back</a>
+                        <a class="btn btn-primary" href="{{ route('/admin/ranking.index') }}"> Back</a>
                     </div>
                 </div>
             </div>

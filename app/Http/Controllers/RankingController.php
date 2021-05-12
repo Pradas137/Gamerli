@@ -12,11 +12,16 @@ class RankingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(/*$request*/)
     {
+       
+            $rankings = User::latest()->paginate(5);
+            return view('ranking.index', ['rankings' => $rankings]);
+       
         //
-        $rankings = User::latest()->paginate(5);
-        return view('ranking.index', ['rankings' => $rankings]);
+        //return json_decode($request->header("filter"),TRUE);
+        //if (isset($request->header("filter"))){
+        //}else{//}
     }
 
     /**
@@ -37,13 +42,8 @@ class RankingController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'surname' => 'required',
-        ]);
     
-        Post::create($request->all());
-     
+        User::create($request->all());
         return redirect()->route('ranking.index')
                         ->with('success','Game created successfully.');
     }
@@ -79,10 +79,6 @@ class RankingController extends Controller
      */
     public function update(Request $request, User $ranking)
     {
-        $request->validate([
-            'title' => 'required',
-            'description' => 'required',
-        ]);
     
         $ranking->update($request->all());
     

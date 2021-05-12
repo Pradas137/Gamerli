@@ -14,7 +14,7 @@
       {{ csrf_field() }}
       <input type="file" id="avatarInput" name="avatar">
     </form>
-            <div class="block lg:hidden rounded-full shadow-xl mx-auto -mt-16 h-48 w-48 bg-cover bg-center" style="background-image: url('data:image/png;base64,{{ Auth::user()->avatar }}')">
+            <div class="block lg:hidden rounded-full shadow-xl mx-auto -mt-16 h-48 w-48 bg-cover bg-center" src="{{asset('/images/logo2.png')}}" style="background-image: url('data:image/png;base64,{{ Auth::user()->avatar }}')">
             </div>
 			
 			<h1 class="text-3xl font-bold pt-8 lg:pt-0 text-black">{{ Auth::user()->name }}</h1>
@@ -35,7 +35,7 @@
 		</div>
 	</div>
     <div class="w-full lg:w-2/5">
-		<img class="rounded-none lg:rounded-lg shadow-2xl hidden lg:block" src="data:image/png;base64,{{ Auth::user()->avatar }}">		
+		<img class="rounded-none lg:rounded-lg shadow-2xl hidden lg:block" src="{{asset('/images/logo2.png')}}" style="background-image: url('data:image/png;base64,{{ Auth::user()->avatar }}')">		
 	</div>
 	<div class="modal fade" id="userUpdate" tabindex="-1" role="dialog" style="z-index: 1050; display: none;" aria-hidden="true">
     <div class="fixed z-10 inset-0 overflow-y-auto ease-out duration-400">
@@ -122,3 +122,4 @@
 </x-app-layout>
 <script src="{{asset('js/laracrud.js')}}"></script>
 <script src="{{asset('js/profile.js')}}"></script>
+<script src="{{asset('js/avatar.js')}}"></script>

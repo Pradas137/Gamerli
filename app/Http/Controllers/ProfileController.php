@@ -25,12 +25,32 @@ class ProfileController extends Controller
 
             ]);
 
-        $user = new User();
-        $user->name = $request->name;
-        $user->surname = $request->surname;
-        $user->save();
-        return Response::json($user);
+
+
     }
+
+    public function updatePhoto(Request $request)
+{
+    $this->validate($request, [
+        'avatar' => 'required|image'
+    ]);
+
+    $file = $request->file('avatar');
+    $extension = $file->getClientOriginalExtension();
+    $fileName = auth()->id() . '.' . $extension;
+    $path = public_path('images/users/'.$fileName);
+
+    Image::make($file)->fit(144, 144)->save($path);
+
+    $user = auth()->user();
+    $user->avatar = $extension;
+    $saved = $user->save();
+
+    $data['success'] = $saved;
+    $data['path'] = $user->getAvatarUrl() . '?' . uniqid();
+
+    return $data;
+}
 
     public function update(User $user, Request $request)
     {
