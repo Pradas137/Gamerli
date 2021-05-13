@@ -15,9 +15,10 @@ class SliderController extends Controller
      */
     public function index()
     {
-        //
+        //mysql> select games.name ,comments.ratingscore from games inner join comments on games.id = comments.game_id;
+
         $users = DB::table('game')
-        ->leftJoin('comments', 'gane.id', '=', 'comments.game_id')->orderBy('comments.ratingscore', 'ASC')->get();
+        ->leftJoin('comments', 'game.id', '=', 'comments.game_id')->orderBy('comments.ratingscore', 'ASC')->get();
         return view('dashboard', compact('game'));
     }
 

@@ -1,94 +1,136 @@
-<div class="card mt-5">
-        <div class="card-header">
-            <h2>Laravel 8 CRUD Example from scratch - NiceSnippets.com</h2>
+<x-app-layout page="">
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Dashboard') }}
+        </h2>
+    </x-slot>
+    @if(Auth::user()->role == 'admin')
+    <div class=" text-center flex h-screen">
+    <div class=" bg-gray-600 h-8 md:h-full border-r w-64 text-center border-gray-200">
+            <h6 class="font-bold mb-4 text-2xl">PAGE</h6>
+            <ul>
+                <li class="font-bolt mb-4"><a href="/admin/dashboard">Home</a></li>
+                <li class="font-bolt mb-4"><a href="/admin/dashboard/publicList">Public List</a></li>
+                <li class="font-bolt mb-4"><a href="/admin/dashboard/ranking">Ranking Game</a></li>
+            <ul>
+            <h6 class="font-bold mb-4 text-2xl">ADMIN</h6>
+            <ul>
+                <li class="font-bolt mb-4"><a href="/admin/dashboard/requests">My Request</a></li>
+                <li class="font-bolt mb-4"><a href="/admin/dashboard/myList">My Lists</a></li>
+                <li class="font-bolt mb-4"><a href="/admin/dashboard/profile">Profile</a></li>
+                <li class="font-bolt mb-4"><a href="/admin/dashboard/friend">Friend</a></li>
+            </ul>
         </div>
-        <div class="card-body">
-            <div class="row">
-                <div class="col-lg-12 mt-1 mr-1">
-                    <div class="float-right">
-                        <a class="btn btn-primary" href="{{ route('ranking.index') }}"> Back</a>
+        <div class="w-2/3 mx-auto">
+            <h1 class="text-center text-green-600 text-5xl font-bold"> Edit Game </h1>
+            <form action="{{ route('ranking.update',$ranking->id) }}" method="POST">
+            @csrf
+            @method('PUT')
+                <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col">
+                    <div class="-mx-3 md:flex mb-6">
+                        <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+                            <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="name">
+                            Name Game*
+                            </label>
+                            <input type="text" name="name" value="{{ $ranking->name }}" class="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3 form-control">
+                        </div>
+                        <div class="md:w-1/2 px-3">
+                            <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="developer">
+                            Developer*
+                            </label>
+                            <input type="text" name="developer" value="{{ $ranking->developer }}" class="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3 form-control">
+                        </div>
+                        <div class="md:w-1/2 px-3">
+                            <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="director">
+                            Director*
+                            </label>
+                            <input type="text" name="director" value="{{ $ranking->director }}" class="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3 form-control">
+                        </div>
+                    </div>
+                    <div class="-mx-3 md:flex mb-6">
+                        <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+                            <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="publisher">
+                            Publisher*
+                            </label>
+                            <input type="text" name="publisher" value="{{ $ranking->publisher }}" class="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3 form-control">
+                        </div>
+                        <div class="md:w-1/2 px-3">
+                            <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="date">
+                            Date*
+                            </label>
+                            <input type="date" name="date" value="{{ $ranking->date }}" class="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3 form-control">
+                        </div>
+                        <div class="md:w-1/2 px-3">
+                            <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="summary">
+                            Sumary*
+                            </label>
+                            <input type="text" name="summary" value="{{ $ranking->summary }}" class="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3 form-control">
+                        </div>
+                    </div>
+                    <div class="-mx-3 md:flex mb-6">
+                        <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+                            <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="publisher">
+                            Page Referent*
+                            </label>
+                            <input type="text" name="page_referent" value="{{ $ranking->page_referent }}" class="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3 form-control">
+                        </div>
+                        <div class="md:w-1/2 px-3">
+                            <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="sage">
+                            Saga*
+                            </label>
+                            <input type="text" name="saga" value="{{ $ranking->saga }}" class="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3 form-control">
+                        </div>
+                        <div class="md:w-1/2 px-3">
+                            <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="summary">
+                            Image*
+                            </label>
+                            <input type="text" name="image" value="{{ $ranking->image }}" class="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3 form-control">
+                        </div>
+                    </div>
+                    <div class="-mx-3 md:flex mb-6">
+                        <div class="md:w-1/2 px-3">
+                            <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="sage">
+                            Platform*
+                            </label>
+                            <input type="text" name="platform_id" value="{{ $ranking->platform_id }}" class="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3 form-control">
+                        </div>
+                        <div class="md:w-1/2 px-3">
+                            <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="summary">
+                            Prgi*
+                            </label>
+                            <input type="text" name="pegi" value="{{ $ranking->pegi }}" class="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3 form-control">
+                        </div>
+                        <div class="md:w-1/2 px-3">
+                            <button class="md:w-full bg-gray-900 text-white font-bold py-2 px-4 border-b-4 hover:border-b-2 border-gray-500 hover:border-gray-100 rounded-full">
+                            Button
+                            </button>
+                            <button href="/admin/dashboard/ranking" class="md:w-full bg-gray-900 text-white font-bold py-2 px-4 border-b-4 hover:border-b-2 border-gray-500 hover:border-gray-100 rounded-full">
+                            Atras
+                            </button>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="row mt-2">
-                <div class="col-lg-12">
-                    @if ($message = Session::get('success'))
-                        <div class="alert alert-success">
-                            <p>{{ $message }}</p>
-                        </div>
-                    @endif
-                </div>
-                <div class="col-lg-12">
-                    @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <strong>Whoops!</strong> There were some problems with your input.<br><br>
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
-                  
-                    <form action="{{ route('ranking.update',$ranking->id) }}" method="POST">
-                        @csrf
-                        @method('PUT')
-                   
-                         <div class="row">
-                            <div class="col-xs-12 col-sm-12 col-md-12">
-                                <div class="form-group">
-                                    <strong>Name:</strong>
-                                    <input type="text" name="name" value="{{ $ranking->name }}" class="form-control" placeholder="Name">
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-sm-12 col-md-12">
-                                <div class="form-group">
-                                    <strong>Developer:</strong>
-                                    <input type="text" name="developer" value="{{ $ranking->developer }}" class="form-control" placeholder="Developer">
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-sm-12 col-md-12">
-                                <div class="form-group">
-                                    <strong>Director:</strong>
-                                    <input type="text" name="director" value="{{ $ranking->director }}" class="form-control" placeholder="Director">
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-sm-12 col-md-12">
-                                <div class="form-group">
-                                    <strong>Publisher:</strong>
-                                    <input type="text" name="publisher" value="{{ $ranking->publisher }}" class="form-control" placeholder="Publisher">
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-sm-12 col-md-12">
-                                <div class="form-group">
-                                    <strong>Date:</strong>
-                                    <input type="date" name="date" value="{{ $ranking->date }}" class="form-control">
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-sm-12 col-md-12">
-                                <div class="form-group">
-                                    <strong>Pegi:</strong>
-                                    <input type="number" name="pegi" value="{{ $ranking->pegi }}" class="form-control" placeholder="Pegi">
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-sm-12 col-md-12">
-                                <div class="form-group">
-                                    <strong>Summary:</strong>
-                                    <input type="text" name="surname" value="{{ $ranking->sumary }}" class="form-control" placeholder="Sumarry">
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-sm-12 col-md-12">
-                                <div class="form-group">
-                                    <strong>Page reference:</strong>
-                                    <input type="text" name="surname" value="{{ $ranking->page_reference }}" class="form-control" placeholder="Title">
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                              <button type="submit" class="btn btn-success">Submit</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
+            </form>
         </div>
     </div>
+    @else
+    <script src="{{asset('js/breadcrumb.js')}}"></script>
+    <div class="flex h-screen">
+        <div class="h-8 md:h-full border-r w-64 text-center border-gray-200">
+            <h6 class="font-bold mb-4 text-2xl">PAGE</h6>
+            <ul>
+                <li class="font-bolt mb-4"><a href="/dashboard">Home</a></li>
+                <li class="font-bolt mb-4"><a href="/dashboard/publicList">Global list</a></li>
+                <li class="font-bolt mb-4"><a href="/dashboard/ranking">Ranking Games</a></li>
+            <ul>
+            <h6 class="font-bold mb-4 text-2xl">ADMIN</h6>
+            <ul>
+                <li class="font-bolt mb-4"><a href="/dashboard/request">My Request</a></li>
+                <li class="font-bolt mb-4"><a href="/dashboard/myList">My Lists</a></li>
+                <li class="font-bolt mb-4"><a href="/dashboard/profile">Profile</a></li>
+                <li class="font-bolt mb-4"><a href="/dashboard/friend">Friend</a></li>
+
+            </ul>
+        </div>
+        @endif
+</x-app-layout>

@@ -22,7 +22,7 @@
             </ul>
         </div>
         <div class="w-2/3 mx-auto">
-        <h1 class="text-center text-green-600 text-5xl font-bold"> Create Game </h1>
+        <h1 class="text-center text-green-600 text-5xl font-bold"> show Game </h1>
         <form method="POST" action="{{ route('ranking.store') }}">
             @csrf
             <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col">

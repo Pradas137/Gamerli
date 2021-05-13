@@ -8,23 +8,20 @@
     <div class="carousel"> 
    <div class="carousel-inner"> 
       <input name="carousel" class="carousel-open" id="carousel-1" aria-hidden="true" type="radio" hidden="true" Checked/> 
-      <div class="bg-contain bg-center  bg-no-repeat carousel-item" style="background-image: url('https:<?php $image ?>')> 
+      <div class="bg-contain bg-center  bg-no-repeat carousel-item" style="background-image: url('https:{{$image}}')"> 
          <h1 class="text-yellow-600">Slide 1</h1> 
       </div> 
       <input name="carousel" class="carousel-open" id="carousel-2" aria-hidden="true" type="radio" hidden="true"/> 
       <div class="bg-contain bg-center  carousel-item" style="background-image: url()"> 
          <h1>Slide 2</h1> 
-         <p> Content here for page two.</p> 
       </div> 
       <input name="carousel" class="carousel-open" id="carousel-3" aria-hidden="true" type="radio" hidden="true"/> 
       <div class="bg-contain bg-center  carousel-item" style="background-image: url()"> 
          <h1>Slide 3</h1> 
-         <p> Content here for page three.</p> 
       </div> 
       <input name="carousel" class="carousel-open" id="carousel-4" aria-hidden="true" type="radio" hidden="true"/> 
       <div class="bg-contain bg-center  carousel-item" style="background-image: url()"> 
          <h1>Slide 4</h1> 
-         <p> Content here for page four.</p> 
       </div> 
       <label class="carousel-control prev control-1" for="carousel-4">‹</label>
       <label class="carousel-control next control-1" for="carousel-2">›</label>
