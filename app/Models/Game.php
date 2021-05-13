@@ -13,8 +13,11 @@ class Game extends Model
 {
     use HasFactory;
 
+    protected $table = 'games';
+    protected $fillable = ['name','developer','director','publisher','date','pegi','summary','page_reference','image','validate','saga','platform_id'];
+
     public function platforms(){
-    	return $this->belongsTo(Platform::class);
+    	return $this->belongsTo(Platform::class,'platform_id');
     }
 
     public function comments(){

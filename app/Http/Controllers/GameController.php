@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Platform;
+use App\Models\Game;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
-use App\Imports\PlatformImport;
+use App\Imports\GameImport;
 
 
-class PlatformController extends Controller
+class GameController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,12 +19,12 @@ class PlatformController extends Controller
 
 public function fileImportExport()
   {
-     return view('file-import-export-platforms');
+     return view('file-import-export-games');
   }
 
   public function fileImport(Request $request) 
   {
-    Excel::import(new PlatformImport, $request->file('file')->store('temp'));
+    Excel::import(new GameImport, $request->file('file')->store('temp'));
 
     return back();
   }

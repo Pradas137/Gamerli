@@ -17,6 +17,7 @@ use App\Models\User;
 use App\Models\Score;
 use App\Http\Controllers\GameImportController;
 use App\Http\Controllers\PlatformController;
+use App\Http\Controllers\GameController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Gamerli2Controller;
@@ -139,9 +140,10 @@ Auth::routes(['verify'=> true]);
 
 Route::get('/home','HomeController@index')->name('home')->middleware('verified');
 
-Route::get('file-import-export', [PlatformController::class, 'fileImportExport']);
-Route::post('file-import', [PlatformController::class, 'fileImport'])->name('file-import');
-
+Route::get('file-import-export-platforms', [PlatformController::class, 'fileImportExport']);
+Route::post('file-import-platforms', [PlatformController::class, 'fileImport'])->name('file-import-platforms');
+Route::get('file-import-export-games', [GameController::class, 'fileImportExport']);
+Route::post('file-import-games', [GameController::class, 'fileImport'])->name('file-import-games');
 
 
 /*Route::resource('admin/dashboard/Import', GameImportController::class);

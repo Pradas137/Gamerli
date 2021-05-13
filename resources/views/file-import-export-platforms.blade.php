@@ -11,10 +11,10 @@
 <body>
     <div class="container mt-5 text-center">
         <h2 class="mb-4">
-            Laravel 7 Import and Export CSV & Excel to Database Example
+            Importar cosas
         </h2>
 
-        <form action="{{ route('file-import') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('file-import-platforms') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group mb-4" style="max-width: 500px; margin: 0 auto;">
                 <div class="custom-file text-left">
