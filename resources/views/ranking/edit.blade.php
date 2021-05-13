@@ -38,13 +38,49 @@
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
                                     <strong>Name:</strong>
-                                    <input type="text" name="name" value="{{ $ranking->name }}" class="form-control" placeholder="Title">
+                                    <input type="text" name="name" value="{{ $ranking->name }}" class="form-control" placeholder="Name">
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
-                                    <strong>Surname:</strong>
-                                    <input type="text" name="surname" value="{{ $ranking->surname }}" class="form-control" placeholder="Title">
+                                    <strong>Developer:</strong>
+                                    <input type="text" name="developer" value="{{ $ranking->developer }}" class="form-control" placeholder="Developer">
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                    <strong>Director:</strong>
+                                    <input type="text" name="director" value="{{ $ranking->director }}" class="form-control" placeholder="Director">
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                    <strong>Publisher:</strong>
+                                    <input type="text" name="publisher" value="{{ $ranking->publisher }}" class="form-control" placeholder="Publisher">
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                    <strong>Date:</strong>
+                                    <input type="date" name="date" value="{{ $ranking->date }}" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                    <strong>Pegi:</strong>
+                                    <input type="number" name="pegi" value="{{ $ranking->pegi }}" class="form-control" placeholder="Pegi">
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                    <strong>Summary:</strong>
+                                    <input type="text" name="surname" value="{{ $ranking->sumary }}" class="form-control" placeholder="Sumarry">
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                    <strong>Page reference:</strong>
+                                    <input type="text" name="surname" value="{{ $ranking->page_reference }}" class="form-control" placeholder="Title">
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-12 text-center">

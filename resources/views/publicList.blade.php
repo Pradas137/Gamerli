@@ -25,9 +25,6 @@
         <div>    
     </div>
     @else
-    <!--@section('breadcrumbs')
-        {{ Breadcrumbs::render('publicList') }}
-    @endsection-->
     <script src="{{asset('js/breadcrumb.js')}}"></script>
     <div class="flex h-screen">
         <div class="bg-gray-600 h-8 md:h-full border-r w-64 text-center border-gray-200">

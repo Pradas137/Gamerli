@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
     @if(Auth::user()->role == 'admin')
-    <div class="flex h-screen">
+    <div class=" text-center flex h-screen">
     <div class=" bg-gray-600 h-8 md:h-full border-r w-64 text-center border-gray-200">
             <h6 class="font-bold mb-4 text-2xl">PAGE</h6>
             <ul>
@@ -21,47 +21,113 @@
                 <li class="font-bolt mb-4"><a href="/admin/dashboard/friend">Friend</a></li>
             </ul>
         </div>
-        <div class="p-6">
-            <h1 class="text-4xl font-bold mb-10">Friend</h1>
-            <form method="POST" action="{{ route('ranking.store') }}">
+        <div class="w-2/3 mx-auto">
+        <h1 class="text-center text-green-600 text-5xl font-bold"> Create Game </h1>
+        <form method="POST" action="{{ route('ranking.store') }}">
             @csrf
-
-            <!-- Name -->
-            <div>
-                <x-label for="name" :value="__('Name')" />
-                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
+            <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col">
+                <div class="-mx-3 md:flex mb-6">
+                    <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+                        <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="name">
+                        Name Game*
+                        </label>
+                        <input class="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3"name="name" id="name" type="text" placeholder="Name">
+                    </div>
+                    <div class="md:w-1/2 px-3">
+                        <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="developer">
+                        Developer*
+                        </label>
+                        <input class="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3" name="developer" id="developer" type="text" placeholder="Developer">
+                    </div>
+                    <div class="md:w-1/2 px-3">
+                        <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="director">
+                        Director*
+                        </label>
+                        <input class="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3" name="director" id="director" type="text" placeholder="Director">
+                    </div>
+                </div>
+                <div class="-mx-3 md:flex mb-6">
+                    <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+                        <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="publisher">
+                        Publisher*
+                        </label>
+                        <input class="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3" name="publisher" id="publisher" type="text" placeholder="Publisher">
+                    </div>
+                    <div class="md:w-1/2 px-3">
+                        <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="date">
+                        Date*
+                        </label>
+                        <input class="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3" name="date" id="date" type="date" placeholder="Date">
+                    </div>
+                    <div class="md:w-1/2 px-3">
+                        <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="summary">
+                        Sumary*
+                        </label>
+                        <input class="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3" name="summary" id="summary" type="text" placeholder="Summary">
+                    </div>
+                </div>
+                <div class="-mx-3 md:flex mb-6">
+                    <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+                        <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="publisher">
+                        Page Referent*
+                        </label>
+                        <input class="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3" name="page_reference" id="page_reference" type="text" placeholder="Page_reference">
+                    </div>
+                    <div class="md:w-1/2 px-3">
+                        <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="sage">
+                        Saga*
+                        </label>
+                        <input class="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3" name="saga" id="saga" type="text" placeholder="Saga">
+                    </div>
+                    <div class="md:w-1/2 px-3">
+                        <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="summary">
+                        Image*
+                        </label>
+                        <input class="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3" name="image" id="image" type="text" placeholder="image">
+                    </div>
+                </div>
+                <div class="-mx-3 md:flex mb-2">
+                    <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+                        <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="platform">
+                        Platform*
+                        </label>
+                    <div>
+                    <select class="w-full bg-gray-200 border border-gray-200 text-black text-xs py-3 px-4 pr-8 mb-3 rounded" name="platform" id="platform">
+                        <option>Xbox One</option>
+                        <option>PS5</option>
+                        <option>Switch</option>
+                    </select>
+                </div>
             </div>
+            <div class="md:w-1/2 px-3">
+                <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" form="pegi">
+                Pegi
+                </label>
+                <div>
+                    <select class="w-full bg-gray-200 border border-gray-200 text-black text-xs py-3 px-4 pr-8 mb-3 rounded" name="pegi" id="pegi">
+                        <option>3</option>
+                        <option>7</option>
+                        <option>12</option>
+                        <option>16</option>
+                        <option>18</option>
 
-
-            <!-- Surname -->
-            <div class="mt-4">
-                <x-label  for="surname" :value="__('Surname')" />
-
-                <x-input id="surname" class="block mt-1 w-full" type="text" name="surname" :value="old('surname')" required />
+                    </select>
+                </div>
             </div>
-
-
-            <!-- Email Address -->
-            <div class="mt-4">
-                <x-label for="email" :value="__('Email')" />
-
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
+        </div>
+        <div class="-mx-3 md:flex mt-2">
+          <div class="md:w-full px-10">
+            <a class="md:w-full bg-gray-900 text-white font-bold py-2 px-4 border-b-4 hover:border-b-2 border-gray-500 hover:border-gray-100 rounded-full">
+              Button
+            </a>
+          </div>
+            <div class="md:w-full px-10">
+            <a href="/admin/dashboard/ranking" class="md:w-full bg-gray-900 text-white font-bold py-2 px-4 border-b-4 hover:border-b-2 border-gray-500 hover:border-gray-100 rounded-full">
+                    Atras
+            </a>
             </div>
-            <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
-
-                <x-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="new-password" />
-            </div>
-            <div class="flex items-center justify-end mt-4">
-
-                <button type="submit" class="btn btn-success">Create</button>
-                <x-button class="ml-4">
-                    <a href="{{ route('ranking.index') }}">Atras</a>
-                </x-button>
-            </div>
+        </div>
+      </div>
         </form>
     </div>
 </div>

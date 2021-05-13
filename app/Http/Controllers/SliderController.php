@@ -16,9 +16,9 @@ class SliderController extends Controller
     public function index()
     {
         //
-        $users = DB::table('users')
-        ->leftJoin('comments', 'users.id', '=', 'comments.user_id')->orderBy('comments.ratingscore', 'ASC');->get();
-        return view('dashboard', compact('users'));
+        $users = DB::table('game')
+        ->leftJoin('comments', 'gane.id', '=', 'comments.game_id')->orderBy('comments.ratingscore', 'ASC')->get();
+        return view('dashboard', compact('game'));
     }
 
     /**

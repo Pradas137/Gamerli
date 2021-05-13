@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User;
+use App\Models\Game;
 
 class RankingController extends Controller
 {
@@ -15,7 +15,7 @@ class RankingController extends Controller
     public function index(/*$request*/)
     {
        
-            $rankings = User::latest()->paginate(5);
+            $rankings = Game::latest()->paginate(5);
             return view('ranking.index', ['rankings' => $rankings]);
        
         //
@@ -43,7 +43,7 @@ class RankingController extends Controller
     public function store(Request $request)
     {
     
-        User::create($request->all());
+        Game::create($request->all());
         return redirect()->route('ranking.index')
                         ->with('success','Game created successfully.');
     }
@@ -54,7 +54,7 @@ class RankingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(User $ranking)
+    public function show(Game $ranking)
     {
         return view('ranking.show',compact('ranking'));
     }
@@ -65,7 +65,7 @@ class RankingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $ranking)
+    public function edit(Game $ranking)
     {
         return view('ranking.edit',compact('ranking'));
     }
@@ -77,7 +77,7 @@ class RankingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $ranking)
+    public function update(Request $request, Game $ranking)
     {
     
         $ranking->update($request->all());
@@ -92,7 +92,7 @@ class RankingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $ranking)
+    public function destroy(Game $ranking)
     {
         $ranking->delete();
     
