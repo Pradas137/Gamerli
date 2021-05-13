@@ -20,8 +20,6 @@ use App\Http\Controllers\PlatformController;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\HomeController;
-
 
 
 /*
