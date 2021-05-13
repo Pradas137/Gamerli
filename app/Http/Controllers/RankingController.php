@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Game;
+use App\Models\User;
 
 class RankingController extends Controller
 {
@@ -14,9 +16,9 @@ class RankingController extends Controller
      */
     public function index(/*$request*/)
     {
-       
-            $rankings = Game::latest()->paginate(5);
-            return view('ranking.index', ['rankings' => $rankings]);
+
+       $rankings = Game::latest()->paginate(5);
+        return view('ranking.index', ['rankings' => $rankings]);
        
         //
         //return json_decode($request->header("filter"),TRUE);

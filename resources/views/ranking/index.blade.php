@@ -23,13 +23,20 @@
       </div>
       <div class="w-2/3 mx-auto">
         <div class="bg-white shadow-md rounded my-6">
-          <form class="form-inline my-2 my-lg-0" type="get" action="{{url('/search')}}">
+          <!--<form class="form-inline my-2 my-lg-0" type="get" action="{{url('/search')}}">
             <input class="form-control mr -sm-2" type="search" placeholder="Search">
             <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
-            <div class="text-center">
+          </form>-->
+          <select class="form-control form-control-md" id="selectLang">
+            <option selected disabled>Select Language </option>
+                @foreach($rankings as $games)
+                  <option value="{{ $games->name  }}">{{ $games->name}}</option>
+                @endforeach
+
+                        </select>
+          <div class="text-center">
             <a class="btn btn-info text-center inline-flex items-center px-4 py-2 bg-green-800 border border-transparent rounded-md font-semibold text-sm text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150" href="/admin/dashboard/ranking/create">Add Game</a>
             </div>
-          </form>
           <table class="text-left w-full border-collapse">
             <thead>
               <tr>
@@ -92,7 +99,7 @@
             <a class="btn btn-info" href="/dashboard/ranking/create">Add Game</a>
             </div>
           </form>
-          <table class="text-left w-full border-collapse">
+          <table id="studentsData" class="text-left w-full border-collapse">
             <thead>
               <tr>
                 <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Name</th>
@@ -127,4 +134,5 @@
       </div>
     </div>
     @endif
+    <script src="{{asset('js/ranking.js')}}"></script>
 </x-app-layout>

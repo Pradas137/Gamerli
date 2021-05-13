@@ -33,7 +33,109 @@
                 font-family: 'Nunito', sans-serif;
                 background: url("/images/fondoGamer.jpg");
             }
-        </style>
+    .carousel {
+    border-style:solid;
+    border-width:1px;
+    border-color:rgba(0, 0, 0, 0.05);
+    box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1);
+    widht:100%;
+    height:250px;
+}
+
+.carousel-inner {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height:250px;
+}
+
+.carousel-open:checked + .carousel-item {
+    position: absolute;
+    opacity: 100;
+    background-color:white;
+    width:100%;
+    height:250px;
+}
+
+.carousel-item {
+    position: absolute;
+    opacity: 0;
+    padding-top:10px;
+    text-align:center;
+}
+
+.carousel-control {
+    background: rgba(0, 0, 0, 0);
+    border-radius: 50%;
+    color:#008c6c;
+    cursor: pointer;
+    display: none;
+    font-size: 30px;
+    height: 40px;
+    line-height: 35px;
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translate(0, -50%);
+    cursor: pointer;
+    -ms-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+    text-align: center;
+    width: 40px;
+    z-index: 10;
+}
+
+.carousel-control.prev {
+    left: 2%;
+}
+
+.carousel-control.next {
+    right: 2%;
+}
+
+.carousel-control:hover {
+    background: rgba(0, 0, 0, 0.05);
+    color: #008c6c;
+}
+
+#carousel-1:checked ~ .control-1,
+#carousel-2:checked ~ .control-2,
+#carousel-3:checked ~ .control-3,
+#carousel-4:checked ~ .control-4 {
+    display: block;
+}
+
+.carousel-indicators {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    bottom: 2px;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+
+.carousel-indicators li {
+    display: inline-block;
+    margin: 0 5px;
+}
+
+.carousel-bullet {
+    color: rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    font-size: 25px;
+}
+
+.carousel-bullet:hover {
+    color: rgba(0, 0, 0, 0.1);
+}
+
+#carousel-1:checked ~ .control-1 ~ .carousel-indicators li:nth-child(1) .carousel-bullet,
+#carousel-2:checked ~ .control-2 ~ .carousel-indicators li:nth-child(2) .carousel-bullet,
+#carousel-3:checked ~ .control-3 ~ .carousel-indicators li:nth-child(3) .carousel-bullet,
+#carousel-4:checked ~ .control-4 ~ .carousel-indicators li:nth-child(4) .carousel-bullet {
+    color: blue;
+}
+    </style>
     </head>
     <body class="font-sans antialiased dark:bg-gray-800 dark:text-white bg-base">
     @include('message_flash')
