@@ -20,6 +20,7 @@ use App\Http\Controllers\PlatformController;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RankingController;
 
 
 /*
@@ -80,7 +81,10 @@ Route::get('/dashboard/friend', function () {
 
 // route dashboard Admin (AdminPanel)
 Route::get('/admin/dashboard', function () {
-    return view('dashboard');
+    $image = Game::where('name','like','%'."Assassin's Creed".'%')->first();
+    $urlimage=$image->image;
+    return view('dashboard',['image' => $urlimage]);
+
 })->middleware(['auth',  'can:accessAdmin'])->name('adminDashboard');
 
 Route::get('/admin/dashboard/request', function () {

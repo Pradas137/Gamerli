@@ -19,7 +19,6 @@ class RankingController extends Controller
 
        $rankings = Game::latest()->paginate(5);
         return view('ranking.index', ['rankings' => $rankings]);
-       
         //
         //return json_decode($request->header("filter"),TRUE);
         //if (isset($request->header("filter"))){
