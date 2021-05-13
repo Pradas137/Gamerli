@@ -18,7 +18,6 @@ use App\Models\Score;
 use App\Http\Controllers\GameImportController;
 use App\Http\Controllers\PlatformController;
 use App\Http\Controllers\GameController;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RankingController;
 
@@ -102,9 +101,9 @@ Route::get('/send-email', [PostController::class, 'sendEmail']);
 
 Route::resource('userUpdate', ProfileController::class);
 
-Auth::routes(['verify'=> true]);
+//Auth::routes(['verify'=> true]);
 
-Route::get('/home','HomeController@index')->name('home')->middleware('verified');
+//Route::get('/home','HomeController@index')->name('home')->middleware('verified');
 
 Route::get('file-import-export-platforms', [PlatformController::class, 'fileImportExport']);
 Route::post('file-import-platforms', [PlatformController::class, 'fileImport'])->name('file-import-platforms');
