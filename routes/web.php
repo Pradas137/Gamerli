@@ -15,7 +15,9 @@ use App\Models\Publisher;
 use App\Models\Saga;
 use App\Models\User;
 use App\Models\Score;
-use App\Http\Controllers\RankingController;
+use App\Http\Controllers\GameImportController;
+use App\Http\Controllers\PlatformController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
 
@@ -41,6 +43,7 @@ Route::resource('/dashboard/profile','App\Http\Controllers\ProfileController');
 
 Route::get('/', function () {
     return view('welcome');
+
 });
 
 require __DIR__.'/auth.php';
@@ -89,9 +92,32 @@ Route::get('/admin/dashboard/publicList', function () {
     return view('publicList');
 })->middleware(['auth',  'can:accessAdmin'])->name('publicList');
 
+<<<<<<< HEAD
 Route::get('/admin/dashboard/myList', function () {
     return view('myList');
 })->middleware(['auth',  'can:accessAdmin'])->name('myList');
+=======
+Route::resource('admin/dashboard/Import', GameImportController::class);
+//mails
+Route::get('/send-email', [PostController::class, 'sendEmail']);
+
+
+Route::resource('userUpdate', ProfileController::class);
+
+Auth::routes(['verify'=> true]);
+
+Route::get('/home','HomeController@index')->name('home')->middleware('verified');
+
+Route::get('file-import-export', [PlatformController::class, 'fileImportExport']);
+Route::post('file-import', [PlatformController::class, 'fileImport'])->name('file-import');
+
+
+
+/*Route::resource('admin/dashboard/Import', GameImportController::class);
+
+Route::resource('admin/dashboard/RankingAdmin.index', GameController::class);
+*/
+>>>>>>> origin/dev_carlos
 
 Route::get('/admin/dashboard/friend', function () {
     return view('friend');

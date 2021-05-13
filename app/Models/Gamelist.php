@@ -11,11 +11,16 @@ class Gamelist extends Model
 {
     use HasFactory;
 
+protected $fillable = ['name','user_id'];
+
     public function games(){
     	return $this->belongsToMany(Game::class);
     }
 
     public function users(){
     	return $this->belongsTo(User::class);
+    }
+    public function create(){
+
     }
 }
