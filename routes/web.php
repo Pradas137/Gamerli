@@ -93,11 +93,6 @@ Route::get('/admin/dashboard/publicList', function () {
     return view('publicList');
 })->middleware(['auth',  'can:accessAdmin'])->name('publicList');
 
-<<<<<<< HEAD
-Route::get('/admin/dashboard/myList', function () {
-    return view('myList');
-})->middleware(['auth',  'can:accessAdmin'])->name('myList');
-=======
 Route::resource('admin/dashboard/Import', GameImportController::class);
 //mails
 Route::get('/send-email', [PostController::class, 'sendEmail']);
@@ -119,7 +114,6 @@ Route::post('file-import-games', [GameController::class, 'fileImport'])->name('f
 
 Route::resource('admin/dashboard/RankingAdmin.index', GameController::class);
 */
->>>>>>> origin/dev_carlos
 
 Route::get('/admin/dashboard/friend', function () {
     return view('friend');
