@@ -8,7 +8,7 @@
     <div class="carousel"> 
    <div class="carousel-inner"> 
       <input name="carousel" class="carousel-open" id="carousel-1" aria-hidden="true" type="radio" hidden="true" Checked/> 
-      <div class="bg-contain bg-center  bg-no-repeat carousel-item" style="background-image: url(https:"+ $urlimage +");"> 
+      <div class="bg-contain bg-center  bg-no-repeat carousel-item" style="background-image: url('https:<?php $image ?>')> 
          <h1 class="text-yellow-600">Slide 1</h1> 
       </div> 
       <input name="carousel" class="carousel-open" id="carousel-2" aria-hidden="true" type="radio" hidden="true"/> 
