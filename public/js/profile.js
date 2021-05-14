@@ -1,85 +1,63 @@
+$(document).on("click", ".update", function() {
+    var edit_id = $(this).data('id');
 
-    function addTodo() {
-        var task = $('#task').val();
-        let _url     = `/admin/dashboard/profile`;
-        let _token   = $('meta[name="csrf-token"]').attr('content');
+    var name = $('#name_' + edit_id).val();
+    var surname = $('#surname_' + edit_id).val();
 
+    if (name != '' && surname != '') {
         $.ajax({
-            url: _url,
-            type: "POST",
-            data: {
-                todo: task,
-                _token: _token
-            },
-            success: function(data) {
-                    todo = data
-                    $('table tbody').append(`
-                        <tr id="todo_${todo.id}">
-                            <td>${todo.id}</td>
-                            <td>${ todo.todo }</td>
-                            <td>
-                                <a data-id="${ todo.id }" onclick="editTodo(${todo.id})" class="btn btn-info">Edit</a>
-                                <a data-id="${todo.id}" class="btn btn-danger" onclick="deleteTodo(${todo.id})">Delete</a>
-                            </td>
-                        </tr>
-                    `);
-
-                    $('#task').val('');
-
-                    $('#addTodoModal').modal('hide');
-            },
-            error: function(response) {
-                $('#taskError').text(response.responseJSON.errors.todo);
-            }
-        });
-    }
-
-    function deleteTodo(id) {
-        let url = `/admin/dashboard/profile/${id}`;
-        let token   = $('meta[name="csrf-token"]').attr('content');
-
-        $.ajax({
-            url: url,
-            type: 'DELETE',
-            data: {
-            _token: token
-            },
+            url: '/admin/dashboard/profile',
+            type: 'post',
+            data: { _token: CSRF_TOKEN, editid: edit_id, name: name, surname: surname },
             success: function(response) {
-                $("#todo_"+id).remove();
+                alert(response);
             }
         });
+    } else {
+        alert('Fill all fields');
     }
+});
 
-    function editTodo(e) {
-        var id  = $(e).data("id");
-        var todo  = $("#todo_"+id+" td:nth-child(2)").html();
-        $("#todo_id").val(id);
-        $("#edittask").val(todo);
-        $('#editTodoModal').modal('show');
-    }
+// Fetch records
+function fetchRecords() {
+    $.ajax({
+        url: 'getUsers',
+        type: 'get',
+        dataType: 'json',
+        success: function(response) {
 
-    function updateTodo() {
-        var task = $('#edittask').val();
-        var id = $('#todo_id').val();
-        let _url     = `/admin/dashboard/profile/${id}`;
-        let _token   = $('meta[name="csrf-token"]').attr('content');
-
-        $.ajax({
-            url: _url,
-            type: "PUT",
-            data: {
-                todo: task,
-                _token: _token
-            },
-            success: function(data) {
-                    todo = data
-                    $("#todo_"+id+" td:nth-child(2)").html(todo.todo);
-                    $('#todo_id').val('');
-                    $('#edittask').val('');
-                    $('#editTodoModal').modal('hide');
-            },
-            error: function(response) {
-                $('#taskError').text(response.responseJSON.errors.todo);
+            var len = 0;
+            $('#userTable tbody tr:not(:first)').empty(); // Empty <tbody>
+            if (response['data'] != null) {
+                len = response['data'].length;
             }
-        });
-    }
+
+            if (len > 0) {
+                for (var i = 0; i < len; i++) {
+
+                    var id = response['data'][i].id;
+                    var username = response['data'][i].username;
+                    var name = response['data'][i].name;
+                    var email = response['data'][i].email;
+
+                    var tr_str = "<tr>" +
+                        "<td align='center'><input type='text' value='" + username + "' id='username_" + id + "' disabled></td>" +
+                        "<td align='center'><input type='text' value='" + name + "' id='name_" + id + "'></td>" +
+                        "<td align='center'><input type='email' value='" + email + "' id='email_" + id + "'></td>" +
+                        "<td align='center'><input type='button' value='Update' class='update' data-id='" + id + "' ><input type='button' value='Delete' class='delete' data-id='" + id + "' ></td>" +
+                        "</tr>";
+
+                    $("#userTable tbody").append(tr_str);
+
+                }
+            } else {
+                var tr_str = "<tr class='norecord'>" +
+                    "<td align='center' colspan='4'>No record found.</td>" +
+                    "</tr>";
+
+                $("#userTable tbody").append(tr_str);
+            }
+
+        }
+    });
+}

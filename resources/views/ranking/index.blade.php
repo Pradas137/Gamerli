@@ -30,9 +30,8 @@
           <select class="form-control form-control-md" id="selectLang">
             <option selected disabled>Select Language </option>
                 @foreach($rankings as $games)
-                  <option value="{{ $games->name  }}">{{ $games->name}}</option>
+                  <option value="{{ $games->platform_id  }}">{{ $games->platform_id}}</option>
                 @endforeach
-
                         </select>
           <div class="text-center">
             <a class="btn btn-info text-center inline-flex items-center px-4 py-2 bg-green-800 border border-transparent rounded-md font-semibold text-sm text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150" href="/admin/dashboard/ranking/create">Add Game</a>
@@ -126,10 +125,8 @@
                 <td>
                 <form action="{{ route('ranking.destroy',$game->id) }}" method="POST">
                    <a class="btn btn-info text-center inline-flex items-center px-4 py-2 bg-green-800 border border-transparent rounded-md font-semibold text-sm text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150" href="/dashboard/ranking/{{$game->id}}">Show</a>
-                   <a class="btn btn-primary text-center inline-flex items-center px-4 py-2 bg-yellow-800 border border-transparent rounded-md font-semibold text-sm text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150" href="/dashboard/ranking/{{$game->id}}/edit">Edit</a>
                    @csrf
                    @method('DELETE')
-                   <button type="submit" class="text-center inline-flex items-center px-4 py-2 bg-red-800 border border-transparent rounded-md font-semibold text-sm text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 btn btn-danger">Delete</button>
                </form>
                </td>
               </tr>

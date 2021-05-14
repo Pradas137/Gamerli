@@ -4,36 +4,31 @@
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
+
     @if(Auth::user()->role == 'admin')
-    @section('breadcrumbs')
-        {{ Breadcrumbs::render('Profile') }}
-    @endsection
-    <div class="max-w-4xl flex items-center h-auto lg:h-screen flex-wrap mx-auto my-32 lg:my-0">
+    <div class=" max-w-4xl flex items-center h-auto lg:h-screen flex-wrap mx-auto my-32 lg:my-0">
 	<!--Main Col-->
 	<div id="profile" class="w-full lg:w-3/5 rounded-lg lg:rounded-l-lg lg:rounded-r-none shadow-2xl bg-white opacity-75 mx-6 lg:mx-0">
 		<div class="p-4 md:p-12 text-center lg:text-left">
-            <div class="block lg:hidden rounded-full shadow-xl mx-auto -mt-16 h-48 w-48 bg-cover bg-center" style="background-image: url('data:image/png;base64,{{ Auth::user()->avatar }}')">
+    <form action="{{ url('/admin/dashboard/profile') }}" method="post" style="display: none" id="avatarForm">
+      {{ csrf_field() }}
+      <input type="file" id="avatarInput" name="avatar">
+    </form>
+            <div class="block lg:hidden rounded-full shadow-xl mx-auto -mt-16 h-48 w-48 bg-cover bg-center" src="{{asset('/images/logo2.png')}}" style="background-image: url('data:image/png;base64,{{ Auth::user()->avatar }}')">
             </div>
 			
-			<h1 class="text-3xl font-bold pt-8 lg:pt-0">{{ Auth::user()->name }}</h1>
-			<div class="mx-auto lg:mx-0 w-4/5 pt-3 border-b-2 border-green-500 opacity-25"></div>
-			<p class="pt-4 text-base font-bold flex items-center justify-center lg:justify-start">{{ Auth::user()->surname }}</p>
-			<p class="pt-4 text-base font-bold flex items-center justify-center lg:justify-start">{{ Auth::user()->role }}</p>
-			<p class="pt-2 text-gray-600 text-xs lg:text-sm flex items-center justify-center lg:justify-start">{{ Auth::user()->email }}</p>
+			<h1 class="text-3xl font-bold pt-8 lg:pt-0 text-black">{{ Auth::user()->name }}</h1>
+			<div class="mx-auto lg:mx-0 w-4/5 pt-3 border-b-2 border-green-500 opacity-25 text-black"></div>
+			<p class="pt-4 text-base font-bold flex items-center justify-center lg:justify-start text-black">{{ Auth::user()->surname }}</p>
+			<p class="pt-4 text-base font-bold flex items-center justify-center lg:justify-start text-black">{{ Auth::user()->role }}</p>
+			<p class="pt-2 text-gray-600 text-xs lg:text-sm flex items-center justify-center lg:justify-start text-black">{{ Auth::user()->email }}</p>
 			<p class="pt-8 text-sm">{{ Auth::user()->description }}</p>
-			<div class="pt-4 pb-8">
-				<button id="editar" data-toggle="modal" data-idUpdate="'.$row->id.'" data-target="#userUpdate" class=" userEdits bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full">
-				  Edit
-				</button> 
-				<form name="photo" id="imageUploadForm" enctype="multipart/form-data" action="<?php echo $_SERVER["PHP_SELF"];?>" method="post">
-                    {{ csrf_field() }}
-                    <br>
-                    <label>SUBIR AVATAR</label>
-                    <input type="file" name="image">
-                    <input type="submit" value="save" >
-                </form>
-			</div>
 
+            @foreach($users as $user)
+			<div class="pt-4 pb-8">
+                <a class="btn btn-primary text-center inline-flex items-center px-4 py-2 bg-yellow-800 border border-transparent rounded-md font-semibold text-sm text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150" href="/dashboard/profile/{{ $user->id}}/edit">Edit</a>
+			</div>
+            @endforeach
 			<div class="mt-6 pb-16 lg:pb-0 w-4/5 lg:w-full mx-auto flex flex-wrap items-center justify-between">
 				<a class="link" href="#" data-tippy-content="@facebook_handle"><svg class="h-6 fill-current text-gray-600 hover:text-green-700" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Facebook</title><path d="M22.676 0H1.324C.593 0 0 .593 0 1.324v21.352C0 23.408.593 24 1.324 24h11.494v-9.294H9.689v-3.621h3.129V8.41c0-3.099 1.894-4.785 4.659-4.785 1.325 0 2.464.097 2.796.141v3.24h-1.921c-1.5 0-1.792.721-1.792 1.771v2.311h3.584l-.465 3.63H16.56V24h6.115c.733 0 1.325-.592 1.325-1.324V1.324C24 .593 23.408 0 22.676 0"/></svg></a>
 				<a class="link" href="#" data-tippy-content="@twitter_handle"><svg class="h-6 fill-current text-gray-600 hover:text-green-700" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Twitter</title><path d="M23.954 4.569c-.885.389-1.83.654-2.825.775 1.014-.611 1.794-1.574 2.163-2.723-.951.555-2.005.959-3.127 1.184-.896-.959-2.173-1.559-3.591-1.559-2.717 0-4.92 2.203-4.92 4.917 0 .39.045.765.127 1.124C7.691 8.094 4.066 6.13 1.64 3.161c-.427.722-.666 1.561-.666 2.475 0 1.71.87 3.213 2.188 4.096-.807-.026-1.566-.248-2.228-.616v.061c0 2.385 1.693 4.374 3.946 4.827-.413.111-.849.171-1.296.171-.314 0-.615-.03-.916-.086.631 1.953 2.445 3.377 4.604 3.417-1.68 1.319-3.809 2.105-6.102 2.105-.39 0-.779-.023-1.17-.067 2.189 1.394 4.768 2.209 7.557 2.209 9.054 0 13.999-7.496 13.999-13.986 0-.209 0-.42-.015-.63.961-.689 1.8-1.56 2.46-2.548l-.047-.02z"/></svg></a>
@@ -42,7 +37,7 @@
 		</div>
 	</div>
     <div class="w-full lg:w-2/5">
-		<img class="rounded-none lg:rounded-lg shadow-2xl hidden lg:block" src="data:image/png;base64,{{ Auth::user()->avatar }}">		
+		<img class="rounded-none lg:rounded-lg shadow-2xl hidden lg:block" src="{{asset('/images/logo2.png')}}" style="background-image: url('data:image/png;base64,{{ Auth::user()->avatar }}')">		
 	</div>
 	<div class="modal fade" id="userUpdate" tabindex="-1" role="dialog" style="z-index: 1050; display: none;" aria-hidden="true">
     <div class="fixed z-10 inset-0 overflow-y-auto ease-out duration-400">
@@ -51,65 +46,12 @@
     <div class="fixed inset-0 transition-opacity">
       <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
     </div>
-  
-    <!-- This element is to trick the browser into centering the modal contents. -->
-    <span class="hidden sm:inline-block sm:align-middle sm:h-screen"></span>​
-  
-    <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
-    <form action="/userUpdate" method="post">
-    {{ csrf_field() }}
-                    <input type = "text" hidden class="col-sm-9 form-control"id ="idUpdate" name ="idUpdate" value="" />
-      <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-        <div class="">
-              <div class="mb-4">
-                  <label for="exampleFormControlInput1" class="block text-gray-700 text-sm font-bold mb-2">Name:</label>
-                  <input id="e_name'"type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="exampleFormControlInput1" placeholder="Enter Title" wire:model="title">
-                  @error('name') <span class="text-red-500">{{ $message }}</span>@enderror
-              </div>
-              <div class="mb-4">
-                  <label for="exampleFormControlInput2" class="block text-gray-700 text-sm font-bold mb-2">Surname:</label>
-                  <input id="e_surname" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="exampleFormControlInput2" wire:model="body" placeholder="Enter Body"></textarea>
-                  @error('surname') <span class="text-red-500">{{ $message }}</span>@enderror
-              </div>
-              <div class="mb-4">
-                  <label for="exampleFormControlInput1" class="block text-gray-700 text-sm font-bold mb-2">Email:</label>
-                  <input id="e_email" type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="exampleFormControlInput1" placeholder="Enter Title" wire:model="title">
-                  @error('email') <span class="text-red-500">{{ $message }}</span>@enderror
-              </div>
-        </div>
-      </div>
-    </form>
-      <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-        <span class="flex w-full rounded-md shadow-sm sm:ml-3 sm:w-auto">
-            <button type="button" class="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-green-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-green-500 focus:outline-none focus:border-green-700 focus:shadow-outline-green transition ease-in-out duration-150 sm:text-sm sm:leading-5" onclick="toggleModal('modal-id')">Close</button>
-        </span>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
     </div>
   </div>
 </div>
-    </div>
-    
-	<script>
-
-	// select edit user
-    $(document).on('click', '#editar', function()
-    {
-        var _this = $(this).parents('tr');
-        $('#idUpdate').val(_this.find('.idUpdate').text());
-        $('#e_name').val(_this.find('.names').text());
-        $('#e_surname').val(_this.find('.surname').text());
-        $('#e_email').val(_this.find('.email').text());
-    });
-});
-	</script>
+</div>
 </div>
     @else
-    @section('breadcrumbs')
-        {{ Breadcrumbs::render('Profile') }}
-    @endsection
     <script src="{{asset('js/breadcrumb.js')}}"></script>
     <div class="max-w-4xl flex items-center h-auto lg:h-screen flex-wrap mx-auto my-32 lg:my-0">
 	<!--Main Col-->
@@ -117,23 +59,16 @@
 		<div class="p-4 md:p-12 text-center lg:text-left">
             <div class="block lg:hidden rounded-full shadow-xl mx-auto -mt-16 h-48 w-48 bg-cover bg-center" style="background-image: url('data:image/png;base64,{{ Auth::user()->avatar }}')">
             </div>
-			<h1 class="text-3xl font-bold pt-8 lg:pt-0">{{ Auth::user()->name }}</h1>
+			<h1 class="text-3xl font-bold pt-8 lg:pt-0">{{ $users->name }}</h1>
 			<div class="mx-auto lg:mx-0 w-4/5 pt-3 border-b-2 border-green-500 opacity-25"></div>
-			<p class="pt-4 text-base font-bold flex items-center justify-center lg:justify-start">{{ Auth::user()->surname }}</p>
-			<p class="pt-4 text-base font-bold flex items-center justify-center lg:justify-start">{{ Auth::user()->role }}</p>
-			<p class="pt-2 text-gray-600 text-xs lg:text-sm flex items-center justify-center lg:justify-start">{{ Auth::user()->email }}</p>
-			<p class="pt-8 text-sm">{{ Auth::user()->description }}</p>
+			<p class="pt-4 text-base font-bold flex items-center justify-center lg:justify-start">{{ $users->surname }}</p>
+			<p class="pt-4 text-base font-bold flex items-center justify-center lg:justify-start">{{ $users->role }}</p>
+			<p class="pt-2 text-gray-600 text-xs lg:text-sm flex items-center justify-center lg:justify-start">{{ $users->email }}</p>
+			<p class="pt-8 text-sm">{{ $users->description }}</p>
 			<div class="pt-5 pb-8">
 				<button id="editar" class=" userEdits bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full">
 				  Edit
 				</button>
-                <form id="formulario" method="POST" action="/dashboard/profile/avatar" enctype="multipart/form-data">
-                    {{ csrf_field() }}
-                    <br>
-                    <label>SUBIR AVATAR</label>
-                    <input type="file" name="image">
-                <input type="submit" value="save">
-            </form> 
 			</div>
 			<!--Editar-->
 			
@@ -152,3 +87,5 @@
     @endif
 </x-app-layout>
 <script src="{{asset('js/laracrud.js')}}"></script>
+<script src="{{asset('js/profile.js')}}"></script>
+<script src="{{asset('js/avatar.js')}}"></script>

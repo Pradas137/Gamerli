@@ -82,7 +82,11 @@ Route::get('/dashboard/friend', function () {
 Route::get('/admin/dashboard', function () {
     $image = Game::where('name','like','%'."Assassin's Creed".'%')->first();
     $urlimage=$image->image;
-    return view('dashboard',['image' => $urlimage]);
+    
+    $image2 = Game::where('name','like','%'."Battlefield IV".'%')->first();
+    $urlimage2=$image2->image;
+    
+    return view('dashboard',['image' => $urlimage],['image2' => $urlimage2]);
 
 })->middleware(['auth',  'can:accessAdmin'])->name('adminDashboard');
 
