@@ -11,7 +11,7 @@
 <body>
     <div class="container mt-5 text-center">
         <h2 class="mb-4">
-            Importar cosas
+            Importar Platforms
         </h2>
 
         <form action="{{ route('file-import-platforms') }}" method="POST" enctype="multipart/form-data">
