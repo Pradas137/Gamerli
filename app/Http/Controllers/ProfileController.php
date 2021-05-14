@@ -10,31 +10,96 @@ use Illuminate\Support\Facades\DB;
 
 class ProfileController extends Controller
 {
-    //
-
-    public function store( Request $request)
-    {
-        $userUpdate = [
-            'id'            =>  $request->idUpdate,
-            'name'          =>  $request->name,
-            'surname'       =>  $request->surname,
-            'email'         =>  $request->email
-        ];
-        // return dd($userUpdate);
-        DB::table('users')->where('id',$request->idUpdate)->update($userUpdate);
-        return redirect()->back()->with('userUpdate','.')->with('success','Upadate successfully added.');
-    }
-
-    public function ImageUbdate(Request $request)
-    {
-        //
-
-        $user = Auth::user();
-        $path = $request->file('image')->getRealPath();
-        $logo = file_get_contents($path);
-        $base64 = base64_encode($logo);
-        $user->avatar = $base64;
-        $user->save();
-    }
-  
+    
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index(/*$request*/)
+        {
+    
+           $users = User::latest()->paginate(5);
+            return view('profile.index', ['profile' => $users]);
+            //
+            //return json_decode($request->header("filter"),TRUE);
+            //if (isset($request->header("filter"))){
+            //}else{//}
+        }
+    
+        /**
+         * Show the form for creating a new resource.
+         *
+         * @return \Illuminate\Http\Response
+         */
+        public function create()
+        {
+            return view('profile.create');
+        }
+    
+        /**
+         * Store a newly created resource in storage.
+         *
+         * @param  \Illuminate\Http\Request  $request
+         * @return \Illuminate\Http\Response
+         */
+        public function store(Request $request)
+        {
+        
+            User::create($request->all());
+            return redirect()->route('profile.index')
+                            ->with('success','User created successfully.');
+        }
+    
+        /**
+         * Display the specified resource.
+         *
+         * @param  int  $id
+         * @return \Illuminate\Http\Response
+         */
+        public function show(User $user)
+        {
+            return view('profile.show',compact('user'));
+        }
+    
+        /**
+         * Show the form for editing the specified resource.
+         *
+         * @param  int  $id
+         * @return \Illuminate\Http\Response
+         */
+        public function edit(User $user)
+        {
+            return view('profile.edit',compact('user'));
+        }
+    
+        /**
+         * Update the specified resource in storage.
+         *
+         * @param  \Illuminate\Http\Request  $request
+         * @param  int  $id
+         * @return \Illuminate\Http\Response
+         */
+        public function update(Request $request, User $user)
+        {
+        
+            $user->update($request->all());
+        
+            return redirect()->route('Profile.index')
+                            ->with('success','User updated successfully');
+        }
+    
+        /**
+         * Remove the specified resource from storage.
+         *
+         * @param  int  $id
+         * @return \Illuminate\Http\Response
+         */
+        public function destroy(User $user)
+        {
+            $user->delete();
+        
+            return redirect()->route('profile.index')
+                            ->with('success','User deleted successfully');
+        }
 }

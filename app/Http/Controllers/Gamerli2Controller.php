@@ -13,8 +13,8 @@ class Gamerli2Controller extends Controller
      */
     public function index()
     {
-        $user = User::latest()->paginate(5);
-        return view('ranking', compact('user',$user))->with('i', (request()->input('ranking', 1) - 1) * 5);
+        $rankings = User::latest()->paginate(5);
+        return view('ranking', compact('rankings'));
     }
 
     /**
@@ -27,16 +27,37 @@ class Gamerli2Controller extends Controller
         //
     }
 
+    public function search()
+    {
+        $search = $_GET['query'];
+        $ranking = User::where('name','LIKE', '%'.$search.'%')->get();
+        return view('ranking', compact('rankings'));
+    }
+
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($info)
     {
-        //
+        // Decode the JSON data
+        $data = json_decode($info, true);
+
+        // Insert the new data into the table
+        $ranking = DB::insert('insert into users (name, surname, email) values (?, ?, ?, ?, ?, ?)', $data['name'], $data['surname'],$data['email']);
+
+        if($ranking == 1) {
+            $id = DB::getPDO()->lastInsertId();
+            return response()->json(["status" => "success", "message" => "Success! term created", "id" => $id]);
+        }
+
+        else {
+            return response()->json(["status" => "failed", "message" => "Alert! term not created"]);
+        }
     }
+
 
     /**
      * Display the specified resource.
@@ -44,9 +65,9 @@ class Gamerli2Controller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $game)
     {
-        //
+        return view('game.show',compact('user'));
     }
 
     /**
@@ -78,10 +99,15 @@ class Gamerli2Controller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-  {
-    $user = User::find($id);
-    $user->delete();
-    return response()->json(['message' => 'Data deleted successfully!']);
-  }
+    public function destroy($game_id) {
+        User::where("id", $game_id)->update(["active" => 0]);
+        $ranking = Users::where("id", $user_id)->delete();
+        if($ranking == 1) {
+            return response()->json(["status" => "success", "message" => "Success! Terms deleted"]);
+        }
+
+        else {
+            return response()->json(["status" => "failed", "message" => "Alert! Terms not deleted"]);
+        }
+    }
 }

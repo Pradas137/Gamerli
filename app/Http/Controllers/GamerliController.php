@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Models\User;
 
 class GamerliController extends Controller
 {
@@ -13,8 +14,8 @@ class GamerliController extends Controller
      */
     public function index()
     {
-        $user = User::all();
-        return view('prueva', compact('user',$user));
+        $rankings = User::latest()->paginate(5);
+        return view('ranking', ['rankings' => $rankings]);
     }
 
     /**
@@ -33,9 +34,22 @@ class GamerliController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($info)
     {
-        //
+        // Decode the JSON data
+        $data = json_decode($info, true);
+
+        // Insert the new data into the table
+        $game = DB::insert('insert into users (name, surname) values (?, ?)', [$data['name'], $data['surname']]);
+
+        if($game == 1) {
+            $user_id = DB::getPDO()->lastInsertId();
+            return response()->json(["status" => "success", "message" => "Success! ranking created", "id" => $id]);
+        }
+
+        else {
+            return response()->json(["status" => "failed", "message" => "Alert! ranking not created"]);
+        }
     }
 
     /**
@@ -44,7 +58,7 @@ class GamerliController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($user_id)
     {
         //
     }
@@ -55,7 +69,7 @@ class GamerliController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($user_id)
     {
         //
     }
@@ -67,9 +81,23 @@ class GamerliController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($info)
     {
-        //
+        // Decode the JSON data
+        $info = json_decode($info, true);
+
+        // Look for the term with the provided ID, and update all fields.
+        $game   = User::where("id", $info["id"])
+                ->update(["name" => $info["name"],
+                          "surname" => $info["surname"]]);
+
+        if($game == 1) {
+            return response()->json(["status" => "success", "message" => "Success! Game updated"]);
+        }
+
+        else {
+            return response()->json(["status" => "failed", "message" => "Alert! Game not updated"]);
+        }
     }
 
     /**
@@ -78,8 +106,16 @@ class GamerliController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
+    public function destroy($user_id) {
+        User::where("id", $user_id)->update(["active" => 0]);
+        // Soft delete the term with the provided id.
+        $game = User::where("id", $user_id)->delete();
+        if($game == 1) {
+            return response()->json(["status" => "success", "message" => "Success! Game deleted"]);
+        }
+
+        else {
+            return response()->json(["status" => "failed", "message" => "Alert! Game not deleted"]);
+        }
     }
 }
