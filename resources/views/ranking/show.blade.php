@@ -78,9 +78,9 @@
                         <p class="" name="name" id="name" type="text" placeholder="Name">{{ $ranking->page_reference }}</p>
                     </div>
                     <div class="md:w-full px-10">
-                        <button href="/admin/dashboard/ranking/index" class="md:w-full bg-gray-900 text-white font-bold py-2 px-4 border-b-4 hover:border-b-2 border-gray-500 hover:border-gray-100 rounded-full">
+                        <a href="/admin/dashboard/ranking" class="md:w-full bg-gray-900 text-white font-bold py-2 px-4 border-b-4 hover:border-b-2 border-gray-500 hover:border-gray-100 rounded-full">
                         Atras
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -97,7 +97,7 @@
             <ul>
                 <li class="font-bolt mb-4"><a href="/dashboard">Home</a></li>
                 <li class="font-bolt mb-4"><a href="/dashboard/publicList">Global list</a></li>
-                <li class="font-bolt mb-4"><a href="/dashboard/ranking">Ranking Games</a></li>
+                <li class="font-bolt mb-4"><a href="/dashboard/rankingUser">Ranking Games</a></li>
             <ul>
             <h6 class="font-bold mb-4 text-2xl">ADMIN</h6>
             <ul>
@@ -177,7 +177,7 @@
         </div>
         <div class="-mx-3 md:flex mt-2">
             <div class="md:w-full px-10">
-                <a href="/dashboard/ranking/index" class="md:w-full bg-gray-900 text-white font-bold py-2 px-4 border-b-4 hover:border-b-2 border-gray-500 hover:border-gray-100 rounded-full">
+                <a href="/dashboard/rankingUser" class="md:w-full bg-gray-900 text-white font-bold py-2 px-4 border-b-4 hover:border-b-2 border-gray-500 hover:border-gray-100 rounded-full">
                         Atras
                 </a>
             </div>
