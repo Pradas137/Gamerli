@@ -92,11 +92,6 @@
                             Platform*
                             </label>
                         <div>
-                        <select class="w-full bg-gray-200 border border-gray-200 text-black text-xs py-3 px-4 pr-8 mb-3 rounded" name="platform" id="platform">
-                            <option>Xbox One</option>
-                            <option>PS5</option>
-                            <option>Switch</option>
-                        </select>
                     </div>
                 </div>
                 <div class="md:w-1/2 px-3">
@@ -256,7 +251,6 @@
       </div>
         </form>
     </div>
-</div>    
     </div>
     @endif
 </x-app-layout>

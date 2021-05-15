@@ -17,13 +17,14 @@ class RankingController extends Controller
     public function index(/*$request*/)
     {
 
-       $rankings = Game::latest()->paginate(5);
-        return view('ranking.index', ['rankings' => $rankings]);
+       $rankings = Game::latest()->paginate(8);
+       return view('ranking.index', ['rankings' => $rankings]);
         //
         //return json_decode($request->header("filter"),TRUE);
         //if (isset($request->header("filter"))){
         //}else{//}
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -43,12 +44,10 @@ class RankingController extends Controller
      */
     public function store(Request $request)
     {
-    
         Game::create($request->all());
-        return redirect()->route('ranking.index')
-                        ->with('success','Game created successfully.');
-    }
+        return redirect()->route('ranking.index')->with('success','Game created successfully.');
 
+    }
     /**
      * Display the specified resource.
      *

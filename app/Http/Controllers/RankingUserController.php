@@ -1,16 +1,15 @@
 <?php
 
+
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\User;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
+use App\Models\Game;
+use App\Models\User;
 
-
-class ProfileController extends Controller
+class RankingUserController extends Controller
 {
-    
     /**
      * Display a listing of the resource.
      *
@@ -19,13 +18,14 @@ class ProfileController extends Controller
     public function index(/*$request*/)
         {
     
-           $users = User::latest()->paginate(5);
-            return view('profile', ['profile' => $users]);
+           $rankings = Game::latest()->paginate(8);
+           return view('ranking.index', ['rankings' => $rankings]);
             //
             //return json_decode($request->header("filter"),TRUE);
             //if (isset($request->header("filter"))){
             //}else{//}
         }
+    
     
         /**
          * Show the form for creating a new resource.
@@ -34,7 +34,7 @@ class ProfileController extends Controller
          */
         public function create()
         {
-            return view('profile.create');
+            return view('ranking.create');
         }
     
         /**
@@ -45,22 +45,17 @@ class ProfileController extends Controller
          */
         public function store(Request $request)
         {
-        
-            User::create($request->all());
-            return redirect()->route('profile.index')
-                            ->with('success','User created successfully.');
+           Game::create($request->all());
+            return redirect()->route('ranking.index')->with('success','Game created successfully.');
+            
         }
-    
         /**
          * Display the specified resource.
          *
          * @param  int  $id
          * @return \Illuminate\Http\Response
          */
-        public function show(User $user)
-        {
-            return view('profile',compact('user'));
-        }
+       
     
         /**
          * Show the form for editing the specified resource.
@@ -68,11 +63,10 @@ class ProfileController extends Controller
          * @param  int  $id
          * @return \Illuminate\Http\Response
          */
-        public function edit(User $user)
+        public function show(Game $ranking)
         {
-            return view('profile',compact('user'));
+            return view('ranking.show',compact('ranking'));
         }
-    
         /**
          * Update the specified resource in storage.
          *
@@ -80,14 +74,6 @@ class ProfileController extends Controller
          * @param  int  $id
          * @return \Illuminate\Http\Response
          */
-        public function update(Request $request, User $user)
-        {
-        
-            $user->update($request->all());
-        
-            return redirect()->route('Profile')
-                            ->with('success','User updated successfully');
-        }
     
         /**
          * Remove the specified resource from storage.
@@ -95,11 +81,4 @@ class ProfileController extends Controller
          * @param  int  $id
          * @return \Illuminate\Http\Response
          */
-        public function destroy(User $user)
-        {
-            $user->delete();
-        
-            return redirect()->route('profile')
-                            ->with('success','User deleted successfully');
-        }
-}
+    }
