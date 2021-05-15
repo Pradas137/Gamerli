@@ -27,15 +27,23 @@
             <input class="form-control mr -sm-2" type="search" placeholder="Search">
             <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
           </form>-->
-          <select class="form-control form-control-md" id="selectLang">
-            <option selected disabled>Select Language </option>
-                @foreach($rankings as $games)
-                  <option value="{{ $games->platform_id  }}">{{ $games->platform_id}}</option>
-                @endforeach
-                        </select>
           <div class="text-center">
             <a class="btn btn-info text-center inline-flex items-center px-4 py-2 bg-green-800 border border-transparent rounded-md font-semibold text-sm text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150" href="/admin/dashboard/ranking/create">Add Game</a>
             </div>
+            <form action="{{ route('ranking.index') }}" method="GET" role="search">
+                    <div class="input-group">
+                            <button class=" bg-blue-700 btn btn-info" type="submit" title="Search projects">
+                                <span class="fas fa-search"></span>
+                            </button>
+                        </span>
+                        <input type="text" class="form-control mr-2" name="game" placeholder="Search projects" id="game">
+                        <a href="{{ route('ranking.index') }}" class=" mt-1">
+                                <button class=" bg-green-700 btn btn-danger" type="button" title="Refresh page">
+                                    <span class="fas fa-sync-alt"></span>
+                                </button>
+                        </a>
+                    </div>
+                </form>
           <table class="text-left w-full border-collapse">
             <thead>
               <tr>

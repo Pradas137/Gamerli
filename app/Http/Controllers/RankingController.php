@@ -14,11 +14,21 @@ class RankingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(/*$request*/)
+    public function index(Request $request)
     {
-
-       $rankings = Game::latest()->paginate(5);
+        $rankings = Game::where([
+            ['name','!=', NULL],
+            [function ($query) use ($request){
+                if (($game = $request->gmdate)){
+                    $query->orWhere('name','%'.$game.'%')->get();
+                }
+            }]
+        ])
+        ->orderBy("id", "desc")
+        ->paginate(5);
         return view('ranking.index', ['rankings' => $rankings]);
+
+        //$rankings = Game::latest()->paginate(5);
         //
         //return json_decode($request->header("filter"),TRUE);
         //if (isset($request->header("filter"))){
