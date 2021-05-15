@@ -20,7 +20,7 @@ class ProfileController extends Controller
         {
     
            $users = User::latest()->paginate(5);
-            return view('profile', ['profile' => $users]);
+            return view('profile.index', ['profile' => $users]);
             //
             //return json_decode($request->header("filter"),TRUE);
             //if (isset($request->header("filter"))){
@@ -59,7 +59,7 @@ class ProfileController extends Controller
          */
         public function show(User $user)
         {
-            return view('profile',compact('user'));
+            return view('profile.show',compact('user'));
         }
     
         /**
@@ -70,7 +70,7 @@ class ProfileController extends Controller
          */
         public function edit(User $user)
         {
-            return view('profile',compact('user'));
+            return view('profile.edit',compact('user'));
         }
     
         /**
@@ -85,7 +85,7 @@ class ProfileController extends Controller
         
             $user->update($request->all());
         
-            return redirect()->route('Profile')
+            return redirect()->route('Profile.index')
                             ->with('success','User updated successfully');
         }
     
@@ -99,7 +99,7 @@ class ProfileController extends Controller
         {
             $user->delete();
         
-            return redirect()->route('profile')
+            return redirect()->route('profile.index')
                             ->with('success','User deleted successfully');
         }
 }

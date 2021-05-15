@@ -23,10 +23,16 @@
       </div>
       <div class="w-2/3 mx-auto">
         <div class="bg-white shadow-md rounded my-6">
-          <form class="form-inline my-2 my-lg-0" type="get" action="{{url('/search')}}">
+          <!--<form class="form-inline my-2 my-lg-0" type="get" action="{{url('/search')}}">
             <input class="form-control mr -sm-2" type="search" placeholder="Search">
             <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
-          </form>
+          </form>-->
+          <select class="form-control form-control-md" id="selectLang">
+            <option selected disabled>Select Language </option>
+                @foreach($rankings as $games)
+                  <option value="{{ $games->platform_id  }}">{{ $games->platform_id}}</option>
+                @endforeach
+                        </select>
           <div class="text-center">
             <a class="btn btn-info text-center inline-flex items-center px-4 py-2 bg-green-800 border border-transparent rounded-md font-semibold text-sm text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150" href="/admin/dashboard/ranking/create">Add Game</a>
             </div>
@@ -94,9 +100,10 @@
                 @foreach($rankings as $games)
                   <option value="{{ $games->name  }}">{{ $games->name}}</option>
                 @endforeach
-          </select>
+
+                        </select>
           <div class="text-center">
-            <a class="btn btn-info text-center inline-flex items-center px-4 py-2 bg-green-800 border border-transparent rounded-md font-semibold text-sm text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150" href="/dashboard/rankinge/create ">Add Game</a>
+            <a class="btn btn-info text-center inline-flex items-center px-4 py-2 bg-green-800 border border-transparent rounded-md font-semibold text-sm text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150" href="/dashboard/ranking/create">Add Game</a>
             </div>
           <table class="text-left w-full border-collapse">
             <thead>
@@ -117,8 +124,9 @@
                 <td>{{ $game->saga }}</td>
                 <td>
                 <form action="{{ route('ranking.destroy',$game->id) }}" method="POST">
-                   <a class="btn btn-info text-center inline-flex items-center px-4 py-2 bg-green-800 border border-transparent rounded-md font-semibold text-sm text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150" href="/dashboard/rankinge/{{$game->id}}">Show</a>
+                   <a class="btn btn-info text-center inline-flex items-center px-4 py-2 bg-green-800 border border-transparent rounded-md font-semibold text-sm text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150" href="/dashboard/ranking/{{$game->id}}">Show</a>
                    @csrf
+                   @method('DELETE')
                </form>
                </td>
               </tr>

@@ -20,8 +20,6 @@ use App\Http\Controllers\PlatformController;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RankingController;
-use App\Http\Controllers\RankingUserController;
-use App\Http\Controllers\ToInvitedController;
 
 
 /*
@@ -35,12 +33,9 @@ use App\Http\Controllers\ToInvitedController;
 |
 */
 Route::resource('/admin/dashboard/ranking','App\Http\Controllers\RankingController');
-Route::resource('/dashboard/rankinge','App\Http\Controllers\RankingUserController');
-
+Route::resource('/dashboard/ranking','App\Http\Controllers\RankingController');
 Route::resource('/admin/dashboard/profile','App\Http\Controllers\ProfileController');
-Route::resource('/dashboard/profileUser','App\Http\Controllers\ProfileController');
-Route::resource('/dashboard/toInvited','App\Http\Controllers\ToInvitedController');
-
+Route::resource('/dashboard/profile','App\Http\Controllers\ProfileController');
 //Route::post('/perfil/foto', 'ProfileController@updatePhoto');
 //Route::resource('slider',SliderController::class);
 
@@ -64,20 +59,6 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 /*-------------Usuarios-------------------*/
-
-Route::get('/dashboard', function () {
-    $image = Game::where('name','like','%'."Assassin's Creed".'%')->first();
-    $urlimage=$image->image;
-    
-    $image2 = Game::where('name','like','%'."Battlefield IV".'%')->first();
-    $urlimage2=$image2->image;
-
-    /*$image3 = Game::where('name','like','%'."Bully".'%')->first();
-    $urlimage3=$image3->image;*/
-    
-    return view('dashboard',['image' => $urlimage],['image2' => $urlimage2]);
-
-})->middleware(['auth',  'can:accessUser'])->name('UserDashboard');
 
 Route::get('/dashboard/request', function () {
     return view('request');
@@ -104,9 +85,6 @@ Route::get('/admin/dashboard', function () {
     
     $image2 = Game::where('name','like','%'."Battlefield IV".'%')->first();
     $urlimage2=$image2->image;
-
-    /*$image3 = Game::where('name','like','%'."Bully".'%')->first();
-    $urlimage3=$image3->image;*/
     
     return view('dashboard',['image' => $urlimage],['image2' => $urlimage2]);
 

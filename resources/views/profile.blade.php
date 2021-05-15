@@ -100,11 +100,12 @@
 			<p class="pt-2 text-gray-600 text-xs lg:text-sm flex items-center justify-center lg:justify-start">{{ Auth::user()->email }}</p>
 			<p class="pt-8 text-sm">{{ Auth::user()->description }}</p>
 			<div class="pt-5 pb-8">
-				<button id="editar" class=" editable bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full">
+				<button id="editar" class=" userEdits bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full">
 				  Edit
 				</button>
 			</div>
 			<!--Editar-->
+			
 			<!---------->
 			<div class="mt-6 pb-16 lg:pb-0 w-4/5 lg:w-full mx-auto flex flex-wrap items-center justify-between">
 				<a class="link" href="#" data-tippy-content="@facebook_handle"><svg class="h-6 fill-current text-gray-600 hover:text-green-700" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Facebook</title><path d="M22.676 0H1.324C.593 0 0 .593 0 1.324v21.352C0 23.408.593 24 1.324 24h11.494v-9.294H9.689v-3.621h3.129V8.41c0-3.099 1.894-4.785 4.659-4.785 1.325 0 2.464.097 2.796.141v3.24h-1.921c-1.5 0-1.792.721-1.792 1.771v2.311h3.584l-.465 3.63H16.56V24h6.115c.733 0 1.325-.592 1.325-1.324V1.324C24 .593 23.408 0 22.676 0"/></svg></a>
@@ -119,4 +120,6 @@
 </div>
     @endif
 </x-app-layout>
+<script src="{{asset('js/laracrud.js')}}"></script>
 <script src="{{asset('js/profile.js')}}"></script>
+<script src="{{asset('js/avatar.js')}}"></script>

@@ -59,12 +59,12 @@
 		<div class="p-4 md:p-12 text-center lg:text-left">
             <div class="block lg:hidden rounded-full shadow-xl mx-auto -mt-16 h-48 w-48 bg-cover bg-center" style="background-image: url('data:image/png;base64,{{ Auth::user()->avatar }}')">
             </div>
-			<h1 class="text-3xl font-bold pt-8 lg:pt-0 text-black">{{ Auth::user()->name }}</h1>
-			<div class="mx-auto lg:mx-0 w-4/5 pt-3 border-b-2 border-green-500 opacity-25 text-black"></div>
-			<p class="pt-4 text-base font-bold flex items-center justify-center lg:justify-start text-black">{{ Auth::user()->surname }}</p>
-			<p class="pt-4 text-base font-bold flex items-center justify-center lg:justify-start text-black">{{ Auth::user()->role }}</p>
-			<p class="pt-2 text-gray-600 text-xs lg:text-sm flex items-center justify-center lg:justify-start text-black">{{ Auth::user()->email }}</p>
-			<p class="pt-8 text-sm">{{ Auth::user()->description }}</p>
+			<h1 class="text-3xl font-bold pt-8 lg:pt-0">{{ $users->name }}</h1>
+			<div class="mx-auto lg:mx-0 w-4/5 pt-3 border-b-2 border-green-500 opacity-25"></div>
+			<p class="pt-4 text-base font-bold flex items-center justify-center lg:justify-start">{{ $users->surname }}</p>
+			<p class="pt-4 text-base font-bold flex items-center justify-center lg:justify-start">{{ $users->role }}</p>
+			<p class="pt-2 text-gray-600 text-xs lg:text-sm flex items-center justify-center lg:justify-start">{{ $users->email }}</p>
+			<p class="pt-8 text-sm">{{ $users->description }}</p>
 			<div class="pt-5 pb-8">
 				<button id="editar" class=" userEdits bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full">
 				  Edit

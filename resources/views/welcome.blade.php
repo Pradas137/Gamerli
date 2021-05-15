@@ -36,7 +36,7 @@
                             </li>
 
                             <li class="flex mb-4">
-                                <a href="/dashboard/toInvited" class="py-2 px-4 bg-red-900 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">Visitet</a>
+                                <a href=" " class="py-2 px-4 bg-red-900 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">Visitet</a>
                             </li>
                         </ul>
                     </div>
