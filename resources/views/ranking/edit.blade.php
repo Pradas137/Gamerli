@@ -5,22 +5,21 @@
         </h2>
     </x-slot>
     @if(Auth::user()->role == 'admin')
-    <div class=" text-center flex h-screen">
-    <div class=" bg-gray-600 h-8 md:h-full border-r w-64 text-center border-gray-200">
-            <h6 class="font-bold mb-4 text-2xl">PAGE</h6>
-            <ul>
-                <li class="font-bolt mb-4"><a href="/admin/dashboard">Home</a></li>
-                <li class="font-bolt mb-4"><a href="/admin/dashboard/publicList">Public List</a></li>
-                <li class="font-bolt mb-4"><a href="/admin/dashboard/ranking">Ranking Game</a></li>
-            <ul>
-            <h6 class="font-bold mb-4 text-2xl">ADMIN</h6>
-            <ul>
-                <li class="font-bolt mb-4"><a href="/admin/dashboard/requests">My Request</a></li>
-                <li class="font-bolt mb-4"><a href="/admin/dashboard/myList">My Lists</a></li>
-                <li class="font-bolt mb-4"><a href="/admin/dashboard/profile">Profile</a></li>
-                <li class="font-bolt mb-4"><a href="/admin/dashboard/friend">Friend</a></li>
-            </ul>
-        </div>
+    <div class="flex h-screen">
+      <div style="background-image: url(https://mcdn.wallpapersafari.com/medium/20/74/JfPDgt.jpg)" class=" h-8 md:h-full border-r w-64 text-center text-white border-gray-200">
+        <h6 class="font-bold mb-4 text-2xl">PAGE</h6>
+        <ul>
+          <li class="font-bolt mb-4"><a href="/admin/dashboard">Home</a></li>
+          <li class="font-bolt mb-4"><a href="/admin/dashboard/publicList">Public List</a></li>
+        <ul>
+        <h6 class="font-bold mb-4 text-2xl">ADMIN</h6>
+        <ul>
+          <li class="font-bolt mb-4"><a href="/admin/dashboard/requests">My Request</a></li>
+          <li class="font-bolt mb-4"><a href="/admin/dashboard/myList">My Lists</a></li>
+          <li class="font-bolt mb-4"><a href="/admin/dashboard/profile">Profile</a></li>
+          <li class="font-bolt mb-4"><a href="/admin/dashboard/friend">Friend</a></li>
+        </ul>
+      </div>
         <div class="w-2/3 mx-auto">
             <h1 class="text-center text-green-600 text-5xl font-bold"> Edit Game </h1>
             <form action="{{ route('ranking.update',$ranking->id) }}" method="POST">

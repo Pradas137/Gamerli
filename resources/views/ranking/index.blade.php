@@ -7,7 +7,7 @@
     @if(Auth::user()->role == 'admin')
     <script src="{{asset('js/breadcrumb.js')}}"></script>
     <div class="flex h-screen">
-      <div class="bg-gray-600 h-8 md:h-full border-r w-64 text-center text-white border-gray-200">
+      <div style="background-image: url(https://mcdn.wallpapersafari.com/medium/20/74/JfPDgt.jpg)" class=" h-8 md:h-full border-r w-64 text-center text-white border-gray-200">
         <h6 class="font-bold mb-4 text-2xl">PAGE</h6>
         <ul>
           <li class="font-bolt mb-4"><a href="/admin/dashboard">Home</a></li>
@@ -21,8 +21,8 @@
           <li class="font-bolt mb-4"><a href="/admin/dashboard/friend">Friend</a></li>
         </ul>
       </div>
-      <div class="w-2/3 mx-auto">
-        <div class="bg-white shadow-md rounded my-6">
+      <div class="w-1/3 mx-auto">
+        <div class="bg-blue-200 shadow-md rounded my-6">
           <!--<form class="form-inline my-2 my-lg-0" type="get" action="{{url('/search')}}">
             <input class="form-control mr -sm-2" type="search" placeholder="Search">
             <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
@@ -30,22 +30,17 @@
           <div class="text-center">
             <a class="btn btn-info text-center inline-flex items-center px-4 py-2 bg-green-800 border border-transparent rounded-md font-semibold text-sm text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150" href="/admin/dashboard/ranking/create">Add Game</a>
             </div>
-            <form action="{{ route('ranking.index') }}" method="GET" role="search">
-                    <div class="input-group">
-                            <button class=" bg-blue-700 btn btn-info" type="submit" title="Search projects">
-                                <span class="fas fa-search"></span>
-                            </button>
-                        </span>
-                        <input type="text" class="form-control mr-2" name="game" placeholder="Search projects" id="game">
-                        <a href="{{ route('ranking.index') }}" class=" mt-1">
-                                <button class=" bg-green-700 btn btn-danger" type="button" title="Refresh page">
-                                    <span class="fas fa-sync-alt"></span>
-                                </button>
-                        </a>
-                    </div>
-                </form>
-          <table class="text-left w-full border-collapse">
-            <thead>
+            <div class="w-11/12 mx-auto flex mt-2 mb-2 justify-around items-center" id="form_alumn">
+            <section class="filter flex-wrap justify-around">
+              <x-input type="text" class="p-1 mt-2 xl:mt-0" placeholder="Name" name="name" id="" />
+              <x-input type="date" class="p-1 mt-2 xl:mt-0" placeholder="Date" name="date" id="" />
+              <x-input type="number" class="p-1 mt-2 xl:mt-0" placeholder="Pegi" name="pegi" id="" />
+              <x-input type="text" class="p-1 mt-2 xl:mt-0" placeholder="Saga" name="saga" id="" />
+            </section>
+			      <button type="submit" class="filter btn primary-btn w-2/1  bg-green-800 border border-transparent rounded-md font-semibold text-sm text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150" ">Filtra</button>
+		      </div>
+         <table class="text-1xl text-center w-full border-collapse">
+            <thead class="bg-blue-700">
               <tr>
                 <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Name</th>
                 <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Date</th>
@@ -57,11 +52,11 @@
             <tbody>
             @foreach($rankings as $game)
               <tr id="row_{{$game->id}}">
-                <td>{{ $game->name  }}</td>
-                <td>{{ $game->date }}</td>
-                <td>{{ $game->pegi }}</td>
-                <td>{{ $game->saga }}</td>
-                <td>
+                <td class="bg-blue-500">{{ $game->name  }}</td>
+                <td class="bg-blue-600">{{ $game->date }}</td>
+                <td class="bg-blue-500">{{ $game->pegi }}</td>
+                <td class="bg-blue-600">{{ $game->saga }}</td>
+                <td class="bg-blue-500">
                 <form action="{{ route('ranking.destroy',$game->id) }}" method="POST">
                    <a class="btn btn-info text-center inline-flex items-center px-4 py-2 bg-green-800 border border-transparent rounded-md font-semibold text-sm text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150" href="/admin/dashboard/ranking/{{$game->id}}">Show</a>
                    <a class="btn btn-primary text-center inline-flex items-center px-4 py-2 bg-yellow-800 border border-transparent rounded-md font-semibold text-sm text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150" href="/admin/dashboard/ranking/{{$game->id}}/edit">Edit</a>
@@ -73,8 +68,18 @@
               </tr>
             @endforeach
             </tbody>
+            <tfoot class="bg-blue-700">
+            <tr>
+                <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Name</th>
+                <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Date</th>
+                <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Pegi</th>
+                <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Saga</th>
+                <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Actions</th>
+              </tr>
+			</tfoot>
           </table>
-          <span>
+          <ul class="pagination"></ul>
+          <span class="text-white">
             {{ $rankings->links() }}
           </span>
         </div>
@@ -110,17 +115,17 @@
                 @endforeach
 
                         </select>
-          <div class="text-center">
+          <div class="text-center text_black">
             <a class="btn btn-info text-center inline-flex items-center px-4 py-2 bg-green-800 border border-transparent rounded-md font-semibold text-sm text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150" href="/dashboard/rankingUser/create">Add Game</a>
             </div>
           <table class="text-left w-full border-collapse">
             <thead>
               <tr>
-                <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Name</th>
-                <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Date</th>
-                <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Pegi</th>
-                <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Saga</th>
-                <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Actions</th>
+                <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-black-dark border-b border-grey-light">Name</th>
+                <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-black-dark border-b border-grey-light">Date</th>
+                <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-black-dark border-b border-grey-light">Pegi</th>
+                <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-black-dark border-b border-grey-light">Saga</th>
+                <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-black-dark border-b border-grey-light">Actions</th>
               </tr>
             </thead>
             <tbody>
