@@ -21,7 +21,7 @@
           <li class="font-bolt mb-4"><a href="/admin/dashboard/friend">Friend</a></li>
         </ul>
       </div>
-      <div class="w-1/3 mx-auto">
+      <div class="w-2/3 mx-auto">
         <div class="bg-blue-200 shadow-md rounded my-6">
           <!--<form class="form-inline my-2 my-lg-0" type="get" action="{{url('/search')}}">
             <input class="form-control mr -sm-2" type="search" placeholder="Search">
@@ -30,16 +30,7 @@
           <div class="text-center">
             <a class="btn btn-info text-center inline-flex items-center px-4 py-2 bg-green-800 border border-transparent rounded-md font-semibold text-sm text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150" href="/admin/dashboard/ranking/create">Add Game</a>
             </div>
-            <div class="w-11/12 mx-auto flex mt-2 mb-2 justify-around items-center" id="form_alumn">
-            <section class="filter flex-wrap justify-around">
-              <x-input type="text" class="p-1 mt-2 xl:mt-0" placeholder="Name" name="name" id="" />
-              <x-input type="date" class="p-1 mt-2 xl:mt-0" placeholder="Date" name="date" id="" />
-              <x-input type="number" class="p-1 mt-2 xl:mt-0" placeholder="Pegi" name="pegi" id="" />
-              <x-input type="text" class="p-1 mt-2 xl:mt-0" placeholder="Saga" name="saga" id="" />
-            </section>
-			      <button type="submit" class="filter btn primary-btn w-2/1  bg-green-800 border border-transparent rounded-md font-semibold text-sm text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150" ">Filtra</button>
-		      </div>
-         <table class="text-1xl text-center w-full border-collapse">
+         <table class="text-center w-full border-collapse">
             <thead class="bg-blue-700">
               <tr>
                 <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Name</th>
@@ -68,17 +59,7 @@
               </tr>
             @endforeach
             </tbody>
-            <tfoot class="bg-blue-700">
-            <tr>
-                <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Name</th>
-                <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Date</th>
-                <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Pegi</th>
-                <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Saga</th>
-                <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Actions</th>
-              </tr>
-			</tfoot>
           </table>
-          <ul class="pagination"></ul>
           <span class="text-white">
             {{ $rankings->links() }}
           </span>
