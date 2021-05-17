@@ -55,13 +55,13 @@
                        rounded-lg p-4 border border-green-900">
             Global Rankings
         </a>
-        <a href="/admin/dashboard/publicList" class="text-3xl transition duration-100 ease-in-out 
+        <a href="/admin/dashboard/adminPublicList" class="text-3xl transition duration-100 ease-in-out 
                        bg-green-300 hover:bg-green-600 transform 
                        hover:-translate-y-1 hover:scale-100 
                        rounded-lg p-4 border border-green-900">
             Public Lists
         </a>
-        <a href="/admin/dashboard/myList" class="text-3xl transition duration-100 ease-in-out 
+        <a href="/admin/dashboard/adminMyList" class="text-3xl transition duration-100 ease-in-out 
                        bg-green-300 hover:bg-green-600 transform 
                        hover:-translate-y-1 hover:scale-100 
                        rounded-lg p-4 border border-green-900">
@@ -72,12 +72,6 @@
                        hover:-translate-y-1 hover:scale-100 
                        rounded-lg p-4 border border-green-900">
             Requests
-        </a>
-        <a href="/admin/dashboard/friend"  class="text-3xl transition duration-1000 ease-in-out 
-                       bg-green-300 hover:bg-green-600 transform 
-                       hover:-translate-y-1 hover:scale-100 
-                       rounded-lg p-4 border border-green-900">
-           Friends
         </a>
         <a href="/admin/dashboard/profile" class="text-3xl transition duration-1000 ease-in-out 
                        bg-green-300 hover:bg-green-600 transform 
@@ -141,7 +135,7 @@
                        rounded-lg p-4 border border-green-900">
             Global Rankings
         </a>
-        <a href="/dashboard/publicList" class="text-3xl transition duration-100 ease-in-out 
+        <a href="/dashboard/PublicList" class="text-3xl transition duration-100 ease-in-out 
                        bg-green-300 hover:bg-green-600 transform 
                        hover:-translate-y-1 hover:scale-100 
                        rounded-lg p-4 border border-green-900">
@@ -158,12 +152,6 @@
                        hover:-translate-y-1 hover:scale-100 
                        rounded-lg p-4 border border-green-900">
             Petitions
-        </a>
-        <a href="/dashboard/friend"  class=" text-3xl transition duration-1000 ease-in-out 
-                       bg-green-300 hover:bg-green-600 transform 
-                       hover:-translate-y-1 hover:scale-100 
-                       rounded-lg p-4 border border-green-900">
-           Friends
         </a>
         <a href="/dashboard/profile" class="text-3xl transition duration-1000 ease-in-out 
                        bg-green-300 hover:bg-green-600 transform 
