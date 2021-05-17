@@ -22,11 +22,12 @@
         </ul>
       </div>
       <div class="w-2/3 mx-auto">
+        <h1 class="text-center text-green-600 text-5xl font-bold"> Create Game </h1>
         <div class="bg-blue-200 shadow-md rounded my-6">
-          <!--<form class="form-inline my-2 my-lg-0" type="get" action="{{url('/search')}}">
+          <form class="form-inline my-2 my-lg-0" type="get" action="{{url('/search')}}">
             <input class="form-control mr -sm-2" type="search" placeholder="Search">
             <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
-          </form>-->
+          </form>
           <div class="text-center">
             <a class="btn btn-info text-center inline-flex items-center px-4 py-2 bg-green-800 border border-transparent rounded-md font-semibold text-sm text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150" href="/admin/dashboard/ranking/create">Add Game</a>
             </div>
@@ -85,10 +86,10 @@
       </div>
       <div class="w-2/3 mx-auto">
         <div class="bg-white shadow-md rounded my-6">
-          <!--<form class="form-inline my-2 my-lg-0" type="get" action="{{url('/search')}}">
+          <form class="form-inline my-2 my-lg-0" type="get" action="{{url('/search')}}">
             <input class="form-control mr -sm-2" type="search" placeholder="Search">
             <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
-          </form>-->
+          </form>
           <select class="form-control form-control-md" id="selectLang">
             <option selected disabled>Select Language </option>
                 @foreach($rankings as $games)

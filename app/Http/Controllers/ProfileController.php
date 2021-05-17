@@ -19,8 +19,8 @@ class ProfileController extends Controller
     public function index(/*$request*/)
         {
     
-           $users = User::latest()->paginate(5);
-            return view('profile.index', ['profile' => $users]);
+            $users = User::All();
+            return view('profile', ['users' => $users]);
             //
             //return json_decode($request->header("filter"),TRUE);
             //if (isset($request->header("filter"))){
@@ -34,7 +34,7 @@ class ProfileController extends Controller
          */
         public function create()
         {
-            return view('profile.create');
+            return view('profile');
         }
     
         /**
@@ -44,12 +44,22 @@ class ProfileController extends Controller
          * @return \Illuminate\Http\Response
          */
         public function store(Request $request)
-        {
-        
-            User::create($request->all());
-            return redirect()->route('profile.index')
-                            ->with('success','User created successfully.');
-        }
+    {
+        //
+
+        $user = Auth::user();
+        $user->name = $request->name;
+        $user->surname = $request->surname;
+        $path = $request->file('avatar')->getRealPath();
+        $logo = file_get_contents($path);
+        $base64 = base64_encode($logo);
+        $user->avatar = $base64;
+        $user->save();
+
+
+        $users = User::orderBy('created_at','ASC')->get();
+        return view("profile",["user" =>$users])->with('success','Post created successfully!');
+    }
     
         /**
          * Display the specified resource.
@@ -59,7 +69,7 @@ class ProfileController extends Controller
          */
         public function show(User $user)
         {
-            return view('profile.show',compact('user'));
+            return view('profile',compact('user'));
         }
     
         /**
@@ -70,7 +80,7 @@ class ProfileController extends Controller
          */
         public function edit(User $user)
         {
-            return view('profile.edit',compact('user'));
+            return view('profileEdit',compact('user'));
         }
     
         /**
@@ -80,14 +90,23 @@ class ProfileController extends Controller
          * @param  int  $id
          * @return \Illuminate\Http\Response
          */
-        public function update(Request $request, User $user)
-        {
+        public function update(Request $request){
+
+            $name = $request->input('name');
+            $surname = $request->input('surname');
+            $editid = $request->input('editid');
         
-            $user->update($request->all());
+            if($name !='' && $surname != ''){
+              $data = array('name'=>$name,"surname"=>$surname);
         
-            return redirect()->route('Profile.index')
-                            ->with('success','User updated successfully');
-        }
+              // Call updateData() method of Page Model
+              Page::updateData($editid, $data);
+              echo 'Update successfully.';
+            }else{
+              echo 'Fill all fields.';
+            }
+            exit; 
+          }
     
         /**
          * Remove the specified resource from storage.
@@ -99,7 +118,7 @@ class ProfileController extends Controller
         {
             $user->delete();
         
-            return redirect()->route('profile.index')
+            return redirect()->route('profile')
                             ->with('success','User deleted successfully');
         }
 }

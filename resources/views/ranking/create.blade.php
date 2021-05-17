@@ -6,7 +6,7 @@
     </x-slot>
     @if(Auth::user()->role == 'admin')
     <div class=" text-center flex h-screen">
-        <div class=" bg-gray-600 h-8 md:h-full border-r w-64 text-center border-gray-200">
+        <div style="background-image: url(https://mcdn.wallpapersafari.com/medium/20/74/JfPDgt.jpg)" class=" h-8 md:h-full border-r w-64 text-center text-white border-gray-200">
             <h6 class="font-bold mb-4 text-2xl">PAGE</h6>
             <ul>
                 <li class="font-bolt mb-4"><a href="/admin/dashboard">Home</a></li>
