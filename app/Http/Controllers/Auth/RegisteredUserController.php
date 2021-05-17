@@ -53,7 +53,6 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'email_verified_at' => now(),
             'password' => Hash::make($request->password),
-
             //'gamelist_id'=> $gamelist->id,
 
              
@@ -67,6 +66,7 @@ class RegisteredUserController extends Controller
         //$id=$user->id;
 
         //GamelistController::create($id);
+
 
         
         Log::debug('llega');
