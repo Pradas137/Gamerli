@@ -11,12 +11,12 @@
         <h6 class="font-bold mb-4 text-2xl">PAGE</h6>
         <ul>
           <li class="font-bolt mb-4"><a href="/admin/dashboard">Home</a></li>
-          <li class="font-bolt mb-4"><a href="/admin/dashboard/publicList">Public List</a></li>
+          <li class="font-bolt mb-4"><a href="/admin/dashboard/adminPublicList">Public List</a></li>
         <ul>
         <h6 class="font-bold mb-4 text-2xl">ADMIN</h6>
         <ul>
           <li class="font-bolt mb-4"><a href="/admin/dashboard/requests">My Request</a></li>
-          <li class="font-bolt mb-4"><a href="/admin/dashboard/myList">My Lists</a></li>
+          <li class="font-bolt mb-4"><a href="/admin/dashboard/adminMyList">My Lists</a></li>
           <li class="font-bolt mb-4"><a href="/admin/dashboard/profile">Profile</a></li>
           <li class="font-bolt mb-4"><a href="/admin/dashboard/friend">Friend</a></li>
         </ul>
@@ -74,12 +74,12 @@
         <h6 class="font-bold mb-4 text-2xl">PAGE</h6>
         <ul>
           <li class="font-bolt mb-4"><a href="/dashboard">Home</a></li>
-          <li class="font-bolt mb-4"><a href="/dashboard/publicList">Public List</a></li>
+          <li class="font-bolt mb-4"><a href="/dashboard/PublicList">Public List</a></li>
         <ul>
         <h6 class="font-bold mb-4 text-2xl">ADMIN</h6>
         <ul>
           <li class="font-bolt mb-4"><a href="/dashboard/requests">My Request</a></li>
-          <li class="font-bolt mb-4"><a href="/dashboard/myList">My Lists</a></li>
+          <li class="font-bolt mb-4"><a href="/dashboard/MyList">My Lists</a></li>
           <li class="font-bolt mb-4"><a href="/dashboard/profile">Profile</a></li>
           <li class="font-bolt mb-4"><a href="/dashboard/friend">Friend</a></li>
         </ul>
