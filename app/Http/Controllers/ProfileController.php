@@ -50,7 +50,7 @@ class ProfileController extends Controller
         $user = Auth::user();
         $user->name = $request->name;
         $user->surname = $request->surname;
-        $path = $request->file('avatar')->getRealPath();
+        $path = $request->file('avatar');//->getRealPath();
         $logo = file_get_contents($path);
         $base64 = base64_encode($logo);
         $user->avatar = $base64;
