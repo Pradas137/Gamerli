@@ -35,6 +35,7 @@ use App\Http\Controllers\Gamerli2Controller;
 
 Route::get('/', function () {
     return view('welcome');
+
 });
 
 Route::get('/prueva2', function () {
@@ -128,3 +129,5 @@ Route::resource('admin/dashboard/RankingAdmin.index', GameController::class);
 
 Route::resource('/dashboard/profile/avatar', ProfileController::class);
 /*Route::resource('/ranking', GameController::class);*/
+
+});
