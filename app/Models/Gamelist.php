@@ -13,14 +13,13 @@ class Gamelist extends Model
 
 protected $fillable = ['name','user_id'];
 
+
     public function games(){
     	return $this->belongsToMany(Game::class);
     }
 
     public function users(){
-    	return $this->belongsTo(User::class);
+    	return $this->belongsTo(User::class,'user_id');
     }
-    public function create(){
 
-    }
 }

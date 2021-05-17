@@ -1,0 +1,27 @@
+name;company_name
+PC;PC
+PlayStation 2;SONY
+Microsoft Windows;MICROSOFT
+Xbox;MICROSOFT
+Xbox One;MICROSOFT
+Xbox 360;MICROSOFT
+PlayStation 4;SONY
+PlayStation Portable;SONY
+Nintendo 3DS;NINTENDO
+PlayStation3;SONY
+Mac OS Classic;PC
+MS-DOS;PC
+Nintendo GameCube;NINTENDO
+iOS;MOVILE
+Wii;NINTENDO
+PlayStation;SONY
+Game Boy;NINTENDO
+Nintendo 64;NINTENDO
+Android,;MOVILE
+GNULinux;PC
+AmigaOS;PC
+DOS;PC
+Sega Saturn;OTROS
+Mega Drive;OTROS
+Google Stadia;OTROS
+Multi;MULTI

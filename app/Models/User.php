@@ -61,7 +61,7 @@ class User extends Authenticatable
     }
 
     public function gamelists(){
-        return $this->hasMany(Gamelist::class);
+        return $this->hasMany(Gamelist::class,'gamelist_id');
     }
 
      public function genres(){
@@ -72,4 +72,11 @@ class User extends Authenticatable
         $role = (array)$role;    
         return in_array($this->role, $role); 
      }
+
+     public function getAvatarUrl()
+     {
+         if ($this->avatar)
+            return asset('images/users/'.$this->id.'.'.$this->avatar);
+            return asset('images/users/default.jpg');
+}
 }

@@ -30,7 +30,7 @@ class GamerliNice extends Migration
 
         Schema::create('platforms', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name')->unique();
             $table->foreignId('company_id')->constrained();
             $table->timestamps();
         });
@@ -64,15 +64,15 @@ class GamerliNice extends Migration
             $table->string('developer')->nullable();
             $table->string('director')->nullable();
             $table->string('publisher')->nullable();
-            $table->foreignId('platform_id')->constrained();
             $table->date('date')->nullable();
-            $table->enum('pegi', ['3', '7','12','16','18'])->default('3');
-            $table->string('summary',255)->nullable();
-            $table->string('page_reference',255)->nullable();
+            $table->string('pegi')->default('3');
+            //$table->enum('pegi', ['3', '7','12','16','18'])->default('3');
+            $table->text('summary')->nullable();
+            $table->string('page_reference')->nullable();
             $table->string('image')->nullable();
             $table->enum('validate', ['validated', 'pending','rejected'])->default('pending');
             $table->string('saga')->nullable();
-            //$table->foreignId('gamelist_id')->constrained();
+            $table->foreignId('platform_id')->constrained();
             $table->timestamps();
         });
 
@@ -89,6 +89,7 @@ class GamerliNice extends Migration
             $table->id();
             $table->foreignId('game_id')->constrained();
             $table->foreignId('genre_id')->constrained();
+            $table->timestamps();
         });
 
         

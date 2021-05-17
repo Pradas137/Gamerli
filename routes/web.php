@@ -16,10 +16,10 @@ use App\Models\Saga;
 use App\Models\User;
 use App\Models\Score;
 use App\Http\Controllers\GameImportController;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PlatformController;
+use App\Http\Controllers\GameController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\Gamerli2Controller;
-
+use App\Http\Controllers\RankingController;
 
 
 /*
@@ -32,17 +32,19 @@ use App\Http\Controllers\Gamerli2Controller;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::resource('/admin/dashboard/ranking','App\Http\Controllers\RankingController');
+Route::resource('/dashboard/ranking','App\Http\Controllers\RankingController');
+Route::resource('/admin/dashboard/profile','App\Http\Controllers\ProfileController');
+Route::resource('/dashboard/profile','App\Http\Controllers\ProfileController');
+//Route::post('/perfil/foto', 'ProfileController@updatePhoto');
+//Route::resource('slider',SliderController::class);
+
 
 Route::get('/', function () {
     return view('welcome');
 
 });
 
-Route::get('/prueva2', function () {
-    return view('prueva2');
-});
-
-Route::resource('/prueva2', Gamerli2Controller::class);
 require __DIR__.'/auth.php';
 
 Route::get('/dashboard', function () {
@@ -58,74 +60,43 @@ Route::get('/dashboard', function () {
 
 /*-------------Usuarios-------------------*/
 
-Route::get('/dashboard/profile', function () {
-	$user_id = auth::id();
-	return view('profile', ['user' => $user_id]);
-})->middleware(['auth',  'can:accessUser'])->name('profile');
-
-Route::get('/dashboard/ranking', function () {
-    $data = Game::all();
-    $user = auth::id();
-    return view('ranking', ['ranking' => $data]);
-})->middleware(['auth',  'can:accessUser'])->name('ranking');
-
-Route::get('/dashboard/list', function () {
-    $data = Game::all();
-    $user = auth::id();
-    return view('list', ['user' => $data]);
-})->middleware(['auth',  'can:accessUser'])->name('list');
-
 Route::get('/dashboard/request', function () {
-    $data = Game::all();
-    $user = auth::id();
-    return view('request', ['request' => $data]);
+    return view('request');
 })->middleware(['auth',  'can:accessUser'])->name('request');
 
+Route::get('/dashboard/publicList', function () {
+    return view('publicList');
+})->middleware(['auth',  'can:accessUser'])->name('publicList');
+
+Route::get('/dashboard/myList', function () {
+    return view('myList');
+})->middleware(['auth',  'can:accessUser'])->name('myList');
+
 Route::get('/dashboard/friend', function () {
-    $data = Game::all();
-    $user = auth::id();
-    return view('friend', ['friend' => $data]);
+    return view('friend');
 })->middleware(['auth',  'can:accessUser'])->name('friend');
 
 /*-------------ADIMINISTRADOR-------------------*/
 
 // route dashboard Admin (AdminPanel)
 Route::get('/admin/dashboard', function () {
-    return view('dashboard');
+    $image = Game::where('name','like','%'."Assassin's Creed".'%')->first();
+    $urlimage=$image->image;
+    
+    $image2 = Game::where('name','like','%'."Battlefield IV".'%')->first();
+    $urlimage2=$image2->image;
+    
+    return view('dashboard',['image' => $urlimage],['image2' => $urlimage2]);
+
 })->middleware(['auth',  'can:accessAdmin'])->name('adminDashboard');
 
-
-Route::get('/admin/dashboard/requests', function () {
-    $user = auth::id();
-    return view('request', ['request' => $user]);
+Route::get('/admin/dashboard/request', function () {
+    return view('request');
 })->middleware(['auth',  'can:accessAdmin'])->name('request');
 
-Route::get('/admin/dashboard/friend', function () {
-    $user = auth::id();
-    return view('friend', ['friend' => $user]);
-})->middleware(['auth',  'can:accessAdmin'])->name('friend');
-
-Route::get('/admin/dashboard/ranking', function () {
-    $data = Game::all();
-    $user = auth::id();
-    return view('ranking', ['ranking' => $data]);
-})->middleware(['auth',  'can:accessAdmin'])->name('ranking');
-
-
-Route::get('/admin/dashboard/myList', function () {
-    $user = auth::id();
-    return view('myList', ['mylist' => $user]);
-})->middleware(['auth',  'can:accessAdmin'])->name('mylist');
-
 Route::get('/admin/dashboard/publicList', function () {
-    $user = auth::id();
-    return view('publicList', ['publiclist' => $user]);
-})->middleware(['auth',  'can:accessAdmin'])->name('publiclist');
-
-Route::get('/admin/dashboard/profile', function () {
-    $user = auth::id();
-    return view('profile', ['profile' => $user]);
-})->middleware(['auth',  'can:accessAdmin'])->name('profile');
+    return view('publicList');
+})->middleware(['auth',  'can:accessAdmin'])->name('publicList');
 
 Route::resource('admin/dashboard/Import', GameImportController::class);
 //mails
@@ -134,9 +105,14 @@ Route::get('/send-email', [PostController::class, 'sendEmail']);
 
 Route::resource('userUpdate', ProfileController::class);
 
-Auth::routes(['verify'=> true]);
+//Auth::routes(['verify'=> true]);
 
-Route::get('/home','HomeController@index')->name('home')->middleware('verified');
+//Route::get('/home','HomeController@index')->name('home')->middleware('verified');
+
+Route::get('file-import-export-platforms', [PlatformController::class, 'fileImportExport']);
+Route::post('file-import-platforms', [PlatformController::class, 'fileImport'])->name('file-import-platforms');
+Route::get('file-import-export-games', [GameController::class, 'fileImportExport']);
+Route::post('file-import-games', [GameController::class, 'fileImport'])->name('file-import-games');
 
 
 /*Route::resource('admin/dashboard/Import', GameImportController::class);
@@ -144,5 +120,6 @@ Route::get('/home','HomeController@index')->name('home')->middleware('verified')
 Route::resource('admin/dashboard/RankingAdmin.index', GameController::class);
 */
 
-//Route::resource('/dashboard/profile/avatar', ProfileController::class);
-/*Route::resource('/ranking', GameController::class);*/
+Route::get('/admin/dashboard/friend', function () {
+    return view('friend');
+})->middleware(['auth',  'can:accessAdmin'])->name('friend');

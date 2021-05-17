@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use JeroenZwart\CsvSeeder\CsvSeeder;
+use Flynsarmy\CsvSeeder\CsvSeeder;
 use Illuminate\Support\Facades\DB;
 
 class CompaniesSeeder extends CsvSeeder 
@@ -15,10 +15,8 @@ class CompaniesSeeder extends CsvSeeder
 
     public function __construct()
 	{
-        $this->file ='/database/seeders/csvs/companies.csv';
-		$this->tablename = 'companies';
-		$this->delimiter = ';';
-	
+        $this->table = 'companies';
+        $this->filename =base_path().'/database/seeders/csvs/companies.csv';
 	}
 
     public function run()
@@ -27,7 +25,7 @@ class CompaniesSeeder extends CsvSeeder
     	DB::disableQueryLog();
     	DB::statement('SET FOREIGN_KEY_CHECKS=0;');
 		// Uncomment the below to wipe the table clean before populating
-		DB::table($this->tablename)->truncate();
+		DB::table($this->table)->truncate();
 		DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
 		parent::run();
