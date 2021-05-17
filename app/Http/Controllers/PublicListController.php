@@ -53,7 +53,7 @@ class PublicListController extends Controller
     {
     
         Game::create($request->all());
-        return redirect()->route('ranking.index')
+        return redirect()->route('publicList')
                         ->with('success','Game created successfully.');
     }
 
