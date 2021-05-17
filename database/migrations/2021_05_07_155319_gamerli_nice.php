@@ -102,6 +102,7 @@ class GamerliNice extends Migration
 
         Schema::table('users', function (Blueprint $table) {
             $table->enum('role', ['user', 'staff','admin'])->default('user');
+            $table->text('avatar')->nullable();
             //$table->foreignId('gamelist_id')->constrained();
         });
         

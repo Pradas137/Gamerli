@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Gamelist;
 use App\Http\Controllers\GamelistController;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
@@ -55,9 +56,14 @@ class RegisteredUserController extends Controller
              
         ]);
 
-        $id=$user->id;
+        $gamelist = Gamelist::create([
+            'name'=>'Favoritos',
+            'user_id'=>$user->id,
+        ]);
 
-        $gamelist = GamelistController::create([$id]);
+        //$id=$user->id;
+
+        //GamelistController::create($id);
 
         
         Log::debug('llega');
