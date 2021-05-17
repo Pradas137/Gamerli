@@ -91,8 +91,13 @@
                             <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="sage">
                             Platform*
                             </label>
-                            <input type="text" name="platform_id" value="{{ $ranking->platform_id }}" class="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3 form-control">
-                        </div>
+                            <select class="form-control" name="platform_id" id="platform_id">
+                                <option>Select Platform</option>
+                                @foreach ($games as $item)
+                                <option value="{{ $item->id }}" {{ ( $item->id == 1) ? 'selected' : '' }}> {{ $item->name }} </option>
+                                @endforeach
+                            </select>
+                           </div>
                         <div class="md:w-1/2 px-3">
                             <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="summary">
                             Prgi*

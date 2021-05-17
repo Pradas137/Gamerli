@@ -24,7 +24,7 @@
       <div class="w-2/3 mx-auto">
         <h1 class="text-center text-green-600 text-5xl font-bold"> Create Game </h1>
         <div class="bg-blue-200 shadow-md rounded my-6">
-          <form class="form-inline my-2 my-lg-0" type="get" action="{{url('/search')}}">
+          <form class="form-inline my-2 my-lg-0" type="get" action="{{url('/admin/dashboard/ranking')}}">
             <input class="form-control mr -sm-2" type="search" placeholder="Search">
             <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
           </form>
@@ -86,7 +86,7 @@
       </div>
       <div class="w-2/3 mx-auto">
         <div class="bg-white shadow-md rounded my-6">
-          <form class="form-inline my-2 my-lg-0" type="get" action="{{url('/search')}}">
+          <form class="form-inline my-2 my-lg-0" type="get" action="{{url('/dashboard/ranking')}}">
             <input class="form-control mr -sm-2" type="search" placeholder="Search">
             <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
           </form>

@@ -219,11 +219,12 @@
                         Platform*
                         </label>
                     <div>
-                    <select class="w-full bg-gray-200 border border-gray-200 text-black text-xs py-3 px-4 pr-8 mb-3 rounded" name="platform" id="platform">
-                        <option>Xbox One</option>
-                        <option>PS5</option>
-                        <option>Switch</option>
-                    </select>
+                    <select class="form-control" name="platform_id" id="platform_id">
+                                <option>Select Platform</option>
+                                @foreach ($games as $item)
+                                <option value="{{ $item->id }}" {{ ( $item->id == 1) ? 'selected' : '' }}> {{ $item->name }} </option>
+                                @endforeach
+                            </select>
                 </div>
             </div>
             <div class="md:w-1/2 px-3">
