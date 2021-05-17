@@ -21,23 +21,15 @@
             </ul>
         </div>
         <div class="w-1/3 mx-auto">
+        <h1 class="text-center text-green-600 text-5xl font-bold"> Public List </h1>
         <div class="bg-blue-200 shadow-md rounded my-6">
           <!--<form class="form-inline my-2 my-lg-0" type="get" action="{{url('/search')}}">
             <input class="form-control mr -sm-2" type="search" placeholder="Search">
             <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
           </form>-->
           <div class="text-center">
-            <a class="btn btn-info text-center inline-flex items-center px-4 py-2 bg-green-800 border border-transparent rounded-md font-semibold text-sm text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150" href="/admin/dashboard/ranking/create">Add Game</a>
+            <a class="btn btn-info text-center inline-flex items-center px-4 py-2 bg-green-800 border border-transparent rounded-md font-semibold text-sm text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150" href="/admin/dashboard/adminPublicList/create">Add Game</a>
             </div>
-            <div class="w-11/12 mx-auto flex mt-2 mb-2 justify-around items-center" id="form_alumn">
-              <section class="filter flex-wrap justify-around">
-                <x-input type="text" class="p-1 mt-2 xl:mt-0" placeholder="Name" name="name" id="" />
-                <x-input type="date" class="p-1 mt-2 xl:mt-0" placeholder="Date" name="date" id="" />
-                <x-input type="number" class="p-1 mt-2 xl:mt-0" placeholder="Pegi" name="pegi" id="" />
-                <x-input type="text" class="p-1 mt-2 xl:mt-0" placeholder="Saga" name="saga" id="" />
-              </section>
-			        <button type="submit" class="filter btn primary-btn w-2/1  bg-green-800 border border-transparent rounded-md font-semibold text-sm text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150" ">Filtra</button>
-		        </div>
          <table class="text-1xl text-center w-full border-collapse">
             <thead class="bg-blue-700">
               <tr>
@@ -49,7 +41,7 @@
             </thead>
             <tbody>
             @foreach($publicList as $list)
-              <tr id="row_{{$mylist->id}}">
+              <tr id="row_{{$list->id}}">
                 <td class="bg-blue-500">{{ $list->name  }}</td>
                 <td class="bg-blue-600">{{ $list->game_id }}</td>
                 <td class="bg-blue-500">{{ $list->user_id }}</td>
@@ -90,9 +82,50 @@
 
             </ul>
         </div>
-        <div class="p-6">
-            <h1 class="text-white text-4xl font-bold mb-10">Public List</h1>
-        <div>    
+        <div class="w-1/3 mx-auto">
+        <h1 class="text-center text-green-600 text-5xl font-bold"> Public List </h1>
+        <div class="bg-blue-200 shadow-md rounded my-6">
+          <!--<form class="form-inline my-2 my-lg-0" type="get" action="{{url('/search')}}">
+            <input class="form-control mr -sm-2" type="search" placeholder="Search">
+            <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+          </form>-->
+          <div class="text-center">
+            <a class="btn btn-info text-center inline-flex items-center px-4 py-2 bg-green-800 border border-transparent rounded-md font-semibold text-sm text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150" href="/dashboard/PublicList/create">Add Game</a>
+            </div>
+         <table class="text-1xl text-center w-full border-collapse">
+            <thead class="bg-blue-700">
+              <tr>
+                <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Name</th>
+                <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Game</th>
+                <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">User</th>
+                <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+            @foreach($publicList as $list)
+              <tr id="row_{{$list->id}}">
+                <td class="bg-blue-500">{{ $list->name  }}</td>
+                <td class="bg-blue-600">{{ $list->game_id }}</td>
+                <td class="bg-blue-500">{{ $list->user_id }}</td>
+              </tr>
+            @endforeach
+            </tbody>
+            <tfoot class="bg-blue-700">
+              <tr>
+                <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Name</th>
+                <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Game</th>
+                <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">User</th>
+                <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Actions</th>
+              </tr>
+			</tfoot>
+          </table>
+          <ul class="pagination"></ul>
+          <span class="text-white">
+            {{ $publicList->links() }}
+          </span>
+        </div>
+      </div>
+    </div>    
     </div>
     @endif
 </x-app-layout>

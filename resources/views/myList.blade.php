@@ -22,6 +22,7 @@
             </ul>
         </div>
         <div class="w-2/3 mx-auto">
+        <h1 class="text-center text-green-600 text-5xl font-bold"> My List </h1>
         <div class="bg-blue-200 shadow-md rounded my-6">
           <!--<form class="form-inline my-2 my-lg-0" type="get" action="{{url('/search')}}">
             <input class="form-control mr -sm-2" type="search" placeholder="Search">
@@ -41,7 +42,7 @@
             </thead>
             <tbody>
             @foreach($mylist as $list)
-              <tr id="row_{{$game->id}}">
+              <tr id="row_{{$list->id}}">
                 <td class="bg-blue-500">{{ $list->name  }}</td>
                 <td class="bg-blue-600">{{ $list->game_id }}</td>
                 <td class="bg-blue-500">{{ $list->user_id }}</td>
@@ -75,6 +76,7 @@
             </ul>
         </div>
         <div class="w-2/3 mx-auto">
+        <h1 class="text-center text-green-600 text-5xl font-bold"> My List </h1>
         <div class="bg-blue-200 shadow-md rounded my-6">
           <!--<form class="form-inline my-2 my-lg-0" type="get" action="{{url('/search')}}">
             <input class="form-control mr -sm-2" type="search" placeholder="Search">
@@ -95,7 +97,7 @@
             </thead>
             <tbody>
             @foreach($mylist as $list)
-              <tr id="row_{{$mylist->id}}">
+              <tr id="row_{{$list->id}}">
                 <td class="bg-blue-500">{{ $list->name  }}</td>
                 <td class="bg-blue-600">{{ $list->game_id }}</td>
                 <td class="bg-blue-500">{{ $list->user_id }}</td>
