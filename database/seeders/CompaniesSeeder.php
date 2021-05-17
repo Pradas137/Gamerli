@@ -23,10 +23,10 @@ class CompaniesSeeder extends CsvSeeder
     {
         //
     	DB::disableQueryLog();
-    	DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+    	//DB::statement('SET FOREIGN_KEY_CHECKS=0;');
 		// Uncomment the below to wipe the table clean before populating
 		DB::table($this->table)->truncate();
-		DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+		//DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
 		parent::run();
     }
