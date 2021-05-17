@@ -22,6 +22,7 @@ class PublicListController extends Controller
         ->join('gamelists', 'users.id', '=', 'gamelists.user_id')
         ->join('game_gamelist', 'game_gamelists.gamelist_id', '=', 'gamelists.id')
         ->join('games', 'game_gamelist.game_id', '=', 'games.id')
+        ->select('gamelists.*', 'games.name')
         ->where("visibility", 1)->orderBy('id','desc')->paginate(5);
         return view('publicList', ['publiclist' => $publicList]);
     }

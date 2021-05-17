@@ -135,6 +135,9 @@
 #carousel-4:checked ~ .control-4 ~ .carousel-indicators li:nth-child(4) .carousel-bullet {
     color: blue;
 }
+#imgeranking{
+    background-size: 300px 200px;
+}
     </style>
     </head>
     <body class="font-sans antialiased dark:bg-gray-800 dark:text-white bg-base">

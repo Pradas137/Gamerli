@@ -14,12 +14,14 @@ use App\Models\Platform;
 use App\Models\Publisher;
 use App\Models\Saga;
 use App\Models\User;
-use App\Models\Score;
+use App\Models\Gamelist;
 use App\Http\Controllers\GameImportController;
 use App\Http\Controllers\PlatformController;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RankingController;
+use App\Http\Controllers\PublicListController;
+use App\Http\Controllers\MyListController;
 
 
 /*
@@ -36,6 +38,11 @@ Route::resource('/admin/dashboard/ranking','App\Http\Controllers\RankingControll
 Route::resource('/dashboard/ranking','App\Http\Controllers\RankingController');
 Route::resource('/admin/dashboard/profile','App\Http\Controllers\ProfileController');
 Route::resource('/dashboard/profile','App\Http\Controllers\ProfileController');
+Route::resource('/admin/dashboard/adminPublicList','App\Http\Controllers\PublicListController');
+Route::resource('/dashboard/PublicList','App\Http\Controllers\RankingController');
+Route::resource('/admin/dashboard/adminMyList','App\Http\Controllers\MyListController');
+Route::resource('/dashboard/MyList','App\Http\Controllers\MyListController');
+
 //Route::post('/perfil/foto', 'ProfileController@updatePhoto');
 //Route::resource('slider',SliderController::class);
 
@@ -68,9 +75,15 @@ Route::get('/dashboard/publicList', function () {
     return view('publicList');
 })->middleware(['auth',  'can:accessUser'])->name('publicList');
 
-Route::get('/dashboard/myList', function () {
-    return view('myList');
-})->middleware(['auth',  'can:accessUser'])->name('myList');
+Route::get('/admin/dashboard/mylist', function () {
+    $mylists = Gamelist::where("visibility", 0)->toArray();
+    $mylists = DB::table('gamelists')
+           ->leftJoin('users', 'gamelists.user_id', '=', 'users.gamelist_id')
+           ->leftJoin('game_gamelist', 'game_gamelist.game_id', '=', 'games.id')
+         ->orderBy('id','desc')->paginate(5);
+    return view('myList', ['mylists' => $mylists]);
+})->middleware(['auth',  'can:accessAdmin'])->name('publicList');
+
 
 Route::get('/dashboard/friend', function () {
     return view('friend');
@@ -93,10 +106,6 @@ Route::get('/admin/dashboard', function () {
 Route::get('/admin/dashboard/request', function () {
     return view('request');
 })->middleware(['auth',  'can:accessAdmin'])->name('request');
-
-Route::get('/admin/dashboard/publicList', function () {
-    return view('publicList');
-})->middleware(['auth',  'can:accessAdmin'])->name('publicList');
 
 Route::resource('admin/dashboard/Import', GameImportController::class);
 //mails
