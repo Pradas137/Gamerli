@@ -30,14 +30,16 @@
                         <input type="file" id="avatarInput" name="avatar">
                     </form>
                         <h1 id="name" class="text-3xl font-bold pt-8 lg:pt-0 text-black">Name List: {{ $list->name }}</h1>
+                        @foreach ( $list->games() as $game)
                         <div class="mx-auto lg:mx-0 w-4/5 pt-3 border-b-2 border-green-500 opacity-25 text-black"></div>
-                            <p class="pt-2 text-base font-bold flex items-center justify-center lg:justify-start text-black">Games: {{ $list->game_id }}</p>
+                            <p class="pt-2 text-base font-bold flex items-center justify-center lg:justify-start text-black">Games: {{ $game->name }}</p>
                             <div class="pt-3 pb-5">
                             <a href="/admin/dashboard/adminPublicList" class="md:w-full bg-gray-900 text-white font-bold py-2 px-4 border-b-4 hover:border-b-2 border-gray-500 hover:border-gray-100 rounded-full">
                                 Atras
                             </a>
                             </div>
                         </div>
+                        @endforeach
                     </div>
                     
                     <div class="modal fade" id="userUpdate" tabindex="-1" role="dialog" style="z-index: 1050; display: none;" aria-hidden="true">
