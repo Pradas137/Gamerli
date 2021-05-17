@@ -24,7 +24,9 @@ class PublicListController extends Controller
         ->join('games', 'game_gamelist.game_id', '=', 'games.id')
         ->select('gamelists.*', 'games.name')
         ->where("visibility", 1)->orderBy('id','desc')->paginate(5);*/
-        $publicList = Gamelist::where('visibility',1)->paginate(3);
+
+       
+        $publicList = Gamelist::where('visibility',0)->paginate(3);
         return view('publicList', ['publicList' => $publicList]);
     }
 
@@ -35,7 +37,10 @@ class PublicListController extends Controller
      */
     public function create()
     {
-
+        $games = DB::table('platforms')
+            ->join('games', 'platforms.id', '=', 'games.platform_id')
+            ->select('platforms.*', 'games.platform_id')->groupBy('name')->get();
+            return view('ranking.create', ['games' => $games]);
     }
 
     /**
@@ -47,7 +52,9 @@ class PublicListController extends Controller
     public function store(Request $request)
     {
     
-      
+        Game::create($request->all());
+        return redirect()->route('ranking.index')
+                        ->with('success','Game created successfully.');
     }
 
     /**
@@ -56,9 +63,9 @@ class PublicListController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Game $ranking)
+    public function show(GameList $list)
     {
-
+        return view('showpublic',['list' => $list]);
     }
 
     /**
@@ -67,9 +74,9 @@ class PublicListController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Game $ranking)
+    public function edit(Gamelist $list)
     {
-
+        return view('publicList',['list' => $list]);
     }
 
     /**
@@ -79,10 +86,12 @@ class PublicListController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Game $ranking)
+    public function update(Request $request, Gamelist $list)
     {
     
-       
+        $list->update($request->all());
+        return redirect()->route('publicList')
+                        ->with('success','Game updated successfully');
     }
 
     /**
@@ -91,9 +100,11 @@ class PublicListController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Game $ranking)
+    public function destroy(GameList $list)
     {
-       
-
+        $list->delete();
+    
+        return redirect()->route('publicList')
+                        ->with('success','Game deleted successfully');
     }
 }

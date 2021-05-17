@@ -14,7 +14,7 @@ class Gamelist extends Model
 protected $fillable = ['name','user_id'];
 
     public function games(){
-    	return $this->belongsToMany(Game::class);
+    	return $this->belongsToMany(Game::class)->using(Game_Gamelist::class);
     }
 
     public function users(){
