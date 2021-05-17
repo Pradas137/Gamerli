@@ -89,6 +89,7 @@ class GamerliNice extends Migration
             $table->id();
             $table->foreignId('game_id')->constrained();
             $table->foreignId('genre_id')->constrained();
+            $table->timestamps();
         });
 
         
@@ -102,7 +103,6 @@ class GamerliNice extends Migration
 
         Schema::table('users', function (Blueprint $table) {
             $table->enum('role', ['user', 'staff','admin'])->default('user');
-            $table->text('avatar')->nullable();
             //$table->foreignId('gamelist_id')->constrained();
         });
         

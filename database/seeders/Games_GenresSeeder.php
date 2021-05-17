@@ -17,7 +17,6 @@ class Games_GenresSeeder extends Seeder
         //
 
         Game_Genre::factory()
-            ->count(103)
-            ->create();
+            ->create(105);
     }
 }
