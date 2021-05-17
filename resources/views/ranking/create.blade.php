@@ -6,7 +6,7 @@
     </x-slot>
     @if(Auth::user()->role == 'admin')
     <div class=" text-center flex h-screen">
-        <div class=" bg-gray-600 h-8 md:h-full border-r w-64 text-center border-gray-200">
+        <div style="background-image: url(https://mcdn.wallpapersafari.com/medium/20/74/JfPDgt.jpg)" class=" h-8 md:h-full border-r w-64 text-center text-white border-gray-200">
             <h6 class="font-bold mb-4 text-2xl">PAGE</h6>
             <ul>
                 <li class="font-bolt mb-4"><a href="/admin/dashboard">Home</a></li>
@@ -92,11 +92,6 @@
                             Platform*
                             </label>
                         <div>
-                        <select class="w-full bg-gray-200 border border-gray-200 text-black text-xs py-3 px-4 pr-8 mb-3 rounded" name="platform" id="platform">
-                            <option>Xbox One</option>
-                            <option>PS5</option>
-                            <option>Switch</option>
-                        </select>
                     </div>
                 </div>
                 <div class="md:w-1/2 px-3">
@@ -136,7 +131,7 @@
             <ul>
                 <li class="font-bolt mb-4"><a href="/dashboard">Home</a></li>
                 <li class="font-bolt mb-4"><a href="/dashboard/publicList">Global list</a></li>
-                <li class="font-bolt mb-4"><a href="/dashboard/ranking">Ranking Games</a></li>
+                <li class="font-bolt mb-4"><a href="/dashboard/rankingUser">Ranking Games</a></li>
             <ul>
             <h6 class="font-bold mb-4 text-2xl">ADMIN</h6>
             <ul>
@@ -243,12 +238,12 @@
         </div>
         <div class="-mx-3 md:flex mt-2">
           <div class="md:w-full px-10">
-            <button class="md:w-full bg-gray-900 text-white font-bold py-2 px-4 border-b-4 hover:border-b-2 border-gray-500 hover:border-gray-100 rounded-full">
+            <a class="md:w-full bg-gray-900 text-white font-bold py-2 px-4 border-b-4 hover:border-b-2 border-gray-500 hover:border-gray-100 rounded-full">
               Button
-            </button>
+</a>
           </div>
             <div class="md:w-full px-10">
-            <a href="/dashboard/ranking" class="md:w-full bg-gray-900 text-white font-bold py-2 px-4 border-b-4 hover:border-b-2 border-gray-500 hover:border-gray-100 rounded-full">
+            <a href="/dashboard/rankingUser" class="md:w-full bg-gray-900 text-white font-bold py-2 px-4 border-b-4 hover:border-b-2 border-gray-500 hover:border-gray-100 rounded-full">
                     Atras
             </a>
             </div>
