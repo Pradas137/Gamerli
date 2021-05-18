@@ -238,7 +238,7 @@
 
                         <select class="form-control" name="platform_id" id="platform_id">
                             <option>Select Platform</option>
-                            @foreach ($ranking as $item)
+                            @foreach ($rankingUser as $item)
                             <option value="{{ $item->id }}" {{ ( $item->id == 1) ? 'selected' : '' }}> {{ $item->name }} </option>
                             @endforeach
                         </select>

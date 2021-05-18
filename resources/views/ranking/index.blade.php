@@ -102,7 +102,7 @@
               </tr>
             </thead>
             <tbody>
-            @foreach($rankings as $game)
+            @foreach($rankingsUser as $game)
               <tr id="row_{{$game->id}}">
                 <td class="bg-blue-500">{{ $game->name  }}</td>
                 <td class="bg-blue-600">{{ $game->date }}</td>
@@ -119,7 +119,7 @@
             </tbody>
           </table>
           <span class="text-white">
-            {{ $rankings->links() }}
+            {{ $rankingsUser->links() }}
           </span>
         </div>
       </div>
