@@ -75,7 +75,7 @@
             <h1 class="text-center text-green-600 text-5xl font-bold"> Show Game </h1>
             <div id="profile" class="w-full lg:w-3/5 rounded-lg lg:rounded-l-lg lg:rounded-r-none shadow-2xl bg-white opacity-75 mx-6 lg:mx-0">
                 <div class="p-4 md:p-12 text-center lg:text-left">
-                    <form method="POST" action="{{ route('ranking.store') }}" method="post" style="display: none" id="avatarForm">
+                    <form method="POST" action="{{ route('rankingUser.store') }}" method="post" style="display: none" id="avatarForm">
                         {{ csrf_field() }}
                         <input type="file" id="avatarInput" name="avatar">
                     </form>
