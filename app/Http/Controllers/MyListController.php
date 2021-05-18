@@ -62,8 +62,8 @@ class MyListController extends Controller
         $select = $request->select;
         $visibility = $request->visibility;
         $user_id = Auth::user()->id;
-        /*$game_id = Game_Gamelist::find($id);
-        $gamelist_id = Game_Gamelist::find($id);*/
+        //$game_id = $id;
+        //$gamelist_id = $id;
 
         $gamelist = new Gamelist(["name"=>$namelist,"user_id"=>$user_id,"visibility"=>$visibility]);
         $gamelist->save();

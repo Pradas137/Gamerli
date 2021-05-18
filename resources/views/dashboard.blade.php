@@ -110,7 +110,7 @@
                        rounded-lg p-4 border border-green-900">
             Public Lists
         </a>
-        <a href="/dashboard/myList" class="text-3xl transition duration-100 ease-in-out 
+        <a href="/dashboard/MyList" class="text-3xl transition duration-100 ease-in-out 
                        bg-green-300 hover:bg-green-600 transform 
                        hover:-translate-y-1 hover:scale-100 
                        rounded-lg p-4 border border-green-900">
