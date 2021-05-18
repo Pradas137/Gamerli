@@ -6,7 +6,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
-use Faker\Factory as Faker;
+use Faker\Generator as Faker;
 use App\Models\User;
 use App\Models\Gamelist;
 use Database\Seeder\GamelistSeeder;

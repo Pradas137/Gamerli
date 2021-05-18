@@ -6,7 +6,7 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
-use Faker\Factory as Faker;
+use Faker\Generator as Faker;
 
 class UserFactory extends Factory
 {
