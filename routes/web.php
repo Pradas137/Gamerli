@@ -64,7 +64,12 @@ Route::get('/dashboard', function () {
             return redirect('/admin/dashboard');
         }
         if (Auth::user()->role == "user") {
-            return view('dashboard');
+                $image = Game::where('name','like','%'."Assassin's Creed".'%')->first();
+            $urlimage=$image->image;
+    
+            $image2 = Game::where('name','like','%'."Battlefield IV".'%')->first();
+            $urlimage2=$image2->image;
+            return view('dashboard',['image' => $urlimage],['image2' => $urlimage2]);
         }
     }
 })->middleware(['auth'])->name('dashboard');
