@@ -6,7 +6,7 @@
     </x-slot>
     @if(Auth::user()->role == 'admin')
     <div class=" text-center flex h-screen">
-        <div style="background-image: url(https://mcdn.wallpapersafari.com/medium/20/74/JfPDgt.jpg)" class=" h-8 md:h-full border-r w-64 text-center text-white border-gray-200">
+        <div style="background-image: url(/images/fondonegro.jpg)" class=" h-8 md:h-full border-r w-64 text-center text-white border-gray-200">
             <h6 class="font-bold mb-4 text-2xl">PAGE</h6>
             <ul>
                 <li class="font-bolt mb-4"><a href="/admin/dashboard">Home</a></li>
@@ -85,6 +85,7 @@
                             <input class="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3" name="image" id="image" type="text" placeholder="image">
                         </div>
                     </div>
+
                 <div class="-mx-3 md:flex mb-2">
                     <div class="md:w-1/2 px-3 mb-6 md:mb-0">
                         <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="platform">
@@ -97,6 +98,7 @@
                             <option value="{{ $item->id }}" {{ ( $item->id == 1) ? 'selected' : '' }}> {{ $item->name }} </option>
                             @endforeach
                         </select>
+
                     </div>
                 </div>
                     <div class="md:w-1/2 px-3">
@@ -233,6 +235,7 @@
                         Platform*
                         </label>
                     <div>
+
                         <select class="form-control" name="platform_id" id="platform_id">
                             <option>Select Platform</option>
                             @foreach ($ranking as $item)
@@ -253,6 +256,7 @@
                             @endforeach
                         </select>
                     </div>        
+
                 </div>
             <div class="md:w-1/2 px-3">
                 <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" form="pegi">
