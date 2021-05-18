@@ -37,10 +37,10 @@ class PublicListController extends Controller
      */
     public function create()
     {
-        $games = DB::table('platforms')
-            ->join('games', 'platforms.id', '=', 'games.platform_id')
-            ->select('platforms.*', 'games.platform_id')->groupBy('name')->get();
-            return view('ranking.create', ['games' => $games]);
+        $publicList = DB::table('Games')
+            ->join('game_gamelist', 'game.id', '=', 'game_gamelist.game_id')
+            ->select('Games.*', 'game_gamelist.game_id')->groupBy('name')->get();
+            return view('createList', ['publicList' => $publicList]);
     }
 
     /**

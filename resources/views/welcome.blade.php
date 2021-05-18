@@ -34,10 +34,6 @@
                             <li class="flex mb-4">
                                 <a href="{{ route('register') }} " class=" text-3xl py-2 px-4 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">Register</a>
                             </li>
-
-                            <li class="flex mb-4">
-                                <a href=" " class="text-3xl py-2 px-4 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">Visitet</a>
-                            </li>
                         </ul>
                     </div>
                     <div class="p-6">

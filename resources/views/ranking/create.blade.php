@@ -18,7 +18,6 @@
                 <li class="font-bolt mb-4"><a href="/admin/dashboard/requests">My Request</a></li>
                 <li class="font-bolt mb-4"><a href="/admin/dashboard/adminMyList">My Lists</a></li>
                 <li class="font-bolt mb-4"><a href="/admin/dashboard/profile">Profile</a></li>
-                <li class="font-bolt mb-4"><a href="/admin/dashboard/friend">Friend</a></li>
             </ul>
         </div>
         <div class="w-2/3 mx-auto">
@@ -132,7 +131,7 @@
     @else
     <script src="{{asset('js/breadcrumb.js')}}"></script>
     <div class="flex h-screen">
-        <div class="h-8 md:h-full border-r w-64 text-center border-gray-200">
+        <div class="bg-red-400 h-8 md:h-full border-r w-64 text-center border-gray-200">
             <h6 class="font-bold mb-4 text-2xl">PAGE</h6>
             <ul>
                 <li class="font-bolt mb-4"><a href="/dashboard">Home</a></li>
@@ -144,13 +143,12 @@
                 <li class="font-bolt mb-4"><a href="/dashboard/request">My Request</a></li>
                 <li class="font-bolt mb-4"><a href="/dashboard/MyList">My Lists</a></li>
                 <li class="font-bolt mb-4"><a href="/dashboard/profile">Profile</a></li>
-                <li class="font-bolt mb-4"><a href="/dashboard/friend">Friend</a></li>
 
             </ul>
         </div>
         <div class="w-2/3 mx-auto">
         <h1 class="text-center text-green-600 text-5xl font-bold"> Create Game </h1>
-        <form method="POST" action="{{ route('ranking.store') }}">
+        <form method="POST" action="{{ route('rankingUser.store') }}">
             @csrf
             <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col">
                 <div class="-mx-3 md:flex mb-6">
@@ -245,9 +243,9 @@
         </div>
         <div class="-mx-3 md:flex mt-2">
           <div class="md:w-full px-10">
-            <a class="md:w-full bg-gray-900 text-white font-bold py-2 px-4 border-b-4 hover:border-b-2 border-gray-500 hover:border-gray-100 rounded-full">
+            <button onclick="alert('Hello, the game created has been sent for validation')" class=" md:w-full bg-gray-900 text-white font-bold py-2 px-4 border-b-4 hover:border-b-2 border-gray-500 hover:border-gray-100 rounded-full">
               Button
-</a>
+            </button>
           </div>
             <div class="md:w-full px-10">
             <a href="/dashboard/rankingUser" class="md:w-full bg-gray-900 text-white font-bold py-2 px-4 border-b-4 hover:border-b-2 border-gray-500 hover:border-gray-100 rounded-full">

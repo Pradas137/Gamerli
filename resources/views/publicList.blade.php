@@ -17,7 +17,6 @@
                 <li class="font-bolt mb-4"><a href="/admin/dashboard/request">My Request</a></li>
                 <li class="font-bolt mb-4"><a href="/admin/dashboard/adminMyList">My Lists</a></li>
                 <li class="font-bolt mb-4"><a href="/admin/dashboard/profile">Profile</a></li>
-                <li class="font-bolt mb-4"><a href="/admin/dashboard/friend">Friend</a></li>
             </ul>
         </div>
         <div class="w-1/3 mx-auto">
@@ -27,9 +26,6 @@
             <input class="form-control mr -sm-2" type="search" placeholder="Search">
             <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
           </form>-->
-          <div class="text-center">
-            <a class="btn btn-info text-center inline-flex items-center px-4 py-2 bg-green-800 border border-transparent rounded-md font-semibold text-sm text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150" href="/admin/dashboard/adminPublicList/create">Add Game</a>
-            </div>
          <table class="text-1xl text-center w-full border-collapse">
             <thead class="bg-blue-700">
               <tr>
@@ -81,8 +77,6 @@
                 <li class="font-bolt mb-4"><a href="/dashboard/request">My Request</a></li>
                 <li class="font-bolt mb-4"><a href="/dashboard/mylist">My Lists</a></li>
                 <li class="font-bolt mb-4"><a href="/dashboard/profile">Profile</a></li>
-                <li class="font-bolt mb-4"><a href="/dashboard/friend">Friend</a></li>
-
             </ul>
         </div>
         <div class="w-1/3 mx-auto">
@@ -92,9 +86,6 @@
             <input class="form-control mr -sm-2" type="search" placeholder="Search">
             <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
           </form>-->
-          <div class="text-center">
-            <a class="btn btn-info text-center inline-flex items-center px-4 py-2 bg-green-800 border border-transparent rounded-md font-semibold text-sm text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150" href="/dashboard/PublicList/create">Add Game</a>
-            </div>
          <table class="text-1xl text-center w-full border-collapse">
             <thead class="bg-blue-700">
               <tr>

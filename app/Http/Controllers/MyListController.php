@@ -40,10 +40,10 @@ class MyListController extends Controller
      */
     public function create()
     {
-        $list = DB::table('game_gamelist')
-            ->join('games', 'game_gamelist.game_id', '=', 'games.id')
-            ->select('game_gamelist.*', 'games.id')->groupBy('name')->get();
-            return view('createList', ['list' => $list]);
+        $list = DB::table('gamelists')
+        ->join('game_gamelist', 'gamelists.id', '=', 'game_gamelist.gamelist_id')
+        ->select('gamelists.*', 'game_gamelist.gamelist_id')->groupBy('gamelist_id')->get();
+        return view('createList', ['list' => $list]);
     }
     /**
      * Store a newly created resource in storage.
@@ -54,7 +54,8 @@ class MyListController extends Controller
     public function store(Request $request)
     {
     
-        Game::create($request->all());
+        $list = Gamelist::create($list_inputs);
+        $mylist = $list->Game_Gamelist()->create($mylist_input);
         return redirect()->route('myList')
                         ->with('success','Game created successfully.');
     }

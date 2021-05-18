@@ -23,7 +23,7 @@
         </div>
         <div class="w-2/3 mx-auto">
             <h1 class="text-center text-green-600 text-5xl font-bold"> Create Game </h1>
-            <form method="POST" action="{{ route('ranking.store') }}">
+            <form method="POST" action="{{ route('adminMyList.store') }}">
                 @csrf
                 <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col">
                     <div class="-mx-3 md:flex mb-6">
@@ -40,7 +40,7 @@
                             Game*
                             </label>
                             <select class="form-control" name="platform_id" id="platform_id">
-                                <option>Select Platform</option>
+                                <option>Select Games</option>
                                 @foreach ($list as $item)
                                 <option value="{{ $item->id }}" {{ ( $item->id == 1) ? 'selected' : '' }}> {{ $item->name }} </option>
                                 @endforeach
@@ -84,7 +84,7 @@
         </div>
         <div class="w-2/3 mx-auto">
             <h1 class="text-center text-green-600 text-5xl font-bold"> Create Game </h1>
-            <form method="POST" action="{{ route('PublicList.store ') }}">
+            <form method="POST" action="{{ route('MyList.store ') }}">
             @csrf
             <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col">
                 <div class="-mx-3 md:flex mb-6">
@@ -97,8 +97,8 @@
                 </div>
                 <div class="-mx-3 md:flex mb-2">
                     <select class="form-control" name="platform_id" id="platform_id">
-                        <option>Select Platform</option>
-                        @foreach ($games as $item)
+                        <option>Select Game</option>
+                        @foreach ($list as $item)
                         <option value="{{ $item->id }}" {{ ( $item->id == 1) ? 'selected' : '' }}> {{ $item->name }} </option>
                         @endforeach
                     </select>

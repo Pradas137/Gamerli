@@ -11,7 +11,7 @@ class Gamelist extends Model
 {
     use HasFactory;
 
-protected $fillable = ['name','user_id'];
+protected $fillable = ['name','user_id','visibility'];
 
     public function games(){
     	return $this->belongsToMany(Game::class)->using(Game_Gamelist::class);

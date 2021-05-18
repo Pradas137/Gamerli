@@ -98,10 +98,10 @@ return response()->json($data);
      */
     public function create()
     {
-        $games = DB::table('platforms')
+        $ranking = DB::table('platforms')
             ->join('games', 'platforms.id', '=', 'games.platform_id')
             ->select('platforms.*', 'games.platform_id')->groupBy('name')->get();
-            return view('ranking.create', ['games' => $games]);
+            return view('ranking.create', ['ranking' => $ranking]);
     }
 
     /**
@@ -110,7 +110,7 @@ return response()->json($data);
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Game $ranking)
     {
     
         Game::create($request->all());

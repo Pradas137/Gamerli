@@ -93,8 +93,8 @@
                             </label>
                             <select class="form-control" name="platform_id" id="platform_id">
                                 <option>Select Platform</option>
-                                @foreach ($games as $item)
-                                <option value="{{ $item->id }}" {{ ( $item->id == 1) ? 'selected' : '' }}> {{ $item->name }} </option>
+                                @foreach ($ranking as $item)
+                                <option value="{{ $item->id }}" {{ ( $item->id == Auth::id()) ? 'selected' : '' }}> {{ $item->name }} </option>
                                 @endforeach
                             </select>
                            </div>

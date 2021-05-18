@@ -35,11 +35,14 @@ use App\Http\Controllers\MyListController;
 |
 */
 Route::resource('/admin/dashboard/ranking','App\Http\Controllers\RankingController');
-Route::resource('/dashboard/ranking','App\Http\Controllers\RankingController');
+Route::resource('/dashboard/rankingUser','App\Http\Controllers\RankingController');
+
 Route::resource('/admin/dashboard/profile','App\Http\Controllers\ProfileController');
 Route::resource('/dashboard/profile','App\Http\Controllers\ProfileController');
+
 Route::resource('/admin/dashboard/adminPublicList','App\Http\Controllers\PublicListController');
 Route::resource('/dashboard/PublicList','App\Http\Controllers\RankingController');
+
 Route::resource('/admin/dashboard/adminMyList','App\Http\Controllers\MyListController');
 Route::resource('/dashboard/MyList','App\Http\Controllers\MyListController');
 
@@ -70,20 +73,6 @@ Route::get('/dashboard', function () {
 Route::get('/dashboard/request', function () {
     return view('request');
 })->middleware(['auth',  'can:accessUser'])->name('request');
-
-Route::get('/dashboard/publicList', function () {
-    return view('publicList');
-})->middleware(['auth',  'can:accessUser'])->name('publicList');
-
-Route::get('/admin/dashboard/mylist', function () {
-    $mylists = Gamelist::where("visibility", 0)->toArray();
-    $mylists = DB::table('gamelists')
-           ->leftJoin('users', 'gamelists.user_id', '=', 'users.gamelist_id')
-           ->leftJoin('game_gamelist', 'game_gamelist.game_id', '=', 'games.id')
-         ->orderBy('id','desc')->paginate(5);
-    return view('myList', ['mylists' => $mylists]);
-})->middleware(['auth',  'can:accessAdmin'])->name('publicList');
-
 
 Route::get('/dashboard/friend', function () {
     return view('friend');
@@ -118,10 +107,10 @@ Route::resource('userUpdate', ProfileController::class);
 
 //Route::get('/home','HomeController@index')->name('home')->middleware('verified');
 
-Route::get('file-import-export-platforms', [PlatformController::class, 'fileImportExport']);
-Route::post('file-import-platforms', [PlatformController::class, 'fileImport'])->name('file-import-platforms');
-Route::get('file-import-export-games', [GameController::class, 'fileImportExport']);
-Route::post('file-import-games', [GameController::class, 'fileImport'])->name('file-import-games');
+Route::get('admin/dashboard/file-import-export-platforms', [PlatformController::class, 'fileImportExport']);
+Route::post('admin/dashboard/file-import-platforms', [PlatformController::class, 'fileImport'])->name('file-import-platforms');
+Route::get('admin/dashboard/file-import-export-games', [GameController::class, 'fileImportExport']);
+Route::post('admin/dashboard/file-import-games', [GameController::class, 'fileImport'])->name('file-import-games');
 
 
 /*Route::resource('admin/dashboard/Import', GameImportController::class);
