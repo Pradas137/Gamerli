@@ -25,7 +25,7 @@ class MyListController extends Controller
         ->join('game_gamelist', 'game_gamelists.gamelist_id', '=', 'gamelists.id')
         ->join('games', 'game_gamelist.game_id', '=', 'games.id')
         ->where("visibility", 1)->orderBy('id','desc')->paginate(5);*/
-        $publiclist = Gamelist::where('visibility',0)->paginate(3);
+        $publiclist = Gamelist::where('visibility',0)->paginate(2);
 
         $mylist = Gamelist::where('visibility',1)->paginate(3);
         return view('myList', ['mylist' => $mylist],['publiclist' => $publiclist]);
@@ -56,20 +56,20 @@ class MyListController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request , $id)
+    public function store(Request $request)
     {
         $namelist = $request->namelist;
         $select = $request->select;
         $visibility = $request->visibility;
         $user_id = Auth::user()->id;
-        $game_id = Game_Gamelist::find($id);;
-        $gamelist_id = Game_Gamelist::find($id);
+        //$game_id = Game_Gamelist::find($id);;
+        //$gamelist_id = Game_Gamelist::find($id);
 
         $gamelist = new Gamelist(["name"=>$namelist,"user_id"=>$user_id,"visibility"=>$visibility]);
         $gamelist->save();
 
-        $game_gamelist = new Game_Gamelist(["game_id" => $game_id,"gamelist_id"=> $gamelist_id]);
-        $game_gamelist->save();
+        //$game_gamelist = new Game_Gamelist(["game_id" => $game_id,"gamelist_id"=> $gamelist_id]);
+        //$game_gamelist->save();
 
         return view('myList')->with('success','Game created successfully.');
     }

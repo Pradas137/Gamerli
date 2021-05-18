@@ -8,6 +8,7 @@ use App\Models\Game;
 use App\Models\User;
 use App\Models\Gamelist;
 
+use Illuminate\Support\Facades\Auth;
 
 class PublicListController extends Controller
 {
