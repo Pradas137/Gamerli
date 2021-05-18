@@ -24,7 +24,7 @@
     <body >
         <main>
             <div class="sm:flex md:flex lg:flex xl:flex justify-center items-center min-h-screen bg-base">
-                <div style="background-image: url(https://mcdn.wallpapersafari.com/medium/20/74/JfPDgt.jpg)" class="bg-auto bg-no-repeat bg-center sm:flex md:flex lg:flex xl:flex h-50 bg-red-600 container bg-admin text-center w-2/4 rounded-xl p-5 shadow-xl">
+                <div style="background-image: url(/images/fondonegro.jpg)" class="bg-auto bg-no-repeat bg-center sm:flex md:flex lg:flex xl:flex h-50 bg-red-600 container bg-admin text-center w-2/4 rounded-xl p-5 shadow-xl">
                     <div class="h-48 content-start p-7 w-34 boder-r border-gray-100">
                         <ul>
                             <!--<img src="{{asset('/images/logo2.png')}}"  id="Chocolate" class="w-36">--> 

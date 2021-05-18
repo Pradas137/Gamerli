@@ -10,7 +10,7 @@ class Game_Gamelist extends Pivot
 {
     use HasFactory;
 
-    public function game(){
+    public function games(){
     	return $this->hasMany(Game::class);
     }
     public function gamelists(){

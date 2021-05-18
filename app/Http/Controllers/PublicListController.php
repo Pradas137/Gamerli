@@ -63,9 +63,10 @@ class PublicListController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(GameList $list)
+    public function show($id)
     {
-        return view('showpublic',['list' => $list]);
+        $lista = GameList::find($id);
+        return view('showpublic',['list' => $lista]);
     }
 
     /**

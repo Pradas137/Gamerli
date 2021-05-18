@@ -15,7 +15,7 @@
             <h6 class="font-bold mb-4 text-2xl">ADMIN</h6>
             <ul>
                 <li class="font-bolt mb-4"><a href="/admin/dashboard/request">My Request</a></li>
-                <li class="font-bolt mb-4"><a href="/admin/dashboard/myList">My Lists</a></li>
+                <li class="font-bolt mb-4"><a href="/admin/dashboard/adminMyList">My Lists</a></li>
                 <li class="font-bolt mb-4"><a href="/admin/dashboard/profile">Profile</a></li>
                 <li class="font-bolt mb-4"><a href="/admin/dashboard/friend">Friend</a></li>
             </ul>
@@ -33,7 +33,7 @@
          <table class="text-1xl text-center w-full border-collapse">
             <thead class="bg-blue-700">
               <tr>
-                <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Name</th>
+                <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">List Name</th>
                 <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Game</th>
                 <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">User</th>
                 <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Actions</th>
@@ -53,7 +53,7 @@
             </tbody>
             <tfoot class="bg-blue-700">
               <tr>
-                <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Name</th>
+                <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">List Name</th>
                 <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Game</th>
                 <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">User</th>
                 <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Actions</th>

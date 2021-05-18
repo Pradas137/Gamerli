@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use App\Game;
-use App\User;
+use App\Models\Game;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 

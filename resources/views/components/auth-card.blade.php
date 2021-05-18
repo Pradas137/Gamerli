@@ -3,7 +3,7 @@
         {{ $logo }}
     </div>
 
-    <div class="text-sm-center bg-red-700 w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
+    <div style="background-image: url(/images/fondonegro.jpg)" class="text-sm-center bg-red-700 w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
         {{ $slot }}
     </div>
 </div>
