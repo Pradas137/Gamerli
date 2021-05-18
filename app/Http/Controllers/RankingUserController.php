@@ -109,9 +109,6 @@ return response()->json($data);
             ->join('genres','genres.id','=','game_genre.genre_id')
             ->select('genres.*', 'game_genre.genre_id')->groupBy('name')->get();
             return view('ranking.create', ['rankingUser' => $rankingUser,'genres' => $genres]);    
-
-            
-
     }
 
     /**
