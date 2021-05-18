@@ -85,44 +85,62 @@
                             <input class="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3" name="image" id="image" type="text" placeholder="image">
                         </div>
                     </div>
-                    <div class="-mx-3 md:flex mb-2">
-                        <div class="md:w-1/2 px-3 mb-6 md:mb-0">
-                            <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="platform">
-                            Platform*
-                            </label>
-                            <select class="form-control" name="platform_id" id="platform_id">
-                                <option>Select Platform</option>
-                                @foreach ($ranking as $item)
-                                <option value="{{ $item->id }}" {{ ( $item->id == 1) ? 'selected' : '' }}> {{ $item->name }} </option>
-                                @endforeach
-                            </select>
-                        <div>
-                    </div>
-                </div>
-                <div class="md:w-1/2 px-3">
-                    <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" form="pegi">
-                    Pegi
-                    </label>
+
+                <div class="-mx-3 md:flex mb-2">
+                    <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+                        <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="platform">
+                        Platform*
+                        </label>
                     <div>
-                        <select class="w-full bg-gray-200 border border-gray-200 text-black text-xs py-3 px-4 pr-8 mb-3 rounded" name="pegi" id="pegi">
-                            <option>3</option>
-                            <option>7</option>
-                            <option>12</option>
-                            <option>16</option>
-                            <option>18</option>
+                        <select class="form-control w-full bg-gray-200 border border-gray-200 text-black text-xs py-3 px-4 pr-8 mb-3 rounded" name="platform_id" id="platform_id">
+                            <option>Select Platform</option>
+                            @foreach ($ranking as $item)
+                            <option value="{{ $item->id }}" {{ ( $item->id == 1) ? 'selected' : '' }}> {{ $item->name }} </option>
+                            @endforeach
                         </select>
+
                     </div>
                 </div>
+                    <div class="md:w-1/2 px-3">
+                        <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="platform">
+                        Genre*
+                        </label>    
+                    <div>
+                      <select class="form-control w-full bg-gray-200 border border-gray-200 text-black text-xs py-3 px-4 pr-8 mb-3 rounded" name="genre_id" id="genre_id">
+                            <option>Select Genre</option>
+                            @foreach ($genres as $items)
+                            <option value="{{ $items->id }}" {{ ( $items->id == 1) ? 'selected' : '' }}> {{ $items->name }} </option>
+                            @endforeach
+                        </select>
+                    </div>        
+                </div>
+            <div class="md:w-1/2 px-3">
+                <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" form="pegi">
+                Pegi
+                </label>
+                <div>
+                    <select class="w-full bg-gray-200 border border-gray-200 text-black text-xs py-3 px-4 pr-8 mb-3 rounded" name="pegi" id="pegi">
+                        <option>3</option>
+                        <option>7</option>
+                        <option>12</option>
+                        <option>16</option>
+                        <option>18</option>
+
+                    </select>
+                </div>
+            </div>
+        </div>
+
                 <div class="-mx-3 md:flex mt-2">
-                    <div class="md:w-full px-10">
-                        <button class="md:w-full bg-gray-900 text-white font-bold py-2 px-4 border-b-4 hover:border-b-2 border-gray-500 hover:border-gray-100 rounded-full">
-                        Button
-                        </button>
-                    </div>
                     <div class="md:w-full px-10">
                         <a href="/admin/dashboard/ranking" class="md:w-full bg-gray-900 text-white font-bold py-2 px-4 border-b-4 hover:border-b-2 border-gray-500 hover:border-gray-100 rounded-full">
                             Atras
                         </a>
+                    </div>
+                    <div class="md:w-full px-10">
+                        <button class="md:w-full bg-gray-900 text-white font-bold py-2 px-4 border-b-4 hover:border-b-2 border-gray-500 hover:border-gray-100 rounded-full">
+                        Send
+                        </button>
                     </div>
                 </div>
             </form>
@@ -217,14 +235,29 @@
                         Platform*
                         </label>
                     <div>
-                    <select class="form-control" name="platform_id" id="platform_id">
-                                <option>Select Platform</option>
-                                @foreach ($ranking as $item)
-                                <option value="{{ $item->id }}" {{ ( $item->id == 1) ? 'selected' : '' }}> {{ $item->name }} </option>
-                                @endforeach
-                            </select>
+
+                        <select class="form-control" name="platform_id" id="platform_id">
+                            <option>Select Platform</option>
+                            @foreach ($ranking as $item)
+                            <option value="{{ $item->id }}" {{ ( $item->id == 1) ? 'selected' : '' }}> {{ $item->name }} </option>
+                            @endforeach
+                        </select>
+                    </div>
                 </div>
-            </div>
+                    <div class="md:w-1/2 px-3">
+                        <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="platform">
+                        Genre*
+                        </label>    
+                    <div>
+                      <select class="form-control" name="genre_id" id="genre_id">
+                            <option>Select Genre</option>
+                            @foreach ($genres as $items)
+                            <option value="{{ $items->id }}" {{ ( $items->id == 1) ? 'selected' : '' }}> {{ $items->name }} </option>
+                            @endforeach
+                        </select>
+                    </div>        
+
+                </div>
             <div class="md:w-1/2 px-3">
                 <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" form="pegi">
                 Pegi
@@ -242,16 +275,17 @@
             </div>
         </div>
         <div class="-mx-3 md:flex mt-2">
-          <div class="md:w-full px-10">
-            <button onclick="alert('Hello, the game created has been sent for validation')" class=" md:w-full bg-gray-900 text-white font-bold py-2 px-4 border-b-4 hover:border-b-2 border-gray-500 hover:border-gray-100 rounded-full">
-              Button
-            </button>
-          </div>
+
             <div class="md:w-full px-10">
             <a href="/dashboard/rankingUser" class="md:w-full bg-gray-900 text-white font-bold py-2 px-4 border-b-4 hover:border-b-2 border-gray-500 hover:border-gray-100 rounded-full">
                     Atras
             </a>
             </div>
+            <div class="md:w-full px-10">
+                        <button class="md:w-full bg-gray-900 text-white font-bold py-2 px-4 border-b-4 hover:border-b-2 border-gray-500 hover:border-gray-100 rounded-full">
+                        Send
+                        </button>
+                    </div>
         </div>
       </div>
         </form>

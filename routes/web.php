@@ -16,6 +16,7 @@ use App\Models\Saga;
 use App\Models\User;
 use App\Models\Gamelist;
 use App\Http\Controllers\GameImportController;
+use App\Http\Controllers\Game_GenreController;
 use App\Http\Controllers\PlatformController;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\ProfileController;
@@ -63,7 +64,12 @@ Route::get('/dashboard', function () {
             return redirect('/admin/dashboard');
         }
         if (Auth::user()->role == "user") {
-            return view('dashboard');
+                $image = Game::where('name','like','%'."Assassin's Creed".'%')->first();
+            $urlimage=$image->image;
+    
+            $image2 = Game::where('name','like','%'."Battlefield IV".'%')->first();
+            $urlimage2=$image2->image;
+            return view('dashboard',['image' => $urlimage],['image2' => $urlimage2]);
         }
     }
 })->middleware(['auth'])->name('dashboard');
@@ -107,10 +113,15 @@ Route::resource('userUpdate', ProfileController::class);
 
 //Route::get('/home','HomeController@index')->name('home')->middleware('verified');
 
+
+Route::get('file-import-export-game-genre', [Game_GenreController::class, 'fileImportExport']);
+Route::post('file-import-game-genre', [Game_GenreController::class, 'fileImport'])->name('file-import-game-genre');
+
 Route::get('admin/dashboard/file-import-export-platforms', [PlatformController::class, 'fileImportExport']);
 Route::post('admin/dashboard/file-import-platforms', [PlatformController::class, 'fileImport'])->name('file-import-platforms');
 Route::get('admin/dashboard/file-import-export-games', [GameController::class, 'fileImportExport']);
 Route::post('admin/dashboard/file-import-games', [GameController::class, 'fileImport'])->name('file-import-games');
+
 
 
 /*Route::resource('admin/dashboard/Import', GameImportController::class);
