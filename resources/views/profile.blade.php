@@ -50,7 +50,7 @@
 			<p class="pt-2 text-gray-600 text-xs lg:text-sm flex items-center justify-center lg:justify-start">{{ Auth::user()->email }}</p>
 			<p class="pt-8 text-sm">{{ Auth::user()->description }}</p>
 			<div class="pt-5 pb-8">
-				<a href=/admin/dashboard/profileEdit" id="" class=" userEdits bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full">
+				<a href="/dashboard/profiles/{{Auth::user()->id}}/edit" id="" class=" userEdits bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full">
 				  Edit
         </a>
 			</div>

@@ -116,7 +116,7 @@
                        rounded-lg p-4 border border-green-900">
             My Lists
         </a>
-        <a href="/dashboard/profile" class="text-3xl transition duration-1000 ease-in-out 
+        <a href="/dashboard/profiles" class="text-3xl transition duration-1000 ease-in-out 
                        bg-green-300 hover:bg-green-600 transform 
                        hover:-translate-y-1 hover:scale-100 
                        rounded-lg p-4 border border-green-900">

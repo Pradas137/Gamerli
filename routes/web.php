@@ -40,7 +40,7 @@ Route::resource('/admin/dashboard/ranking','App\Http\Controllers\RankingControll
 Route::resource('/dashboard/rankingUser','App\Http\Controllers\RankingUserController');
 
 Route::resource('/admin/dashboard/profile','App\Http\Controllers\ProfileController');
-Route::resource('/dashboard/profile','App\Http\Controllers\ProfileController');
+Route::resource('/dashboard/profiles','App\Http\Controllers\ProfileController');
 
 Route::resource('/admin/dashboard/adminPublicList','App\Http\Controllers\PublicListController');
 Route::resource('/dashboard/PublicList','App\Http\Controllers\PublicListController');

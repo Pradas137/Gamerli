@@ -105,7 +105,7 @@
             <h6 class="font-bold mb-4 text-2xl">ADMIN</h6>
             <ul>
                 <li class="font-bolt mb-4"><a href="/dashboard/requests">My Request</a></li>
-                <li class="font-bolt mb-4"><a href="/dashboard/profile">Profile</a></li>
+                <li class="font-bolt mb-4"><a href="/dashboard/profiles">Profile</a></li>
             </ul>
         </div>
         <div class="w-2/3 mx-auto">

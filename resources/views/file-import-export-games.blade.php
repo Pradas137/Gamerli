@@ -50,9 +50,7 @@
             <ul>
                 <li class="font-bolt mb-4"><a href="/dashboard/request">My Request</a></li>
                 <li class="font-bolt mb-4"><a href="/dashboard/MyList">My Lists</a></li>
-                <li class="font-bolt mb-4"><a href="/dashboard/profile">Profile</a></li>
-                <li class="font-bolt mb-4"><a href="/dashboard/friend">Friend</a></li>
-
+                <li class="font-bolt mb-4"><a href="/dashboard/profiles">Profile</a></li>
             </ul>
         </div>
         <div class="w-2/3 mx-auto">
