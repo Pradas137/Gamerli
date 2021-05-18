@@ -43,7 +43,7 @@ Route::resource('/admin/dashboard/profile','App\Http\Controllers\ProfileControll
 Route::resource('/dashboard/profile','App\Http\Controllers\ProfileController');
 
 Route::resource('/admin/dashboard/adminPublicList','App\Http\Controllers\PublicListController');
-Route::resource('/dashboard/PublicList','App\Http\Controllers\RankingController');
+Route::resource('/dashboard/PublicList','App\Http\Controllers\PublicListController');
 
 Route::resource('/admin/dashboard/adminMyList','App\Http\Controllers\MyListController');
 Route::resource('/dashboard/MyList','App\Http\Controllers\MyListController');

@@ -69,7 +69,7 @@
     @else
     <script src="{{asset('js/breadcrumb.js')}}"></script>
     <div class="flex h-screen">
-      <div class="bg-gray-600 h-8 md:h-full border-r w-64 text-center text-white border-gray-200">
+      <div class="bg-red-400 h-8 md:h-full border-r w-64 text-center text-black border-gray-200">
         <h6 class="font-bold mb-4 text-2xl">PAGE</h6>
         <ul>
           <li class="font-bolt mb-4"><a href="/dashboard">Home</a></li>
@@ -108,11 +108,8 @@
                 <td class="bg-blue-600">{{ $game->date }}</td>
                 <td class="bg-blue-500">{{ $game->pegi }}</td>
                 <td class="bg-blue-600">{{ $game->saga }}</td>
-                <td class="bg-blue-500">
-                
+                <td class="bg-blue-500"> 
                    <a class="btn btn-info text-center inline-flex items-center px-4 py-2 bg-green-800 border border-transparent rounded-md font-semibold text-sm text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150" href="/dashboard/rankingUser/{{$game->id}}">Show</a>
-
-              
                </td>
               </tr>
             @endforeach
