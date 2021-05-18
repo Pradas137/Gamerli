@@ -57,12 +57,17 @@ class RegisteredUserController extends Controller
              
         ]);
 
-        Gamelist::create(['name'=>'favoritos','user_id'=>$user->id]);
+        $gamelist= Gamelist::create([
+            'name'=>'favoritos',
+            'user_id'=>$user->id,
+        ]);
+
+        //Gamelist::create(['name'=>'favoritos','user_id'=>$user->id]);
         
-        Log::debug('llega');
+        
         Auth::login($user);
         
-
+        /*
         Mail::to($user->email)->send(new sendGrid($user));
 
          if(Mail::failures() != 0) {
@@ -72,7 +77,7 @@ class RegisteredUserController extends Controller
         else {
             Log::debug("email no enviat");;
         }
-        
+        */
 
         event(new Registered($user));
        

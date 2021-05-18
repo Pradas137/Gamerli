@@ -20,7 +20,5 @@ protected $fillable = ['name','user_id','visibility'];
     public function users(){
     	return $this->belongsTo(User::class);
     }
-    public function create(){
 
-    }
 }

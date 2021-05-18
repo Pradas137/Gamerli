@@ -97,7 +97,7 @@
     <h1 class="text-green-600 text-5xl font-bold"> 
         Control Panel 
     </h1>
-    <div class="px-6 py-4 grid grid-rows-3 grid-flow-col gap-2 gap-3 p-4"> 
+    <div class="px-6 py-4 grid grid-rows-2 grid-flow-col gap-2 gap-3 p-4"> 
         <a href="/dashboard/rankingUser" class="text-3xl transition duration-75 ease-in-out 
                        bg-green-300 hover:bg-green-600 transform 
                        hover:-translate-y-1 hover:scale-100 
