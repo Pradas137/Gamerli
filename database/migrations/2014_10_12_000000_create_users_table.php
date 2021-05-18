@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->integer('order_prefered')->default(0);
             $table->string('profiledescription',255)->nullable();
-            $table->text('avatar')->nullable();
+            $table->string('avatar',255)->nullable();
             $table->timestamps();
         });
     }

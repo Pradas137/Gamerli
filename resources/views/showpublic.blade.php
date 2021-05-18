@@ -41,7 +41,7 @@
     @else
     <script src="{{asset('js/breadcrumb.js')}}"></script>
     <div class="flex h-screen">
-        <div class="h-8 md:h-full border-r w-64 text-center border-gray-200">
+        <div class="bg-red-400 h-8 md:h-full border-r w-64 text-center border-gray-200">
             <h6 class="font-bold mb-4 text-2xl">PAGE</h6>
             <ul>
                 <li class="font-bolt mb-4"><a href="/dashboard">Home</a></li>
@@ -52,9 +52,7 @@
             <ul>
                 <li class="font-bolt mb-4"><a href="/dashboard/request">My Request</a></li>
                 <li class="font-bolt mb-4"><a href="/dashboard/MyList">My Lists</a></li>
-                <li class="font-bolt mb-4"><a href="/dashboard/profile">Profile</a></li>
-                <li class="font-bolt mb-4"><a href="/dashboard/friend">Friend</a></li>
-
+                <li class="font-bolt mb-4"><a href="/dashboard/profiles">Profile</a></li>
             </ul>
         </div>
         <div class="w-2/3 mx-auto">
@@ -70,7 +68,7 @@
                             <p id="surname" class="pt-8 text-base font-bold flex items-center justify-center lg:justify-start text-black">Publisher: {{ $list->name }}</p>
                             <p class="pt-2 text-base font-bold flex items-center justify-center lg:justify-start text-black">Developer: {{ $list->user_id }}</p>
                             <div class="pt-3 pb-5">
-                            <a href="/dashboard/publicList" class="md:w-full bg-gray-900 text-white font-bold py-2 px-4 border-b-4 hover:border-b-2 border-gray-500 hover:border-gray-100 rounded-full">
+                            <a href="/dashboard/MyList" class="md:w-full bg-gray-900 text-white font-bold py-2 px-4 border-b-4 hover:border-b-2 border-gray-500 hover:border-gray-100 rounded-full">
                                 Atras
                             </a>
                             </div>

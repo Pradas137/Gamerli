@@ -56,20 +56,20 @@ class MyListController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request , Game_Gamelist $id)
+    public function store(Request $request , $id)
     {
         $namelist = $request->namelist;
         $select = $request->select;
         $visibility = $request->visibility;
         $user_id = Auth::user()->id;
-        /*$game_id = Game_Gamelist::find($id);
-        $gamelist_id = Game_Gamelist::find($id);*/
+        $game_id = Game_Gamelist::find($id);;
+        $gamelist_id = Game_Gamelist::find($id);
 
         $gamelist = new Gamelist(["name"=>$namelist,"user_id"=>$user_id,"visibility"=>$visibility]);
         $gamelist->save();
 
-        /*$game_gamelist = new Game_Gamelist(["game_id" => $game_id,"gamelist_id"=> $gamelist_id]);
-        $game_gamelist->save();*/
+        $game_gamelist = new Game_Gamelist(["game_id" => $game_id,"gamelist_id"=> $gamelist_id]);
+        $game_gamelist->save();
 
         return view('myList')->with('success','Game created successfully.');
     }

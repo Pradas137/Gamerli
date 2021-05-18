@@ -15,14 +15,6 @@
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
-   <style>
-            body {
-                font-family: 'Nunito', sans-serif;
-                background: url("/images/fondoGamer.jpg");
-
-            }
-
-        </style>
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
         <style>

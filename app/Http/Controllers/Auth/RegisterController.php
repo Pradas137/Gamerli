@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
-use App\Http\Controllers\GamelistController;
+use App\Models\Gamelist;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -79,8 +79,8 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
-        /* Mail::to($user->email)->send(new sendGrid($user));
 
+         Mail::to($user->email)->send(new sendGrid($user));
          
          if(Mail::failures() != 0) {
             Log::debug("email enviat");;
@@ -90,10 +90,10 @@ class RegisterController extends Controller
             Log::debug("email no enviat");;
         }
      
-*/
+
         
         /*if(Mail::failures() != 0) {
-            return "<p> Success! Your E-mail has been sent.</p>"; 
+            return "<p> Success! Your E-mail has been sent.</p>";
         }
         else {
             return "<p> Failed! Your E-mail has not sent.</p>";

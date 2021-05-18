@@ -21,6 +21,7 @@ use App\Http\Controllers\PlatformController;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RankingController;
+use App\Http\Controllers\RankingUserController;
 use App\Http\Controllers\PublicListController;
 use App\Http\Controllers\MyListController;
 
@@ -36,13 +37,13 @@ use App\Http\Controllers\MyListController;
 |
 */
 Route::resource('/admin/dashboard/ranking','App\Http\Controllers\RankingController');
-Route::resource('/dashboard/rankingUser','App\Http\Controllers\RankingController');
+Route::resource('/dashboard/rankingUser','App\Http\Controllers\RankingUserController');
 
 Route::resource('/admin/dashboard/profile','App\Http\Controllers\ProfileController');
-Route::resource('/dashboard/profile','App\Http\Controllers\ProfileController');
+Route::resource('/dashboard/profiles','App\Http\Controllers\ProfileController');
 
 Route::resource('/admin/dashboard/adminPublicList','App\Http\Controllers\PublicListController');
-Route::resource('/dashboard/PublicList','App\Http\Controllers\RankingController');
+Route::resource('/dashboard/PublicList','App\Http\Controllers\PublicListController');
 
 Route::resource('/admin/dashboard/adminMyList','App\Http\Controllers\MyListController');
 Route::resource('/dashboard/MyList','App\Http\Controllers\MyListController');

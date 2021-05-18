@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
             CompaniesSeeder::class,
             GenresSeeder::class,
         ]);
-
+        // \App\Models\User::factory(10)->create();
 
     }
 }

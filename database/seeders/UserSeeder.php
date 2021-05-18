@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use Faker\Factory as Faker;
-use App\Models\User;
 use App\Models\Gamelist;
 use Database\Seeder\GamelistSeeder;
 
@@ -20,30 +19,18 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-
-        //Game::where('name','like','%','Assassin)
-        //$platform = Platform::where('name','like','%'.$row["platform_name"].'%')->first();
+        //
+        $users = Gamelist::all()->pluck('id')->toArray();
+        $gamelist = randomElement($users);
 		$faker = Faker::create();
-        $gamelist = Gamelist::create(['name'=>'favoritos','user_id'=>$user->id]);
-
-        $user = User::create([
-            'name' => $faker->name,
-            'surname' => Str::random(10),
-            'email' => $faker->email,
-            'role' => $faker->randomElement(['user' ,'admin', 'staff']),
-            'password' => Hash::make('password'),
-            'order_prefered'=> rand(0,1),
-        ]);
-
-
         DB::table('users')->insert([
-            'name' =>  $user->name,
-            'surname' => $user->surname,
-            'role' => 
-            'email' => ,
+            'name' =>  $faker->name,
+            'surname' => Str::random(10),
+            'role' => $faker->randomElement(['user' ,'admin', 'staff']),
+            'email' => $faker->email,
             'password' => Hash::make('password'),
             'order_prefered'=> rand(0,1),
-            'gamelist_id'=> Gamelist::create(['name'=>'favoritos','user_id'=>$user->id])->id,
+            'gamelist_id'=> $gamelist,
 
 
         ]);    }

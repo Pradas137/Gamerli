@@ -51,27 +51,25 @@
     @else
     <script src="{{asset('js/breadcrumb.js')}}"></script>
     <div class="flex h-screen">
-        <div class="h-8 md:h-full border-r w-64 text-center border-gray-200">
+        <div class="bg-red-400 h-8 md:h-full border-r w-64 text-center border-gray-200">
             <h6 class="font-bold mb-4 text-2xl">PAGE</h6>
             <ul>
                 <li class="font-bolt mb-4"><a href="/dashboard">Home</a></li>
-                <li class="font-bolt mb-4"><a href="/dashboard/publicList">Global list</a></li>
+                <li class="font-bolt mb-4"><a href="/dashboard/PublicList">Global list</a></li>
                 <li class="font-bolt mb-4"><a href="/dashboard/rankingUser">Ranking Games</a></li>
             <ul>
             <h6 class="font-bold mb-4 text-2xl">ADMIN</h6>
             <ul>
                 <li class="font-bolt mb-4"><a href="/dashboard/request">My Request</a></li>
-                <li class="font-bolt mb-4"><a href="/dashboard/myList">My Lists</a></li>
-                <li class="font-bolt mb-4"><a href="/dashboard/profile">Profile</a></li>
-                <li class="font-bolt mb-4"><a href="/dashboard/friend">Friend</a></li>
-
+                <li class="font-bolt mb-4"><a href="/dashboard/MyList">My Lists</a></li>
+                <li class="font-bolt mb-4"><a href="/dashboard/profiles">Profile</a></li>
             </ul>
         </div>
         <div class="w-2/3 mx-auto">
             <h1 class="text-center text-green-600 text-5xl font-bold"> Edit Game </h1>
             <div class="p-4 md:p-12 text-center lg:text-left">
                 <div class="w-full bg-white rounded shadow-lg p-8 m-4">
-                    <form class="mb-2" id="formulario" method="POST" action="/dashboard/profile" enctype="multipart/form-data">
+                    <form class="mb-2" id="formulario" method="POST" action="/dashboard/profiles" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="flex flex-col mb-1">
                             <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="first_name">Name</label>

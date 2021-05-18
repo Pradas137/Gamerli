@@ -1,9 +1,7 @@
-
 <x-app-layout page="">
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Dashboard') }}
-
         </h2>
     </x-slot>
     @if(Auth::user()->role == 'admin')
@@ -52,9 +50,7 @@
             <ul>
                 <li class="font-bolt mb-4"><a href="/dashboard/request">My Request</a></li>
                 <li class="font-bolt mb-4"><a href="/dashboard/MyList">My Lists</a></li>
-                <li class="font-bolt mb-4"><a href="/dashboard/profile">Profile</a></li>
-                <li class="font-bolt mb-4"><a href="/dashboard/friend">Friend</a></li>
-
+                <li class="font-bolt mb-4"><a href="/dashboard/profiles">Profile</a></li>
             </ul>
         </div>
         <div class="w-2/3 mx-auto">
