@@ -16,6 +16,7 @@ use App\Models\Saga;
 use App\Models\User;
 use App\Models\Gamelist;
 use App\Http\Controllers\GameImportController;
+use App\Http\Controllers\Game_GenreController;
 use App\Http\Controllers\PlatformController;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\ProfileController;
@@ -122,6 +123,8 @@ Route::get('file-import-export-platforms', [PlatformController::class, 'fileImpo
 Route::post('file-import-platforms', [PlatformController::class, 'fileImport'])->name('file-import-platforms');
 Route::get('file-import-export-games', [GameController::class, 'fileImportExport']);
 Route::post('file-import-games', [GameController::class, 'fileImport'])->name('file-import-games');
+Route::get('file-import-export-game-genre', [Game_GenreController::class, 'fileImportExport']);
+Route::post('file-import-game-genre', [Game_GenreController::class, 'fileImport'])->name('file-import-game-genre');
 
 
 /*Route::resource('admin/dashboard/Import', GameImportController::class);
