@@ -80,7 +80,12 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
 
-         Mail::to($user->email)->send(new sendGrid($user));
+        $gamelist= Gamelist::create([
+            'name'=>'favoritos',
+            'user_id'=>$user->id,
+        ]);
+
+         /*Mail::to($user->email)->send(new sendGrid($user));
          
          if(Mail::failures() != 0) {
             Log::debug("email enviat");;
@@ -91,7 +96,7 @@ class RegisterController extends Controller
         }
      
 
-        
+        */
         /*if(Mail::failures() != 0) {
             return "<p> Success! Your E-mail has been sent.</p>";
         }
