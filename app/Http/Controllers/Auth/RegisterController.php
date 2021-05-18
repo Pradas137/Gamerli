@@ -80,10 +80,6 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
 
-        $gamelist= Gamelist::create([
-            'name'=>'favoritos',
-            'user_id'=>$user->id,
-        ]);
 
          /*Mail::to($user->email)->send(new sendGrid($user));
          
