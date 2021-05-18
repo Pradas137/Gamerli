@@ -24,7 +24,9 @@ class UserFactory extends Factory
      */
     public function definition()
     {
-        return [
+
+
+        $factory->define(App\User::class, function (Faker\Generator $faker) { return [
             'name' => $this->$faker->name(),
             'surname'=> $this->$faker->name(),
             'email' => $this->$faker->unique()->safeEmail(),
