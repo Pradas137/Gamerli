@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Models\Game;
 use App\Models\User;
 use App\Models\Gamelist;
+use App\Models\Game_Gamelist;
+
+use Illuminate\Support\Facades\Auth;
 
 class MyListController extends Controller
 {
@@ -40,10 +43,12 @@ class MyListController extends Controller
      */
     public function create()
     {
-        $list = DB::table('gamelists')
+        /*$list = DB::table('gamelists')
         ->join('game_gamelist', 'gamelists.id', '=', 'game_gamelist.gamelist_id')
-        ->select('gamelists.*', 'game_gamelist.gamelist_id')->groupBy('gamelist_id')->get();
-        return view('createList', ['list' => $list]);
+        ->select('gamelists.*', 'game_gamelist.gamelist_id')->groupBy('gamelist_id')->get();*/
+
+        $games = Game::all();
+        return view('createList', ['games' => $games]);
     }
     /**
      * Store a newly created resource in storage.
@@ -51,13 +56,22 @@ class MyListController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request , Game_Gamelist $id)
     {
-    
-        $list = Gamelist::create($list_inputs);
-        $mylist = $list->Game_Gamelist()->create($mylist_input);
-        return redirect()->route('myList')
-                        ->with('success','Game created successfully.');
+        $namelist = $request->namelist;
+        $select = $request->select;
+        $visibility = $request->visibility;
+        $user_id = Auth::user()->id;
+        /*$game_id = Game_Gamelist::find($id);
+        $gamelist_id = Game_Gamelist::find($id);*/
+
+        $gamelist = new Gamelist(["name"=>$namelist,"user_id"=>$user_id,"visibility"=>$visibility]);
+        $gamelist->save();
+
+        /*$game_gamelist = new Game_Gamelist(["game_id" => $game_id,"gamelist_id"=> $gamelist_id]);
+        $game_gamelist->save();*/
+
+        return view('myList')->with('success','Game created successfully.');
     }
 
     /**

@@ -6,7 +6,7 @@
     </x-slot>
     @if(Auth::user()->role == 'admin')
     <div class=" text-center flex h-screen">
-        <div style="background-image: url(https://mcdn.wallpapersafari.com/medium/20/74/JfPDgt.jpg)" class=" h-8 md:h-full border-r w-64 text-center text-white border-gray-200">
+        <div style="background-image: url(/images/fondonegro.jpg)" class=" h-8 md:h-full border-r w-64 text-center text-white border-gray-200">
             <h6 class="font-bold mb-4 text-2xl">PAGE</h6>
             <ul>
                 <li class="font-bolt mb-4"><a href="/admin/dashboard">Home</a></li>
@@ -92,7 +92,7 @@
                             </label>
                             <select class="form-control" name="platform_id" id="platform_id">
                                 <option>Select Platform</option>
-                                @foreach ($games as $item)
+                                @foreach ($ranking as $item)
                                 <option value="{{ $item->id }}" {{ ( $item->id == 1) ? 'selected' : '' }}> {{ $item->name }} </option>
                                 @endforeach
                             </select>
@@ -219,7 +219,7 @@
                     <div>
                     <select class="form-control" name="platform_id" id="platform_id">
                                 <option>Select Platform</option>
-                                @foreach ($games as $item)
+                                @foreach ($ranking as $item)
                                 <option value="{{ $item->id }}" {{ ( $item->id == 1) ? 'selected' : '' }}> {{ $item->name }} </option>
                                 @endforeach
                             </select>
