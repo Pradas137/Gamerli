@@ -26,7 +26,8 @@
     <body >
         <main>
             <div class="sm:flex md:flex lg:flex xl:flex justify-center items-center min-h-screen bg-base">
-                <div style="background-image: url(https://i.pinimg.com/originals/bc/76/e8/bc76e8c5fc0e507e81c8407f198c8cf7.jpg)" class="bg-auto bg-no-repeat bg-center sm:flex md:flex lg:flex xl:flex h-50 bg-grey-300 container bg-admin text-center w-2/4 rounded-xl p-5 shadow-xl">
+                <div style="background-image: url(/images/fondonegro.jpg)" class="bg-auto bg-no-repeat bg-center sm:flex md:flex lg:flex xl:flex h-50 bg-red-600 container bg-admin text-center w-2/4 rounded-xl p-5 shadow-xl">
+
                     <div class="h-48 content-start p-7 w-34 boder-r border-gray-100">
                         <ul>
                             <!--<img src="{{asset('/images/logo2.png')}}"  id="Chocolate" class="w-36">--> 
@@ -35,10 +36,6 @@
                             </li>
                             <li class="flex mb-4">
                                 <a href="{{ route('register') }} " class=" text-3xl py-2 px-4 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">Register</a>
-                            </li>
-
-                            <li class="flex mb-4">
-                                <a href=" " class="text-3xl py-2 px-4 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">Visitet</a>
                             </li>
                         </ul>
                     </div>

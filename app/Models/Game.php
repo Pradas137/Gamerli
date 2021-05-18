@@ -25,7 +25,7 @@ class Game extends Model
     }
 
     public function gamelists(){
-    	return $this->belongsToMany(Gamelist::class);
+    	return $this->belongsToMany(Gamelist::class)->using(Game_Gamelist::class);
     }
 
 
