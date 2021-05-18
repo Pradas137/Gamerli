@@ -24,7 +24,7 @@ class UserSeeder extends Seeder
         //Game::where('name','like','%','Assassin)
         //$platform = Platform::where('name','like','%'.$row["platform_name"].'%')->first();
 		$faker = Faker::create();
-        $gamelist = Gamelist::create(['name'=>'favoritos','user_id'=>$user->id]);
+       // $gamelist = Gamelist::create(['name'=>'favoritos','user_id'=>$user->id]);
 
         $user = User::create([
             'name' => $faker->name,
@@ -36,15 +36,10 @@ class UserSeeder extends Seeder
         ]);
 
 
-        DB::table('users')->insert([
-            'name' =>  $user->name,
-            'surname' => $user->surname,
-            'role' => 
-            'email' => ,
-            'password' => Hash::make('password'),
-            'order_prefered'=> rand(0,1),
-            'gamelist_id'=> Gamelist::create(['name'=>'favoritos','user_id'=>$user->id])->id,
+        $gamelist = Gamelist::create([
+            'name'=>'Favoritos',
+            'user_id'=>$user->id,
+        ]);
 
-
-        ]);    }
+            }
 }
