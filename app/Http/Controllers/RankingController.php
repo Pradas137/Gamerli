@@ -102,6 +102,11 @@ return response()->json($data);
             ->join('games', 'platforms.id', '=', 'games.platform_id')
             ->select('platforms.*', 'games.platform_id')->groupBy('name')->get();
             return view('ranking.create', ['games' => $games]);
+        $genre = DB::table('games')
+            ->join('game_genre', 'game.id', '=', 'games.id')
+            ->join('genre','genre.id','=','game_genre.genre_id')
+            ->select('genres.*', 'game_genre.genre_id')->groupBy('name')->get();
+            return view('ranking.create', ['genres' => $genres]);    
     }
 
     /**
