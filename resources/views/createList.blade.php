@@ -127,8 +127,8 @@
                 </div>
         <div class="-mx-3 md:flex mt-2">
           <div class="md:w-full px-10">
-            <a class="md:w-full bg-gray-900 text-white font-bold py-2 px-4 border-b-4 hover:border-b-2 border-gray-500 hover:border-gray-100 rounded-full">
-              Button</a>
+            <button class="md:w-full bg-gray-900 text-white font-bold py-2 px-4 border-b-4 hover:border-b-2 border-gray-500 hover:border-gray-100 rounded-full">
+              Button</button>
           </div>
             <div class="md:w-full px-10">
             <a href="/dashboard/MyList" class="md:w-full bg-gray-900 text-white font-bold py-2 px-4 border-b-4 hover:border-b-2 border-gray-500 hover:border-gray-100 rounded-full">
