@@ -97,7 +97,7 @@
                 <td class="bg-blue-500">{{ $list->name  }}</td>
                 <td class="bg-blue-500">{{ $list->user_id }}</td>
                 <td class="bg-blue-500">
-                   <a class="btn btn-info text-center inline-flex items-center px-4 py-2 bg-green-800 border border-transparent rounded-md font-semibold text-sm text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150" href="/admin/dashboard/publicList/{{$list->id}}">Show</a>
+                   <a class="btn btn-info text-center inline-flex items-center px-4 py-2 bg-green-800 border border-transparent rounded-md font-semibold text-sm text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150" href="/dashboard/PublicList/{{$list->id}}">Show</a>
                </td>
               </tr>
             @endforeach

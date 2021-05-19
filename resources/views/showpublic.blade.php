@@ -25,7 +25,7 @@
             <h1 class="text-center text-green-600 text-5xl font-bold"> Show List Game </h1>
             <div id="profile" class="w-full lg:w-3/5 rounded-lg lg:rounded-l-lg lg:rounded-r-none shadow-2xl bg-white opacity-75 mx-6 lg:mx-0">
                 <div class="p-4 md:p-12 text-center lg:text-left">
-                    <form method="POST" action="{{ route('adminPublicList.store') }}" method="post" style="display: none" id="avatarForm">
+                    <form method="POST" action="{{ route('PublicList.store') }}" method="post" style="display: none" id="avatarForm">
                         {{ csrf_field() }}
                     </form>
                     <h1 id="name" class="text-3xl font-bold pt-8 lg:pt-0 text-black">Name List: {{ $list->name }}</h1>
@@ -56,7 +56,7 @@
         </div>
         <div class="w-2/3 mx-auto">
             <h1 class="text-center text-green-600 text-5xl font-bold"> Show List </h1>
-            <div id="profile" class="w-full lg:w-3/5 rounded-lg lg:rounded-l-lg lg:rounded-r-none shadow-2xl bg-white opacity-75 mx-6 lg:mx-0">
+            <div style="margin:50px; id="profile" class="w-full lg:w-3/5 rounded-lg lg:rounded-l-lg lg:rounded-r-none shadow-2xl bg-white opacity-75 mx-6 lg:mx-0">
                 <div class="p-4 md:p-12 text-center lg:text-left">
                     <form method="POST" action="{{ route('PublicList.store') }}" method="post" style="display: none" id="avatarForm">
                         {{ csrf_field() }}
@@ -69,7 +69,7 @@
                         @endforeach
                         </div>
                         <div class="pt-3 pb-5">
-                            <a href="/dashboard/MyList" class="md:w-full bg-gray-900 text-white font-bold py-2 px-4 border-b-4 hover:border-b-2 border-gray-500 hover:border-gray-100 rounded-full">
+                            <a style="margin:50px;" href="/dashboard/MyList" class="md:w-full bg-gray-900 text-white font-bold py-2 px-4 border-b-4 hover:border-b-2 border-gray-500 hover:border-gray-100 rounded-full">
                                 Atras
                             </a>
                             </div>
