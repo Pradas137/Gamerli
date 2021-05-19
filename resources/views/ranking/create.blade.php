@@ -225,19 +225,19 @@
                         <input class="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3" name="image" id="image" type="text" placeholder="image">
                     </div>
                 </div>
-                <div class="-mx-3 md:flex mb-2">
+               <div class="-mx-3 md:flex mb-2">
                     <div class="md:w-1/2 px-3 mb-6 md:mb-0">
                         <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="platform">
                         Platform*
                         </label>
                     <div>
-
-                        <select class="form-control" name="platform_id" id="platform_id">
+                        <select class="form-control w-full bg-gray-200 border border-gray-200 text-black text-xs py-3 px-4 pr-8 mb-3 rounded" name="platform_id" id="platform_id">
                             <option>Select Platform</option>
                             @foreach ($rankingUser as $item)
                             <option value="{{ $item->id }}" {{ ( $item->id == 1) ? 'selected' : '' }}> {{ $item->name }} </option>
                             @endforeach
                         </select>
+
                     </div>
                 </div>
                     <div class="md:w-1/2 px-3">
@@ -245,14 +245,13 @@
                         Genre*
                         </label>    
                     <div>
-                      <select class="form-control" name="genre_id" id="genre_id">
+                      <select class="form-control w-full bg-gray-200 border border-gray-200 text-black text-xs py-3 px-4 pr-8 mb-3 rounded" name="genre_id" id="genre_id">
                             <option>Select Genre</option>
                             @foreach ($genres as $items)
                             <option value="{{ $items->id }}" {{ ( $items->id == 1) ? 'selected' : '' }}> {{ $items->name }} </option>
                             @endforeach
                         </select>
                     </div>        
-
                 </div>
             <div class="md:w-1/2 px-3">
                 <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" form="pegi">
