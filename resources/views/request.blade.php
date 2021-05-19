@@ -20,7 +20,7 @@
           <li class="font-bolt mb-4"><a href="/admin/dashboard/profile">Profile</a></li>
         </ul>
       </div>
-        <div class="w-2/3 mx-auto">
+        <div class="w-1/3 mx-auto">
             <h1 class="text-center text-green-600 text-5xl font-bold"> Import CSV </h1>
             <div class="text-center px-6 py-4 grid grid-rows-3 grid-flow-col gap-2 gap-3 p-4"> 
                 <a href="/admin/dashboard/file-import-export-platforms" class="text-3xl transition duration-75 ease-in-out 
@@ -29,11 +29,17 @@
                             rounded-lg p-4 border border-green-900">
                     Import Platforms
                 </a>
-                <a href="/admin/dashboard/file-import-export-games" class="text-3xl transition duration-100 ease-in-out 
+                <a href="/admin/dashboard/file-import-export-games-genre" class="text-3xl transition duration-100 ease-in-out 
                             bg-green-300 hover:bg-green-600 transform 
                             hover:-translate-y-1 hover:scale-100 
                             rounded-lg p-4 border border-green-900">
                     Import Games
+                </a>
+                <a href="/admin/dashboard/file-import-export-games" class="text-3xl transition duration-100 ease-in-out 
+                            bg-green-300 hover:bg-green-600 transform 
+                            hover:-translate-y-1 hover:scale-100 
+                            rounded-lg p-4 border border-green-900">
+                    Import Games Genres
                 </a>
             <div>    
         </div>
