@@ -24,6 +24,9 @@
 				<p class="pt-8 text-sm">{{ Auth::user()->description }}</p>
 				<div class="pt-4 pb-8">
 					<a id="edit" class="btn btn-primary text-center inline-flex items-center px-4 py-2 bg-yellow-800 border border-transparent rounded-md font-semibold text-sm text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150" href="/admin/dashboard/profile/{{Auth::user()->id}}/edit">Edit</a>
+					<a style="margin:50px;" href="/admin/dashboard" class="md:w-full bg-gray-900 text-white font-bold py-2 px-4 border-b-4 hover:border-b-2 border-gray-500 hover:border-gray-100 rounded-full">
+                	Atras
+                	</a>
 				</div>
 			</div>
 		</div>
@@ -52,7 +55,10 @@
 			<div class="pt-5 pb-8">
 				<a href="/dashboard/profiles/{{Auth::user()->id}}/edit" id="" class=" userEdits bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full">
 				  Edit
-        </a>
+        		</a>
+				<a style="margin:50px;" href="/dashboard" class="userEdits bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full">
+                	Atras
+                </a>
 			</div>
 			<!--Editar-->
 			
