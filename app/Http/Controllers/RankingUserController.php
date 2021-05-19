@@ -106,7 +106,7 @@ return response()->json($data);
             
         $genres = DB::table('genres')
             ->select('*')->get();
-            return view('ranking.create', ['ranking' => $rankingUser,'genres' => $genres]);    
+            return view('ranking.create', ['rankingUser' => $rankingUser,'genres' => $genres]);    
 
         }
     /**
