@@ -13,17 +13,21 @@
 7. ![](wireframe_colors_images/env.png)
 8. Hacer un "composer install" dentro del proyecto (por terminal).
 9. Hacer un php artisan key:generate dentro del proyecto (por terminal).
+10. Para hacer la migracion ejecutar (php artisan migrate)
+11. Para arrancar ejecutar (php artisan serve)
 
 # Tecnologias Utilizadas
 ## framework
 - Laravel
-## Stilos
+## Estilos
 - CSS
 - Tailwind
 - Boostrap
 ## Codigo
 - PHP
 - JQuery
+- JavaScript
+- HTML
 # Authors
 - Carlos Jurado.
 - Adrian Pradas.
