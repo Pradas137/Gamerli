@@ -89,6 +89,7 @@ class GamerliNice extends Migration
             $table->id();
             $table->foreignId('game_id')->constrained();
             $table->foreignId('genre_id')->constrained();
+            $table->timestamps();
         });
 
         

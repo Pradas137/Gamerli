@@ -9,11 +9,11 @@
    <div class="carousel-inner"> 
       <input name="carousel" class="carousel-open" id="carousel-1" aria-hidden="true" type="radio" hidden="true" Checked/> 
       <div class=" bg-contain bg-center  bg-no-repeat carousel-item" style="background-image: url('https:{{$image}}')"> 
-         <h1 class="text-yellow-600">ROL</h1> 
+         <a href="https://en.wikipedia.org/wiki/Assassin%27s_Creed"><h1 class="text-yellow-600">ROL</h1> </a>
       </div> 
       <input name="carousel" class="carousel-open" id="carousel-2" aria-hidden="true" type="radio" hidden="true"/> 
       <div class="bg-contain bg-center  bg-no-repeat  carousel-item" style="background-image: url('https:{{$image2}}')"> 
-         <h1>SHOTER</h1> 
+         <a href="https://en.wikipedia.org/wiki/Battlefield_4"><h1>SHOTER</h1> </a>
       </div> 
       <label class="carousel-control prev control-1" for="carousel-2">‹</label>
       <label class="carousel-control next control-1" for="carousel-2">›</label>
@@ -74,11 +74,11 @@
    <div class="carousel-inner"> 
       <input name="carousel" class="carousel-open" id="carousel-1" aria-hidden="true" type="radio" hidden="true" Checked/> 
       <div class=" bg-contain bg-center  bg-no-repeat carousel-item" style="background-image: url('https:{{$image}}')"> 
-         <h1 class="text-yellow-600">ROL</h1> 
-      </div> 
+         <a href="https://en.wikipedia.org/wiki/Assassin%27s_Creed"><h1 class="text-yellow-600">ROL</h1> </a>
+      </div>  
       <input name="carousel" class="carousel-open" id="carousel-2" aria-hidden="true" type="radio" hidden="true"/> 
       <div class="bg-contain bg-center  bg-no-repeat  carousel-item" style="background-image: url('https:{{$image2}}')"> 
-         <h1>SHOTER</h1> 
+         <a href="https://en.wikipedia.org/wiki/Battlefield_4"><h1>SHOTER</h1> </a>
       </div> 
       <label class="carousel-control prev control-1" for="carousel-2">‹</label>
       <label class="carousel-control next control-1" for="carousel-2">›</label>
