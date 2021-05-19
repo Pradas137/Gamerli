@@ -101,7 +101,7 @@ return response()->json($data);
     {
         $rankingUser = DB::table('platforms')
             ->join('games', 'platforms.id', '=', 'games.platform_id')
-            ->select('platforms.*', 'games.platform_id')->groupBy('name')->get();
+            ->select('platforms.*', 'games.platform_id')->groupBy('platforms.name')->get();
             //return view('ranking.create', ['ranking' => $ranking]);
             
         $genres = DB::table('games')
