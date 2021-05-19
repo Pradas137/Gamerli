@@ -1,4 +1,4 @@
-<p align="center">![](img/portada.jpg)</p>
+<p align="center">![](wireframe_colors_images/logo2.jpg)</p>
 
 ## Proyecto:
 - Nuestro proyexto es una web para gestionar los videojuegos en listas, incluye rankings y un sistema de amigos Carlos, Adrian.
