@@ -66,7 +66,7 @@
 		</div>
 	</div>
 	<div class="w-full lg:w-2/5">
-		<img class="rounded-none lg:rounded-lg shadow-2xl hidden lg:block" src="data:image/png;base64,{{ Auth::user()->avatar }}">		
+		<img class="rounded-none lg:rounded-lg shadow-2xl hidden lg:block" src="{{ Auth::user()->avatar }}">		
 	</div>
 </div>
     @endif

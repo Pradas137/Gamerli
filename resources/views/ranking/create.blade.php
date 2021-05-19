@@ -15,7 +15,7 @@
             <ul>
             <h6 class="font-bold mb-4 text-2xl">ADMIN</h6>
             <ul>
-                <li class="font-bolt mb-4"><a href="/admin/dashboard/requests">My Request</a></li>
+                <li class="font-bolt mb-4"><a href="/admin/dashboard/request">Imports</a></li>
                 <li class="font-bolt mb-4"><a href="/admin/dashboard/adminMyList">My Lists</a></li>
                 <li class="font-bolt mb-4"><a href="/admin/dashboard/profile">Profile</a></li>
             </ul>
@@ -155,10 +155,6 @@
                 <li class="font-bolt mb-4"><a href="/dashboard">Home</a></li>
                 <li class="font-bolt mb-4"><a href="/dashboard/PublicList">Global list</a></li>
                 <li class="font-bolt mb-4"><a href="/dashboard/rankingUser">Ranking Games</a></li>
-            <ul>
-            <h6 class="font-bold mb-4 text-2xl">ADMIN</h6>
-            <ul>
-                <li class="font-bolt mb-4"><a href="/dashboard/request">My Request</a></li>
                 <li class="font-bolt mb-4"><a href="/dashboard/MyList">My Lists</a></li>
                 <li class="font-bolt mb-4"><a href="/dashboard/profiles">Profile</a></li>
 

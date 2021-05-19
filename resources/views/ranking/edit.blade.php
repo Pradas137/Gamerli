@@ -14,7 +14,7 @@
         <ul>
         <h6 class="font-bold mb-4 text-2xl">ADMIN</h6>
         <ul>
-          <li class="font-bolt mb-4"><a href="/admin/dashboard/requests">My Request</a></li>
+          <li class="font-bolt mb-4"><a href="/admin/dashboard/request">Imports</a></li>
           <li class="font-bolt mb-4"><a href="/admin/dashboard/adminMyList">My Lists</a></li>
           <li class="font-bolt mb-4"><a href="/admin/dashboard/profile">Profile</a></li>
           <li class="font-bolt mb-4"><a href="/admin/dashboard/friend">Friend</a></li>
@@ -35,13 +35,13 @@
                         </div>
                         <div class="md:w-1/2 px-3">
                             <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="developer">
-                            Developer*
+                            Developer
                             </label>
                             <input type="text" name="developer" value="{{ $ranking->developer }}" class="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3 form-control">
                         </div>
                         <div class="md:w-1/2 px-3">
                             <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="director">
-                            Director*
+                            Director
                             </label>
                             <input type="text" name="director" value="{{ $ranking->director }}" class="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3 form-control">
                         </div>
@@ -49,7 +49,7 @@
                     <div class="-mx-3 md:flex mb-6">
                         <div class="md:w-1/2 px-3 mb-6 md:mb-0">
                             <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="publisher">
-                            Publisher*
+                            Publisher
                             </label>
                             <input type="text" name="publisher" value="{{ $ranking->publisher }}" class="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3 form-control">
                         </div>
@@ -61,7 +61,7 @@
                         </div>
                         <div class="md:w-1/2 px-3">
                             <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="summary">
-                            Sumary*
+                            Sumary
                             </label>
                             <input type="text" name="summary" value="{{ $ranking->summary }}" class="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3 form-control">
                         </div>
@@ -69,27 +69,28 @@
                     <div class="-mx-3 md:flex mb-6">
                         <div class="md:w-1/2 px-3 mb-6 md:mb-0">
                             <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="publisher">
-                            Page Referent*
+                            Page Referent
                             </label>
                             <input type="text" name="page_referent" value="{{ $ranking->page_referent }}" class="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3 form-control">
                         </div>
                         <div class="md:w-1/2 px-3">
                             <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="sage">
-                            Saga*
+                            Saga
                             </label>
                             <input type="text" name="saga" value="{{ $ranking->saga }}" class="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3 form-control">
                         </div>
                         <div class="md:w-1/2 px-3">
                             <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="summary">
-                            Image*
+                            Image
                             </label>
                             <input type="text" name="image" value="{{ $ranking->image }}" class="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3 form-control">
                         </div>
                     </div>
                     <div class="-mx-3 md:flex mb-6">
+
                         <div class="md:w-1/2 px-3">
                             <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="summary">
-                            Pegi*
+                            Pegi
                             </label>
                             <input type="text" name="pegi" value="{{ $ranking->pegi }}" class="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3 form-control">
                         </div>
@@ -116,9 +117,6 @@
                 <li class="font-bolt mb-4"><a href="/dashboard/PublicList">Global list</a></li>
                 <li class="font-bolt mb-4"><a href="/dashboard/rankingUser">Ranking Games</a></li>
             <ul>
-            <h6 class="font-bold mb-4 text-2xl">ADMIN</h6>
-            <ul>
-                <li class="font-bolt mb-4"><a href="/dashboard/request">My Request</a></li>
                 <li class="font-bolt mb-4"><a href="/dashboard/MyList">My Lists</a></li>
                 <li class="font-bolt mb-4"><a href="/dashboard/profiles">Profile</a></li>
             </ul>
