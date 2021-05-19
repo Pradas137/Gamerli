@@ -61,7 +61,7 @@ class User extends Authenticatable
     }
 
     public function gamelists(){
-        return $this->hasMany(Gamelist::class,'gamelist_id');
+        return $this->hasMany(Gamelist::class);
     }
 
      public function genres(){

@@ -1,7 +1,7 @@
 <header class=" bg-red-700 w-full bg-user text-white py-4 flex justify-between">
-     <a href="/dashboard" class="mx-3 bg-mtr-dark p-2 w-1/12 text-center font-mono rounded-sm min-w-max">HOME</a>
+     <a href="/dashboard" class="mx-3 bg-mtr-dark p-2 w-1/12 text-center font-mono rounded-sm min-w-max"><img src="{{asset('images/logo2.png')}}" style="width: 50px; height: 50px; "></a>
      <div class="flex justify-center items-center space-x-2">         
-		<button class="js-change-theme focus:outline-none">🌙</button>
+
      </div>
      <div class="p-2 w-1/12 text-center text-black">
           <a href="{{ url('/logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

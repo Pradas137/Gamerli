@@ -14,12 +14,16 @@ use App\Models\Platform;
 use App\Models\Publisher;
 use App\Models\Saga;
 use App\Models\User;
-use App\Models\Score;
+use App\Models\Gamelist;
 use App\Http\Controllers\GameImportController;
+use App\Http\Controllers\Game_GenreController;
 use App\Http\Controllers\PlatformController;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RankingController;
+use App\Http\Controllers\RankingUserController;
+use App\Http\Controllers\PublicListController;
+use App\Http\Controllers\MyListController;
 
 
 /*
@@ -33,9 +37,17 @@ use App\Http\Controllers\RankingController;
 |
 */
 Route::resource('/admin/dashboard/ranking','App\Http\Controllers\RankingController');
-Route::resource('/dashboard/ranking','App\Http\Controllers\RankingController');
+Route::resource('/dashboard/rankingUser','App\Http\Controllers\RankingUserController');
+
 Route::resource('/admin/dashboard/profile','App\Http\Controllers\ProfileController');
-Route::resource('/dashboard/profile','App\Http\Controllers\ProfileController');
+Route::resource('/dashboard/profiles','App\Http\Controllers\ProfileController');
+
+Route::resource('/admin/dashboard/adminPublicList','App\Http\Controllers\PublicListController');
+Route::resource('/dashboard/PublicList','App\Http\Controllers\PublicListController');
+
+Route::resource('/admin/dashboard/adminMyList','App\Http\Controllers\MyListController');
+Route::resource('/dashboard/MyList','App\Http\Controllers\MyListController');
+
 //Route::post('/perfil/foto', 'ProfileController@updatePhoto');
 //Route::resource('slider',SliderController::class);
 
@@ -53,7 +65,12 @@ Route::get('/dashboard', function () {
             return redirect('/admin/dashboard');
         }
         if (Auth::user()->role == "user") {
-            return view('dashboard');
+                $image = Game::where('name','like','%'."Assassin's Creed".'%')->first();
+            $urlimage=$image->image;
+    
+            $image2 = Game::where('name','like','%'."Battlefield IV".'%')->first();
+            $urlimage2=$image2->image;
+            return view('dashboard',['image' => $urlimage],['image2' => $urlimage2]);
         }
     }
 })->middleware(['auth'])->name('dashboard');
@@ -63,14 +80,6 @@ Route::get('/dashboard', function () {
 Route::get('/dashboard/request', function () {
     return view('request');
 })->middleware(['auth',  'can:accessUser'])->name('request');
-
-Route::get('/dashboard/publicList', function () {
-    return view('publicList');
-})->middleware(['auth',  'can:accessUser'])->name('publicList');
-
-Route::get('/dashboard/myList', function () {
-    return view('myList');
-})->middleware(['auth',  'can:accessUser'])->name('myList');
 
 Route::get('/dashboard/friend', function () {
     return view('friend');
@@ -94,10 +103,6 @@ Route::get('/admin/dashboard/request', function () {
     return view('request');
 })->middleware(['auth',  'can:accessAdmin'])->name('request');
 
-Route::get('/admin/dashboard/publicList', function () {
-    return view('publicList');
-})->middleware(['auth',  'can:accessAdmin'])->name('publicList');
-
 Route::resource('admin/dashboard/Import', GameImportController::class);
 //mails
 Route::get('/send-email', [PostController::class, 'sendEmail']);
@@ -109,10 +114,15 @@ Route::resource('userUpdate', ProfileController::class);
 
 //Route::get('/home','HomeController@index')->name('home')->middleware('verified');
 
-Route::get('file-import-export-platforms', [PlatformController::class, 'fileImportExport']);
-Route::post('file-import-platforms', [PlatformController::class, 'fileImport'])->name('file-import-platforms');
-Route::get('file-import-export-games', [GameController::class, 'fileImportExport']);
-Route::post('file-import-games', [GameController::class, 'fileImport'])->name('file-import-games');
+
+Route::get('admin/dashboard/file-import-export-game-genre', [Game_GenreController::class, 'fileImportExport']);
+Route::post('admin/dashboard/file-import-game-genre', [Game_GenreController::class, 'fileImport'])->name('file-import-game-genre');
+
+Route::get('admin/dashboard/file-import-export-platforms', [PlatformController::class, 'fileImportExport']);
+Route::post('admin/dashboard/file-import-platforms', [PlatformController::class, 'fileImport'])->name('file-import-platforms');
+Route::get('admin/dashboard/file-import-export-games', [GameController::class, 'fileImportExport']);
+Route::post('admin/dashboard/file-import-games', [GameController::class, 'fileImport'])->name('file-import-games');
+
 
 
 /*Route::resource('admin/dashboard/Import', GameImportController::class);

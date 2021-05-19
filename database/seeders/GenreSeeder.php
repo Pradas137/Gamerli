@@ -5,13 +5,8 @@ namespace Database\Seeders;
 use Flynsarmy\CsvSeeder\CsvSeeder;
 use Illuminate\Support\Facades\DB;
 
-class GenresSeeder extends CsvSeeder
+class GenreSeeder extends CsvSeeder 
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
     public function __construct()
 	{
         $this->table = 'genres';
@@ -30,3 +25,5 @@ class GenresSeeder extends CsvSeeder
 		parent::run();
     }
 }
+
+	

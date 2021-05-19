@@ -8,6 +8,7 @@ use App\Models\Game;
 use App\Models\User;
 use App\Models\Gamelist;
 
+use Illuminate\Support\Facades\Auth;
 
 class PublicListController extends Controller
 {
@@ -18,12 +19,16 @@ class PublicListController extends Controller
      */
     public function index(Request $request)
     {
-        $publicList = DB::table('users')
+        /*$publicList = DB::table('users')
         ->join('gamelists', 'users.id', '=', 'gamelists.user_id')
         ->join('game_gamelist', 'game_gamelists.gamelist_id', '=', 'gamelists.id')
         ->join('games', 'game_gamelist.game_id', '=', 'games.id')
-        ->where("visibility", 1)->orderBy('id','desc')->paginate(5);
-        return view('publicList', ['publiclist' => $publicList]);
+        ->select('gamelists.*', 'games.name')
+        ->where("visibility", 1)->orderBy('id','desc')->paginate(5);*/
+
+       
+        $publicList = Gamelist::where('visibility',0)->paginate(3);
+        return view('publicList', ['publicList' => $publicList]);
     }
 
     /**
@@ -33,7 +38,10 @@ class PublicListController extends Controller
      */
     public function create()
     {
-
+        $publicList = DB::table('Games')
+            ->join('game_gamelist', 'game.id', '=', 'game_gamelist.game_id')
+            ->select('Games.*', 'game_gamelist.game_id')->groupBy('name')->get();
+            return view('createList', ['publicList' => $publicList]);
     }
 
     /**
@@ -45,7 +53,9 @@ class PublicListController extends Controller
     public function store(Request $request)
     {
     
-      
+        Game::create($request->all());
+        return redirect()->route('publicList')
+                        ->with('success','Game created successfully.');
     }
 
     /**
@@ -54,9 +64,10 @@ class PublicListController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Game $ranking)
+    public function show($id)
     {
-
+        $lista = GameList::find($id);
+        return view('showpublic',['list' => $lista]);
     }
 
     /**
@@ -65,9 +76,9 @@ class PublicListController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Game $ranking)
+    public function edit(Gamelist $list)
     {
-
+        return view('publicList',['list' => $list]);
     }
 
     /**
@@ -77,10 +88,12 @@ class PublicListController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Game $ranking)
+    public function update(Request $request, Gamelist $list)
     {
     
-       
+        $list->update($request->all());
+        return redirect()->route('publicList')
+                        ->with('success','Game updated successfully');
     }
 
     /**
@@ -89,9 +102,11 @@ class PublicListController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Game $ranking)
+    public function destroy(GameList $list)
     {
-       
-
+        $list->delete();
+    
+        return redirect()->route('publicList')
+                        ->with('success','Game deleted successfully');
     }
 }

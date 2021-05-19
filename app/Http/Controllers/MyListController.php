@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Models\Game;
 use App\Models\User;
 use App\Models\Gamelist;
+use App\Models\Game_Gamelist;
+
+use Illuminate\Support\Facades\Auth;
 
 class MyListController extends Controller
 {
@@ -17,12 +20,15 @@ class MyListController extends Controller
      */
     public function index(Request $request)
     {
-        $mylist = DB::table('users')
+        /*$mylist = DB::table('users')
         ->join('gamelists', 'users.id', '=', 'gamelists.user_id')
         ->join('game_gamelist', 'game_gamelists.gamelist_id', '=', 'gamelists.id')
         ->join('games', 'game_gamelist.game_id', '=', 'games.id')
-        ->where("visibility", 1)->orderBy('id','desc')->paginate(5);
-        return view('myList', ['mylist' => $mylist]);
+        ->where("visibility", 1)->orderBy('id','desc')->paginate(5);*/
+        $publiclist = Gamelist::where('visibility',0)->paginate(3);
+        $user_id = Auth::user()->id;
+        $mylist = Gamelist::where('user_id',$user_id)->paginate(3);
+        return view('myList', ['mylist' => $mylist],['publiclist' => $publiclist]);
     }
 
         //$rankings = Game::latest()->paginate(5);
@@ -37,9 +43,13 @@ class MyListController extends Controller
      */
     public function create()
     {
+        /*$list = DB::table('gamelists')
+        ->join('game_gamelist', 'gamelists.id', '=', 'game_gamelist.gamelist_id')
+        ->select('gamelists.*', 'game_gamelist.gamelist_id')->groupBy('gamelist_id')->get();*/
 
+        $games = Game::all();
+        return view('createList', ['games' => $games]);
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -48,8 +58,21 @@ class MyListController extends Controller
      */
     public function store(Request $request)
     {
-    
+        $namelist = $request->namelist;
+        $visibility = $request->visibility;
+        $user_id = Auth::user()->id;
 
+        $select = $request->select;
+        $game = Game::find($select);
+
+        $gamelist = new Gamelist(["name"=>$namelist,"user_id"=>$user_id,"visibility"=>$visibility]);
+        $gamelist->save();
+
+        $game_gamelist = new Game_Gamelist(["game_id" => $game->id,"gamelist_id"=> $gamelist->id]);
+        $game_gamelist->save();
+
+        //return view('myList',[])->with('success','Game created successfully.');
+        return redirect("/dashboard/MyList");
     }
 
     /**
@@ -58,9 +81,10 @@ class MyListController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Game $ranking)
+    public function show($id)
     {
-
+        $lista = GameList::find($id);
+        return view('showpublic',['list' => $lista]);
     }
 
     /**
@@ -69,9 +93,9 @@ class MyListController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Game $ranking)
+    public function edit(Gamelist $list)
     {
-
+        return view('myList',['list' => $list]);
     }
 
     /**
@@ -81,20 +105,23 @@ class MyListController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Game $ranking)
+    public function update(Request $request, Gamelist $list)
     {
     
-       
+        $list->update($request->all());
+        return redirect()->route('myList')
+                        ->with('success','Game updated successfully');
     }
-
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Game $ranking)
+    public function destroy(GameList $list)
     {
-
+        $list->delete();
+        return redirect()->route('myList')
+                        ->with('success','Game deleted successfully');
     }
 }
