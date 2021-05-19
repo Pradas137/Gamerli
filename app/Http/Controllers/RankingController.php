@@ -102,7 +102,7 @@ return response()->json($data);
             ->select('*')->get();
             //return view('ranking.create', ['ranking' => $ranking]);
             
-        $genres = DB::table('games')
+        $genres = DB::table('genres')
             ->select('*')->get();
             return view('ranking.create', ['ranking' => $ranking,'genres' => $genres]);    
 
