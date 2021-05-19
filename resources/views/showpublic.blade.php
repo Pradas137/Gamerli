@@ -25,7 +25,7 @@
             <h1 class="text-center text-green-600 text-5xl font-bold"> Show List Game </h1>
             <div id="profile" class="w-full lg:w-3/5 rounded-lg lg:rounded-l-lg lg:rounded-r-none shadow-2xl bg-white opacity-75 mx-6 lg:mx-0">
                 <div class="p-4 md:p-12 text-center lg:text-left">
-                <form method="POST" action="{{ route('adminPublicList.store') }}" method="post" style="display: none" id="avatarForm">
+                <form method="POST" action="{{ route('PublicList.store') }}" method="post" style="display: none" id="avatarForm">
                         {{ csrf_field() }}
                     </form>
                         <h1 id="name" class="text-3xl font-bold pt-8 lg:pt-0 text-black">Name List: {{ $list->name }}</h1>
@@ -34,6 +34,11 @@
                                 <p class="pt-2 text-base font-bold flex items-center justify-center lg:justify-start text-black">Name: {{ $game->name }}</p>
                         @endforeach
                         </div>
+                        <div class="pt-3 pb-5">
+                            <a href="adminPublicList" class="md:w-full bg-gray-900 text-white font-bold py-2 px-4 border-b-4 hover:border-b-2 border-gray-500 hover:border-gray-100 rounded-full">
+                                Atras
+                            </a>
+                            </div>
                     </div>
                 </div>
             </div>
@@ -59,15 +64,17 @@
             <h1 class="text-center text-green-600 text-5xl font-bold"> Show List </h1>
             <div id="profile" class="w-full lg:w-3/5 rounded-lg lg:rounded-l-lg lg:rounded-r-none shadow-2xl bg-white opacity-75 mx-6 lg:mx-0">
                 <div class="p-4 md:p-12 text-center lg:text-left">
-                    <form method="POST" action="{{ route('PublicList.store') }}" method="post" style="display: none" id="avatarForm">
+                    <form method="POST" action="{{ route('adminPublicList.store') }}" method="post" style="display: none" id="avatarForm">
                         {{ csrf_field() }}
                         <input type="file" id="avatarInput" name="avatar">
                     </form>
-                        <h1 id="name" class="text-3xl font-bold pt-8 lg:pt-0 text-black">Name: {{ $list->name }}</h1>
+                    <h1 id="name" class="text-3xl font-bold pt-8 lg:pt-0 text-black">Name List: {{ $list->name }}</h1>
                         <div class="mx-auto lg:mx-0 w-4/5 pt-3 border-b-2 border-green-500 opacity-25 text-black"></div>
-                            <p id="surname" class="pt-8 text-base font-bold flex items-center justify-center lg:justify-start text-black">Publisher: {{ $list->name }}</p>
-                            <p class="pt-2 text-base font-bold flex items-center justify-center lg:justify-start text-black">Developer: {{ $list->user_id }}</p>
-                            <div class="pt-3 pb-5">
+                        @foreach ( $list->games as $game)
+                                <p class="pt-2 text-base font-bold flex items-center justify-center lg:justify-start text-black">Name: {{ $game->name }}</p>
+                        @endforeach
+                        </div>
+                        <div class="pt-3 pb-5">
                             <a href="/dashboard/MyList" class="md:w-full bg-gray-900 text-white font-bold py-2 px-4 border-b-4 hover:border-b-2 border-gray-500 hover:border-gray-100 rounded-full">
                                 Atras
                             </a>
