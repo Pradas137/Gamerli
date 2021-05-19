@@ -115,8 +115,8 @@ Route::resource('userUpdate', ProfileController::class);
 //Route::get('/home','HomeController@index')->name('home')->middleware('verified');
 
 
-Route::get('file-import-export-game-genre', [Game_GenreController::class, 'fileImportExport']);
-Route::post('file-import-game-genre', [Game_GenreController::class, 'fileImport'])->name('file-import-game-genre');
+Route::get('admin/dashboard/file-import-export-game-genre', [Game_GenreController::class, 'fileImportExport']);
+Route::post('admin/dashboard/file-import-game-genre', [Game_GenreController::class, 'fileImport'])->name('file-import-game-genre');
 
 Route::get('admin/dashboard/file-import-export-platforms', [PlatformController::class, 'fileImportExport']);
 Route::post('admin/dashboard/file-import-platforms', [PlatformController::class, 'fileImport'])->name('file-import-platforms');

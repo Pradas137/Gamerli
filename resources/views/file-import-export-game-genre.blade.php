@@ -21,7 +21,7 @@
             </ul>
         </div>
         <div class="w-2/3 mx-auto">
-            <h1 class="text-center text-green-600 text-5xl font-bold"> Import Games </h1>
+            <h1 class="text-center text-green-600 text-5xl font-bold"> Import Genres->Games </h1>
             <div class="bg-blue-200 shadow-md rounded my-6">
                 <form action="{{ route('file-import-game-genre') }}" method="POST" enctype="multipart/form-data">
                     @csrf

@@ -29,13 +29,13 @@
                             rounded-lg p-4 border border-green-900">
                     Import Platforms
                 </a>
-                <a href="/admin/dashboard/file-import-export-games-genre" class="text-3xl transition duration-100 ease-in-out 
+                <a href="/admin/dashboard/file-import-export-games" class="text-3xl transition duration-100 ease-in-out 
                             bg-green-300 hover:bg-green-600 transform 
                             hover:-translate-y-1 hover:scale-100 
                             rounded-lg p-4 border border-green-900">
                     Import Games
                 </a>
-                <a href="/admin/dashboard/file-import-export-games" class="text-3xl transition duration-100 ease-in-out 
+                <a href="/admin/dashboard/file-import-export-game-genre" class="text-3xl transition duration-100 ease-in-out 
                             bg-green-300 hover:bg-green-600 transform 
                             hover:-translate-y-1 hover:scale-100 
                             rounded-lg p-4 border border-green-900">
