@@ -1,4 +1,4 @@
-<p align="center"><img src="https://image.freepik.com/vector-gratis/ninja-esport-gaming-logo_96628-68.jpg" width="400"></a></p>
+<p align="center"><img src="https://image.freepik.com/vector-gratis/ninja-esport-gaming-logo_96628-68.jpg" width="200"></a></p>
 
 ## Proyecto:
 - Nuestro proyexto es una web para gestionar los videojuegos en listas, incluye rankings y un sistema de amigos Carlos, Adrian.
