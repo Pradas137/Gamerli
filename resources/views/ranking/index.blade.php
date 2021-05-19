@@ -21,14 +21,14 @@
         </ul>
       </div>
       <div class="w-2/3 mx-auto">
-        <h1 class="text-center text-green-600 text-5xl font-bold"> Create Game </h1>
-        <div class="bg-blue-200 shadow-md rounded my-6">
-          <form class="form-inline my-2 my-lg-0" type="get" action="{{url('/admin/dashboard/ranking')}}">
+        <h1 class="text-center text-green-600 text-5xl font-bold"> Videogames</h1>
+        <div class="bg-blue-200 shadow-md rounded my-6" style="padding:20px">
+          <!--<form class="form-inline my-2 my-lg-0" type="get" action="{{url('/admin/dashboard/ranking')}}">
             <input class="form-control mr -sm-2" type="search" placeholder="Search">
             <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
-          </form>
+          </form>-->
           <div class="text-center">
-            <a class="btn btn-info text-center inline-flex items-center px-4 py-2 bg-green-800 border border-transparent rounded-md font-semibold text-sm text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150" href="/admin/dashboard/ranking/create">Add Game</a>
+            <a class="btn btn-info text-center inline-flex items-center px-4 py-2 bg-green-800 border border-transparent rounded-md font-semibold text-sm text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150" style="padding:10px; margin-bottom: 10px" href="/admin/dashboard/ranking/create">Add Game</a>
             </div>
          <table class="text-center w-full border-collapse">
             <thead class="bg-blue-700">
@@ -83,13 +83,14 @@
         </ul>
       </div>
       <div class="w-2/3 mx-auto">
-        <div class="bg-white shadow-md rounded my-6">
-          <form class="form-inline my-2 my-lg-0" type="get" action="{{url('/dashboard/rankingUser')}}">
+        <h1 class="text-center text-green-600 text-5xl font-bold"> Videogames</h1>
+        <div class="bg-blue-200 shadow-md rounded my-6" style="padding:20px">
+          <!--<form class="form-inline my-2 my-lg-0" type="get" action="{{url('/admin/dashboard/ranking')}}">
             <input class="form-control mr -sm-2" type="search" placeholder="Search">
             <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
-          </form>
-          <div class="text-center text_black">
-            <a class="btn btn-info text-center inline-flex items-center px-4 py-2 bg-green-800 border border-transparent rounded-md font-semibold text-sm text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150" href="/dashboard/rankingUser/create">Add Game</a>
+          </form>-->
+          <div class="text-center">
+            <a class="btn btn-info text-center inline-flex items-center px-4 py-2 bg-green-800 border border-transparent rounded-md font-semibold text-sm text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150" style="padding:10px; margin-bottom: 10px" href="/admin/dashboard/ranking/create">Add Game</a>
             </div>
             <table class="text-center w-full border-collapse">
             <thead class="bg-blue-700">

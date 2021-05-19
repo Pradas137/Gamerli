@@ -78,7 +78,7 @@ return response()->json($data);
                 }
             }]
         ])
-        ->orderBy("id", "desc")
+        ->orderBy("name", "asc")
         ->paginate(5);
         return view('ranking.index', ['rankings' => $rankings]);
 

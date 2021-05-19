@@ -34,13 +34,13 @@
                         </div>
                         <div class="md:w-1/2 px-3">
                             <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="developer">
-                            Developer*
+                            Developer
                             </label>
                             <input class="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3" name="developer" id="developer" type="text" placeholder="Developer">
                         </div>
                         <div class="md:w-1/2 px-3">
                             <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="director">
-                            Director*
+                            Director
                             </label>
                             <input class="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3" name="director" id="director" type="text" placeholder="Director">
                         </div>
@@ -48,7 +48,7 @@
                     <div class="-mx-3 md:flex mb-6">
                         <div class="md:w-1/2 px-3 mb-6 md:mb-0">
                             <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="publisher">
-                            Publisher*
+                            Publisher
                             </label>
                             <input class="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3" name="publisher" id="publisher" type="text" placeholder="Publisher">
                         </div>
@@ -60,7 +60,7 @@
                         </div>
                         <div class="md:w-1/2 px-3">
                             <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="summary">
-                            Sumary*
+                            Summary
                             </label>
                             <input class="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3" name="summary" id="summary" type="text" placeholder="Summary">
                         </div>
@@ -68,19 +68,19 @@
                     <div class="-mx-3 md:flex mb-6">
                         <div class="md:w-1/2 px-3 mb-6 md:mb-0">
                             <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="publisher">
-                            Page Referent*
+                            Page Referent
                             </label>
                             <input class="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3" name="page_reference" id="page_reference" type="text" placeholder="Page_reference">
                         </div>
                         <div class="md:w-1/2 px-3">
                             <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="sage">
-                            Saga*
+                            Saga
                             </label>
                             <input class="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3" name="saga" id="saga" type="text" placeholder="Saga">
                         </div>
                         <div class="md:w-1/2 px-3">
                             <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="summary">
-                            Image*
+                            Image
                             </label>
                             <input class="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3" name="image" id="image" type="text" placeholder="image">
                         </div>
@@ -134,7 +134,7 @@
                 <div class="-mx-3 md:flex mt-2">
                     <div class="md:w-full px-10">
                         <a href="/admin/dashboard/ranking" class="md:w-full bg-gray-900 text-white font-bold py-2 px-4 border-b-4 hover:border-b-2 border-gray-500 hover:border-gray-100 rounded-full">
-                            Atras
+                            Back
                         </a>
                     </div>
                     <div class="md:w-full px-10">
@@ -178,13 +178,13 @@
                     </div>
                     <div class="md:w-1/2 px-3">
                         <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="developer">
-                        Developer*
+                        Developer
                         </label>
                         <input class="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3" name="developer" id="developer" type="text" placeholder="Developer">
                     </div>
                     <div class="md:w-1/2 px-3">
                         <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="director">
-                        Director*
+                        Director
                         </label>
                         <input class="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3" name="director" id="director" type="text" placeholder="Director">
                     </div>
@@ -192,7 +192,7 @@
                 <div class="-mx-3 md:flex mb-6">
                     <div class="md:w-1/2 px-3 mb-6 md:mb-0">
                         <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="publisher">
-                        Publisher*
+                        Publisher
                         </label>
                         <input class="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3" name="publisher" id="publisher" type="text" placeholder="Publisher">
                     </div>
@@ -204,7 +204,7 @@
                     </div>
                     <div class="md:w-1/2 px-3">
                         <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="summary">
-                        Sumary*
+                        Sumary
                         </label>
                         <input class="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3" name="summary" id="summary" type="text" placeholder="Summary">
                     </div>
@@ -212,19 +212,19 @@
                 <div class="-mx-3 md:flex mb-6">
                     <div class="md:w-1/2 px-3 mb-6 md:mb-0">
                         <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="publisher">
-                        Page Referent*
+                        Page Referent
                         </label>
                         <input class="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3" name="page_reference" id="page_reference" type="text" placeholder="Page_reference">
                     </div>
                     <div class="md:w-1/2 px-3">
                         <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="sage">
-                        Saga*
+                        Saga
                         </label>
                         <input class="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3" name="saga" id="saga" type="text" placeholder="Saga">
                     </div>
                     <div class="md:w-1/2 px-3">
                         <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="summary">
-                        Image*
+                        Image
                         </label>
                         <input class="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3" name="image" id="image" type="text" placeholder="image">
                     </div>
@@ -278,7 +278,7 @@
 
             <div class="md:w-full px-10">
             <a href="/dashboard/rankingUser" class="md:w-full bg-gray-900 text-white font-bold py-2 px-4 border-b-4 hover:border-b-2 border-gray-500 hover:border-gray-100 rounded-full">
-                    Atras
+                    Back
             </a>
             </div>
             <div class="md:w-full px-10">
