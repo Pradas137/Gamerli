@@ -26,8 +26,8 @@ class MyListController extends Controller
         ->join('games', 'game_gamelist.game_id', '=', 'games.id')
         ->where("visibility", 1)->orderBy('id','desc')->paginate(5);*/
         $publiclist = Gamelist::where('visibility',0)->paginate(3);
-
-        $mylist = Gamelist::where('visibility',1)->paginate(3);
+        $user_id = Auth::user()->id;
+        $mylist = Gamelist::where('user_id',$user_id)->paginate(3);
         return view('myList', ['mylist' => $mylist],['publiclist' => $publiclist]);
     }
 
