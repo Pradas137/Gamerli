@@ -1,4 +1,4 @@
-<p align="center">![](wireframe_colors_images/logo2.jpg)</p>
+<p align="center">![](wireframe_colors_images/logo2.png)</p>
 
 ## Proyecto:
 - Nuestro proyexto es una web para gestionar los videojuegos en listas, incluye rankings y un sistema de amigos Carlos, Adrian.
@@ -12,17 +12,16 @@
 6. Hacer un "composer install" dentro del proyecto (por terminal).
 7. Hacer un php artisan key:generate dentro del proyecto (por terminal).
 
-## Tecnologias Utilizadas
-# framework
+# Tecnologias Utilizadas
+## framework
 - Laravel
-# Stilos
+## Stilos
 - CSS
 - Tailwind
 - Boostrap
-# Codigo
+## Codigo
 - PHP
 - JQuery
-- 
-## Authors
+# Authors
 - Carlos Jurado.
 - Adrian Pradas.
