@@ -99,7 +99,7 @@ return response()->json($data);
      */
     public function create()
     {
-        $rankingUser = DB::table('platforms')
+        $rankingsUser = DB::table('platforms')
             ->join('games', 'platforms.id', '=', 'games.platform_id')
             ->select('platforms.*', 'games.platform_id')->groupBy('platforms.name','platforms.id')->get();
             //return view('ranking.create', ['ranking' => $ranking]);
@@ -108,7 +108,7 @@ return response()->json($data);
             ->join('game_genre', 'games.id', '=', 'game_genre.game_id')
             ->join('genres','genres.id','=','game_genre.genre_id')
             ->select('genres.*', 'game_genre.genre_id')->groupBy('name')->get();
-            return view('ranking.create', ['rankingUser' => $rankingUser,'genres' => $genres]);    
+            return view('ranking.create', ['rankingUser' => $rankingsUser,'genres' => $genres]);    
     }
 
     /**
@@ -117,12 +117,11 @@ return response()->json($data);
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Game $rankingUser)
+    public function store(Request $request, Game $rankingsUser)
     {
     
         Game::create($request->all());
-        return redirect()->route('ranking.index')
-                        ->with('success','Game created successfully.');
+        return redirect("/dashboard/rankingUser");
     }
 
     /**
@@ -131,7 +130,7 @@ return response()->json($data);
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Game $rankingUser)
+    public function show(Game $rankingsUser)
     {
         return view('ranking.show',compact('rankingUser'));
     }
@@ -142,7 +141,7 @@ return response()->json($data);
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Game $rankingUser)
+    public function edit(Game $rankingsUser)
     {
         return view('ranking.edit',compact('rankingUser'));
     }
@@ -154,10 +153,10 @@ return response()->json($data);
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Game $rankingUser)
+    public function update(Request $request, Game $rankingsUser)
     {
     
-        $rankingUser->update($request->all());
+        $rankingsUser->update($request->all());
         return redirect()->route('ranking.index')
                         ->with('success','Game updated successfully');
     }
@@ -168,9 +167,9 @@ return response()->json($data);
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Game $rankingUser)
+    public function destroy(Game $rankingsUser)
     {
-        $rankingUser->delete();
+        $rankingsUser->delete();
     
         return redirect()->route('ranking.index')
                         ->with('success','Game deleted successfully');
