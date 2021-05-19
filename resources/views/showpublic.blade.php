@@ -40,7 +40,7 @@
     @else
     <script src="{{asset('js/breadcrumb.js')}}"></script>
     <div class="flex h-screen">
-        <div class="bg-red-400 h-8 md:h-full border-r w-64 text-center border-gray-200">
+        <div class="bg-gray-400 h-8 md:h-full border-r w-64 text-center border-gray-200">
             <h6 class="font-bold mb-4 text-2xl">PAGE</h6>
             <ul>
                 <li class="font-bolt mb-4"><a href="/dashboard">Home</a></li>
