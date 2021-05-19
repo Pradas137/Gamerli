@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
+use Faker\Generator as Faker;
 
 class UserFactory extends Factory
 {
@@ -23,7 +24,9 @@ class UserFactory extends Factory
      */
     public function definition()
     {
-        return [
+
+
+        $factory->define(App\User::class, function (Faker\Generator $faker) { return [
             'name' => $this->$faker->name(),
             'surname'=> $this->$faker->name(),
             'email' => $this->$faker->unique()->safeEmail(),

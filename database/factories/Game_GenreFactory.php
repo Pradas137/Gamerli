@@ -7,7 +7,7 @@ use App\Models\Game;
 use App\Models\Genre;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Faker\Generator as Faker;
+//use Faker\Generator as Faker;
 
 class Game_GenreFactory extends Factory
 {

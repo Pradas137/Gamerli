@@ -73,7 +73,7 @@ class RegisteredUserController extends Controller
         Auth::login($user);
         
 
-        Mail::to($user->email)->send(new sendGrid($user));
+        /*Mail::to($user->email)->send(new sendGrid($user));
 
          if(Mail::failures() != 0) {
             Log::debug("email enviat");;
@@ -83,7 +83,7 @@ class RegisteredUserController extends Controller
             Log::debug("email no enviat");;
         }
         
-
+*/
         event(new Registered($user));
        
 
