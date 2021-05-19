@@ -63,22 +63,16 @@ class MyListController extends Controller
         $user_id = Auth::user()->id;
 
         $select = $request->select;
-        $gamelist = Game_Gamelist::select('game_id','gamelist_id')->where('id',$select);
-        
-        $gamelist = Game_Gamelist::all();
+        $game = Game::find($select);
 
-        //echo $select;
-        print_r($gamelist['game_id']);
-        //$gamelist_id = Game_Gamelist::find($id);
+        $gamelist = new Gamelist(["name"=>$namelist,"user_id"=>$user_id,"visibility"=>$visibility]);
+        $gamelist->save();
 
-        //$gamelist = new Gamelist(["name"=>$namelist,"user_id"=>$user_id,"visibility"=>$visibility]);
-        //$gamelist->save();
+        $game_gamelist = new Game_Gamelist(["game_id" => $game->id,"gamelist_id"=> $gamelist->id]);
+        $game_gamelist->save();
 
-        //$game_gamelist = new Game_Gamelist(["game_id" => $game_id,"gamelist_id"=> $gamelist_id]);
-        //$game_gamelist->save();
-
-        //print_r($gamelist)
-        //return view('myList')->with('success','Game created successfully.');
+        //return view('myList',[])->with('success','Game created successfully.');
+        return redirect("/dashboard/MyList");
     }
 
     /**

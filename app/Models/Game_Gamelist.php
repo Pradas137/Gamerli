@@ -10,6 +10,8 @@ class Game_Gamelist extends Pivot
 {
     use HasFactory;
 
+    public $table = "game_gamelist";
+    
     public function games(){
     	return $this->hasMany(Game::class);
     }
