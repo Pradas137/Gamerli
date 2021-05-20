@@ -80,7 +80,7 @@ return response()->json($data);
         ])
         ->orderBy("id", "desc")
         ->paginate(5);*/
-        $rankingsUser = Game::latest()->orderBy("name", "ASC")->paginate(5);
+        $rankingsUser = Game::first()->orderBy("name", "ASC")->paginate(5);
         return view('ranking.index', ['rankingsUser' => $rankingsUser]);
 
         /*$rankings = Platform::join('games', 'games.platform_id', '=', 'platforms.id')->orderBy('platform_id','desc')->paginate(5);
