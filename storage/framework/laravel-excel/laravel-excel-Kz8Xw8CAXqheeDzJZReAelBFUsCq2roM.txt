@@ -1,0 +1,5 @@
+name,company_name
+Switch,NINTENDO
+PlayStation 5,SONY
+Xbox Live,MICROSOFT
+Xbox One X,MICROSOFT
