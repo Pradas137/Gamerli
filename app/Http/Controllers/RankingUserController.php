@@ -80,8 +80,8 @@ return response()->json($data);
         ])
         ->orderBy("id", "desc")
         ->paginate(5);*/
-        $rankingsUser = Game::first()->orderBy("name", "ASC")->paginate(5);
-        return view('ranking.index', ['rankingsUser' => $rankingsUser]);
+        $rankingUser = Game::first()->orderBy("name", "ASC")->paginate(5);
+        return view('ranking.index', ['rankingUser' => $rankingUser]);
 
         /*$rankings = Platform::join('games', 'games.platform_id', '=', 'platforms.id')->orderBy('platform_id','desc')->paginate(5);
         return view('ranking.index', ['rankings' => $rankings]);*/
@@ -115,11 +115,11 @@ return response()->json($data);
      * @param  \Illuminate\Http\Request  $request-
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Game $rankingsUser)
+    public function store(Request $request, Game $rankingUser)
     {
     
         Game::create($request->all());
-        return redirect("/dashboard/rankingsUser");
+        return redirect("/dashboard/rankingUser");
     }
 
     /**
@@ -151,10 +151,10 @@ return response()->json($data);
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Game $rankingsUser)
+    public function update(Request $request, Game $rankingUser)
     {
     
-        $rankingsUser->update($request->all());
+        $rankingUser->update($request->all());
         return redirect()->route('ranking.index')
                         ->with('success','Game updated successfully');
     }
@@ -165,9 +165,9 @@ return response()->json($data);
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Game $rankingsUser)
+    public function destroy(Game $rankingUser)
     {
-        $rankingsUser->delete();
+        $rankingUser->delete();
     
         return redirect()->route('ranking.index')
                         ->with('success','Game deleted successfully');
