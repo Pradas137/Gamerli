@@ -37,7 +37,7 @@
                             <p id="surname" class="pt-8 text-base font-bold flex items-center justify-center lg:justify-start text-black">Publisher: {{ $ranking->publisher }}</p>
                             <p class="pt-2 text-base font-bold flex items-center justify-center lg:justify-start text-black">Developer: {{ $ranking->developer }}</p>
                             <p class="pt-2 text-base font-bold flex items-center justify-center lg:justify-start text-black">Director: {{ $ranking->director }}</p>
-                            <p class="pt-2 text-base font-bold flex items-center justify-center lg:justify-start text-black">Daye: {{ $ranking->date }}</p>
+                            <p class="pt-2 text-base font-bold flex items-center justify-center lg:justify-start text-black">Date: {{ $ranking->date }}</p>
                             <p class="pt-2 text-base font-bold flex items-center justify-center lg:justify-start text-black">Pegi: {{ $ranking->pegi }}</p>
                             <div class="pt-3 pb-5">
                             <a href="/admin/dashboard/ranking" class="md:w-full bg-gray-900 text-white font-bold py-2 px-4 border-b-4 hover:border-b-2 border-gray-500 hover:border-gray-100 rounded-full">
@@ -85,7 +85,7 @@
                             <p class="pt-8 text-base font-bold flex items-center justify-center lg:justify-start text-black">Publisher: {{ $rankingUser->publisher }}</p>
                             <p class="pt-2 text-base font-bold flex items-center justify-center lg:justify-start text-black">Developer: {{ $rankingUser->developer }}</p>
                             <p class="pt-2 text-base font-bold flex items-center justify-center lg:justify-start text-black">Director: {{ $rankingUser->director }}</p>
-                            <p class="pt-2 text-base font-bold flex items-center justify-center lg:justify-start text-black">Daye: {{ $rankingUser->date }}</p>
+                            <p class="pt-2 text-base font-bold flex items-center justify-center lg:justify-start text-black">Date: {{ $rankingUser->date }}</p>
                             <p class="pt-2 text-base font-bold flex items-center justify-center lg:justify-start text-black">Pegi: {{ $rankingUser->pegi }}</p>
                             <div class="pt-3 pb-5">
                             <a href="/dashboard/rankingUser" class="md:w-full bg-gray-900 text-white font-bold py-2 px-4 border-b-4 hover:border-b-2 border-gray-500 hover:border-gray-100 rounded-full">
