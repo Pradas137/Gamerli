@@ -119,7 +119,7 @@ return response()->json($data);
     {
     
         Game::create($request->all());
-        return redirect("/dashboard/rankingUser");
+        return redirect("/dashboard/rankingsUser");
     }
 
     /**
@@ -130,7 +130,7 @@ return response()->json($data);
      */
     public function show(Game $rankingsUser)
     {
-        return view('ranking.show',compact('rankingUser'));
+        return view('ranking.show',compact('rankingsUser'));
     }
 
     /**
