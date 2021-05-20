@@ -29,13 +29,15 @@
                     </form>
                         <h1 id="name" class="text-3xl font-bold pt-8 lg:pt-0 text-black">Name: {{ $ranking->name }}</h1>
                         <div class="mx-auto lg:mx-0 w-4/5 pt-3 border-b-2 border-green-500 opacity-25 text-black"></div>
-                            <div class="w-full h-48 lg:w-1/3" style=" background-image: url('https:{{$ranking->image}}')">
-                                image
-	                        </div>
+                            <!--<div class="w-full h-48 lg:w-1/3" style=" background-image: url('https:{{$ranking->image}}')">
+	                        </div>-->
+                            <div style="width:12rem">
+                                <img src="https:{{$ranking->image}}" alt="image {{$ranking->name}}">
+                            </div>
                             <p id="surname" class="pt-8 text-base font-bold flex items-center justify-center lg:justify-start text-black">Publisher: {{ $ranking->publisher }}</p>
                             <p class="pt-2 text-base font-bold flex items-center justify-center lg:justify-start text-black">Developer: {{ $ranking->developer }}</p>
                             <p class="pt-2 text-base font-bold flex items-center justify-center lg:justify-start text-black">Director: {{ $ranking->director }}</p>
-                            <p class="pt-2 text-base font-bold flex items-center justify-center lg:justify-start text-black">Daye: {{ $ranking->date }}</p>
+                            <p class="pt-2 text-base font-bold flex items-center justify-center lg:justify-start text-black">Date: {{ $ranking->date }}</p>
                             <p class="pt-2 text-base font-bold flex items-center justify-center lg:justify-start text-black">Pegi: {{ $ranking->pegi }}</p>
                             <div class="pt-3 pb-5">
                             <a href="/admin/dashboard/ranking" class="md:w-full bg-gray-900 text-white font-bold py-2 px-4 border-b-4 hover:border-b-2 border-gray-500 hover:border-gray-100 rounded-full">
@@ -56,7 +58,7 @@
     @else
     <script src="{{asset('js/breadcrumb.js')}}"></script>
     <div class="flex h-screen">
-        <div class=" bg-red-400 h-8 md:h-full border-r w-64 text-center text-black border-gray-200">
+        <div class=" bg-gray-500 h-8 md:h-full border-r w-64 text-center text-black border-gray-200">
             <h6 class="font-bold mb-4 text-2xl">PAGE</h6>
             <ul>
                 <li class="font-bolt mb-4"><a href="/dashboard">Home</a></li>
@@ -77,13 +79,13 @@
                     </form>
                         <h1 id="name" class="text-3xl font-bold pt-8 lg:pt-0 text-black">Name: {{ $rankingUser->name }}</h1>
                         <div class="mx-auto lg:mx-0 w-4/5 pt-3 border-b-2 border-green-500 opacity-25 text-black"></div>
-                            <div class="w-full h-48 lg:w-1/3" style=" background-image: url('https:{{$rankingUser->image}}')">
-                                image
-	                        </div>
+                            <div style="width:12rem">
+                                <img src="https:{{$rankingUser->image}}" alt="image {{$rankingUser->name}}">
+                            </div>
                             <p class="pt-8 text-base font-bold flex items-center justify-center lg:justify-start text-black">Publisher: {{ $rankingUser->publisher }}</p>
                             <p class="pt-2 text-base font-bold flex items-center justify-center lg:justify-start text-black">Developer: {{ $rankingUser->developer }}</p>
                             <p class="pt-2 text-base font-bold flex items-center justify-center lg:justify-start text-black">Director: {{ $rankingUser->director }}</p>
-                            <p class="pt-2 text-base font-bold flex items-center justify-center lg:justify-start text-black">Daye: {{ $rankingUser->date }}</p>
+                            <p class="pt-2 text-base font-bold flex items-center justify-center lg:justify-start text-black">Date: {{ $rankingUser->date }}</p>
                             <p class="pt-2 text-base font-bold flex items-center justify-center lg:justify-start text-black">Pegi: {{ $rankingUser->pegi }}</p>
                             <div class="pt-3 pb-5">
                             <a href="/dashboard/rankingUser" class="md:w-full bg-gray-900 text-white font-bold py-2 px-4 border-b-4 hover:border-b-2 border-gray-500 hover:border-gray-100 rounded-full">

@@ -99,18 +99,16 @@ return response()->json($data);
      */
     public function create()
     {
-        $rankingsUser = DB::table('platforms')
-            ->join('games', 'platforms.id', '=', 'games.platform_id')
-            ->select('platforms.*')->groupBy('platforms.name')->get();
+    
+        $rankingUser = DB::table('platforms')
+            ->select('*')->get();
             //return view('ranking.create', ['ranking' => $ranking]);
             
-        $genres = DB::table('games')
-            ->join('game_genre', 'games.id', '=', 'game_genre.game_id')
-            ->join('genres','genres.id','=','game_genre.genre_id')
-            ->select('genres.*', 'game_genre.genre_id')->groupBy('name')->get();
-            return view('ranking.create', ['rankingUser' => $rankingsUser,'genres' => $genres]);    
-    }
+        $genres = DB::table('genres')
+            ->select('*')->get();
+            return view('ranking.create', ['rankingUser' => $rankingUser,'genres' => $genres]);    
 
+        }
     /**
      * Store a newly created resource in storage.
      *
