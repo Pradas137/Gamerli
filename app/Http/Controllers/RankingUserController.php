@@ -128,7 +128,7 @@ return response()->json($data);
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Game $rankingsUser)
+    public function show(Game $rankingUser)
     {
         return view('ranking.show',compact('rankingsUser'));
     }
@@ -139,7 +139,7 @@ return response()->json($data);
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Game $rankingsUser)
+    public function edit(Game $rankingUser)
     {
         return view('ranking.edit',compact('rankingUser'));
     }
