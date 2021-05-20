@@ -130,7 +130,7 @@ return response()->json($data);
      */
     public function show(Game $rankingUser)
     {
-        return view('ranking.show',compact('rankingsUser'));
+        return view('ranking.show',compact('rankingUser'));
     }
 
     /**
