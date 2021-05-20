@@ -21,19 +21,13 @@
             </ul>
         </div>
         <div class="w-2/3 mx-auto">
-          <h1 class="text-center text-green-600 text-5xl font-bold"> My List </h1>
-          <div class="bg-blue-200 shadow-md rounded my-6">
-            <!--<form class="form-inline my-2 my-lg-0" type="get" action="{{url('/search')}}">
-              <input class="form-control mr -sm-2" type="search" placeholder="Search">
-              <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
-            </form>-->
         <div class="bg-blue-200 shadow-md rounded my-6">
             <!--<form class="form-inline my-2 my-lg-0" type="get" action="{{url('/search')}}">
               <input class="form-control mr -sm-2" type="search" placeholder="Search">
               <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
             </form>-->
             <div class="text-center">
-              <h1 class="text-center text-green-600 text-5xl font-bold"> Private </h1>
+              <h1 class="text-center text-green-600 text-5xl font-bold"> My Lists </h1>
               <a class="btn btn-info text-left inline-flex items-left px-4 py-2 bg-green-800 border border-transparent rounded-md font-semibold text-sm text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150" href="/admin/dashboard/adminMyList/create">Add List</a>
             </div>
             <table class="text-center w-full border-collapse">
@@ -82,14 +76,14 @@
             </ul>
         </div>
         <div class="w-2/3 mx-auto">
-          <h1 class="text-center text-green-600 text-5xl font-bold"> My List </h1>
+          <!--<h1 class="text-center text-green-600 text-5xl font-bold"> My List </h1>-->
           <div class="bg-blue-200 shadow-md rounded my-6">
             <!--<form class="form-inline my-2 my-lg-0" type="get" action="{{url('/search')}}">
               <input class="form-control mr -sm-2" type="search" placeholder="Search">
               <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
             </form>-->
             <div class="text-center">
-              <h1 class="text-center text-green-600 text-2xl font-bold"> Private </h1>
+              <h1 class="text-center text-green-600 text-2xl font-bold"> My Lists </h1>
               <a class="btn btn-info text-left inline-flex items-left px-4 py-2 bg-green-800 border border-transparent rounded-md font-semibold text-sm text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150" href="/dashboard/MyList/create">Add List</a>
             </div>
             <table class="text-center w-full border-collapse">

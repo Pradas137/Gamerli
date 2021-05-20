@@ -10,6 +10,7 @@
         <meta name="keywords" content="">
         <meta name="author" content="">
         <link rel="stylesheet" href="https://unpkg.com/tailwindcss/dist/tailwind.min.css">   
+
         <title>Gamerli</title>
 
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

@@ -29,9 +29,11 @@
                     </form>
                         <h1 id="name" class="text-3xl font-bold pt-8 lg:pt-0 text-black">Name: {{ $ranking->name }}</h1>
                         <div class="mx-auto lg:mx-0 w-4/5 pt-3 border-b-2 border-green-500 opacity-25 text-black"></div>
-                            <div class="w-full h-48 lg:w-1/3" style=" background-image: url('https:{{$ranking->image}}')">
-                                image
-	                        </div>
+                            <!--<div class="w-full h-48 lg:w-1/3" style=" background-image: url('https:{{$ranking->image}}')">
+	                        </div>-->
+                            <div style="width:12rem">
+                                <img src="https:{{$ranking->image}}" alt="image {{$ranking->name}}">
+                            </div>
                             <p id="surname" class="pt-8 text-base font-bold flex items-center justify-center lg:justify-start text-black">Publisher: {{ $ranking->publisher }}</p>
                             <p class="pt-2 text-base font-bold flex items-center justify-center lg:justify-start text-black">Developer: {{ $ranking->developer }}</p>
                             <p class="pt-2 text-base font-bold flex items-center justify-center lg:justify-start text-black">Director: {{ $ranking->director }}</p>
@@ -77,9 +79,9 @@
                     </form>
                         <h1 id="name" class="text-3xl font-bold pt-8 lg:pt-0 text-black">Name: {{ $rankingUser->name }}</h1>
                         <div class="mx-auto lg:mx-0 w-4/5 pt-3 border-b-2 border-green-500 opacity-25 text-black"></div>
-                            <div class="w-full h-48 lg:w-1/3" style=" background-image: url('https:{{$rankingUser->image}}')">
-                                image
-	                        </div>
+                            <div style="width:12rem">
+                                <img src="https:{{$rankingUser->image}}" alt="image {{$rankingUser->name}}">
+                            </div>
                             <p class="pt-8 text-base font-bold flex items-center justify-center lg:justify-start text-black">Publisher: {{ $rankingUser->publisher }}</p>
                             <p class="pt-2 text-base font-bold flex items-center justify-center lg:justify-start text-black">Developer: {{ $rankingUser->developer }}</p>
                             <p class="pt-2 text-base font-bold flex items-center justify-center lg:justify-start text-black">Director: {{ $rankingUser->director }}</p>
