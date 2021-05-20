@@ -70,7 +70,7 @@
             <h6 class="font-bold mb-4 text-2xl">PAGE</h6>
             <ul>
                 <li class="font-bolt mb-4"><a href="/dashboard">Home</a></li>
-                <li class="font-bolt mb-4"><a href="/dashboard/ranking">Ranking Game</a></li>
+                <li class="font-bolt mb-4"><a href="/dashboard/rankingUser">Ranking Game</a></li>
                 <li class="font-bolt mb-4"><a href="/dashboard/PublicList">Public List</a></li>
                 <li class="font-bolt mb-4"><a href="/dashboard/profiles">Profile</a></li>
             </ul>
